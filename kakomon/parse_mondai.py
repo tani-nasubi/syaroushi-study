@@ -232,6 +232,26 @@ def restore_iroha(stem):
     parts.append(stem[prev:])
     return "\n".join(p.strip() for p in parts)
 
+def restore_maru(text):
+    """①②③… で列挙された記述を行頭に出す。
+    ア〜オと同じく『この順で』句点のあとに3つ以上そろったときだけ切る。
+    設問文だけでなく選択肢の中にも列挙が入ることがあるので、どちらにも掛ける。"""
+    MARU = "①②③④⑤⑥⑦⑧⑨⑩"
+    pos, cuts = 0, []
+    for L in MARU:
+        m = re.compile(r"(?<=[。）])" + L + r"[　 ]?").search(text, pos)
+        if not m:
+            break
+        cuts.append(m.start()); pos = m.end()
+    if len(cuts) < 3:
+        return text
+    parts, prev = [], 0
+    for c in cuts:
+        parts.append(text[prev:c]); prev = c
+    parts.append(text[prev:])
+    return "\n".join(p.strip() for p in parts)
+
+
 def restore_para(body):
     """選択式の段落番号（2〜5）を行頭に出す。
     区切りは「句点＋数字＋全角スペース」に限る。金額や条番号は全角スペースを
@@ -256,7 +276,7 @@ if __name__ == "__main__":
     for p in sorted(glob.glob("txt/*-sentakusiki.txt")):
         kai = int(os.path.basename(p).split("-")[0])
         qs = parse_sentaku(p)
-        for q in qs: q["body"] = restore_para(q["body"])
+        for q in qs: q["body"] = restore_maru(restore_para(q["body"]))
         bad = [q["num"] for q in qs if q.get("broken")]
         print(f"第{kai}回 選択式 {len(qs)}問" + (f"  ← 要確認 問{bad}" if bad else ""))
         out.setdefault(kai, {})["sentaku"] = qs
@@ -264,7 +284,9 @@ if __name__ == "__main__":
     for p in sorted(glob.glob("txt/*-takuitusiki.txt")):
         kai = int(os.path.basename(p).split("-")[0])
         qs = parse_takuitsu(p)
-        for q in qs: q["stem"] = restore_iroha(q["stem"])
+        for q in qs:
+            q["stem"] = restore_maru(restore_iroha(q["stem"]))
+            q["choices"] = [restore_maru(c) for c in q["choices"]]
         bad = [f'{q["subject"]}問{q["num"]}' for q in qs if q.get("broken")]
         print(f"第{kai}回 択一式 {len(qs)}問" + (f"  ← 要確認 {bad}" if bad else ""))
         out.setdefault(kai, {})["takuitsu"] = qs
