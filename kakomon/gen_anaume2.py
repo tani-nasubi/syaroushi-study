@@ -1,0 +1,157 @@
+#!/usr/bin/env python3
+"""条文穴埋めを、法令そのもの（e-Gov）から作る。
+
+選択式の原文だけでは300問にしかならなかったので、条文本体を素材にする。
+法令は著作権の対象外（著作権法13条）なので、一次資料をそのまま使える。
+
+やること
+ 1. e-Gov から取った法令XMLから「条・項」の本文を取り出す
+ 2. 過去問で参照された条文を優先する（出題実績のあるところから覚える）
+ 3. 語の切れ目で挟まれた語を1つ隠し、4択にする
+ 4. 誤答は、同じ法令の条文に出てくる同じ種類の語から採る
+"""
+import json, re, glob, os, random, collections
+import xml.etree.ElementTree as ET
+
+NOSP = lambda s: re.sub(r"[\s　]", "", str(s))
+OUT  = "../drill/data/anaume2.js"
+LAWS = {
+ "322AC0000000049":"労働基準法", "347AC0000000057":"労働安全衛生法",
+ "322AC0000000050":"労働者災害補償保険法", "349AC0000000116":"雇用保険法",
+ "344AC0000000084":"労働保険徴収法", "211AC0000000070":"健康保険法",
+ "329AC0000000115":"厚生年金保険法", "334AC0000000141":"国民年金法",
+ "419AC0000000128":"労働契約法", "324AC0000000174":"労働組合法",
+ "409AC0000000123":"介護保険法", "357AC0000000080":"高齢者医療確保法",
+}
+
+# ── 過去問で参照された条文（出題実績のあるところを優先する）──
+M = json.load(open("mondai.json"))
+LAWRE = re.compile(r"(労働基準法|労働安全衛生法|労働者災害補償保険法|労災保険法|雇用保険法|"
+                   r"労働保険徴収法|健康保険法|厚生年金保険法|国民年金法|労働契約法|労働組合法|"
+                   r"介護保険法|高齢者の医療の確保に関する法律)第?([0-9]{1,3})条")
+CITED = collections.Counter()
+for kai, v in M.items():
+    for q in v["takuitsu"] + v["sentaku"]:
+        t = NOSP(q.get("stem", "") + "".join(q.get("choices", []) if isinstance(q.get("choices"), list) and q.get("choices") and isinstance(q["choices"][0], str) else []) + q.get("body", ""))
+        for m in LAWRE.finditer(t):
+            law = m.group(1).replace("労災保険法", "労働者災害補償保険法") \
+                            .replace("高齢者の医療の確保に関する法律", "高齢者医療確保法")
+            CITED[(law, m.group(2))] += 1
+
+# ── 条文を取り出す ────────────────────────────────
+def clean(s):
+    s = re.sub(r"\s+", " ", s)
+    s = re.sub(r"(?<=[぀-ヿ一-鿿、。」）])\s+(?=[぀-ヿ一-鿿「（])", "", s)
+    return s.strip()
+
+units = []          # {law, art, cap, text}
+for p in sorted(glob.glob("hourei/*.xml")):
+    lid = os.path.basename(p)[:-4]
+    law = LAWS.get(lid)
+    if not law: continue
+    root = ET.parse(p).getroot()
+    main = root.find(".//MainProvision")      # 附則・経過措置は対象外
+    if main is None: continue
+    for a in main.iter("Article"):
+        num = (a.get("Num") or "").split("_")[0]
+        cap = clean(a.findtext("ArticleCaption") or "").strip("（）()")
+        for para in a.findall("Paragraph"):
+            # 号（Item）まで含めて連結すると、境界の語がくっついて
+            #「法律三厚生年金保険」のような存在しない語ができる。
+            # 項の本文（ParagraphSentence）だけを取る。
+            ps = para.find("ParagraphSentence")
+            if ps is None: continue
+            txt = clean("".join(ps.itertext()))
+            txt = re.sub(r"^[0-9０-９一二三四五六七八九十]+\s*", "", txt)   # 項番号を落とす
+            if not (60 <= len(NOSP(txt)) <= 200): continue   # 秒で読める長さに収める
+            if re.search(r"削除|附則|様式|別表|経過措置", txt) or re.search(r"経過措置", cap): continue
+            units.append({"law": law, "art": num, "cap": cap, "text": txt,
+                          "cited": CITED.get((law, num), 0)})
+
+print(f"取り出した条文（項）: {len(units):,}件")
+c = collections.Counter(u["law"] for u in units)
+print("  " + " ".join(f"{k}{v}" for k, v in c.most_common()))
+print(f"  うち過去問で参照された条: {sum(1 for u in units if u['cited']):,}件")
+
+# ── 語彙を集める（誤答の素材）──────────────────────
+def cat(w):
+    t = NOSP(w)
+    if re.fullmatch(r"[0-9０-９]+(年|月|日|週間|時間|歳|人|円|％|か月|分の[0-9]+)?", t): return "数値"
+    if re.search(r"(大臣|署長|安定所長|局長|知事|機構|協会|組合|政府|市町村|審査会|審査官|委員会|事業主|保険者)$", t): return "主体"
+    if re.search(r"(以内|以上|以下|未満|を超え)$", t): return "範囲"
+    return "用語"
+
+TERM = re.compile(r"[一-鿿ァ-ヴ]{2,12}(?:者|人|金|料|額|期間|日数|月数|給付|保険|事業|事業所|"
+                  r"組合|大臣|署長|所長|局長|知事|機構|協会|委員会|審査会|審査官|届出|申請|認定|"
+                  r"決定|通知|報告|命令|規則|規約|定款|承認|許可|認可|免除|猶予|徴収|納付|還付|"
+                  r"控除|加算|減額|停止|喪失|取得|変更|継続|標準報酬|被保険者|受給権|受給資格)")
+NUM  = re.compile(r"[0-9０-９]{1,4}(?:年|月|日|週間|時間|歳|人|円|％|か月)")
+vocab = collections.defaultdict(collections.Counter)
+for u in units:
+    for m in list(TERM.finditer(u["text"])) + list(NUM.finditer(u["text"])):
+        w = m.group()
+        # 「二　内閣総理大臣」が連結されて「二内閣総理大臣」になることがある。
+        # 号番号や接続語が頭に付いた断片は語として扱わない。
+        if re.match(r"^(一|二|三|四|五|六|七|八|九|十|他|又|及|若|前|同|当該|この|その)(?=[一-鿿]{2})", w):
+            continue
+        if 2 <= len(NOSP(w)) <= 14: vocab[u["law"]][w] += 1
+
+EDGE = "、。，．「」『』（）()［］〔〕・：；\n はがのにをでともへやから"
+def standalone(t, p, w):
+    b = t[p-1] if p > 0 else "。"
+    a = t[p+len(w)] if p+len(w) < len(t) else "。"
+    ok = lambda ch: ch in EDGE or re.match(r"[ぁ-ん\s]", ch)
+    return ok(b) and ok(a)
+
+def unit_of(w):
+    m = re.search(r"(年|か月|月|週間|日|時間|歳|人|円|％)$", NOSP(w))
+    return m.group(1) if m else ""
+
+random.seed(20260823)
+qs, seen = [], set()
+# 出題実績のある条文から先に作る
+units.sort(key=lambda u: -u["cited"])
+for u in units:
+    t = u["text"]
+    words = [m.group() for m in list(TERM.finditer(t)) + list(NUM.finditer(t))]
+    words = [w for w in dict.fromkeys(words)
+             if 2 <= len(NOSP(w)) <= 14 and t.count(w) == 1
+             and not re.match(r"^(一|二|三|四|五|六|七|八|九|十|他|又|及|若|前|同|当該|この|その)(?=[一-鿿]{2})", w)]
+    random.shuffle(words)
+    made = 0
+    for w in words:
+        if made >= (3 if u["cited"] else 1): break
+        key = (u["law"], u["art"], NOSP(w))
+        if key in seen: continue
+        p = t.index(w)
+        if not standalone(t, p, w): continue
+        c, uu, L = cat(w), unit_of(w), len(NOSP(w))
+        alts = [x for x in vocab[u["law"]]
+                if x != w and cat(x) == c and unit_of(x) == uu
+                and NOSP(x) not in NOSP(w) and NOSP(w) not in NOSP(x)
+                and x not in t and max(2, L//3) <= len(NOSP(x)) <= max(L*3, L+8)]
+        if len(alts) < 3: continue
+        alts.sort(key=lambda x: (abs(len(NOSP(x)) - L), -vocab[u["law"]][x]))
+        band = alts[:max(10, len(alts)//4)]
+        random.shuffle(band)
+        ch = band[:3] + [w]
+        if len({NOSP(x) for x in ch}) < 4: continue
+        random.shuffle(ch)
+        seen.add(key); made += 1
+        qs.append({"type":"ana", "law":u["law"],
+                   "head":t[:p], "tail":t[p+len(w):],
+                   "choices":ch, "a":ch.index(w), "cat":c,
+                   "real": u["cited"] > 0,
+                   "src": f'{u["law"]}第{u["art"]}条' + (f'（{u["cap"]}）' if u["cap"] else "")})
+
+random.shuffle(qs)
+qs.sort(key=lambda q: not q["real"])
+with open(OUT, "w") as f:
+    f.write('/* 条文穴埋め（法令本体）\n'
+            ' * e-Gov の法令データから条・項を取り出し、1語を隠したもの。\n'
+            ' * 法令は著作権の対象外（著作権法13条）。kakomon/gen_anaume2.py が生成。\n */\n')
+    f.write('DRILL.register("条文穴埋め", ' +
+            json.dumps(qs, ensure_ascii=False, separators=(",", ":")) + ');\n')
+print(f"\n→ {OUT}  {len(qs):,}問")
+print(f"   過去問で参照された条から: {sum(1 for q in qs if q['real']):,}問")
+print("   " + " ".join(f"{k}{v}" for k, v in collections.Counter(q["law"] for q in qs).most_common()))

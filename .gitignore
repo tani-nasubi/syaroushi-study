@@ -6,3 +6,6 @@ kakomon/txt/
 .vercel/
 node_modules/
 .DS_Store
+
+# e-Govから取得した法令XML（12MB）。gen_anaume2.py で取り直せる
+kakomon/hourei/
