@@ -1,0 +1,99 @@
+{
+ "49": {
+  "sel": {
+   "雇用": 2,
+   "健保": 2
+  },
+  "tak": {
+   "厚年": 3
+  },
+  "sel_tot": 24,
+  "sel_base": 3,
+  "tak_tot": 45,
+  "tak_base": 4
+ },
+ "50": {
+  "sel": {
+   "社一": 2,
+   "国年": 2
+  },
+  "tak": {},
+  "sel_tot": 23,
+  "sel_base": 3,
+  "tak_tot": 45,
+  "tak_base": 4
+ },
+ "51": {
+  "sel": {
+   "社一": 2
+  },
+  "tak": {},
+  "sel_tot": 26,
+  "sel_base": 3,
+  "tak_tot": 43,
+  "tak_base": 4
+ },
+ "52": {
+  "sel": {
+   "労一": 2,
+   "社一": 2,
+   "健保": 2
+  },
+  "tak": {},
+  "sel_tot": 25,
+  "sel_base": 3,
+  "tak_tot": 44,
+  "tak_base": 4
+ },
+ "53": {
+  "sel": {
+   "労一": 1,
+   "国年": 2
+  },
+  "tak": {},
+  "sel_tot": 24,
+  "sel_base": 3,
+  "tak_tot": 45,
+  "tak_base": 4
+ },
+ "54": {
+  "sel": {},
+  "tak": {},
+  "sel_tot": 27,
+  "sel_base": 3,
+  "tak_tot": 44,
+  "tak_base": 4
+ },
+ "55": {
+  "sel": {},
+  "tak": {},
+  "sel_tot": 26,
+  "sel_base": 3,
+  "tak_tot": 45,
+  "tak_base": 4
+ },
+ "56": {
+  "sel": {
+   "労一": 2
+  },
+  "tak": {},
+  "sel_tot": 25,
+  "sel_base": 3,
+  "tak_tot": 44,
+  "tak_base": 4
+ },
+ "57": {
+  "sel": {
+   "労災": 2,
+   "労一": 2,
+   "社一": 2
+  },
+  "tak": {
+   "雇用": 3
+  },
+  "sel_tot": 22,
+  "sel_base": 3,
+  "tak_tot": 42,
+  "tak_base": 4
+ }
+}

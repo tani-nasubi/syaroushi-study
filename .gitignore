@@ -1,0 +1,8 @@
+# 公式PDFとその抽出テキストは配布しない。
+# 試験センターのサイトから取得するもので、リポジトリに含める性質のものではない。
+kakomon/pdf/
+kakomon/txt/
+
+.vercel/
+node_modules/
+.DS_Store
