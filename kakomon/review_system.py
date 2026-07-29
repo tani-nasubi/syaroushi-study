@@ -100,6 +100,11 @@ check(8, "数値暗記で未検証のまま残っている項目", warn)
 # 9 問題データの必須項目
 bad = []
 for q in QS:
+    # 条文穴埋め（ana）は設問文ではなく head/tail に本文を持つ
+    if q.get("type") == "ana":
+        if not (q.get("head") or q.get("tail")): bad.append("条文穴埋めに本文がない")
+        if len(q.get("choices") or []) != 4: bad.append(f'{q.get("src")}: 選択肢が4つでない')
+        continue
     if not q.get("q"): bad.append("設問文がない")
     if q.get("type") == "abc" and (not q.get("choices") or len(q["choices"]) != 5): bad.append(f"{q.get('src')}: 選択肢が5つでない")
     if q.get("type") == "ox" and q.get("a") not in (0, 1, True, False): bad.append(f"{q.get('src')}: ○×の正答が不正")
