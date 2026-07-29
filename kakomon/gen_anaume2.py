@@ -121,7 +121,9 @@ for p in sorted(glob.glob("hourei/*.xml")):
             if ps is None: continue
             txt = clean("".join(ps.itertext()))
             txt = re.sub(r"^[0-9０-９一二三四五六七八九十]+\s*", "", txt)   # 項番号を落とす
-            if not (60 <= len(NOSP(txt)) <= 195): continue   # 秒で読める長さに収める
+            # 労基法4条（男女同一賃金）48字、6条（中間搾取の排除）44字のように、
+            # 短くても頻出の条文がある。下限を下げて取りこぼさないようにする。
+            if not (34 <= len(NOSP(txt)) <= 195): continue
             if re.search(r"削除|附則|様式|別表|経過措置", txt) or re.search(r"経過措置", cap): continue
             units.append({"law": law, "art": num, "cap": cap, "text": txt,
                           "chap": chap, "order": order_key(num),
@@ -140,10 +142,19 @@ def cat(w):
     if re.search(r"(以内|以上|以下|未満|を超え)$", t): return "範囲"
     return "用語"
 
-TERM = re.compile(r"[一-鿿ァ-ヴ]{2,12}(?:者|人|金|料|額|期間|日数|月数|給付|保険|事業|事業所|"
-                  r"組合|大臣|署長|所長|局長|知事|機構|協会|委員会|審査会|審査官|届出|申請|認定|"
-                  r"決定|通知|報告|命令|規則|規約|定款|承認|許可|認可|免除|猶予|徴収|納付|還付|"
-                  r"控除|加算|減額|停止|喪失|取得|変更|継続|標準報酬|被保険者|受給権|受給資格)")
+# 語の抽出。以前は「者・金・料…」で終わる語に限っていたため、
+# 「労働条件」「労働契約」「利益」のような基本的な語を取りこぼしていた。
+# 漢字・カタカナの連なりを広く拾い、語として切り出せるか（前後が助詞や句読点か）は
+# あとの standalone で判定する。
+TERM = re.compile(r"[一-鿿ァ-ヴー]{2,12}")
+# 「就業規則及び」の「及」のように、接続詞の頭の一字を巻き込むことがある。
+# その一字を落としてから語として扱う。落とすと2字未満になるものは捨てる。
+TAIL_CUT = re.compile(r"(及|又|若|並|且|かつ|及び|又は)$")
+HEAD_CUT = re.compile(r"^(及|又|若|並|且|同|前|当|各|其|この|その)")
+def norm_term(w):
+    w = TAIL_CUT.sub("", w)
+    if HEAD_CUT.match(w) and len(w) > 3: w = HEAD_CUT.sub("", w)
+    return w if len(w) >= 2 else ""
 NUM  = re.compile(r"[0-9０-９]{1,4}(?:年|月|日|週間|時間|歳|人|円|％|か月)")
 # 語彙は法令ごとに持つが、省令のように条数が少ないものは誤答が3つ作れない。
 # 同じ分野の法令をひとまとめにした語彙も用意して、足りないときはそちらを使う。
@@ -162,7 +173,8 @@ vocab = collections.defaultdict(collections.Counter)
 gvocab = collections.defaultdict(collections.Counter)
 for u in units:
     for m in list(TERM.finditer(u["text"])) + list(NUM.finditer(u["text"])):
-        w = m.group()
+        w = norm_term(m.group()) if not NUM.fullmatch(m.group()) else m.group()
+        if not w: continue
         # 「二　内閣総理大臣」が連結されて「二内閣総理大臣」になることがある。
         # 号番号や接続語が頭に付いた断片は語として扱わない。
         if re.match(r"^(一|二|三|四|五|六|七|八|九|十|他|又|及|若|前|同|当該|この|その)(?=[一-鿿]{2})", w):
@@ -237,21 +249,29 @@ random.seed(20260823)
 qs, seen = [], set()
 combo_seen = collections.defaultdict(set)
 made_by_law = collections.Counter()
+made_by_art = collections.Counter()
 # 出題実績のある条文から先に作る
 units.sort(key=lambda u: -u["cited"])
 for u in units:
     t = u["text"]
-    words = [m.group() for m in list(TERM.finditer(t)) + list(NUM.finditer(t))]
+    words = [(norm_term(m.group()) if not NUM.fullmatch(m.group()) else m.group())
+             for m in list(TERM.finditer(t)) + list(NUM.finditer(t))]
+    words = [w for w in words if w]
     words = [w for w in dict.fromkeys(words)
              if 2 <= len(NOSP(w)) <= 14 and t.count(w) == 1
              and not re.match(r"^(一|二|三|四|五|六|七|八|九|十|他|又|及|若|前|同|当該|この|その)(?=[一-鿿]{2})", w)
              and not MONEY.search(NOSP(w))]
     random.shuffle(words)
     if made_by_law[u["law"]] >= cap_of(u["law"]): continue
+    art_key = (u["law"], u["art"])
+    if made_by_art[art_key] >= (6 if u["cited"] else 3): continue
     made = 0
     for w in words:
+        # 定義規定（介護保険法8条など）は項が多く、放っておくと1条から
+        # 数十問できてしまう。1条あたりの上限を掛ける。
         if made >= (3 if u["cited"] else 1): break
         if made_by_law[u["law"]] >= cap_of(u["law"]): break
+        if made_by_art[art_key] >= (6 if u["cited"] else 3): break
         key = (u["law"], u["art"], NOSP(w))
         if key in seen: continue
         p = t.index(w)
@@ -276,7 +296,8 @@ for u in units:
         if sig in combo_seen[u["law"]]: continue
         combo_seen[u["law"]].add(sig)
         random.shuffle(ch)
-        seen.add(key); made += 1; made_by_law[u["law"]] += 1; ans_use[NOSP(w)] += 1
+        seen.add(key); made += 1; made_by_law[u["law"]] += 1
+        made_by_art[art_key] += 1; ans_use[NOSP(w)] += 1
         qs.append({"type":"ana", "law":u["law"],
                    "subj": LAW2SUBJ.get(u["law"], "その他"),
                    "head":t[:p], "tail":t[p+len(w):],

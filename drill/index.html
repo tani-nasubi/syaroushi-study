@@ -1446,11 +1446,9 @@ $("byouStart").onclick = () => {
       const groups = [...gmap.values()];      // 条番号の順（arrの並びを引き継ぐ）
       // 開始位置は「条」の単位でずらす。問題の並びでずらすと、
       // 深い位置＝問題数の多い条ばかりが残り、同じ条が連続してしまう。
-      // 条番号を持つ組（＝条文本体）の中から開始位置を選ぶ。
-      // 選択式由来は条番号がないので末尾にまとまる。そこから始めない。
-      const nArt = groups.filter(g => g[0].ord).length;
-      const st = nArt > 3 ? Math.floor(Math.random() * nArt) : 0;
-      const rot = groups.slice(st).concat(groups.slice(0, st));
+      // 「条文の順」と言う以上、第1条から始める。
+      // 開始位置をずらすと、なぜ途中から始まるのか説明がつかない。
+      const rot = groups;
       const rounds = [];
       for(let r = 0; ; r++){
         let any = false;
