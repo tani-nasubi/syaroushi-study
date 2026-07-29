@@ -517,9 +517,9 @@
           <option value="all">全問（ランダム）</option>
         </select>
       </div>
-      <div class="fld" style="max-width:100px">
+      <div class="fld" style="max-width:120px">
         <label class="f">出題数</label>
-        <input id="limit" type="number" min="1" max="999" value="20">
+        <select id="limit"><option value="0" selected>すべて</option><option>20</option><option>30</option><option>50</option><option>100</option><option>200</option></select>
       </div>
     </div>
     <div class="row" style="margin-top:14px">
@@ -557,7 +557,7 @@
     <div class="row" style="margin-top:14px">
       <div class="fld" style="max-width:150px">
         <label class="f">出題数</label>
-        <select id="byouN"><option>20</option><option selected>30</option><option>50</option><option>100</option></select>
+        <select id="byouN"><option value="0" selected>すべて</option><option>20</option><option>30</option><option>50</option><option>100</option></select>
       </div>
       <div class="fld" style="max-width:190px">
         <label class="f">範囲</label>
@@ -1062,7 +1062,7 @@ sysDark.addEventListener("change", ()=>{ if(theme.mode==="auto") applyTheme(); }
 applyTheme();
 
 /* ══════════ 科目選択 ══════════ */
-let pref = load(K_PREF,null) || {banks:BANKS.slice(), mode:"honban", years:"0", filter:"due", limit:20};
+let pref = load(K_PREF,null) || {banks:BANKS.slice(), mode:"honban", years:"0", filter:"due", limit:0};   // 0 は「すべて」
 if(!Array.isArray(pref.banks) || !pref.banks.length) pref.banks = BANKS.slice();
 pref.banks = pref.banks.filter(b=>BANKS.includes(b));
 
@@ -1111,7 +1111,7 @@ function renderChips(){
 }
 function savePref(){
   pref.mode=$("mode").value; pref.years=$("years").value;
-  pref.filter=$("filter").value; pref.limit=+$("limit").value||20;
+  pref.filter=$("filter").value; pref.limit=+$("limit").value||0;
   save(K_PREF,pref);
 }
 ["mode","years","filter","limit"].forEach(k=>{ $(k).value=pref[k]; $(k).onchange=()=>{savePref();info();}; });
@@ -1165,7 +1165,9 @@ $("start").onclick = ()=>startDrill();
 function startDrill(list){
   const p = list || pool();
   if(!p.length){ alert("該当する問題がありません。条件を緩めてください。"); return; }
-  queue = list ? p.slice() : shuffle(p).slice(0,Math.max(1,+$("limit").value||20));
+  // 0 は「すべて」。中断してもその場から再開できるので、通しで回せるようにする。
+  const lim = +$("limit").value || 0;
+  queue = list ? p.slice() : (lim ? shuffle(p).slice(0, lim) : shuffle(p));
   done=0; total=queue.length;
   nextQ();               // cur を確定させてから遷移する
   go("drill","quiz");
@@ -1374,7 +1376,8 @@ $("byouMode").onchange = byouInfo;
 $("byouStart").onclick = () => {
   const p = byouPool();
   if(!p.length){ alert("該当する問題がありません。条件を緩めてください。"); return; }
-  const n = Math.min(+$("byouN").value || 30, p.length);
+  // 0 は「すべて」。条文の順に通しで回せるようにする。
+  const n = (+$("byouN").value || 0) ? Math.min(+$("byouN").value, p.length) : p.length;
   let qs;
   if($("byouOrder").value === "seq"){
     // 条文は前後のつながりで意味が決まる。真ん中だけ抜かれても頭に入らないので、
