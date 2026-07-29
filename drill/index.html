@@ -983,11 +983,20 @@ function go(tab, arg, replace){
   route(true);   // hashchange は非同期なので、ここで即座に描画して待ち時間をなくす
 }
 
-let lastTab=null, rendered=null;
+let lastTab=null, rendered=null, lastHash=null, anchored=false;
+/* 画面ごとのスクロール位置。別ページへ行って戻ったとき、読んでいた場所に
+   復帰させるために使う。ブラウザ任せだと再描画に間に合わず先頭に戻る。 */
+const scrollMem = Object.create(null);
+// 演習中の画面（出題・模試）は毎回先頭から。読み物だけ位置を覚える。
+const keepScroll = h => !/^#\/(drill|byou|moshi)\//.test(h||"");
+try{ history.scrollRestoration = "manual"; }catch(e){}
+
 function route(force){
   // hashchange 経由と go() 経由で二重に描画されるのを防ぐ
   if(!force && location.hash===rendered) return;
+  if(rendered !== null && keepScroll(rendered)) scrollMem[rendered] = window.scrollY;
   rendered = location.hash;
+  anchored = false;
   const {tab,arg} = parseHash();
   TABS.forEach(x=> $("t-"+x).hidden = x!==tab);
   document.querySelectorAll("nav button").forEach(b=> b.classList.toggle("on", b.dataset.t===tab));
@@ -1028,6 +1037,7 @@ function route(force){
   if(tab==="notes"){
     const [f, h] = String(arg||"").split("#");
     pendingHash = h || null;
+    anchored = !!h;
     if(f && (window.NOTES||[]).some(d=>d.file===f)) showNote(f);
     else renderNoteList();
   }
@@ -1036,7 +1046,17 @@ function route(force){
     runSearch();
     $("sq").focus();
   }
-  if(tab!==lastTab) window.scrollTo(0,0);
+  /* 画面が変わったときだけ動かす。控えてある位置があればそこへ、
+     なければ先頭へ。見出し指定つきのときは jumpTo に任せる。 */
+  if(location.hash !== lastHash){
+    lastHash = location.hash;
+    if(!anchored){
+      const y = scrollMem[location.hash] || 0;
+      window.scrollTo(0, y);
+      // 描画直後は文書の高さが足りず端で止まることがあるので、次の描画で押し直す
+      if(y) requestAnimationFrame(()=>{ if(location.hash===lastHash) window.scrollTo(0,y); });
+    }
+  }
   lastTab = tab;
 }
 // route(force) の第1引数にイベントオブジェクトが渡ると force が真になり、
@@ -2006,7 +2026,6 @@ function showNote(file){                              // 実際の描画（route
   window.__noteScroll = onScroll;
   window.addEventListener("scroll", onScroll, {passive:true});
   onScroll();
-  window.scrollTo(0,0);
 }
 $("noteBack").onclick=()=>go("notes");
 
