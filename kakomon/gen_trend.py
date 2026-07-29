@@ -152,7 +152,7 @@ for f, (tsubs, ssubs, lawfilter) in TARGET.items():
         kosuu = types.get("個数問題",0); kumi = types.get("組合せ問題",0); ko = kosuu + kumi
         out += ["", f"**{tsubs[0] if len(tsubs)==1 else '労災・雇用'}枠 計{tot}問**のうち、"
                     f"**個数問題{kosuu}問・組合せ問題{kumi}問（合わせて{ko/tot*100:.0f}%）**。"
-                    + (f"組合せのほうが多い科目です。組合せは**2肢の正誤が分かれば99%正解が決まる**ので、"
+                    + (f"組合せのほうが多い科目です。組合せは**2肢の正誤が分かれば98.5%で正解が決まる**ので、"
                        "時間はかかりません。飛ばす候補は個数問題だけです。"
                        if kumi > kosuu else
                        f"個数問題が多い科目です。個数は**5肢すべての判断が必要**で時間を食います。"
