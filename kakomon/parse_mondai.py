@@ -209,6 +209,15 @@ def parse_sentaku(path):
 # PDFの行送りは文の途中で折り返すため、抽出時にすべて連結している。
 # そのままだと「ア」「イ」や段落番号が本文と地続きになって読めないので、
 # 試験問題そのものが持つ構造記号から段落を組み直す。
+# 原本では「ア　労働基準法…」のように記号のあとに全角スペースが入るが、
+# PDFからの抽出で落ちることがある。段落に切り出したあとで補って揃える。
+MARK_HEAD = re.compile(r"^([アイウエオ①②③④⑤⑥⑦⑧⑨⑩1-9])([　 ]*)")
+def pad_mark(line):
+    m = MARK_HEAD.match(line)
+    if not m: return line
+    return m.group(1) + "　" + line[m.end():]
+
+
 def restore_iroha(stem):
     """「次のアからオの記述のうち」型で、ア〜オを行頭に出す。
     ア〜オが句点のあとに『この順で』現れる位置だけを切るので、
@@ -230,7 +239,7 @@ def restore_iroha(stem):
     for c in cuts:
         parts.append(stem[prev:c]); prev = c
     parts.append(stem[prev:])
-    return "\n".join(p.strip() for p in parts)
+    return "\n".join(pad_mark(p.strip()) for p in parts)
 
 def restore_maru(text):
     """①②③… で列挙された記述を行頭に出す。
@@ -249,7 +258,7 @@ def restore_maru(text):
     for c in cuts:
         parts.append(text[prev:c]); prev = c
     parts.append(text[prev:])
-    return "\n".join(p.strip() for p in parts)
+    return "\n".join(pad_mark(p.strip()) for p in parts)
 
 
 def restore_para(body):
@@ -268,7 +277,7 @@ def restore_para(body):
     for c in cuts:
         parts.append(body[prev:c]); prev = c
     parts.append(body[prev:])
-    return "\n".join(p.strip() for p in parts)
+    return "\n".join(pad_mark(p.strip()) for p in parts)
 
 
 if __name__ == "__main__":
