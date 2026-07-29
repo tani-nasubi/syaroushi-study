@@ -2,8 +2,21 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>社労士2026 学習ハブ</title>
+
+<!-- ホーム画面に追加してアプリとして開けるようにする -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1e4b8a" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1216" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="icon/favicon-32.png" sizes="32x32">
+<link rel="icon" href="icon/favicon-16.png" sizes="16x16">
+<!-- iOS はマニフェストを見ないので個別に指定する -->
+<link rel="apple-touch-icon" href="icon/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="社労士2026">
+<meta name="mobile-web-app-capable" content="yes">
 <style>
   /* ── 外観（ライト／ダーク）──
      「システム連動」は JS が実際の値へ解決して data-mode に入れるので、
@@ -43,7 +56,9 @@
   body{margin:0;background:var(--bg);color:var(--ink);
     font-family:var(--ui);line-height:1.7;font-size:var(--fs);
     font-variant-numeric:tabular-nums;-webkit-text-size-adjust:100%}
-  .wrap{max-width:900px;margin:0 auto;padding:0 16px 96px}
+  .wrap{max-width:900px;margin:0 auto;
+    padding:0 max(16px, env(safe-area-inset-left)) calc(96px + env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-right))}
+  header{padding-top:max(18px, env(safe-area-inset-top))}
 
   header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;
     padding:18px 0 14px;margin-bottom:0}
@@ -2202,6 +2217,14 @@ function runSearch(){
   $("sHits").querySelectorAll(".hit").forEach(el=> el.onclick=()=>{
     const h=hits[+el.dataset.i];
     if(h.kind==="資料") openNote(h.file); else startDrill([h.q]);
+  });
+}
+
+/* オフラインでも開けるようにする。http(s) のときだけ登録する
+   （file:// で開いた場合は登録できないので何もしない）。 */
+if("serviceWorker" in navigator && location.protocol.startsWith("http")){
+  window.addEventListener("load", ()=>{
+    navigator.serviceWorker.register("sw.js").catch(()=>{});
   });
 }
 
