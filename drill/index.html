@@ -1026,7 +1026,9 @@ function route(force){
     if(!run && !res) renderMoshiSetup();
   }
   if(tab==="notes"){
-    if(arg && (window.NOTES||[]).some(d=>d.file===arg)) showNote(arg);
+    const [f, h] = String(arg||"").split("#");
+    pendingHash = h || null;
+    if(f && (window.NOTES||[]).some(d=>d.file===f)) showNote(f);
     else renderNoteList();
   }
   if(tab==="search"){
@@ -1914,13 +1916,43 @@ function renderNoteList(){
   $("noteCards").querySelectorAll(".doccard").forEach(c=> c.onclick=()=>openNote(c.dataset.f));
 }
 
+let pendingHash = null;
 function openNote(file){ go("notes", file); }        // 遷移だけ
+
+/** 見出しの文字列でその位置までスクロールする。 */
+function jumpTo(text){
+  const t = String(text).replace(/[-_]/g, " ").trim();
+  const hs = [...$("noteBody").querySelectorAll("h1,h2,h3,h4")];
+  const hit = hs.find(h => h.textContent.replace(/\s+/g, "") === t.replace(/\s+/g, ""))
+           || hs.find(h => h.textContent.includes(t));
+  if(!hit) return;
+  hit.scrollIntoView({block: "start", behavior: "smooth"});
+  hit.style.transition = "background .3s";
+  hit.style.background = "var(--accent-w)";
+  setTimeout(() => { hit.style.background = ""; }, 1400);
+}
 function showNote(file){                              // 実際の描画（route から呼ばれる）
   const d=(window.NOTES||[]).find(x=>x.file===file); if(!d) return;
   $("noteList").hidden=true; $("noteView").hidden=false;
   $("noteTitle").textContent = d.title;
   chkSeq=0;
   $("noteBody").innerHTML = md2html(d.body);
+
+  /* 資料の中のリンクを効かせる。
+     「他の資料.md」だけでなく「他の資料.md#見出し」にも飛べるようにする。
+     細かい説明を別の資料に置いて、そこへ直接つなぐため。 */
+  $("noteBody").querySelectorAll("a[href]").forEach(a => {
+    const href = a.getAttribute("href") || "";
+    if(/^https?:/.test(href)){ a.target = "_blank"; a.rel = "noopener"; return; }
+    a.classList.add("lnk");
+    const [file, hash] = href.split("#");
+    a.onclick = e => {
+      e.preventDefault();
+      if(file && file !== d.file) go("notes", hash ? file + "#" + hash : file);
+      else if(hash) jumpTo(decodeURIComponent(hash));
+    };
+  });
+  if(pendingHash){ const h = pendingHash; pendingHash = null; setTimeout(() => jumpTo(h), 0); }
 
   // ── チェックリストの復元と保存 ──
   const boxes=[...$("noteBody").querySelectorAll(".chk")];
