@@ -579,6 +579,7 @@
       <div class="bar"><i id="bProg"></i></div>
       <p class="btext" id="bText"></p>
       <div class="bopts" id="bOpts"></div>
+      <div class="exp" id="bExp" hidden style="margin:12px 0 0"></div>
       <p class="selinfo" id="bSrc" style="margin:12px 0 0"></p>
       <div class="row" style="margin-top:12px">
         <button id="bQuit">中断する</button>
@@ -969,6 +970,7 @@ function route(force){
     if(!quiz){ stopT(); info(); }
   }
   if(tab==="byou"){
+    if(arg==="run" && !B) loadB();      // リロードから復帰する
     const run = arg==="run" && B, res = arg==="result" && B;
     $("byouSetup").hidden  = !!(run||res);
     $("byouRun").hidden    = !run;
@@ -1320,6 +1322,7 @@ const ANA = ALL.filter(q => q.type === "ana");
 const B_SUBJ = [...new Set(ANA.map(q => q.law))];   // 科目枠ではなく法令名で分ける
 let B = null, btid = null;
 const K_BPREF = "sharoushi2026.bpref.v1";
+const K_BSESS = "sharoushi2026.bsess.v1";   // 速答の出題中の状態
 
 function renderByouSetup(){
   $("byouSetup").hidden = false; $("byouRun").hidden = true; $("byouResult").hidden = true;
@@ -1360,8 +1363,8 @@ $("byouStart").onclick = () => {
   B = {qs: shuffle(p).slice(0, n), i: 0, ok: 0, streak: 0, best: 0, start: Date.now(), wrong: []};
   go("byou", "run");
 };
-$("bQuit").onclick = () => { B = null; go("byou"); };
-$("bBack").onclick = () => { B = null; go("byou"); };
+$("bQuit").onclick = () => { B = null; drop(K_BSESS); go("byou"); };
+$("bBack").onclick = () => { B = null; drop(K_BSESS); go("byou"); };
 $("bAgain").onclick = () => $("byouStart").click();
 $("bWrong").onclick = () => {
   if(!B || !B.wrong.length){ alert("間違えた問題はありません。"); return; }
@@ -1374,8 +1377,23 @@ function bTick(){
   const e = Math.floor((Date.now() - B.start) / 1000);
   $("bTimer").textContent = `${String(e/60|0).padStart(2,"0")}:${String(e%60).padStart(2,"0")}`;
 }
+function saveB(){
+  if(!B){ drop(K_BSESS); return; }
+  save(K_BSESS, {qs: B.qs.map(q=>q.id), i: B.i, ok: B.ok, streak: B.streak,
+                 best: B.best, start: B.start, wrong: B.wrong.map(q=>q.id)});
+}
+function loadB(){
+  const s = load(K_BSESS, null);
+  if(!s || !Array.isArray(s.qs)) return false;
+  const qs = s.qs.map(id => byId[id]);
+  if(qs.some(x => !x)) return false;
+  B = {qs, i: s.i|0, ok: s.ok|0, streak: s.streak|0, best: s.best|0,
+       start: s.start, wrong: (s.wrong||[]).map(id=>byId[id]).filter(Boolean)};
+  return true;
+}
 function bRender(){
   if(!B) return;
+  saveB();
   if(B.i >= B.qs.length){ bFinish(); return; }
   const q = B.qs[B.i];
   $("bSubj").textContent = q.law;
@@ -1383,7 +1401,10 @@ function bRender(){
   $("bStreak").textContent = B.streak >= 3 ? `${B.streak} 連続` : "";
   $("bStreak").className = "bstreak" + (B.streak >= 10 ? " hot" : "");
   $("bProg").style.width = (B.i / B.qs.length * 100) + "%";
+  $("bExp").hidden = true;
   $("bText").innerHTML = esc(q.head) + `<b class="bk" id="bBlank">？</b>` + esc(q.tail);
+  // 見出しには正答そのものが入っていることがある（「第102条（出産手当金）」など）。
+  // 答える前は条番号だけにして、答えてから見出しを足す。
   $("bSrc").textContent = q.src + (q.real ? "　★本試験で空欄になった語" : "");
   $("bOpts").innerHTML = q.choices.map((c, i) =>
     `<button data-i="${i}"><span class="n">${"①②③④"[i]}</span><span>${esc(c)}</span></button>`).join("");
@@ -1399,6 +1420,9 @@ function bAnswer(pick){
   });
   $("bBlank").textContent = q.choices[q.a];
   $("bBlank").className = "bk " + (ok ? "ok" : "no");
+  if(q.cap) $("bSrc").textContent = q.src + `（${q.cap}）`
+    + (q.real ? "　★本試験で空欄になった語" : "");
+  if(q.exp && !ok){ $("bExp").innerHTML = mdInline(q.exp); $("bExp").hidden = false; }
   grade(q.id, ok);
   if(ok){ B.ok++; B.streak++; B.best = Math.max(B.best, B.streak); }
   else  { B.streak = 0; B.wrong.push(q); }
@@ -1415,6 +1439,7 @@ function bAnswer(pick){
 }
 function bFinish(){
   if(btid){ clearInterval(btid); btid = null; }
+  drop(K_BSESS);
   const sec = Math.floor((Date.now() - B.start) / 1000);
   const n = B.qs.length, per = n ? (sec / n) : 0;
   const bySubj = {};
@@ -2324,7 +2349,7 @@ $("impFile").onchange = async e => {
 };
 $("resetAll").onclick = () => {
   if(!confirm("学習履歴・模試の記録・学習ログをすべて削除します。よろしいですか？")) return;
-  [K_SRS, K_MOSHI, K_LOG, K_HIST, K_CHK, K_SESS, K_MSESS].forEach(drop);
+  [K_SRS, K_MOSHI, K_LOG, K_HIST, K_CHK, K_SESS, K_MSESS, K_BSESS].forEach(drop);
   srs = {}; renderLog(); renderChips(); alert("リセットしました。");
 };
 

@@ -99,7 +99,9 @@ for b in bodies:
     cands = [w for w in pool
              if len(NOSP(w)) >= 2 and t.count(w) == 1 and not re.fullmatch(r"[0-9０-９]", NOSP(w))]
     cands.sort(key=lambda w: (w not in real_answers, -len(NOSP(w))))
+    made = 0
     for w in cands[:16]:
+        if made >= 4: break
         key = (b["kai"], b["subj"], NOSP(w))
         if key in seen: continue
         p = t.index(w)
@@ -120,7 +122,7 @@ for b in bodies:
         choices = band[:3] + [w]
         if len({NOSP(x) for x in choices}) < 4: continue
         random.shuffle(choices)
-        seen.add(key)
+        seen.add(key); made += 1
 
         # 「秒」で答えるモードなので、前後を長く出さない。
         # 空欄を含む一文だけを切り出す（短すぎるときだけ前の文をひとつ足す）。
@@ -144,6 +146,8 @@ for b in bodies:
             "choices": choices, "a": choices.index(w), "cat": c,
             "real": w in real_answers,
             "src": f'{KAI2Y[b["kai"]]}年度 {b["subj"]} 選択式',
+            "exp": f'**{w}** が正しい。{KAI2Y[b["kai"]]}年度 {b["subj"]} の選択式で出題された条文の文言です。'
+                   + ("この語は本試験で実際に空欄にされました。" if w in real_answers else ""),
         })
 
 random.shuffle(qs)

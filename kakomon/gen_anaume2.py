@@ -76,6 +76,11 @@ for kai, v in M.items():
             CITED[(law, m.group(2))] += 1
 
 # ── 条文を取り出す ────────────────────────────────
+def art_label(num):
+    """「115の45」を「第115条の45」と読める形にする。"""
+    p = str(num).split("の")
+    return "第" + p[0] + "条" + "".join("の" + x for x in p[1:])
+
 def clean(s):
     s = re.sub(r"\s+", " ", s)
     s = re.sub(r"(?<=[぀-ヿ一-鿿、。」）])\s+(?=[぀-ヿ一-鿿「（])", "", s)
@@ -90,7 +95,12 @@ for p in sorted(glob.glob("hourei/*.xml")):
     main = root.find(".//MainProvision")      # 附則・経過措置は対象外
     if main is None: continue
     for a in main.iter("Article"):
-        num = (a.get("Num") or "").split("_")[0]
+        # Num は「115_45」のように枝番を持つ。落とすと第115条の45が
+        # 「第115条」と表示され、別の条文が同じ出典に見えてしまう。
+        # Num は「115_45」のような枝番。そのまま「第115の45条」とすると
+        # 条文の呼び方として不自然なので「第115条の45」に組み直す。
+        raw = (a.get("Num") or "").split("_")
+        num = raw[0] + "".join("の" + x for x in raw[1:])
         cap = clean(a.findtext("ArticleCaption") or "").strip("（）()")
         for para in a.findall("Paragraph"):
             # 号（Item）まで含めて連結すると、境界の語がくっついて
@@ -123,7 +133,21 @@ TERM = re.compile(r"[一-鿿ァ-ヴ]{2,12}(?:者|人|金|料|額|期間|日数|�
                   r"決定|通知|報告|命令|規則|規約|定款|承認|許可|認可|免除|猶予|徴収|納付|還付|"
                   r"控除|加算|減額|停止|喪失|取得|変更|継続|標準報酬|被保険者|受給権|受給資格)")
 NUM  = re.compile(r"[0-9０-９]{1,4}(?:年|月|日|週間|時間|歳|人|円|％|か月)")
+# 語彙は法令ごとに持つが、省令のように条数が少ないものは誤答が3つ作れない。
+# 同じ分野の法令をひとまとめにした語彙も用意して、足りないときはそちらを使う。
+GROUP = {}
+for _l in ["労働安全衛生法","労働安全衛生規則","労働安全衛生法施行令","有機溶剤中毒予防規則",
+           "特定化学物質障害予防規則","鉛中毒予防規則","粉じん障害防止規則","石綿障害予防規則",
+           "電離放射線障害防止規則","事務所衛生基準規則"]: GROUP[_l] = "安衛"
+for _l in ["労働基準法","労働基準法施行規則"]: GROUP[_l] = "労基"
+for _l in ["労働者災害補償保険法","労災保険法施行規則","労災保険法施行令",
+           "労働保険徴収法","労働保険徴収法施行規則","労働保険徴収法施行令"]: GROUP[_l] = "労災徴収"
+for _l in ["雇用保険法","雇用保険法施行規則","雇用保険法施行令"]: GROUP[_l] = "雇用"
+for _l in ["健康保険法","健康保険法施行規則","健康保険法施行令","船員保険法"]: GROUP[_l] = "健保"
+for _l in ["厚生年金保険法","厚生年金保険法施行規則","厚生年金保険法施行令",
+           "国民年金法","国民年金法施行規則","国民年金法施行令"]: GROUP[_l] = "年金"
 vocab = collections.defaultdict(collections.Counter)
+gvocab = collections.defaultdict(collections.Counter)
 for u in units:
     for m in list(TERM.finditer(u["text"])) + list(NUM.finditer(u["text"])):
         w = m.group()
@@ -131,7 +155,9 @@ for u in units:
         # 号番号や接続語が頭に付いた断片は語として扱わない。
         if re.match(r"^(一|二|三|四|五|六|七|八|九|十|他|又|及|若|前|同|当該|この|その)(?=[一-鿿]{2})", w):
             continue
-        if 2 <= len(NOSP(w)) <= 14: vocab[u["law"]][w] += 1
+        if 2 <= len(NOSP(w)) <= 14:
+            vocab[u["law"]][w] += 1
+            gvocab[GROUP.get(u["law"], u["law"])][w] += 1
 
 EDGE = "、。，．「」『』（）()［］〔〕・：；\n はがのにをでともへやから"
 def standalone(t, p, w):
@@ -146,14 +172,26 @@ def unit_of(w):
 
 # 法令ごとの上限。省令は条数が多く、機械の構造基準のような
 # 試験に出ない細部まで拾ってしまう。過去問での参照実績に応じて配分する。
+ans_use = collections.Counter()      # 同じ語ばかり正答になるのを防ぐ
 cited_by_law = collections.Counter()
 for u in units:
     if u["cited"]: cited_by_law[u["law"]] += 1
+CORE = {"労働基準法","労働安全衛生法","労働者災害補償保険法","雇用保険法","労働保険徴収法",
+        "健康保険法","厚生年金保険法","国民年金法"}
 def cap_of(law):
-    return max(30, min(260, cited_by_law[law] * 5))
+    """本試験の比重に合わせる。択一は7科目×10問なので、その本体を厚くする。
+    一般常識の個別法と施行令・規則は薄くてよい。"""
+    base = max(30, min(260, cited_by_law[law] * 5))
+    if law in CORE: return int(base * 1.8)
+    # 有機則・特化則などは作業環境測定や作業主任者で頻出するので薄くしすぎない
+    ANEI = ("有機溶剤","特定化学物質","鉛中毒","粉じん","石綿","電離放射線","事務所衛生")
+    if any(k in law for k in ANEI): return max(35, int(base * 0.9))
+    if "規則" in law or "施行令" in law: return max(25, int(base * 0.6))
+    return max(25, int(base * 0.6))
 
 random.seed(20260823)
 qs, seen = [], set()
+combo_seen = collections.defaultdict(set)
 made_by_law = collections.Counter()
 # 出題実績のある条文から先に作る
 units.sort(key=lambda u: -u["cited"])
@@ -174,23 +212,36 @@ for u in units:
         p = t.index(w)
         if not standalone(t, p, w): continue
         c, uu, L = cat(w), unit_of(w), len(NOSP(w))
-        alts = [x for x in vocab[u["law"]]
+        pick_from = lambda src: [x for x in src
                 if x != w and cat(x) == c and unit_of(x) == uu
                 and NOSP(x) not in NOSP(w) and NOSP(w) not in NOSP(x)
                 and x not in t and max(2, L//3) <= len(NOSP(x)) <= max(L*3, L+8)]
+        alts = pick_from(vocab[u["law"]])
+        if len(alts) < 3:                       # 省令など語彙が薄い法令は同じ分野から借りる
+            alts = pick_from(gvocab[GROUP.get(u["law"], u["law"])])
         if len(alts) < 3: continue
-        alts.sort(key=lambda x: (abs(len(NOSP(x)) - L), -vocab[u["law"]][x]))
+        # 「厚生労働大臣」が何百回も正答になると、条文を読まずに当てられる
+        if ans_use[NOSP(w)] >= 25: continue
+        alts.sort(key=lambda x: (abs(len(NOSP(x)) - L), -gvocab[GROUP.get(u["law"], u["law"])][x]))
         band = alts[:max(10, len(alts)//4)]
         random.shuffle(band)
         ch = band[:3] + [w]
         if len({NOSP(x) for x in ch}) < 4: continue
+        sig = tuple(sorted(NOSP(x) for x in ch))
+        if sig in combo_seen[u["law"]]: continue
+        combo_seen[u["law"]].add(sig)
         random.shuffle(ch)
-        seen.add(key); made += 1; made_by_law[u["law"]] += 1
+        seen.add(key); made += 1; made_by_law[u["law"]] += 1; ans_use[NOSP(w)] += 1
         qs.append({"type":"ana", "law":u["law"],
                    "head":t[:p], "tail":t[p+len(w):],
                    "choices":ch, "a":ch.index(w), "cat":c,
                    "real": u["cited"] > 0,
-                   "src": f'{u["law"]}第{u["art"]}条' + (f'（{u["cap"]}）' if u["cap"] else "")})
+                   "src": f'{u["law"]}{art_label(u["art"])}',
+                   "cap": u["cap"],
+                   # 間違えたときに何を確認すればよいかを1行で示す
+                   "exp": f'**{w}** が正しい。{u["law"]}{art_label(u["art"])}'
+                          + (f'（{u["cap"]}）' if u["cap"] else "") + "の文言です。"
+                          + ("この条文は過去問で参照されています。" if u["cited"] else "")})     # 見出しは答えたあとに見せる（正答が入っていることがある）
 
 random.shuffle(qs)
 qs.sort(key=lambda q: not q["real"])
