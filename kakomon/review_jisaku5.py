@@ -38,6 +38,9 @@ check(2, "誤り肢だけ語尾が違い、見た目で分かる", sorted(set(ba
 # 3 数値の改変で、同じ問題に同じ単位の数値が並び比較で解けてしまう
 bad = []
 for q in QS:
+    # 「正しいもの」型では、単位の偏りは正解の手がかりにならない
+    # （正解は改変されていない肢の側なので）。誤っているもの型だけを見る。
+    if "誤っているもの" not in q["q"]: continue
     m = re.search(r"「([0-9]+ ?(?:日|年|か月|月|週間|時間|歳))」ではなく", q["exp"])
     if not m: continue
     unit = re.sub(r"[0-9 ]", "", m.group(1))
@@ -72,6 +75,7 @@ check(6, "解説で触れられていない肢がある", sorted(set(bad)))
 bad = []
 for q in QS:
     t = q["tag"].split("/")[1]
+    # 論点が特定できなかったときは科目名を入れている。これは見出しなので対象外。
     if t in ("労基安衛","労災","雇用","一般常識","健保","厚年","国年"): continue
     if not any(NOSP(t) in NOSP(c) for c in q["choices"]): bad.append(f'{q["tag"]}: 肢に語がない')
 check(7, "タグの論点が肢に含まれていない", sorted(set(bad)))

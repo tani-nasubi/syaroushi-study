@@ -1,5 +1,5 @@
 /* 労働基準法 */
-DRILL.register("労基", [
+DRILL.register("自作 労基・安衛", [
 
 /* --- 総則 --- */
 {type:"ox", tag:"総則/労働者",

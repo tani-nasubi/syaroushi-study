@@ -150,6 +150,7 @@ def mutate(text):
     # 同じ単位の数字が2つ以上あると、片方だけ変えたとき前後が食い違う
     for u in ("歳","年","日","時間"):
         if len(re.findall(r"[0-9]{1,3}\s*"+u, text)) >= 2: skip_num = True
+
     THRESH = re.compile(r"^\s*(以上|以下|未満|以内|を超え|を限度|ごと|以後|以前|を経過)")
     for m in ([] if skip_num else re.finditer(r"(?<![0-9０-９])([0-9]{1,3})\s*(日|年|か月|箇月|月|週間|時間|歳)(?![0-9０-９])", text)):
         n, unit = int(m.group(1)), m.group(2)
@@ -175,12 +176,26 @@ def mutate(text):
     return out, kind, before, after
 
 # ── 論点の判定（同じ論点で5肢そろえるため） ──────────────
+# 論点キーワードに当たらない肢が科目名のままになり、タグが役に立たなかった。
+# 当たらない場合は肢そのものから見出しになる語を拾う。
+LAWNUM = re.compile(r"(労働基準法|労働安全衛生法|労働者災害補償保険法|労災保険法|雇用保険法|"
+                    r"労働保険徴収法|健康保険法|厚生年金保険法|国民年金法|社会保険労務士法|"
+                    r"労働契約法|労働組合法|最低賃金法|労働者派遣法|介護保険法|国民健康保険法|"
+                    r"高齢者の医療の確保に関する法律|確定拠出年金法|確定給付企業年金法|児童手当法)")
+NOUN = re.compile(r"[一-鿿]{3,10}(?:給付|給付金|手当|手当金|一時金|年金|保険料|被保険者|"
+                  r"事業所|組合|審査請求|届出|認定|休業|加入者|標準報酬|納付|免除|時効|"
+                  r"適用事業|受給資格|所定給付日数|特別加入|事務組合)")
 def topic_of(subj, text):
     t = NOSP(text); best, blen = None, 0
     for kw in KEYS.get(subj, []):
         k = NOSP(kw)
         if k in t and len(k) > blen: best, blen = kw, len(k)
-    return best
+    if best: return best
+    m = NOUN.search(t)                       # 肢の中の特徴的な語を見出しにする
+    if m: return m.group()
+    m = LAWNUM.search(t)                     # それも無ければ法令名
+    if m: return m.group()
+    return None
 
 def clean(t):
     t = re.sub(r"\s+", " ", t)
@@ -234,28 +249,52 @@ for subj in SUBJ:
     NOTE = ('\n\n> この問題は過去問データから機械的に組み立てています（`kakomon/gen_jisaku.py`）。\n'
             '> **正しい肢は本試験の原文そのまま**なので、その形をそのまま覚えて構いません。')
 
-    def pick_similar(cands, target_len, n):
-        """正解肢だけ長さが突出しないよう、近い長さのものから選ぶ。"""
+    year_use = collections.Counter()
+
+    def pick_similar(cands, target_len, n, unit=None):
+        """長さが近く、年度が偏らず、改変した単位を含むものを優先して選ぶ。"""
         random.shuffle(cands)
         if len(cands) < n: return cands
-        band = [p for p in cands if abs(len(NOSP(p["t"])) - target_len) <= max(40, target_len*0.45)]
+        band = [p for p in cands if abs(len(NOSP(p["t"])) - target_len) <= max(45, target_len*0.45)]
         src = band if len(band) >= n else cands
+        # まず年度の使用回数で並べ、そのうえで
+        # 改変した単位を含む肢を前に出す（比較して考える余地を作る）。
+        src = sorted(src, key=lambda p: year_use[p["kai"]])
+        if unit:
+            has = [p for p in src if re.search(r"[0-9]\s*" + unit, p["t"])]
+            src = has + [p for p in src if p not in has]
         # 書き出しが同じ肢を並べると重複して見えるので、頭25字が重ならないように選ぶ
-        out, heads = [], set()
+        out, heads, yrs = [], set(), collections.Counter()
+        need_u = bool(unit) and any(re.search(r"[0-9]\s*" + unit, p["t"]) for p in src)
         for p in src:
             h = NOSP(p["t"])[:25]
+            has_u = bool(unit) and bool(re.search(r"[0-9]\s*" + unit, p["t"]))
             if h in heads: continue
-            heads.add(h); out.append(p)
+            # 改変した単位を含む肢は、比較の手がかりになるので年度の制限より優先する
+            if yrs[p["kai"]] >= 2 and not (need_u and has_u and not any(
+                    re.search(r"[0-9]\s*" + unit, x["t"]) for x in out)): continue
+            heads.add(h); yrs[p["kai"]] += 1; out.append(p)
             if len(out) == n: break
+        if len(out) < n:                       # 条件を満たせなければ年度の制限だけ外す
+            for p in src:
+                if p in out: continue
+                h = NOSP(p["t"])[:25]
+                if h in heads: continue
+                heads.add(h); out.append(p)
+                if len(out) == n: break
         return out if len(out) == n else src[:n]
 
     def build_wrong(src):
         """誤っているものを1つ選ばせる問題。正しい肢4本は原文のまま。"""
         key = NOSP(src["t"])[:40]
         L = len(NOSP(src["wrong"]))
+        unit = None
+        if src["kind"] == "数値":
+            mu = re.search(r"(日|年|か月|箇月|月|週間|時間|歳)", src["after"])
+            unit = mu.group(1) if mu else None
         same = [p for p in by_topic.get(src["topic"], []) if NOSP(p["t"])[:40] != key]
         rest = [p for p in pool if NOSP(p["t"])[:40] != key and p not in same]
-        others = pick_similar(same + rest, L, 4)
+        others = pick_similar(same + rest, L, 4, unit)
         if len(others) < 4: return None
         items = [{"t":src["wrong"], "bad":True, "src":src}] + [{"t":p["t"], "bad":False, "src":p} for p in others]
         items, ai = place(items, 0)
@@ -302,8 +341,31 @@ for subj in SUBJ:
         ends = [NOSP(x["t"])[-9:] for x in items]
         others = [e for i, e in enumerate(ends) if i != ai]
         if len(set(others)) == 1 and ends[ai] != others[0]: return False
+        # 正解肢だけ長さが突出していると、読まずに当てられる。
+        L = [len(NOSP(x["t"])) for x in items]
+        ol = [L[i] for i in range(5) if i != ai]
+        if L[ai] > max(ol) * 1.45 or L[ai] < min(ol) * 0.68: return False
+        # 書き出しが同じ肢は並べない。
+        if len({NOSP(x["t"])[:25] for x in items}) < 5: return False
         combos.add(sig)
-        qs.append({"type":"abc", "tag":f'{label}/{src["topic"] or subj}',
+        for x in items: year_use[x["src"]["kai"]] += 1
+        # 見出しは素材ではなく、実際に並べた5肢から決める。素材から取ると、
+        # 改変で置き換わった語が見出しになり、肢の中に存在しなくなる。
+        cnt = collections.Counter()
+        for x in items:
+            t2 = topic_of(subj, x["t"])
+            if t2 and NOSP(t2) in NOSP(x["t"]): cnt[t2] += 1
+        # 「労働基準法」のような法令名や科目名は見出しとして役に立たないので、
+        # 具体的な論点を優先する。同点なら長い（＝具体的な）語を採る。
+        GENERIC = set(LAWNAME.values()) | {LAWNAME[subj]} | {
+            "労働基準法","労働安全衛生法","労働者災害補償保険法","労災保険法","雇用保険法",
+            "健康保険法","厚生年金保険法","国民年金法","労働保険徴収法","社会保険労務士法",
+            "全国健康保険協会","日本年金機構","厚生労働大臣"}
+        ranked_t = sorted(cnt.items(),
+                          key=lambda kv: (kv[0] not in GENERIC, kv[1], len(kv[0])), reverse=True)
+        topic = next((k for k, _ in ranked_t
+                      if any(NOSP(k) in NOSP(x["t"]) for x in items)), subj)
+        qs.append({"type":"abc", "tag":f'{label}/{topic}',
                    "q":f'{LAWNAME[subj]}に関する次の記述のうち、{kind}。',
                    "choices":[x["t"] for x in items], "a":ai, "exp":exp,
                    "src":f'自作（{cite(src)}の肢を素材に構成）'})
@@ -313,7 +375,7 @@ for subj in SUBJ:
     idx = 0
     while len(qs) < TARGET and mutables:
         idx += 1
-        if idx > len(mutables) * 30: break
+        if idx > len(mutables) * 80: break
         if len(qs) % 2 == 0:
             src = mutables[idx % len(mutables)]
             key = NOSP(src["t"])[:40]
@@ -331,14 +393,16 @@ for subj in SUBJ:
             random.shuffle(pickable)
             L = len(NOSP(correct["t"]))
             ranked = sorted(pickable, key=lambda m: (used_dis[NOSP(m["t"])[:40]],
+                                                     year_use[m["kai"]],
                                                      abs(len(NOSP(m["wrong"])) - L)))
             # 4本すべてが語尾の改変だと、語尾を見るだけで解けてしまう。
             # 種別が2つ以上になるよう選ぶ。
-            ws, kinds = [], collections.Counter()
+            ws, kinds, yrs = [], collections.Counter(), collections.Counter()
             for m in ranked:
                 if len(ws) == 4: break
                 if kinds[m["kind"]] >= 2 and len(ranked) > 12: continue
-                ws.append(m); kinds[m["kind"]] += 1
+                if yrs[m["kai"]] >= 2 and len(ranked) > 12: continue
+                ws.append(m); kinds[m["kind"]] += 1; yrs[m["kai"]] += 1
             if len(ws) < 4: continue
             if len(kinds) < 2 and len(ranked) > 12: continue
             if emit(build_right(correct, ws)):

@@ -675,9 +675,15 @@
 </div>
 
 <script>
+/* 同じ名前で複数回 register されたら1つのバンクに合流させる。
+   科目ごとに1バンクにまとめたいが、データファイルは分けたままにしたいため。
+   idは「バンク名#通し番号」なので、合流時は既存の件数ぶんずらす。 */
 window.DRILL = { banks: [], register(subject, qs){
-  qs.forEach((q,i)=>{ q.subject = subject; q.id = subject + "#" + i; });
-  this.banks.push({subject, qs});
+  let b = this.banks.find(x => x.subject === subject);
+  if(!b){ b = {subject, qs: []}; this.banks.push(b); }
+  const off = b.qs.length;
+  qs.forEach((q,i)=>{ q.subject = subject; q.id = subject + "#" + (off + i); });
+  b.qs = b.qs.concat(qs);
 }};
 </script>
 

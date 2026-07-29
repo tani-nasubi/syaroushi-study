@@ -92,7 +92,9 @@ check(7, "基準点データと資料の記述が食い違う", bad,
 
 # 8 数値暗記の未検証項目
 num = open(f"{N}/91-数値暗記.md").read()
-warn = [l.strip()[:70] for l in num.split("\n") if "⚠️" in l and l.startswith("|")]
+# 「| ⚠️ | 単一出典・要照合 |」は記号の凡例なので対象外。
+warn = [l.strip()[:70] for l in num.split("\n")
+        if "⚠️" in l and l.startswith("|") and "単一出典・要照合" not in l]
 check(8, "数値暗記で未検証のまま残っている項目", warn)
 
 # 9 問題データの必須項目
