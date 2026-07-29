@@ -731,6 +731,8 @@ const K_MOSHI= "sharoushi2026.moshi.v1";
 const K_LOG  = "sharoushi2026.log.v1";
 const K_THEME= "sharoushi2026.theme.v1";
 const K_HIST = "sharoushi2026.hist.v1";   // 日別の解答数・正答数
+const K_SESS = "sharoushi2026.sess.v1";   // 出題中のドリル
+const K_MSESS= "sharoushi2026.msess.v1";  // 受験中の模試
 
 const ALL   = DRILL.banks.flatMap(b=>b.qs);
 const BANKS = DRILL.banks.map(b=>b.subject);
@@ -864,11 +866,14 @@ function route(force){
   if(tab==="stats") renderStats(arg);
 
   if(tab==="drill"){
+    // リロード直後は cur が無い。保存してある出題状態を引き当てて続きから解けるようにする。
+    if(arg==="quiz" && !cur && loadSess()) renderCur();
     const quiz = arg==="quiz" && cur;      // 出題中の状態があるときだけ問題画面
     $("quiz").hidden = !quiz; $("setup").hidden = quiz;
     if(!quiz){ stopT(); info(); }
   }
   if(tab==="moshi"){
+    if((arg==="run"||arg==="result") && !M) loadM();
     const run = arg==="run" && M, res = arg==="result" && M;
     $("moshiSetup").hidden  = !!(run||res);
     $("moshiRun").hidden    = !run;
@@ -1017,6 +1022,24 @@ function info(){
 
 /* ══════════ ドリル ══════════ */
 let queue=[],cur=null,done=0,total=0,t0=0,tid=null;
+
+/* 出題中の状態を保存する。誤ってリロードしても続きから解けるようにするため。
+   問題そのものではなくidだけを持ち、読み込み時に引き当て直す。 */
+const byId = {};
+ALL.forEach(q => byId[q.id] = q);
+function saveSess(){
+  if(!cur){ drop(K_SESS); return; }
+  save(K_SESS, {cur: cur.id, queue: queue.map(q=>q.id), done, total, t0});
+}
+function loadSess(){
+  const s = load(K_SESS, null);
+  if(!s || !byId[s.cur]) return false;
+  cur   = byId[s.cur];
+  queue = (s.queue||[]).map(id=>byId[id]).filter(Boolean);
+  done  = s.done|0; total = s.total|0 || (queue.length+1);
+  return true;
+}
+
 $("start").onclick = ()=>startDrill();
 function startDrill(list){
   const p = list || pool();
@@ -1027,7 +1050,7 @@ function startDrill(list){
   go("drill","quiz");
 }
 $("next").onclick=nextQ;
-$("quit").onclick=()=>{ stopT(); cur=null; go("drill"); };
+$("quit").onclick=()=>{ stopT(); cur=null; drop(K_SESS); go("drill"); };
 function stopT(){ if(tid) clearInterval(tid); tid=null; }
 function startT(el){
   t0=Date.now(); stopT();
@@ -1038,10 +1061,16 @@ const TYPE_LABEL={abc:"択一式（5肢択一）",sel20:"選択式（語群20）
 function nextQ(){
   $("result").hidden=true; stopT();
   if(!queue.length){
-    cur=null; go("drill");
+    cur=null; drop(K_SESS); go("drill");
     alert(`このセット ${total} 問を終了しました。`); return;
   }
   cur=queue.shift();
+  saveSess();
+  renderCur();
+}
+/** いま出題中の1問を描く。新しく出すときと、リロードから復元したときの両方で使う。 */
+function renderCur(){
+  $("result").hidden=true; stopT();
   $("prog").style.width=(done/total*100)+"%";
   const r=srs[cur.id];
   $("qmeta").innerHTML =
@@ -1137,6 +1166,7 @@ function rPB(){
 function judge(ok){
   stopT(); grade(cur.id,ok); done++;
   $("prog").style.width=(done/total*100)+"%";
+  saveSess();
   $("verdict").className="verdict "+(ok?"ok":"no");
   $("verdict").textContent=ok?"正解":"不正解";
   if(!ok) queue.push(cur);
@@ -1199,10 +1229,28 @@ $("mStart").onclick=()=>{
   if(!qs.length){ alert("この年度のデータがありません。"); return; }
   M={kind,year,qs,ans:qs.map(()=>null),i:0,
      limit: $("mTimer").value==="1" ? (kind==="sel"?4800:12600) : 0, start:Date.now()};
+  saveM();
   $("mLabel").textContent=`${KAI2Y[year]}年度 ${kind==="sel"?"選択式":"択一式"}`;
   if(mtid) clearInterval(mtid); mTick(); mtid=setInterval(mTick,1000);
   go("moshi","run");
 };
+/* 模試も同じ理由で保存する。択一は210分あるので、
+   途中でリロードしても開始時刻ごと復元できるようにする。 */
+function saveM(){
+  if(!M){ drop(K_MSESS); return; }
+  save(K_MSESS, {kind:M.kind, year:M.year, qs:M.qs.map(q=>q.id),
+                 ans:M.ans, i:M.i, limit:M.limit, start:M.start});
+}
+function loadM(){
+  const s = load(K_MSESS, null);
+  if(!s || !Array.isArray(s.qs)) return false;
+  const qs = s.qs.map(id=>byId[id]);
+  // 引き当てられなくても消さない。問題データを入れ替えた直後などに
+  // 受験中の記録を失うほうが困るため。
+  if(qs.some(x=>!x)) return false;
+  M = {kind:s.kind, year:s.year, qs, ans:s.ans, i:s.i|0, limit:s.limit|0, start:s.start};
+  return true;
+}
 function mTick(){
   if(!M) return;
   const e=Math.floor((Date.now()-M.start)/1000), v=M.limit?M.limit-e:e, s=Math.abs(v);
@@ -1212,6 +1260,7 @@ function mTick(){
   if(M.limit&&v===0) alert("制限時間になりました。採点してください。");
 }
 function mRender(){
+  saveM();                       // 解答や移動のたびに保存する
   const q=M.qs[M.i], m=meta(q);
   $("mPos").textContent=`${m.subj}　${M.i+1} / ${M.qs.length}`;
   const filled = a => a!==null && (!Array.isArray(a)||!a.includes(null));
@@ -1304,7 +1353,7 @@ $("mFinish").onclick=()=>{
   const hist=load(K_MOSHI,[]);
   hist.unshift({d:ymd(new Date()),kind:M.kind,year:M.year,got,max,under:under.map(([s])=>s),min:mins});
   save(K_MOSHI,hist.slice(0,50));
-  M.wrong=wrong;
+  M.wrong=wrong; drop(K_MSESS);
   go("moshi","result"); window.scrollTo(0,0);
 };
 $("mReview").onclick=()=>{ if(M&&M.wrong&&M.wrong.length) startDrill(M.wrong); else alert("間違えた問題はありません。"); };
@@ -2052,7 +2101,7 @@ $("impFile").onchange = async e => {
 };
 $("resetAll").onclick = () => {
   if(!confirm("学習履歴・模試の記録・学習ログをすべて削除します。よろしいですか？")) return;
-  [K_SRS, K_MOSHI, K_LOG, K_HIST, K_CHK].forEach(drop);
+  [K_SRS, K_MOSHI, K_LOG, K_HIST, K_CHK, K_SESS, K_MSESS].forEach(drop);
   srs = {}; renderLog(); renderChips(); alert("リセットしました。");
 };
 
