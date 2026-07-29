@@ -213,15 +213,18 @@ def restore_iroha(stem):
     """「次のアからオの記述のうち」型で、ア〜オを行頭に出す。
     ア〜オが句点のあとに『この順で』現れる位置だけを切るので、
     「アルバイト」のような語頭の一致では切れない。"""
-    if not re.search(r"次のアから|アから[イウエオ]", stem):
-        return stem
+    # 「次のアからオの記述のうち」と書かれない出題（「正しいものはいくつあるか」型など）
+    # もあるので、文面ではなく記号の並びで判断する。
+    # ア〜オが句点のあとに『この順で』3つ以上現れるときだけ切る。
     pos, cuts = 0, []
     for L in "アイウエオ":
         m = re.compile(r"(?<=[。）])" + L + r"[　 ]?").search(stem, pos)
         if not m:
             break
         cuts.append(m.start()); pos = m.end()
-    if len(cuts) < 2:
+    # 「アからオ」と明記されていれば2つ、されていなければ3つ以上そろったときに限る。
+    need = 2 if re.search(r"次のアから|アから[イウエオ]", stem) else 3
+    if len(cuts) < need:
         return stem
     parts, prev = [], 0
     for c in cuts:
