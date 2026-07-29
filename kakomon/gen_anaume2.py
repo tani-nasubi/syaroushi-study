@@ -166,6 +166,12 @@ def standalone(t, p, w):
     ok = lambda ch: ch in EDGE or re.match(r"[ぁ-ん\s]", ch)
     return ok(b) and ok(a)
 
+# 金額は政令や告示で改定される。e-Gov は現在施行の内容を返すので、
+# 試験の法令基準日（令和8年4月10日）とずれる可能性がある。
+# 数値の暗記は検証済みの資料（91-数値暗記）に任せ、ここでは答えにしない。
+MONEY = re.compile(r"[0-9０-９，,]+\s*円|[0-9０-９]+\s*万円|[0-9０-９]+分の[0-9０-９]+|"
+                   r"千分の[0-9０-９]+|[0-9０-９]+(?:\.[0-9])?\s*パーセント|[0-9０-９]+\s*％")
+
 def unit_of(w):
     m = re.search(r"(年|か月|月|週間|日|時間|歳|人|円|％)$", NOSP(w))
     return m.group(1) if m else ""
@@ -200,7 +206,8 @@ for u in units:
     words = [m.group() for m in list(TERM.finditer(t)) + list(NUM.finditer(t))]
     words = [w for w in dict.fromkeys(words)
              if 2 <= len(NOSP(w)) <= 14 and t.count(w) == 1
-             and not re.match(r"^(一|二|三|四|五|六|七|八|九|十|他|又|及|若|前|同|当該|この|その)(?=[一-鿿]{2})", w)]
+             and not re.match(r"^(一|二|三|四|五|六|七|八|九|十|他|又|及|若|前|同|当該|この|その)(?=[一-鿿]{2})", w)
+             and not MONEY.search(NOSP(w))]
     random.shuffle(words)
     if made_by_law[u["law"]] >= cap_of(u["law"]): continue
     made = 0

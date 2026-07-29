@@ -88,6 +88,12 @@ def standalone(t, p, w):
 
 # 数値は「単位が本文に残るか」で形をそろえる。
 # 「［？］日以内」の空欄に「4 か月」を並べると、読まずに消せてしまう。
+# 金額は政令や告示で改定される。e-Gov は現在施行の内容を返すので、
+# 試験の法令基準日（令和8年4月10日）とずれる可能性がある。
+# 数値の暗記は検証済みの資料（91-数値暗記）に任せ、ここでは答えにしない。
+MONEY = re.compile(r"[0-9０-９，,]+\s*円|[0-9０-９]+\s*万円|[0-9０-９]+分の[0-9０-９]+|"
+                   r"千分の[0-9０-９]+|[0-9０-９]+(?:\.[0-9])?\s*パーセント|[0-9０-９]+\s*％")
+
 def unit_of(w):
     m = re.search(r"(年|か月|箇月|月|週間|日|時間|歳|人|円|％|分の[0-9]+)$", NOSP(w))
     return m.group(1) if m else ""
@@ -97,7 +103,8 @@ for b in bodies:
     if SKIP.search(b["text"]): continue
     t = b["text"]
     cands = [w for w in pool
-             if len(NOSP(w)) >= 2 and t.count(w) == 1 and not re.fullmatch(r"[0-9０-９]", NOSP(w))]
+             if len(NOSP(w)) >= 2 and t.count(w) == 1 and not re.fullmatch(r"[0-9０-９]", NOSP(w))
+             and not MONEY.search(NOSP(w))]
     cands.sort(key=lambda w: (w not in real_answers, -len(NOSP(w))))
     made = 0
     for w in cands[:16]:

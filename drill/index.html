@@ -2240,7 +2240,22 @@ function stMe(){
         <td>${x.min?x.min+"分":"—"}</td></tr>`).join("")}
      </table></div>`);
 
-  return trend + card("出題比重と自分の正答率",
+  // 条文穴埋めは科目枠ではなく法令別なので、まとめて1行で出す
+  const ana = ALL.filter(q=>q.type==="ana");
+  let an=0, aok=0, aseen=0;
+  ana.forEach(q=>{ const r=srs[q.id]; if(r){ aseen++; an+=r.n; aok+=r.ok; } });
+  const anaCard = ana.length ? card("速答（条文穴埋め）",
+    `<div class="stgrid">
+      ${kpi(ana.length.toLocaleString()+"問","収録","法令60種の条文から","")}
+      ${kpi(aseen.toLocaleString()+"問","着手",`全体の ${Math.round(aseen/ana.length*100)}%`,"")}
+      ${kpi(an?Math.round(aok/an*100)+"%":"—","正答率",
+            an?`のべ ${an.toLocaleString()} 回解答`:"まだ解いていません",
+            an&&aok/an<0.6?"hot":"")}
+     </div>
+     <p class="note">条文の言い回しがそのまま選択式で問われます。
+     正答率が低いうちは<b>「本試験で空欄だった語から」</b>に絞って回してください。</p>`) : "";
+
+  return trend + anaCard + card("出題比重と自分の正答率",
     (done.length?"":`<p class="note" style="margin:0 0 14px">
       まだ解答データがありません。ドリルを解くと、ここに<b>科目ごとの正答率と出題比重の対比</b>が出ます。</p>`)
     +`<div class="scroll"><table class="st">
@@ -2428,7 +2443,10 @@ function runSearch(){
   }
   for(const x of ALL){
     if(hits.length>80) break;
-    const hay=[x.q,...(x.choices||[]),...((x.groups||[]).flat()),x.exp||""].join(" ");
+    // 条文穴埋めは設問文ではなく head/tail に本文が入っている
+    const hay=[x.q, x.head, x.tail, x.src,
+               ...(x.choices||[]),...((x.groups||[]).flat()), x.exp||""]
+              .filter(Boolean).join(" ");
     const m=new RegExp(src,"i").exec(hay);
     if(m) hits.push({kind:"問題",title:x.subject,q:x,text:hay.slice(Math.max(0,m.index-40),m.index+70)});
   }
@@ -2449,7 +2467,9 @@ function runSearch(){
     : `<p class="empty">該当なし</p>`;
   $("sHits").querySelectorAll(".hit").forEach(el=> el.onclick=()=>{
     const h=hits[+el.dataset.i];
-    if(h.kind==="資料") openNote(h.file); else startDrill([h.q]);
+    if(h.kind==="資料") openNote(h.file);
+    else if(h.q.type==="ana") go("byou");        // 条文穴埋めは速答タブで扱う
+    else startDrill([h.q]);
   });
 }
 
