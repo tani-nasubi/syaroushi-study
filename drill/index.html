@@ -578,6 +578,14 @@
           <option value="weak">間違えたものだけ</option>
         </select>
       </div>
+      <div class="fld" style="max-width:180px">
+        <label class="f">正解したとき</label>
+        <select id="byouPace">
+          <option value="2400" selected>解説を読んでから次へ</option>
+          <option value="700">すぐ次へ</option>
+          <option value="0">止まる（自分で送る）</option>
+        </select>
+      </div>
       <div class="fld" style="max-width:170px">
         <label class="f">出題順</label>
         <select id="byouOrder">
@@ -1028,7 +1036,9 @@ function route(force){
   if(tab!==lastTab) window.scrollTo(0,0);
   lastTab = tab;
 }
-window.addEventListener("hashchange", route);
+// route(force) の第1引数にイベントオブジェクトが渡ると force が真になり、
+// 二重描画を防ぐガードが素通りしてしまう。引数を渡さずに呼ぶ。
+window.addEventListener("hashchange", () => route());
 document.querySelectorAll("nav button").forEach(b=> b.onclick=()=>go(b.dataset.t));
 
 (function(){
@@ -1525,20 +1535,23 @@ function bAnswer(pick){
   $("bBlank").textContent = q.choices[q.a];
   $("bBlank").className = "bk " + (ok ? "ok" : "no");
   if(q.cap) $("bArt").textContent = q.src + `（${q.cap}）`;
-  if(q.exp && !ok){ $("bExp").innerHTML = mdInline(q.exp); $("bExp").hidden = false; }
+  if(q.exp){ $("bExp").innerHTML = mdInline(q.exp); $("bExp").hidden = false; }
   grade(q.id, ok);
   if(ok){ B.ok++; B.streak++; B.best = Math.max(B.best, B.streak); }
   else  { B.streak = 0; B.wrong.push(q); }
   B.i++;
-  // 正解ならテンポを切らさないよう自動で次へ。間違えたら手が止まるようにする。
-  if(ok) setTimeout(() => { if(B) bRender(); }, 550);
-  else {
-    const go2 = document.createElement("button");
-    go2.className = "primary"; go2.textContent = "次へ";
-    go2.style.cssText = "margin-top:12px;width:100%";
-    go2.onclick = () => bRender();
-    $("bOpts").appendChild(go2); go2.focus();
-  }
+  // 正解でも解説は出す。送り方は設定で選べる。
+  // 自動で送る場合も「次へ」を置いて、待たずに進めるようにする。
+  const pace = ok ? (+$("byouPace").value || 0) : 0;
+  const go2 = document.createElement("button");
+  go2.className = "primary"; go2.textContent = "次へ";
+  go2.style.cssText = "margin-top:12px;width:100%";
+  let done = false;
+  const adv = () => { if(done || !B) return; done = true; bRender(); };
+  go2.onclick = adv;
+  $("bOpts").appendChild(go2);
+  if(!ok) go2.focus();
+  if(pace) setTimeout(adv, pace);
 }
 function bFinish(){
   if(btid){ clearInterval(btid); btid = null; }
