@@ -164,6 +164,9 @@ def mutate(text):
         if not alt: continue
         pick = min(alt, key=lambda x: (abs(x-n) == 0, abs(x-n)))
         cands.append(("数値", m.group(0), f"{pick}{unit}"))
+    # 置換後の語が元の文にすでにあると、どこを変えたのか読み手に特定できない。
+    # また改変が1か所であることを機械的に検証できなくなる。
+    cands = [c for c in cands if c[2] not in text]
     if not cands: return None
     kind, before, after = cands[0]
     out = text.replace(before, after, 1)
@@ -295,6 +298,10 @@ for subj in SUBJ:
         items, ai, exp, kind, src = built
         sig = tuple(sorted(NOSP(x["t"])[:30] for x in items))
         if sig in combos: return False
+        # 語尾だけを見て正解が浮くような並びは採用しない。
+        ends = [NOSP(x["t"])[-9:] for x in items]
+        others = [e for i, e in enumerate(ends) if i != ai]
+        if len(set(others)) == 1 and ends[ai] != others[0]: return False
         combos.add(sig)
         qs.append({"type":"abc", "tag":f'{label}/{src["topic"] or subj}',
                    "q":f'{LAWNAME[subj]}に関する次の記述のうち、{kind}。',
