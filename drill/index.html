@@ -399,6 +399,17 @@
   .bwhere{margin:16px 0 4px}
   .bwhere .art{font-size:15px;font-weight:700;color:var(--accent);letter-spacing:-.01em}
   .bwhere .chap{font-size:12px;color:var(--sub);margin-top:2px}
+
+  .bsubj{margin:12px 0 0}
+  .bsubj .shead{display:inline-flex;align-items:center;gap:7px;background:none;border:none;
+    padding:0 0 6px;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer}
+  .bsubj .shead span{font-weight:400;font-size:11.5px;color:var(--sub)}
+  .bsubj .shead:hover{color:var(--accent)}
+  .bsubj .shead.on{color:var(--accent)}
+  .bsubj .shead::before{content:"";width:9px;height:9px;border-radius:2px;
+    border:1.5px solid var(--line);flex:none}
+  .bsubj .shead.on::before{background:var(--accent);border-color:var(--accent)}
+  .chip.sm{font-size:12px;padding:5px 10px}
 </style>
 <script>
 /* 保存済みの表示設定を描画前に適用する（切り替わりのちらつきを防ぐ） */
@@ -1341,20 +1352,49 @@ let B = null, btid = null;
 const K_BPREF = "sharoushi2026.bpref.v1";
 const K_BSESS = "sharoushi2026.bsess.v1";   // 速答の出題中の状態
 
+// 科目の並びは本試験の出題順に合わせる
+const B_SUBJ_ORDER = ["労基・安衛","労災","雇用","徴収","労一","社一","健保","厚年","国年"];
+
 function renderByouSetup(){
   $("byouSetup").hidden = false; $("byouRun").hidden = true; $("byouResult").hidden = true;
   if(btid){ clearInterval(btid); btid = null; }
   const pref = load(K_BPREF, {subj: []});
-  $("byouSubj").innerHTML =
-    `<button class="chip${pref.subj.length ? "" : " on"}" data-s="">すべて</button>` +
-    B_SUBJ.map(s => `<button class="chip${pref.subj.includes(s) ? " on" : ""}" data-s="${esc(s)}">`
-      + `${esc(s)} <span style="opacity:.6">${ANA.filter(q=>q.law===s).length}</span></button>`).join("");
-  $("byouSubj").querySelectorAll("button").forEach(el => el.onclick = () => {
-    const s = el.dataset.s;
-    let cur = load(K_BPREF, {subj: []}).subj;
-    if(!s) cur = [];
-    else cur = cur.includes(s) ? cur.filter(x => x !== s) : cur.concat(s);
-    save(K_BPREF, {subj: cur}); renderByouSetup();
+  const sel = new Set(pref.subj);
+
+  // 法令名を60種並べても、どれがどの科目か分からない。
+  // 本試験の科目ごとにまとめ、科目名を押せば丸ごと選べるようにする。
+  const bySubj = {};
+  ANA.forEach(q => (bySubj[q.subj] = bySubj[q.subj] || {})[q.law] =
+    (bySubj[q.subj][q.law] || 0) + 1);
+
+  let html = `<div class="chips" style="margin-bottom:4px">
+      <button class="chip${sel.size ? "" : " on"}" data-all="1">すべて（${ANA.length.toLocaleString()}）</button>
+    </div>`;
+  for(const s of B_SUBJ_ORDER){
+    const laws = bySubj[s]; if(!laws) continue;
+    const names = Object.keys(laws).sort((a, b) => laws[b] - laws[a]);
+    const n = names.reduce((t, l) => t + laws[l], 0);
+    const allOn = names.every(l => sel.has(l));
+    html += `<div class="bsubj">
+      <button class="shead${allOn ? " on" : ""}" data-subj="${esc(s)}">${esc(s)}
+        <span>${n}</span></button>
+      <div class="chips">` +
+      names.map(l => `<button class="chip sm${sel.has(l) ? " on" : ""}" data-s="${esc(l)}">`
+        + `${esc(l)} <span style="opacity:.6">${laws[l]}</span></button>`).join("") +
+      `</div></div>`;
+  }
+  $("byouSubj").innerHTML = html;
+
+  const save2 = a => { save(K_BPREF, {subj: a}); renderByouSetup(); };
+  $("byouSubj").querySelectorAll("[data-all]").forEach(el => el.onclick = () => save2([]));
+  $("byouSubj").querySelectorAll("[data-subj]").forEach(el => el.onclick = () => {
+    const laws = Object.keys(bySubj[el.dataset.subj]);
+    const on = laws.every(l => sel.has(l));
+    save2(on ? [...sel].filter(l => !laws.includes(l)) : [...new Set([...sel, ...laws])]);
+  });
+  $("byouSubj").querySelectorAll("[data-s]").forEach(el => el.onclick = () => {
+    const l = el.dataset.s;
+    save2(sel.has(l) ? [...sel].filter(x => x !== l) : [...sel, l]);
   });
   byouInfo();
 }
