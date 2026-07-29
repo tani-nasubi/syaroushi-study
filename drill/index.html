@@ -373,6 +373,28 @@
   button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{
     outline:2px solid var(--accent);outline-offset:2px}
   @media (prefers-reduced-motion:reduce){ *{transition:none!important;animation:none!important} }
+
+  /* ── 速答（条文穴埋め）── 片手で、テンポよく答えるための画面 */
+  .byoubar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--sub);margin-bottom:10px}
+  .byoubar .timer{margin-left:auto}
+  .bstreak{font-weight:700;color:var(--accent)}
+  .bstreak.hot{color:var(--ng)}
+  .btext{font-size:1.06em;line-height:2;margin:14px 0 18px;text-align:justify}
+  .btext .bk{display:inline-block;min-width:4.5em;text-align:center;padding:0 8px;margin:0 2px;
+    border-bottom:2.5px solid var(--accent);color:var(--accent);font-weight:700}
+  .btext .bk.ok{color:var(--accent);border-color:var(--accent)}
+  .btext .bk.no{color:var(--ng);border-color:var(--ng)}
+  .bopts{display:grid;gap:9px}
+  .bopts button{display:flex;align-items:center;gap:11px;width:100%;text-align:left;
+    padding:15px 16px;font-size:1.0em;line-height:1.6;border-radius:12px;
+    background:var(--panel2);border:1px solid var(--line);transition:background .1s,border-color .1s}
+  .bopts button:hover:not(:disabled){border-color:var(--accent)}
+  .bopts button .n{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;
+    font-size:12px;font-weight:700;background:var(--panel);border:1px solid var(--line);color:var(--sub)}
+  .bopts button.ok{background:var(--accent-w);border-color:var(--accent);color:var(--accent);font-weight:600}
+  .bopts button.ok .n{background:var(--accent);color:#fff;border-color:transparent}
+  .bopts button.no{background:var(--ng-w);border-color:var(--ng);color:var(--ng)}
+  .bopts button:disabled{cursor:default}
 </style>
 <script>
 /* 保存済みの表示設定を描画前に適用する（切り替わりのちらつきを防ぐ） */
@@ -425,6 +447,7 @@
 <nav id="nav">
   <button data-t="home" class="on">ホーム</button>
   <button data-t="drill">ドリル</button>
+  <button data-t="byou">速答</button>
   <button data-t="moshi">模試</button>
   <button data-t="notes">資料</button>
   <button data-t="stats">傾向</button>
@@ -515,6 +538,62 @@
       </div>
     </div>
     <div class="kbd" id="kbd"></div>
+  </div>
+</section>
+
+<!-- ═══════════ 速答（条文穴埋め） ═══════════ -->
+<section id="t-byou" hidden>
+  <div class="card" id="byouSetup">
+    <h2>速答｜条文穴埋め</h2>
+    <p class="selinfo" style="margin:0 0 14px">
+      条文の一語を隠して4択で答えます。<b>片手で、テンポよく</b>回すためのモードです。
+      正解すると自動で次に進みます。素材は本試験の選択式の原文、選択肢は<b>実際に語群へ並んだ語</b>です。
+    </p>
+    <div class="chips" id="byouSubj"></div>
+    <div class="row" style="margin-top:14px">
+      <div class="fld" style="max-width:150px">
+        <label class="f">出題数</label>
+        <select id="byouN"><option>20</option><option selected>30</option><option>50</option><option>100</option></select>
+      </div>
+      <div class="fld" style="max-width:190px">
+        <label class="f">範囲</label>
+        <select id="byouMode">
+          <option value="real">本試験で空欄だった語から</option>
+          <option value="all">すべて</option>
+          <option value="weak">間違えたものだけ</option>
+        </select>
+      </div>
+      <button class="primary" id="byouStart">はじめる</button>
+    </div>
+    <p class="selinfo" id="byouInfo" style="margin:12px 0 0"></p>
+  </div>
+
+  <div id="byouRun" hidden>
+    <div class="card">
+      <div class="byoubar">
+        <span class="badge" id="bSubj"></span>
+        <span id="bCount"></span>
+        <span class="bstreak" id="bStreak"></span>
+        <span class="timer" id="bTimer">00:00</span>
+      </div>
+      <div class="bar"><i id="bProg"></i></div>
+      <p class="btext" id="bText"></p>
+      <div class="bopts" id="bOpts"></div>
+      <p class="selinfo" id="bSrc" style="margin:12px 0 0"></p>
+      <div class="row" style="margin-top:12px">
+        <button id="bQuit">中断する</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="byouResult" hidden>
+    <h2>結果</h2>
+    <div class="stats" id="bStats"></div>
+    <div class="row" style="margin-top:14px">
+      <button class="primary" id="bAgain">もう一度</button>
+      <button id="bWrong">間違えたものだけ</button>
+      <button id="bBack">条件を変える</button>
+    </div>
   </div>
 </section>
 
@@ -731,6 +810,7 @@ window.DRILL = { banks: [], register(subject, qs){
 <script src="data/09-kokunen.js"></script>
 <script src="data/10-kounen.js"></script>
 <!-- 整理資料 -->
+<script src="data/anaume.js"></script>
 <script src="data/notes.js"></script>
 <script src="data/stats.js"></script>
 
@@ -750,7 +830,7 @@ const K_SESS = "sharoushi2026.sess.v1";   // 出題中のドリル
 const K_MSESS= "sharoushi2026.msess.v1";  // 受験中の模試
 
 const ALL   = DRILL.banks.flatMap(b=>b.qs);
-const BANKS = DRILL.banks.map(b=>b.subject);
+const BANKS = DRILL.banks.map(b=>b.subject).filter(s=>s!=="条文穴埋め");   // 速答は専用タブで扱う
 const $  = id => document.getElementById(id);
 const esc= s => String(s==null?"":s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];} return a; };
@@ -845,8 +925,8 @@ const NOTE_OF = {
    資料や特定の画面をブックマーク・共有できる。
      #/home  #/drill  #/drill/quiz  #/moshi  #/moshi/run  #/moshi/result
      #/notes  #/notes/<ファイル名>  #/log  #/search/<キーワード>          */
-const TABS=["home","drill","moshi","notes","stats","log","search"];
-const TITLE={home:"ホーム",drill:"ドリル",moshi:"模試",notes:"資料",stats:"傾向",log:"記録",search:"検索"};
+const TABS=["home","drill","byou","moshi","notes","stats","log","search"];
+const TITLE={home:"ホーム",drill:"ドリル",byou:"速答",moshi:"模試",notes:"資料",stats:"傾向",log:"記録",search:"検索"};
 
 function parseHash(){
   const raw = location.hash.replace(/^#\/?/,"");
@@ -886,6 +966,14 @@ function route(force){
     const quiz = arg==="quiz" && cur;      // 出題中の状態があるときだけ問題画面
     $("quiz").hidden = !quiz; $("setup").hidden = quiz;
     if(!quiz){ stopT(); info(); }
+  }
+  if(tab==="byou"){
+    const run = arg==="run" && B, res = arg==="result" && B;
+    $("byouSetup").hidden  = !!(run||res);
+    $("byouRun").hidden    = !run;
+    $("byouResult").hidden = !res;
+    if(run){ if(!btid){ bTick(); btid=setInterval(bTick,1000); } bRender(); }
+    if(!run && !res) renderByouSetup();
   }
   if(tab==="moshi"){
     if((arg==="run"||arg==="result") && !M) loadM();
@@ -1222,6 +1310,125 @@ document.addEventListener("keydown",e=>{
   const i="12345".indexOf(e.key);
   if(i>=0&&btns[i]) btns[i].click();
 });
+
+
+/* ══════════ 速答（条文穴埋め） ══════════
+   条文の一語を隠して4択で答える。片手で、テンポよく回すためのモード。
+   正解したら自動で次へ進み、間違えたときだけ正解を見せて止まる。 */
+const ANA = ALL.filter(q => q.type === "ana");
+const B_SUBJ = [...new Set(ANA.map(q => q.law))];   // 科目枠ではなく法令名で分ける
+let B = null, btid = null;
+const K_BPREF = "sharoushi2026.bpref.v1";
+
+function renderByouSetup(){
+  $("byouSetup").hidden = false; $("byouRun").hidden = true; $("byouResult").hidden = true;
+  if(btid){ clearInterval(btid); btid = null; }
+  const pref = load(K_BPREF, {subj: []});
+  $("byouSubj").innerHTML =
+    `<button class="chip${pref.subj.length ? "" : " on"}" data-s="">すべて</button>` +
+    B_SUBJ.map(s => `<button class="chip${pref.subj.includes(s) ? " on" : ""}" data-s="${esc(s)}">`
+      + `${esc(s)} <span style="opacity:.6">${ANA.filter(q=>q.law===s).length}</span></button>`).join("");
+  $("byouSubj").querySelectorAll("button").forEach(el => el.onclick = () => {
+    const s = el.dataset.s;
+    let cur = load(K_BPREF, {subj: []}).subj;
+    if(!s) cur = [];
+    else cur = cur.includes(s) ? cur.filter(x => x !== s) : cur.concat(s);
+    save(K_BPREF, {subj: cur}); renderByouSetup();
+  });
+  byouInfo();
+}
+function byouPool(){
+  const pref = load(K_BPREF, {subj: []});
+  let p = pref.subj.length ? ANA.filter(q => pref.subj.includes(q.law)) : ANA.slice();
+  const mode = $("byouMode").value;
+  if(mode === "real") p = p.filter(q => q.real);
+  if(mode === "weak") p = p.filter(q => { const r = srs[q.id]; return r && r.ok < r.n; });
+  return p;
+}
+function byouInfo(){
+  const p = byouPool();
+  $("byouInfo").textContent = `該当 ${p.length} 問`
+    + (p.length ? "" : "　条件を緩めてください。");
+}
+$("byouMode").onchange = byouInfo;
+
+$("byouStart").onclick = () => {
+  const p = byouPool();
+  if(!p.length){ alert("該当する問題がありません。条件を緩めてください。"); return; }
+  const n = Math.min(+$("byouN").value || 30, p.length);
+  B = {qs: shuffle(p).slice(0, n), i: 0, ok: 0, streak: 0, best: 0, start: Date.now(), wrong: []};
+  go("byou", "run");
+};
+$("bQuit").onclick = () => { B = null; go("byou"); };
+$("bBack").onclick = () => { B = null; go("byou"); };
+$("bAgain").onclick = () => $("byouStart").click();
+$("bWrong").onclick = () => {
+  if(!B || !B.wrong.length){ alert("間違えた問題はありません。"); return; }
+  B = {qs: B.wrong.slice(), i: 0, ok: 0, streak: 0, best: 0, start: Date.now(), wrong: []};
+  go("byou", "run");
+};
+
+function bTick(){
+  if(!B) return;
+  const e = Math.floor((Date.now() - B.start) / 1000);
+  $("bTimer").textContent = `${String(e/60|0).padStart(2,"0")}:${String(e%60).padStart(2,"0")}`;
+}
+function bRender(){
+  if(!B) return;
+  if(B.i >= B.qs.length){ bFinish(); return; }
+  const q = B.qs[B.i];
+  $("bSubj").textContent = q.law;
+  $("bCount").textContent = `${B.i+1} / ${B.qs.length}`;
+  $("bStreak").textContent = B.streak >= 3 ? `${B.streak} 連続` : "";
+  $("bStreak").className = "bstreak" + (B.streak >= 10 ? " hot" : "");
+  $("bProg").style.width = (B.i / B.qs.length * 100) + "%";
+  $("bText").innerHTML = esc(q.head) + `<b class="bk" id="bBlank">？</b>` + esc(q.tail);
+  $("bSrc").textContent = q.src + (q.real ? "　★本試験で空欄になった語" : "");
+  $("bOpts").innerHTML = q.choices.map((c, i) =>
+    `<button data-i="${i}"><span class="n">${"①②③④"[i]}</span><span>${esc(c)}</span></button>`).join("");
+  $("bOpts").querySelectorAll("button").forEach(el => el.onclick = () => bAnswer(+el.dataset.i));
+}
+function bAnswer(pick){
+  const q = B.qs[B.i], ok = pick === q.a;
+  const btns = $("bOpts").querySelectorAll("button");
+  btns.forEach((el, i) => {
+    el.disabled = true;
+    if(i === q.a) el.classList.add("ok");
+    else if(i === pick) el.classList.add("no");
+  });
+  $("bBlank").textContent = q.choices[q.a];
+  $("bBlank").className = "bk " + (ok ? "ok" : "no");
+  grade(q.id, ok);
+  if(ok){ B.ok++; B.streak++; B.best = Math.max(B.best, B.streak); }
+  else  { B.streak = 0; B.wrong.push(q); }
+  B.i++;
+  // 正解ならテンポを切らさないよう自動で次へ。間違えたら手が止まるようにする。
+  if(ok) setTimeout(() => { if(B) bRender(); }, 550);
+  else {
+    const go2 = document.createElement("button");
+    go2.className = "primary"; go2.textContent = "次へ";
+    go2.style.cssText = "margin-top:12px;width:100%";
+    go2.onclick = () => bRender();
+    $("bOpts").appendChild(go2); go2.focus();
+  }
+}
+function bFinish(){
+  if(btid){ clearInterval(btid); btid = null; }
+  const sec = Math.floor((Date.now() - B.start) / 1000);
+  const n = B.qs.length, per = n ? (sec / n) : 0;
+  const bySubj = {};
+  B.qs.forEach(q => { bySubj[q.law] = bySubj[q.law] || [0, 0]; bySubj[q.law][1]++; });
+  B.wrong.forEach(q => bySubj[q.law][0]++);
+  $("bStats").innerHTML =
+    [[`${B.ok} / ${n}`, "正解"], [`${Math.round(B.ok/n*100)}%`, "正答率"],
+     [`${per.toFixed(1)}秒`, "1問あたり"], [`${B.best}`, "最長の連続正解"]]
+    .map(([v, l]) => `<div class="stat"><div class="v">${v}</div><div class="l">${l}</div></div>`).join("");
+  $("bStats").insertAdjacentHTML("beforeend",
+    `<div class="stat" style="grid-column:1/-1"><div class="l" style="text-align:left;line-height:1.9">`
+    + Object.entries(bySubj).map(([s, [w, t]]) =>
+        `${esc(s)} ${t-w}/${t}`).join("　") + `</div></div>`);
+  go("byou", "result");
+}
 
 /* ══════════ 模試 ══════════ */
 const YEARS=[...new Set(ALL.filter(q=>q.year).map(q=>q.year))].sort((a,b)=>b-a);
