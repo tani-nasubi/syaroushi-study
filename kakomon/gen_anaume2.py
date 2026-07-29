@@ -57,7 +57,7 @@ LAWS = {
 }
 
 # ── 過去問で参照された条文（出題実績のあるところを優先する）──
-M = json.load(open("mondai.json"))
+M = json.load(open("mondai.json")); S = json.load(open("seitou.json"))
 LAWRE = re.compile(r"(労働基準法|労働安全衛生法|労働者災害補償保険法|労災保険法|雇用保険法|"
                    r"労働保険徴収法|健康保険法|厚生年金保険法|国民年金法|労働契約法|労働組合法|"
                    r"労働関係調整法|最低賃金法|労働者派遣法|男女雇用機会均等法|育児・介護休業法|"
@@ -151,10 +151,18 @@ TERM = re.compile(r"[一-鿿ァ-ヴー]{2,12}")
 # その一字を落としてから語として扱う。落とすと2字未満になるものは捨てる。
 TAIL_CUT = re.compile(r"(及|又|若|並|且|かつ|及び|又は)$")
 HEAD_CUT = re.compile(r"^(及|又|若|並|且|同|前|当|各|其|この|その)")
+# 「第三項中」「項第二号」のように、条項の指し示しを切り取った断片は語ではない。
+# 「第三項中」「項第二号」「政法人法」のように、条項の指し示しや
+# 固有名詞の途中を切り取った断片は語ではない。
+REFFRAG = re.compile(r"[条項号款章節]|[一二三四五六七八九十百千]")
+LEADFRAG = re.compile(r"^(政|独立行|行政法|法人|等|該|記|掲|至|係|基|定|得|受|有|要)(?=[一-鿿]{2})")
 def norm_term(w):
     w = TAIL_CUT.sub("", w)
     if HEAD_CUT.match(w) and len(w) > 3: w = HEAD_CUT.sub("", w)
-    return w if len(w) >= 2 else ""
+    if len(w) < 2: return ""
+    if REFFRAG.search(w): return ""
+    if LEADFRAG.match(w): return ""
+    return w
 NUM  = re.compile(r"[0-9０-９]{1,4}(?:年|月|日|週間|時間|歳|人|円|％|か月)")
 # 語彙は法令ごとに持つが、省令のように条数が少ないものは誤答が3つ作れない。
 # 同じ分野の法令をひとまとめにした語彙も用意して、足りないときはそちらを使う。
@@ -245,6 +253,45 @@ SUBJ_OF = {
 }
 LAW2SUBJ = {l: s for s, ls in SUBJ_OF.items() for l in ls}
 
+
+# ── 穴にする語の価値づけ ──
+# 「事項」「場合」「規定」「前項」を隠しても法令の理解にならない。
+# 本試験で実際に空欄にされた語と、過去問の論点キーワードを優先する。
+BLANKED = set()          # 選択式で実際に空欄にされた語
+for _kai, _v in M.items():
+    for _q in _v["sentaku"]:
+        _raw = S[_kai]["sentaku"][_q["subject"]]
+        for _i, _a in enumerate(_raw):
+            _a0 = _a[0] if isinstance(_a, list) else _a
+            if _a0 is None: continue
+            _w = (_q["choices"][_a0-1] if _q["format"] == "pool20"
+                  else (_q["choices"][_i][_a0-1] if _a0-1 < len(_q["choices"][_i]) else ""))
+            if _w: BLANKED.add(NOSP(_w))
+_ns = {}
+exec(open("gen_tokuten.py").read().split("stat = {}")[0], _ns)
+TOPICS = {NOSP(k) for v in _ns["KEYS"].values() for k in v}
+
+# 条文の骨組みを指すだけで、隠しても意味のない語
+STOP = {"事項","場合","法律","前項","規定","必要","同項","各号","以下","当該","その他",
+        "前条","次項","本条","この法律","前号","次条","もの","こと","とき","ため",
+        "第一項","第二項","第三項","第四項","第五項","前二項","前三項","各項",
+        "政令","厚生労働省令","省令","命令","準用","適用","該当","前段","後段",
+        "定め","範囲","内容","方法","状況","状態","事情","事由","限度","程度"}
+
+def blank_score(w):
+    """穴にする価値。高いものから選ぶ。"""
+    t = NOSP(w)
+    if t in STOP: return -1
+    if re.fullmatch(r"[0-9０-９]+.*", t): return 3        # 数値はしきい値になりやすい
+    if t in BLANKED: return 5                            # 本試験で実際に空欄になった語
+    if any(k == t for k in TOPICS): return 4             # 論点そのもの
+    if any(k in t or t in k for k in TOPICS): return 3   # 論点に関わる語
+    if re.search(r"(大臣|署長|所長|局長|知事|機構|協会|組合|市町村|審査会|審査官|委員会|事業主|保険者|被保険者)$", t):
+        return 3                                          # 主体は誤り肢の定番
+    if len(t) >= 4: return 1
+    return 0
+
+
 random.seed(20260823)
 qs, seen = [], set()
 combo_seen = collections.defaultdict(set)
@@ -257,11 +304,13 @@ for u in units:
     words = [(norm_term(m.group()) if not NUM.fullmatch(m.group()) else m.group())
              for m in list(TERM.finditer(t)) + list(NUM.finditer(t))]
     words = [w for w in words if w]
+    # 価値の高い語から穴にする。価値0以下は使わない。
+    words = sorted({w for w in words if blank_score(w) > 0},
+                   key=lambda w: -blank_score(w))
     words = [w for w in dict.fromkeys(words)
              if 2 <= len(NOSP(w)) <= 14 and t.count(w) == 1
              and not re.match(r"^(一|二|三|四|五|六|七|八|九|十|他|又|及|若|前|同|当該|この|その)(?=[一-鿿]{2})", w)
              and not MONEY.search(NOSP(w))]
-    random.shuffle(words)
     if made_by_law[u["law"]] >= cap_of(u["law"]): continue
     art_key = (u["law"], u["art"])
     if made_by_art[art_key] >= (6 if u["cited"] else 3): continue
