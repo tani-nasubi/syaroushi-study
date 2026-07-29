@@ -76,6 +76,10 @@ for kai, v in M.items():
             CITED[(law, m.group(2))] += 1
 
 # ── 条文を取り出す ────────────────────────────────
+def order_key(num):
+    """「115の45」を (115, 45) のような組にして、条文の順に並べられるようにする。"""
+    return tuple(int(x) if x.isdigit() else 0 for x in str(num).split("の"))
+
 def art_label(num):
     """「115の45」を「第115条の45」と読める形にする。"""
     p = str(num).split("の")
@@ -94,7 +98,14 @@ for p in sorted(glob.glob("hourei/*.xml")):
     root = ET.parse(p).getroot()
     main = root.find(".//MainProvision")      # 附則・経過措置は対象外
     if main is None: continue
+    # 条がどの章に属するかを控える。条文は前後のつながりで意味が決まるので、
+    # 「いまどのあたりの話か」が分からないと真ん中だけ抜かれて意味を成さない。
+    chap_of = {}
+    for ch in main.findall(".//Chapter"):
+        ct = clean(ch.findtext("ChapterTitle") or "")
+        for a in ch.iter("Article"): chap_of[id(a)] = ct
     for a in main.iter("Article"):
+        chap = chap_of.get(id(a), "")
         # Num は「115_45」のように枝番を持つ。落とすと第115条の45が
         # 「第115条」と表示され、別の条文が同じ出典に見えてしまう。
         # Num は「115_45」のような枝番。そのまま「第115の45条」とすると
@@ -113,6 +124,7 @@ for p in sorted(glob.glob("hourei/*.xml")):
             if not (60 <= len(NOSP(txt)) <= 195): continue   # 秒で読める長さに収める
             if re.search(r"削除|附則|様式|別表|経過措置", txt) or re.search(r"経過措置", cap): continue
             units.append({"law": law, "art": num, "cap": cap, "text": txt,
+                          "chap": chap, "order": order_key(num),
                           "cited": CITED.get((law, num), 0)})
 
 print(f"取り出した条文（項）: {len(units):,}件")
@@ -244,7 +256,7 @@ for u in units:
                    "choices":ch, "a":ch.index(w), "cat":c,
                    "real": u["cited"] > 0,
                    "src": f'{u["law"]}{art_label(u["art"])}',
-                   "cap": u["cap"],
+                   "cap": u["cap"], "chap": u["chap"], "ord": list(u["order"]),
                    # 間違えたときに何を確認すればよいかを1行で示す
                    "exp": f'**{w}** が正しい。{u["law"]}{art_label(u["art"])}'
                           + (f'（{u["cap"]}）' if u["cap"] else "") + "の文言です。"

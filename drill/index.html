@@ -395,6 +395,10 @@
   .bopts button.ok .n{background:var(--accent);color:#fff;border-color:transparent}
   .bopts button.no{background:var(--ng-w);border-color:var(--ng);color:var(--ng)}
   .bopts button:disabled{cursor:default}
+
+  .bwhere{margin:16px 0 4px}
+  .bwhere .art{font-size:15px;font-weight:700;color:var(--accent);letter-spacing:-.01em}
+  .bwhere .chap{font-size:12px;color:var(--sub);margin-top:2px}
 </style>
 <script>
 /* 保存済みの表示設定を描画前に適用する（切り替わりのちらつきを防ぐ） */
@@ -563,6 +567,13 @@
           <option value="weak">間違えたものだけ</option>
         </select>
       </div>
+      <div class="fld" style="max-width:170px">
+        <label class="f">出題順</label>
+        <select id="byouOrder">
+          <option value="seq" selected>条文の順</option>
+          <option value="rand">ランダム</option>
+        </select>
+      </div>
       <button class="primary" id="byouStart">はじめる</button>
     </div>
     <p class="selinfo" id="byouInfo" style="margin:12px 0 0"></p>
@@ -571,12 +582,16 @@
   <div id="byouRun" hidden>
     <div class="card">
       <div class="byoubar">
-        <span class="badge" id="bSubj"></span>
         <span id="bCount"></span>
         <span class="bstreak" id="bStreak"></span>
         <span class="timer" id="bTimer">00:00</span>
       </div>
       <div class="bar"><i id="bProg"></i></div>
+      <!-- どの法律の何条かは、本文を読む前に分かる位置に置く -->
+      <div class="bwhere">
+        <div class="art" id="bArt"></div>
+        <div class="chap" id="bChap"></div>
+      </div>
       <p class="btext" id="bText"></p>
       <div class="bopts" id="bOpts"></div>
       <div class="exp" id="bExp" hidden style="margin:12px 0 0"></div>
@@ -1360,7 +1375,53 @@ $("byouStart").onclick = () => {
   const p = byouPool();
   if(!p.length){ alert("該当する問題がありません。条件を緩めてください。"); return; }
   const n = Math.min(+$("byouN").value || 30, p.length);
-  B = {qs: shuffle(p).slice(0, n), i: 0, ok: 0, streak: 0, best: 0, start: Date.now(), wrong: []};
+  let qs;
+  if($("byouOrder").value === "seq"){
+    // 条文は前後のつながりで意味が決まる。真ん中だけ抜かれても頭に入らないので、
+    // 既定では法令ごとに条文の順で出す。まず出発点をランダムに選び、そこから順に並べる。
+    const byLaw = {};
+    p.forEach(q => (byLaw[q.law] = byLaw[q.law] || []).push(q));
+    const laws = shuffle(Object.keys(byLaw));
+    qs = [];
+    for(const L of laws){
+      const arr = byLaw[L].slice().sort((a, b) => {
+        const x = a.ord || [99999], y = b.ord || [99999];
+        for(let i = 0; i < Math.max(x.length, y.length); i++){
+          if((x[i]||0) !== (y[i]||0)) return (x[i]||0) - (y[i]||0);
+        }
+        return 0;
+      });
+      // 同じ条から何問も続くと単調なので、条ごとに1問ずつ拾って一巡させる。
+      // 条文の順は保ったまま、第26条ばかり続くようなことを避ける。
+      // 出典ごとに束ねる。同じ条の問題が配列内で離れていることがあるので、
+      // 「連続して同じ出典なら同じ組」という数え方では束ねきれない。
+      const gmap = new Map();
+      for(const q of arr){
+        if(!gmap.has(q.src)) gmap.set(q.src, []);
+        gmap.get(q.src).push(q);
+      }
+      const groups = [...gmap.values()];      // 条番号の順（arrの並びを引き継ぐ）
+      // 開始位置は「条」の単位でずらす。問題の並びでずらすと、
+      // 深い位置＝問題数の多い条ばかりが残り、同じ条が連続してしまう。
+      // 条番号を持つ組（＝条文本体）の中から開始位置を選ぶ。
+      // 選択式由来は条番号がないので末尾にまとまる。そこから始めない。
+      const nArt = groups.filter(g => g[0].ord).length;
+      const st = nArt > 3 ? Math.floor(Math.random() * nArt) : 0;
+      const rot = groups.slice(st).concat(groups.slice(0, st));
+      const rounds = [];
+      for(let r = 0; ; r++){
+        let any = false;
+        for(const g of rot) if(g[r]){ rounds.push(g[r]); any = true; }
+        if(!any) break;
+      }
+      qs = qs.concat(rounds);
+      if(qs.length >= n) break;
+    }
+    qs = qs.slice(0, n);
+  } else {
+    qs = shuffle(p).slice(0, n);
+  }
+  B = {qs, i: 0, ok: 0, streak: 0, best: 0, start: Date.now(), wrong: []};
   go("byou", "run");
 };
 $("bQuit").onclick = () => { B = null; drop(K_BSESS); go("byou"); };
@@ -1396,7 +1457,9 @@ function bRender(){
   saveB();
   if(B.i >= B.qs.length){ bFinish(); return; }
   const q = B.qs[B.i];
-  $("bSubj").textContent = q.law;
+  $("bArt").textContent = q.src;
+  $("bChap").textContent = q.chap || "";
+  $("bChap").hidden = !q.chap;
   $("bCount").textContent = `${B.i+1} / ${B.qs.length}`;
   $("bStreak").textContent = B.streak >= 3 ? `${B.streak} 連続` : "";
   $("bStreak").className = "bstreak" + (B.streak >= 10 ? " hot" : "");
@@ -1405,7 +1468,7 @@ function bRender(){
   $("bText").innerHTML = esc(q.head) + `<b class="bk" id="bBlank">？</b>` + esc(q.tail);
   // 見出しには正答そのものが入っていることがある（「第102条（出産手当金）」など）。
   // 答える前は条番号だけにして、答えてから見出しを足す。
-  $("bSrc").textContent = q.src + (q.real ? "　★本試験で空欄になった語" : "");
+  $("bSrc").textContent = q.real ? "★この語は本試験で空欄になりました" : "";
   $("bOpts").innerHTML = q.choices.map((c, i) =>
     `<button data-i="${i}"><span class="n">${"①②③④"[i]}</span><span>${esc(c)}</span></button>`).join("");
   $("bOpts").querySelectorAll("button").forEach(el => el.onclick = () => bAnswer(+el.dataset.i));
@@ -1420,8 +1483,7 @@ function bAnswer(pick){
   });
   $("bBlank").textContent = q.choices[q.a];
   $("bBlank").className = "bk " + (ok ? "ok" : "no");
-  if(q.cap) $("bSrc").textContent = q.src + `（${q.cap}）`
-    + (q.real ? "　★本試験で空欄になった語" : "");
+  if(q.cap) $("bArt").textContent = q.src + `（${q.cap}）`;
   if(q.exp && !ok){ $("bExp").innerHTML = mdInline(q.exp); $("bExp").hidden = false; }
   grade(q.id, ok);
   if(ok){ B.ok++; B.streak++; B.best = Math.max(B.best, B.streak); }
