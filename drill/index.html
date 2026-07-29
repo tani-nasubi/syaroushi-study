@@ -1127,12 +1127,34 @@ function judge(ok){
   $("verdict").textContent=ok?"正解":"不正解";
   if(!ok) queue.push(cur);
   const sec=Math.floor((Date.now()-t0)/1000);
-  let h = cur.exp ? esc(cur.exp)
+  let h = cur.exp ? expHtml(cur.exp)
     : `<span style="color:var(--sub)">この過去問には解説を収録していません。お手持ちの過去問集・基本テキストで根拠を確認してください。</span>`;
-  if(cur.note)  h += `\n\n※ ${esc(cur.note)}`;
+  if(cur.note)  h += `\n\n※ ${mdInline(cur.note)}`;
   if(cur.topic) h += `\n\n【出題テーマ】${esc(cur.topic)}`;
   h += `<span class="law">${cur.law?"根拠："+esc(cur.law)+"　｜　":""}解答時間 ${sec}秒${cur.src?"　｜　"+esc(cur.src):""}</span>`;
   $("exp").innerHTML=h; $("result").hidden=false; $("next").focus();
+}
+/** 解説の本文を組む。地の文は pre-wrap のまま流し、表だけ組み直す。 */
+function expHtml(src){
+  const lines = String(src).split("\n");
+  const out = []; let i = 0;
+  const isRow = s => /^\s*\|.*\|\s*$/.test(s);
+  const cells = s => s.trim().replace(/^\||\|$/g,"").split("|").map(x=>x.trim());
+  while(i < lines.length){
+    if(isRow(lines[i]) && isRow(lines[i+1]||"") && /^[\s|:-]+$/.test(lines[i+1])){
+      const head = cells(lines[i]); i += 2;
+      const body = [];
+      while(i < lines.length && isRow(lines[i])){ body.push(cells(lines[i])); i++; }
+      out.push(`<table class="st" style="margin:8px 0">`
+        + `<tr>${head.map(c=>`<th>${mdInline(c)}</th>`).join("")}</tr>`
+        + body.map(r=>`<tr>${r.map(c=>`<td>${mdInline(c)}</td>`).join("")}</tr>`).join("")
+        + `</table>`);
+      continue;
+    }
+    out.push(mdInline(lines[i])); i++;
+  }
+  // 表の前後に pre-wrap 由来の空行が出ないよう、改行の付け方を調整する
+  return out.reduce((a,x)=> a + (a && !/^<table/.test(x) && !/<\/table>$/.test(a) ? "\n" : "") + x, "");
 }
 document.addEventListener("keydown",e=>{
   if($("t-drill").hidden || $("quiz").hidden) return;
@@ -1374,11 +1396,16 @@ function renderHome(){
 
 /* ══════════ Markdown ══════════ */
 let chkSeq=0;
+/** 行内の書式。エスケープしてから **強調** と `コード` を戻す。
+    解説の本文でも同じ記法を使っているので、両方からこれを呼ぶ。 */
+function mdInline(s){
+  return esc(s)
+    .replace(/`([^`]+)`/g,"<code>$1</code>")
+    .replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>");
+}
 function md2html(src){
   const lines=src.split("\n"); let out=[],i=0,inCode=false,code=[];
-  const inline=s=>esc(s)
-    .replace(/`([^`]+)`/g,"<code>$1</code>")
-    .replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>")
+  const inline=s=>mdInline(s)
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2">$1</a>');
   while(i<lines.length){
     const l=lines[i];
@@ -2094,7 +2121,15 @@ function runSearch(){
     const m=new RegExp(src,"i").exec(hay);
     if(m) hits.push({kind:"問題",title:x.subject,q:x,text:hay.slice(Math.max(0,m.index-40),m.index+70)});
   }
-  const mark=t=>esc(t).replace(new RegExp(src,"gi"),s=>`<mark>${s}</mark>`);
+  // 抜粋にも本文と同じ行内書式を通す。
+  // 抜粋は途中で切るので ** や ` が片側だけ残る。それは記号として落とす。
+  // 強調表示はタグの外側だけに当てる（検索語がタグ名と一致してもHTMLを壊さない）。
+  const re = new RegExp(src,"gi");
+  const mark = t => mdInline(String(t).replace(/\s*\n\s*/g," "))
+    .replace(/\*\*|`/g,"")
+    .split(/(<[^>]+>)/)
+    .map(seg => seg.startsWith("<") ? seg : seg.replace(re, s=>`<mark>${s}</mark>`))
+    .join("");
   $("sHits").innerHTML = hits.length
     ? `<p class="selinfo">${hits.length}件${hits.length>80?"以上":""}</p>`+
       hits.slice(0,80).map((h,i)=>`<div class="hit" data-i="${i}">

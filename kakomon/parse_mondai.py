@@ -205,11 +205,55 @@ def parse_sentaku(path):
     return qs
 
 
+# ── 段落の復元 ──
+# PDFの行送りは文の途中で折り返すため、抽出時にすべて連結している。
+# そのままだと「ア」「イ」や段落番号が本文と地続きになって読めないので、
+# 試験問題そのものが持つ構造記号から段落を組み直す。
+def restore_iroha(stem):
+    """「次のアからオの記述のうち」型で、ア〜オを行頭に出す。
+    ア〜オが句点のあとに『この順で』現れる位置だけを切るので、
+    「アルバイト」のような語頭の一致では切れない。"""
+    if not re.search(r"次のアから|アから[イウエオ]", stem):
+        return stem
+    pos, cuts = 0, []
+    for L in "アイウエオ":
+        m = re.compile(r"(?<=[。）])" + L + r"[　 ]?").search(stem, pos)
+        if not m:
+            break
+        cuts.append(m.start()); pos = m.end()
+    if len(cuts) < 2:
+        return stem
+    parts, prev = [], 0
+    for c in cuts:
+        parts.append(stem[prev:c]); prev = c
+    parts.append(stem[prev:])
+    return "\n".join(p.strip() for p in parts)
+
+def restore_para(body):
+    """選択式の段落番号（2〜5）を行頭に出す。
+    区切りは「句点＋数字＋全角スペース」に限る。金額や条番号は全角スペースを
+    伴わないので巻き込まない。"""
+    pos, cuts = 0, []
+    for n in range(2, 6):
+        m = re.compile(r"(?<=。)" + str(n) + r"　").search(body, pos)
+        if not m:
+            break
+        cuts.append(m.start()); pos = m.end()
+    if not cuts:
+        return body
+    parts, prev = [], 0
+    for c in cuts:
+        parts.append(body[prev:c]); prev = c
+    parts.append(body[prev:])
+    return "\n".join(p.strip() for p in parts)
+
+
 if __name__ == "__main__":
     out = {}
     for p in sorted(glob.glob("txt/*-sentakusiki.txt")):
         kai = int(os.path.basename(p).split("-")[0])
         qs = parse_sentaku(p)
+        for q in qs: q["body"] = restore_para(q["body"])
         bad = [q["num"] for q in qs if q.get("broken")]
         print(f"第{kai}回 選択式 {len(qs)}問" + (f"  ← 要確認 問{bad}" if bad else ""))
         out.setdefault(kai, {})["sentaku"] = qs
@@ -217,6 +261,7 @@ if __name__ == "__main__":
     for p in sorted(glob.glob("txt/*-takuitusiki.txt")):
         kai = int(os.path.basename(p).split("-")[0])
         qs = parse_takuitsu(p)
+        for q in qs: q["stem"] = restore_iroha(q["stem"])
         bad = [f'{q["subject"]}問{q["num"]}' for q in qs if q.get("broken")]
         print(f"第{kai}回 択一式 {len(qs)}問" + (f"  ← 要確認 {bad}" if bad else ""))
         out.setdefault(kai, {})["takuitsu"] = qs
