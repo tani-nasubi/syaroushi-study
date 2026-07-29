@@ -578,12 +578,13 @@
           <option value="weak">間違えたものだけ</option>
         </select>
       </div>
-      <div class="fld" style="max-width:180px">
-        <label class="f">正解したとき</label>
+      <div class="fld" style="max-width:230px">
+        <label class="f">答えたあとの送り方</label>
         <select id="byouPace">
-          <option value="2400" selected>解説を読んでから次へ</option>
-          <option value="700">すぐ次へ</option>
-          <option value="0">止まる（自分で送る）</option>
+          <option value="2400" selected>正解は自動で次へ／間違いは止まる</option>
+          <option value="700">正解はすぐ次へ／間違いは止まる</option>
+          <option value="auto">どちらも自動で次へ</option>
+          <option value="0">どちらも止まる</option>
         </select>
       </div>
       <div class="fld" style="max-width:170px">
@@ -1542,7 +1543,11 @@ function bAnswer(pick){
   B.i++;
   // 正解でも解説は出す。送り方は設定で選べる。
   // 自動で送る場合も「次へ」を置いて、待たずに進めるようにする。
-  const pace = ok ? (+$("byouPace").value || 0) : 0;
+  // 送り方の設定。間違えたときは既定では止めて、解説を読めるようにする。
+  // 「どちらも自動」を選べば、間違えても少し長めに見せてから進む。
+  const pv = $("byouPace").value;
+  const pace = pv === "auto" ? (ok ? 2400 : 4000)
+             : ok ? (+pv || 0) : 0;
   const go2 = document.createElement("button");
   go2.className = "primary"; go2.textContent = "次へ";
   go2.style.cssText = "margin-top:12px;width:100%";
