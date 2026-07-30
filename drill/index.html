@@ -849,6 +849,7 @@ window.DRILL = { banks: [], register(subject, qs){
 <script src="data/anaume.js"></script>
 <script src="data/anaume2.js"></script>
 <script src="data/notes.js"></script>
+<script src="data/ref.js"></script>
 <script src="data/stats.js"></script>
 
 <script>
@@ -1343,7 +1344,8 @@ function judge(ok){
   if(cur.note)  h += `\n\n※ ${mdInline(cur.note)}`;
   if(cur.topic) h += `\n\n【出題テーマ】${esc(cur.topic)}`;
   h += `<span class="law">${cur.law?"根拠："+esc(cur.law)+"　｜　":""}解答時間 ${sec}秒${cur.src?"　｜　"+esc(cur.src):""}</span>`;
-  $("exp").innerHTML=h; $("result").hidden=false; $("next").focus();
+  h += refLink(cur);
+  $("exp").innerHTML=h; bindRef($("exp")); $("result").hidden=false; $("next").focus();
 }
 /** 解説の本文を組む。地の文は pre-wrap のまま流し、表だけ組み直す。 */
 function expHtml(src){
@@ -1558,7 +1560,11 @@ function bAnswer(pick){
   $("bBlank").textContent = q.choices[q.a];
   $("bBlank").className = "bk " + (ok ? "ok" : "no");
   if(q.cap) $("bArt").textContent = q.src + `（${q.cap}）`;
-  if(q.exp){ $("bExp").innerHTML = mdInline(q.exp); $("bExp").hidden = false; }
+  const ref = refLink(q);
+  if(q.exp || ref){
+    $("bExp").innerHTML = (q.exp ? mdInline(q.exp) : "") + ref;
+    bindRef($("bExp")); $("bExp").hidden = false;
+  }
   grade(q.id, ok);
   if(ok){ B.ok++; B.streak++; B.best = Math.max(B.best, B.streak); }
   else  { B.streak = 0; B.wrong.push(q); }
@@ -1938,6 +1944,55 @@ function renderNoteList(){
 
 let pendingHash = null;
 function openNote(file){ go("notes", file); }        // 遷移だけ
+
+/* ══════════ 問題 → 資料への導線 ══════════
+   間違えた問題からその論点の解説へ1タップで行けるようにする。
+   対応表は kakomon/gen_ref.py が深掘りページから自動生成する（data/ref.js）。 */
+function refLink(q){
+  const R = window.REF; if(!R) return "";
+  const seen = new Set(), out = [];
+  const add = hit => {
+    if(!hit || seen.has(hit[0])) return;
+    seen.add(hit[0]);
+    out.push(`<a class="lnk" data-note="${esc(hit[0])}">${esc(hit[1])}</a>`);
+  };
+  // 自作問題は「労基・安衛/解雇予告手当」のタグを持つ
+  if(q.tag) add(R.tag[q.tag]);
+  // 条文穴埋めは src が「労働基準法第32条の3」
+  if(q.src) add(R.art[String(q.src).replace(/\s+/g,"")]);
+  // 過去問は設問文や選択肢に根拠条文が書かれている
+  const body = [q.q, q.head, q.tail, q.stem, ...(q.choices||[])].join(" ");
+  const rx = /([一-鿿ぁ-んァ-ヴ・]{2,20}?(?:法|規則|令))\s*第\s*([0-9０-９]{1,3})\s*条(?:\s*の\s*([0-9０-９]{1,2}))?/g;
+  let m, n = 0;
+  while((m = rx.exec(body)) && n < 3){
+    const z = t => String(t).replace(/[０-９]/g, c => "0123456789"["０１２３４５６７８９".indexOf(c)]);
+    const key = m[1] + "第" + (+z(m[2])) + "条" + (m[3] ? "の" + (+z(m[3])) : "");
+    if(R.art[key]){ add(R.art[key]); n++; }
+  }
+  // 条で当たらなければ、その法律を扱っている資料まで案内する
+  if(!out.length){
+    const laws = [];
+    if(q.law) laws.push(String(q.law));
+    if(q.src) laws.push(String(q.src).replace(/第\s*[0-9０-９].*$/, ""));
+    const mm = body.match(/[一-鿿ぁ-んァ-ヴ・]{2,20}?(?:法|規則|令)(?=\s*第\s*[0-9０-９])/);
+    if(mm) laws.push(mm[0]);
+    for(const L of laws) if(R.law[L]){ add(R.law[L]); break; }
+  }
+  // それでも当たらなければ、出題元の表記から科目の資料へ
+  if(!out.length && q.src && R.subj){
+    for(const k of ["労基安衛","一般常識","労災","雇用","徴収","労一","社一","健保","国年","厚年"]){
+      if(String(q.src).includes(k)){ add(R.subj[k]); break; }
+    }
+  }
+  if(!out.length) return "";
+  return `<span class="law">読むならここ：${out.join("　")}</span>`;
+}
+/** 資料リンクを押したときの遷移。描画のたびに張り直す。 */
+function bindRef(root){
+  (root||document).querySelectorAll("a[data-note]").forEach(a=>{
+    a.onclick = e => { e.preventDefault(); go("notes", a.dataset.note); };
+  });
+}
 
 /** 見出しの文字列でその位置までスクロールする。 */
 function jumpTo(text){

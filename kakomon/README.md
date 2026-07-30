@@ -24,6 +24,9 @@
 | `gen_trend.py` | `notes/0*.md`, `10-*.md` | 各科目ノートの「出題傾向」節 |
 | `gen_stats.py` | `drill/data/stats.js` | 傾向タブ用の統計 |
 | `gen_notes.py` | `drill/data/notes.js` | `notes/*.md` をアプリに埋め込む |
+| `gen_anaume2.py` | `drill/data/anaume2.js` | 条文穴埋め（速答）約3,900問 |
+| `gen_ref.py` | `drill/data/ref.js` | 条文・論点 → 読むべき資料の対応表 |
+| `gen_sw.py` | `drill/sw.js` | 配信ファイルの内容からキャッシュ版数を決める |
 
 **`notes/` のうち 95・96・97・A0・A1 と、各科目ノートの `<!-- TREND -->` 節は自動生成。**
 直接編集しても再生成で消えるので、生成スクリプト側を直すこと。
