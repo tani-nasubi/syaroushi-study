@@ -21,10 +21,12 @@ def qtype(stem):
 LAW = re.compile(r"(労働基準法|労働安全衛生法|労働者災害補償保険法|労災保険法|雇用保険法|"
                  r"労働保険の保険料の徴収等に関する法律|労働保険徴収法|健康保険法|厚生年金保険法|"
                  r"国民年金法|介護保険法|国民健康保険法|社会保険労務士法|労働契約法|労働組合法|"
-                 r"最低賃金法|労働者派遣法|確定拠出年金法)(?:施行規則)?(?:第([0-9]{1,3})条)?")
+                 r"最低賃金法|労働者派遣法|確定拠出年金法)(?:施行規則)?"
+                 r"(?:第([0-9]{1,3})条(?:の([0-9]{1,2}))?)?")
 
 D = collections.defaultdict(lambda: {"t":collections.Counter(),"a":collections.Counter(),"s":[],
-                                     "y":collections.defaultdict(collections.Counter)})
+                                     "y":collections.defaultdict(collections.Counter),
+                                     "ay":collections.defaultdict(set)})
 for kai, v in MONDAI.items():
     k = int(kai)
     for q in v["takuitsu"]:
@@ -36,11 +38,15 @@ for kai, v in MONDAI.items():
         y["肢数"]  += len(q["choices"])
         if re.search(r"最高裁判所|判示|判例", NOSP(q["stem"] + "".join(q["choices"]))): y["判例"] += 1
         for m in LAW.finditer(NOSP(q["stem"] + "".join(q["choices"]))):
-            if m.group(2): d["a"][f"{m.group(1)}{m.group(2)}条"] += 1
+            if not m.group(2): continue
+            key = f"{m.group(1)}{m.group(2)}条" + (f"の{m.group(3)}" if m.group(3) else "")
+            d["a"][key] += 1
+            d["ay"][key].add(k)          # どの回に出たかを覚えておく
     for q in v["sentaku"]:
         d = D[q["subject"]]
         body = NOSP(q["body"])
-        laws = sorted({f"{m.group(1)}{m.group(2)}条" for m in LAW.finditer(body) if m.group(2)})
+        laws = sorted({f"{m.group(1)}{m.group(2)}条" + (f"の{m.group(3)}" if m.group(3) else "")
+                       for m in LAW.finditer(body) if m.group(2)})
         raw = SEITOU[kai]["sentaku"][q["subject"]]
         ws = []
         for i, a in enumerate(raw):
@@ -50,6 +56,270 @@ for kai, v in MONDAI.items():
                  else (q["choices"][i][a-1] if a-1 < len(q["choices"][i]) else ""))
             if w: ws.append(re.sub(r"\s+", " ", w).strip())
         d["s"].append((k, laws[:3], ws))
+
+
+# ── 条文の見出しと、読むべき深掘りページを引くための下ごしらえ ──────────
+# 条番号だけ並べても何を読めばよいか分からないので、法令XMLから見出しを取り、
+# その条をいちばん詳しく扱っている深掘りページへの導線を付ける。
+import glob, ast
+import xml.etree.ElementTree as ET
+
+HOUREI = "hourei"
+LAWS = ast.literal_eval(re.search(r"LAWS\s*=\s*(\{.*?\n\})",
+        open("gen_anaume2.py", encoding="utf-8").read(), re.S).group(1))
+ALIAS = {"労災保険法": "労働者災害補償保険法",
+         "労働保険の保険料の徴収等に関する法律": "労働保険徴収法"}
+
+_caption = {}
+def captions(law):
+    """法令名 → {条ラベル: 見出し}。見出しが無い条は空文字。"""
+    law = ALIAS.get(law, law)
+    if law in _caption:
+        return _caption[law]
+    lid = next((k for k, v in LAWS.items() if v == law), None)
+    got = {}
+    p = os.path.join(HOUREI, f"{lid}.xml") if lid else None
+    if p and os.path.exists(p):
+        for a in ET.parse(p).getroot().iter("Article"):
+            q = a.get("Num", "").split(":")[0].split("_")
+            if not q[0].isdigit():
+                continue
+            lab = f"第{int(q[0])}条" + (f"の{int(q[1])}" if len(q) > 1 and q[1].isdigit() else "")
+            if lab in got:
+                continue                    # 附則にも同じ番号があるので本則を優先する
+            cap = a.find("ArticleCaption")
+            # 条見出しがある条だけを「何を定めているか」に使う。無い条は空にして、
+            # 深掘りページの表題や本体の節見出しで代えさせる（本文の書き出しは読みにくい）
+            got[lab] = (re.sub(r"[（）]", "", "".join(cap.itertext()).strip())
+                        if cap is not None else "")
+    _caption[law] = got
+    return got
+
+# 深掘りページの接頭辞 → その科目
+DEEP_PRE = {"01-労働基準法.md": ("B", "C"), "02-労働安全衛生法.md": ("D",),
+            "03-労災保険法.md": ("E",), "04-雇用保険法.md": ("F",),
+            "05-徴収法.md": ("G",),
+            # 一般常識は労一・社一で法令が入り混じるので、両方の深掘りを見る
+            "06-労働一般常識.md": ("H", "I"), "07-社会保険一般常識.md": ("I", "H"),
+            "08-健康保険法.md": ("J",),
+            "09-国民年金法.md": ("K",), "10-厚生年金保険法.md": ("L",)}
+
+# 深掘りページの中で「◯条」の直前に出てくる、その科目以外の法令名
+OTHERLAW = re.compile(
+    r"(労働契約法|民法|労働組合法|労働関係調整法|労働施策総合推進法|男女雇用機会均等法|"
+    r"育児・介護休業法|パートタイム・有期雇用労働法|高年齢者雇用安定法|障害者雇用促進法|"
+    r"最低賃金法|労働者派遣法|職業安定法|労働審判法|賃金支払確保法|"
+    r"労働基準法|労働安全衛生法|労災保険法|労働者災害補償保険法|雇用保険法|労働保険徴収法|"
+    r"健康保険法|厚生年金保険法|国民年金法|国民健康保険法|介護保険法|高齢者医療確保法|"
+    r"社会保険労務士法|船員保険法|確定拠出年金法|確定給付企業年金法|"
+    r"安衛則|労基則|労災則|徴収則|則|施行規則|施行令|憲法)\s*(?:第)?$")
+# 行や見出しのどこにあっても拾う版
+OTHERLAW_ANY = re.compile(OTHERLAW.pattern.rstrip("$").replace(r"\s*(?:第)?", ""))
+
+_deepmap, _headmap = {}, {}
+def deep_head(note, page, lab):
+    """指定した深掘りページの中で、その条を扱っている見出しを返す。"""
+    deep_of(note)
+    return _headmap.get(note, {}).get((page, lab), "")
+
+
+def deep_of(note, ownlaw=None):
+    """その科目の深掘りページを読み、条ラベル → (ページ, 表題, その条を扱う見出し) を返す。
+
+    ページには他の法律の条番号も出てくる（労基の深掘りに労働契約法9条など）。
+    その行や直前の見出しに別の法令名があるものは数えない。"""
+    if note in _deepmap:
+        return _deepmap[note]
+    pres = DEEP_PRE.get(note, ())
+    score = collections.defaultdict(collections.Counter)
+    title, heading = {}, {}
+    ART = re.compile(r"(?<![0-9])([0-9]{1,3})条(?:の([0-9]{1,2}))?")
+    RANGE = re.compile(r"(?<![0-9])([0-9]{1,3})条(?:の[0-9]{1,2})?\s*[〜～~－ー-]\s*([0-9]{1,3})条")
+    lab_of = lambda m: f"第{int(m.group(1))}条" + (f"の{int(m.group(2))}" if m.group(2) else "")
+
+    def other(text):
+        """その文字列に、この科目以外の法令名があるか。"""
+        for mo in OTHERLAW_ANY.finditer(text):
+            if ownlaw is None or mo.group(1) != ownlaw:
+                return True
+        return False
+
+    for path in sorted(glob.glob(f"{NOTES}/*.md")):
+        b = os.path.basename(path)
+        if not (pres and b[0] in pres and re.match(r"^[A-Z]\d-", b)):
+            continue
+        body = open(path, encoding="utf-8").read()
+        title[b] = re.sub(r"｜.*$", "", body.split("\n", 1)[0].lstrip("# ").strip())
+        cur = ""
+        for line in body.split("\n"):
+            hm = re.match(r"^#{2,4} (.+)$", line)
+            if hm:
+                cur = re.sub(r"（[^）]*）\s*$", "", hm.group(1)).strip()
+                if other(hm.group(1)):      # 別の法令についての見出しは数えない
+                    cur = ""
+                    continue
+                # 見出し自体が条を挙げていれば、その見出しをその条の説明に使う
+                for rg in RANGE.finditer(hm.group(1)):
+                    a, z = int(rg.group(1)), int(rg.group(2))
+                    if 0 < z - a < 40:
+                        for i in range(a, z + 1):
+                            heading.setdefault((b, f"第{i}条"), cur)
+                            score[f"第{i}条"][b] += 1
+                for mm in ART.finditer(hm.group(1)):
+                    heading.setdefault((b, lab_of(mm)), cur)   # 最初の見出しを採る
+                    score[lab_of(mm)][b] += 2      # 見出しに出るものは重みを付ける
+                continue
+            if other(line):
+                continue
+            if cur and other(cur):
+                continue
+            for rg in RANGE.finditer(line):
+                a, z = int(rg.group(1)), int(rg.group(2))
+                if 0 < z - a < 40:
+                    for i in range(a, z + 1):
+                        score[f"第{i}条"][b] += 1
+                        heading.setdefault((b, f"第{i}条"), cur)
+            for mm in ART.finditer(line):
+                score[lab_of(mm)][b] += 1
+                heading.setdefault((b, lab_of(mm)), cur)
+    out = {}
+    for lab, c in score.items():
+        f, n = c.most_common(1)[0]
+        out[lab] = (f, title.get(f, f), heading.get((f, lab), ""))
+    _deepmap[note] = out
+    _headmap[note] = heading
+    return out
+
+# 法令名 → その法令を主に扱う本体ノート（他科目の条を指すときに使う）
+LAW2NOTE = {"労働基準法": "01-労働基準法.md", "労働安全衛生法": "02-労働安全衛生法.md",
+            "労働者災害補償保険法": "03-労災保険法.md", "労災保険法": "03-労災保険法.md",
+            "雇用保険法": "04-雇用保険法.md", "労働保険徴収法": "05-徴収法.md",
+            "労働保険の保険料の徴収等に関する法律": "05-徴収法.md",
+            "健康保険法": "08-健康保険法.md", "厚生年金保険法": "10-厚生年金保険法.md",
+            "国民年金法": "09-国民年金法.md"}
+
+_bylaw = {}
+def deep_by_law(note):
+    """労一・社一のように複数の法律を扱う科目で、法令名 → 深掘りページ を返す。"""
+    if note in _bylaw:
+        return _bylaw[note]
+    pres = DEEP_PRE.get(note, ())
+    out = {}
+    for path in sorted(glob.glob(f"{NOTES}/*.md")):
+        b = os.path.basename(path)
+        if not (pres and b[0] in pres and re.match(r"^[A-Z]\d-", b)):
+            continue
+        head = open(path, encoding="utf-8").read().split("\n", 1)[0]
+        title = re.sub(r"｜.*$", "", head.lstrip("# ").strip())
+        for nm in re.findall(r"[一-鿿・]{2,20}?(?:法|規則|令)", title + " " + b):
+            out.setdefault(nm, (b, title))
+    _bylaw[note] = out
+    return out
+
+_secmap = {}
+def sections_of(note, ownlaw=None):
+    """本体ノートの見出し → その節で触れている条ラベル。
+       深掘りページが無い条でも、本体のどこを読めばよいかを示すために使う。"""
+    if note in _secmap:
+        return _secmap[note]
+    body = open(f"{NOTES}/{note}", encoding="utf-8").read()
+    # 自動生成している「出題傾向」の節は読み飛ばす（自分自身を指してしまうため）
+    body = re.sub(re.escape(BEGIN) + r".*?" + re.escape(END), "", body, flags=re.S)
+    out, head = {}, None
+    for line in body.split("\n"):
+        m = re.match(r"^#{2,3} (.+)$", line)
+        if m:
+            head = m.group(1).strip()
+            if re.match(r"(出題傾向|頻出条文|次に読むもの|深掘り|直前チェック|基準点|設問形式)", head):
+                head = None
+                continue
+            # 「4. 労働時間・休憩・休日（32条〜41条の2）」のように、見出し自体が
+            # 範囲を示していることがある。その範囲の条もこの節に属するとみなす。
+            rg = re.search(r"([0-9]{1,3})条(?:の[0-9]{1,2})?\s*[〜～~－ー-]\s*([0-9]{1,3})条", head)
+            if rg:
+                a, b = int(rg.group(1)), int(rg.group(2))
+                if 0 < b - a < 80:
+                    for i in range(a, b + 1):
+                        out.setdefault(f"第{i}条", head)
+                        for j in range(1, 12):
+                            out.setdefault(f"第{i}条の{j}", head)
+            else:
+                for mm in re.finditer(r"(?<![0-9])([0-9]{1,3})条(?:の([0-9]{1,2}))?", head):
+                    lab = f"第{int(mm.group(1))}条" + (f"の{int(mm.group(2))}" if mm.group(2) else "")
+                    out.setdefault(lab, head)
+            continue
+        if not head:
+            continue
+        for mm in re.finditer(r"(?<![0-9])([0-9]{1,3})条(?:の([0-9]{1,2}))?", line):
+            mo = OTHERLAW_ANY.search(line[:mm.start()])
+            if mo and (ownlaw is None or mo.group(1) != ownlaw):
+                continue
+            lab = f"第{int(mm.group(1))}条" + (f"の{int(mm.group(2))}" if mm.group(2) else "")
+            out.setdefault(lab, head)
+    _secmap[note] = out
+    return out
+
+def art_rows(note, arts, ay, lawfilter):
+    """頻出条文を、見出し・出題年・深掘りページ付きの表にする。"""
+    deep = deep_of(note, lawfilter)
+    sec  = sections_of(note, lawfilter)
+    rows = ["| 条文 | 何を定めているか | 回数 | 出題された年度 | 詳しく読む |",
+            "|---|---|---|---|---|"]
+    for key, n in arts.most_common(12):
+        m = re.match(r"^(.+?)(第?[0-9]{1,3}条(?:の[0-9]{1,2})?)$", key)
+        if not m:
+            continue
+        law, lab = m.group(1), m.group(2)
+        lab = lab if lab.startswith("第") else "第" + lab
+        ys = "・".join(KAI2Y[k] for k in sorted(ay.get(key, ()), reverse=True))
+        d = deep.get(lab)
+        if not lawfilter:                 # 労一・社一は法令名でページを選ぶ
+            byname = deep_by_law(note).get(law)
+            if byname:
+                d = (byname[0], byname[1], deep_head(note, byname[0], lab))
+        if d:
+            link = f"[{d[1]}]({d[0]})"
+        elif sec.get(lab):
+            h = sec[lab]
+            link = f"本体の[{h}]({note}#{h})"
+        elif LAW2NOTE.get(law) and LAW2NOTE[law] != note:
+            link = f"[{LAW2NOTE[law][3:-3]}]({LAW2NOTE[law]})"   # 他科目の法令
+        else:
+            link = "—"
+        cap = captions(law).get(lab, "")
+        if not cap or len(cap) > 26:
+            vague = ("制度の趣旨", "全体像", "何のための制度か", "ポイント", "概要",
+                     "основ", "基本", "定義", "はじめに", "主要条文", "位置づけ")
+            # 「3つの請求のかたち」のような、内容を表さない見出しは説明に使わない
+            VAGUE_RE = re.compile(r"^([0-9１-９]+つ|全体像|一覧|比較|まとめ|区別|使い分け)")
+            h2 = (d[2] if d and d[2] and len(d[2]) >= 4
+                  and not d[2].startswith(vague) and not VAGUE_RE.match(d[2]) else "")
+            cand = [h2, d[1] if d else "",
+                    re.sub(r"（[0-9条〜の、・\s]+）$", "",
+                           re.sub(r"^\d+\.\s*", "", sec.get(lab, "")))]
+            cap = next((c for c in cand if c and c != law and len(c) <= 26), "—")
+        shown = lab if lawfilter else key
+        rows.append(f"| **{shown}** | {cap} | {n} | {ys or '—'} | {link} |")
+    return rows
+
+def tidy(w):
+    """本試験PDF由来の余分な空白を詰める（「満15 歳」→「満15歳」）。"""
+    w = re.sub(r"(?<=[0-9])\s+(?=[0-9])", "", w)
+    w = re.sub(r"\s+(?=[年月日歳時分秒円人条項号級％%割分の以未満トメキ])", "", w)
+    return re.sub(r"\s+", " ", w).strip()
+
+def kind_of(w):
+    """空欄に入った語を、覚え方が違う3種類に分ける。"""
+    if len(w) >= 18:
+        return "判示・条文の言い回し"
+    if re.search(r"[0-9]", w):
+        return "数字"
+    return "用語"
+
+def short(w):
+    """長い判示はそのまま載せると読めないので、先頭だけにする。"""
+    w = w.rstrip("、。 ")
+    return w if len(w) <= 26 else w[:24] + "…"
 
 # ノート → (択一の集計に使う科目, 選択式に使う科目, 条文の絞り込み)
 TARGET = {
@@ -181,15 +451,37 @@ for f, (tsubs, ssubs, lawfilter) in TARGET.items():
                 "**6問中5問**を目標にしてください。労災・雇用の基準点割れを防ぐ最大の保険になります。", ""]
 
     if arts:
-        out += ["### 頻出条文（択一で参照された回数）", "",
-                "　".join(f"**{a}**({c})" for a, c in arts.most_common(10)), ""]
+        ay = collections.defaultdict(set)
+        for sj in tsubs:
+            for kk, vv in D[sj]["ay"].items():
+                ay[kk] |= vv
+        top = arts.most_common(12)
+        out += ["### 頻出条文（択一で9年間に参照された回数）", "",
+                f"**上位{len(top)}条で択一{sum(c for _, c in top)}回分**。"
+                "回数が多い条ほど、条文そのものを読んでおく価値があります。"
+                "「詳しく読む」は、その条をいちばん詳しく扱っている別ページです。", ""]
+        out += art_rows(f, arts, ay, lawfilter) + [""]
     for s in ssubs:
         if not D[s]["s"]: continue
-        out += [f"### 選択式が9年間で問うたこと（{s}）", "",
-                "| 年度 | 根拠条文 | 正答となった語 |", "|---|---|---|"]
+        rows, kinds = [], collections.Counter()
         for k, laws, ws in sorted(D[s]["s"], reverse=True):
-            out.append(f"| {KAI2Y[k]} | {'／'.join(laws) if laws else '—'} | "
-                       + " ／ ".join(w[:20] for w in ws) + " |")
+            for i, w in enumerate(ws):
+                w = tidy(w)
+                kinds[kind_of(w)] += 1
+                rows.append((KAI2Y[k] if i == 0 else "",
+                             "ABCDE"[i] if i < 5 else str(i + 1),
+                             short(w),
+                             "／".join(laws) if (i == 0 and laws) else ""))
+        tot5 = sum(kinds.values())
+        out += [f"### 選択式が9年間で問うたこと（{s}）", "",
+                f"**{tot5}空欄**の内訳は "
+                + "、".join(f"**{k}{v}**（{v/tot5*100:.0f}%）" for k, v in kinds.most_common())
+                + "。空欄は5つあり、**3つ取れれば基準点**です。"
+                  "長い判示は先頭だけを載せています。全文は "
+                  "[`95-条文素読（選択式の原文）.md`](95-条文素読（選択式の原文）.md) にあります。", "",
+                "| 年度 | 空欄 | 正答となった語 | その年の根拠条文 |", "|---|---|---|---|"]
+        for y, ab, w, law in rows:
+            out.append(f"| {y} | {ab} | {w} | {law} |")
         out.append("")
     out += ["> この節は `kakomon/gen_trend.py` が過去問データから自動生成しています。", END, ""]
 
