@@ -54,6 +54,45 @@ KEYS = {
   "保険料納付要件","事後重症","基準障害","20歳前傷病","遺族基礎年金","寡婦年金","死亡一時金","付加年金",
   "脱退一時金","国民年金基金","併給調整","未支給","不服申立て","時効","国庫負担","日本年金機構"],
 }
+
+# ── 論点名 → 深掘りページ ────────────────────────────────────
+# 論点名だけ並べても「どこを読むか」が分からないので、その語をいちばん
+# 多く使っている深掘りページを引いて、リンクとして添える。
+import glob as _glob, re as _re, os as _os
+_NOTES = "../notes"
+# 択一の枠と深掘りページの接頭辞の対応。労災・雇用の枠には徴収が3問ずつ入る
+PRE_OF = {"労基安衛": "BCD", "労災": "EG", "雇用": "FG", "一般常識": "HI",
+          "健保": "J", "国年": "K", "厚年": "L"}
+_deepcache = {}
+
+def deep_pages(subj):
+    pres = PRE_OF.get(subj, "")
+    if subj in _deepcache:
+        return _deepcache[subj]
+    out = []
+    for path in sorted(_glob.glob(f"{_NOTES}/*.md")):
+        b = _os.path.basename(path)
+        if pres and b[0] in pres and _re.match(r"^[A-Z]\d-", b):
+            body = open(path, encoding="utf-8").read()
+            title = _re.sub(r"｜.*$", "", body.split("\n", 1)[0].lstrip("# ").strip())
+            out.append((b, title, _re.sub(r"[\s*`>|]", "", body)))
+    _deepcache[subj] = out
+    return out
+
+def deep_link(subj, topic):
+    """論点名を含む深掘りページのうち、いちばん多く触れているものを返す。"""
+    best, cnt = None, 0
+    for b, title, body in deep_pages(subj):
+        n = body.count(topic)
+        if title == topic:      n += 20      # 表題そのもの
+        elif title.startswith(topic): n += 12
+        elif topic in title:    n += 6
+        if n > cnt:
+            best, cnt = (b, title), n
+    if not best or cnt < 2:
+        return ""
+    return f"[{best[1]}]({best[0]})"
+
 ORDER = ["労基安衛","労災","雇用","一般常識","健保","厚年","国年"]
 LABEL = {"労基安衛":"労基・安衛","労災":"労災・徴収","雇用":"雇用・徴収","一般常識":"一般常識（労一・社一）",
          "健保":"健康保険法","厚年":"厚生年金保険法","国年":"国民年金法"}
@@ -245,8 +284,9 @@ with open(OUT, "w") as f:
         w(f"S {len(S_)}件／A {len(A_)}件／B {len(B_)}件／C {len(C_)}件\n\n")
         for name, arr in [("S｜ほぼ毎年出る（落とせない）", S_), ("A｜2年に1回以上（得点源）", A_)]:
             if not arr: continue
-            w(f"### {name}\n\n| 論点 | 出題年数 | 延べ問数 |\n|---|---:|---:|\n")
-            for k, y, n in arr: w(f"| **{k}** | {y}年 | {n}問 |\n")
+            w(f"### {name}\n\n| 論点 | 出題年数 | 延べ問数 | 詳しく読む |\n|---|---:|---:|---|\n")
+            for k, y, n in arr:
+                w(f"| **{k}** | {y}年 | {n}問 | {deep_link(s, k) or '—'} |\n")
             w("\n")
         if B_:
             w("### B｜3〜4年（余力があれば）\n\n")
