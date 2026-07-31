@@ -289,11 +289,6 @@
   .lnk:active{transform:translateY(1px)}
 
   /* 今日の行 */
-  #planTable tr:hover td{background:var(--panel2)}
-  #planTable tr.now td{background:var(--accent-w);font-weight:700}
-  #planTable tr.now td:first-child{position:relative}
-  #planTable tr.now td:first-child::before{content:"";position:absolute;left:0;top:0;bottom:0;
-    width:3px;background:var(--accent)}
   .nowrap{white-space:nowrap}
 
   .hits{margin-top:12px}
@@ -485,10 +480,6 @@
   <div class="card">
     <h2>整理資料</h2>
     <div class="doclist" id="homeDocs"></div>
-  </div>
-  <div class="card">
-    <h2>直前期スケジュール<span class="r" id="planLeft"></span></h2>
-    <div class="scroll"><table id="planTable"></table></div>
   </div>
 </section>
 
@@ -907,46 +898,6 @@ function grade(id, ok){
   r.n++; r.last=ok;
   if(ok){ r.ok++; r.ivl = r.ivl===0?1:Math.min(7,Math.round(r.ivl*2.2)); } else r.ivl=0;
   r.due = today()+r.ivl; save(K_SRS,srs);
-}
-
-/* ══════════ スケジュール ══════════ */
-const PLAN = {
- "2026-07-27":{t:"法改正 総ざらい",              note:"00-法改正-令和8年度.md", banks:["法改正"]},
- "2026-07-28":{t:"労働基準法",                   note:"01-労働基準法.md",       banks:["労基","労基・安衛"]},
- "2026-07-29":{t:"労働安全衛生法",               note:"02-労働安全衛生法.md",   banks:["安衛","労基・安衛"]},
- "2026-07-30":{t:"労災保険法",                   note:"03-労災保険法.md",       banks:["労災","労災・徴収"]},
- "2026-07-31":{t:"雇用保険法① 基本手当",         note:"04-雇用保険法.md",       banks:["雇用","雇用・徴収"]},
- "2026-08-01":{t:"雇用保険法②＋徴収法",          note:"05-徴収法.md",           banks:["雇用","徴収","雇用・徴収"]},
- "2026-08-02":{t:"労働編 総復習＋選択式演習",     note:"92-選択式の解き方.md",
-              banks:["労基","安衛","労災","雇用","徴収","労基・安衛","労災・徴収","雇用・徴収"], sel:true},
- "2026-08-03":{t:"健康保険法① 保険給付",         note:"08-健康保険法.md",       banks:["健保"]},
- "2026-08-04":{t:"健康保険法② 被保険者・費用",   note:"08-健康保険法.md",       banks:["健保"]},
- "2026-08-05":{t:"国民年金法① 被保険者・保険料", note:"09-国民年金法.md",       banks:["国年"]},
- "2026-08-06":{t:"国民年金法② 給付",             note:"09-国民年金法.md",       banks:["国年"]},
- "2026-08-07":{t:"厚生年金保険法① 老齢",         note:"10-厚生年金保険法.md",   banks:["厚年"]},
- "2026-08-08":{t:"厚生年金保険法② 障害・遺族",   note:"10-厚生年金保険法.md",   banks:["厚年"]},
- "2026-08-09":{t:"本試験シミュレーション①",       note:"A1-個数・組合せ問題の解き方.md", moshi:true},
- "2026-08-10":{t:"模試①の徹底復習",              note:"97-引っかけの型.md",       weak:true},
- "2026-08-11":{t:"労働一般常識",                 note:"06-労働一般常識.md",     banks:["労一","一般常識"]},
- "2026-08-12":{t:"社会保険一般常識",             note:"07-社会保険一般常識.md", banks:["社一","一般常識"]},
- "2026-08-13":{t:"横断整理を通しで読む",         note:"90-横断整理.md"},
- "2026-08-14":{t:"弱点科目 集中日①",             note:"96-得点源リスト.md",       weak:true},
- "2026-08-15":{t:"弱点科目 集中日②",             note:"A0-正文集（択一の正しい肢）.md", weak:true},
- "2026-08-16":{t:"本試験シミュレーション②",       note:"A1-個数・組合せ問題の解き方.md", moshi:true},
- "2026-08-17":{t:"模試②の徹底復習",              note:"97-引っかけの型.md",       weak:true},
- "2026-08-18":{t:"労働編 総まくり",              note:"90-横断整理.md",
-              banks:["労基","安衛","労災","雇用","徴収","労基・安衛","労災・徴収","雇用・徴収"]},
- "2026-08-19":{t:"社会保険編 総まくり",          note:"90-横断整理.md",         banks:["健保","国年","厚年"]},
- "2026-08-20":{t:"法改正 最終確認＋一般常識",     note:"00-法改正-令和8年度.md", banks:["法改正"]},
- "2026-08-21":{t:"数値暗記 総点検",              note:"91-数値暗記.md",         banks:["法改正"]},
- "2026-08-22":{t:"選択式のみ／持ち物準備／早寝",  note:"92-選択式の解き方.md",   sel:true},
- "2026-08-23":{t:"本試験（10:30 選択式／13:20 択一式）", note:"98-最終確認シート.md"},
-};
-
-/** その日の「演習する科目」をバンク名へ解決する */
-function banksOf(p){
-  if(!p || !p.banks) return [];
-  return BANKS.filter(b=> p.banks.some(w=> b===w || b.replace("過去問 ","")===w));
 }
 
 /* 科目 → 整理資料の対応（ホームの「資料を読む」に使う） */
@@ -1780,29 +1731,48 @@ function renderHero(){
        <div class="lead"><span class="n">当日</span></div>
        <div class="meta"><span>選択式 10:30／択一式 13:20</span></div>`;
 }
+/** いま手をつけるべきものを、自分の解答記録から決める。
+    決めうちの予定表は当てにならないので、記録のほうを見る。 */
+function todaySuggest(){
+  const due = ALL.filter(q=>{ const r=srs[q.id]; return r && r.due<=Date.now(); });
+  if(due.length >= 20)
+    return {t:`復習待ちが ${due.length} 問たまっています`,
+            acts:[["復習待ちから解く", ()=>{ $("filter").value="due"; savePref(); startDrill(); }]]};
+  // 科目ごとの正答率を出し、10問以上解いていて最も低いものを挙げる
+  const per = {};
+  for(const q of ALL){
+    const r = srs[q.id]; if(!r || !r.n) continue;
+    const s = String(q.subject||"").replace("過去問 ","");
+    (per[s] = per[s] || {n:0, ok:0}).n += r.n;
+    per[s].ok += r.ok;
+  }
+  const rows = Object.entries(per).filter(([,v])=>v.n>=10)
+                     .sort((a,b)=> a[1].ok/a[1].n - b[1].ok/b[1].n);
+  if(rows.length){
+    const [nm, v] = rows[0];
+    const rate = Math.round(v.ok/v.n*100);
+    return {t:`いちばん取れていないのは ${nm}（正答率 ${rate}%）`,
+            acts:[[`${nm} を出題する`, ()=>{
+                     const bs = BANKS.filter(b=> b===nm || b.replace("過去問 ","")===nm);
+                     if(bs.length){ pref.banks = bs; renderChips(); savePref(); }
+                     startDrill(); }],
+                  ["苦手問題を回す", ()=>{ $("filter").value="weak"; savePref(); startDrill(); }]]};
+  }
+  const done = Object.keys(srs).length;
+  if(done < 50)
+    return {t:"まずは解いて、どこが弱いかを出しましょう",
+            acts:[["ドリルを開く", ()=>go("drill")]]};
+  return {t:"本試験と同じ形で通しで解くのがいちばん効きます",
+          acts:[["模試を開始する", ()=>go("moshi")],
+                ["条文穴埋めを回す", ()=>go("byou")]]};
+}
 function renderHome(){
-  const k=ymd(new Date()), p=PLAN[k];
+  const k=ymd(new Date());
   renderHero();
   $("todayDate").textContent = k+"（"+"日月火水木金土"[new Date().getDay()]+"）";
-  $("todayTask").textContent = p?p.t:"スケジュール範囲外です。苦手問題を回してください。";
-  const acts=[];
-  if(p && p.note){
-    const d=(window.NOTES||[]).find(x=>x.file===p.note);
-    acts.push([`資料を読む：${d?d.title:p.note}`, ()=>openNote(p.note)]);
-  }
-  if(p && p.moshi) acts.push(["模試を開始する", ()=>go("moshi")]);
-  if(p && p.weak)  acts.push(["苦手問題を回す", ()=>{ $("filter").value="weak"; savePref(); startDrill(); }]);
-  if(p && p.sel)   acts.push(["選択式だけ回す", ()=>{ $("mode").value="sel"; savePref(); startDrill(); }]);
-  const bs = banksOf(p);
-  if(bs.length){
-    const nm=[...new Set(bs.map(b=>b.replace("過去問 ","")))]
-      .filter((n,_,all)=> !all.some(o=> o!==n && o.includes(n)));
-    const cnt=ALL.filter(q=>bs.includes(q.subject)).length;
-    acts.push([`この科目を出題する：${nm.join("／")}（${cnt.toLocaleString()}問）`, ()=>{
-      pref.banks = bs; renderChips(); savePref(); startDrill();
-    }]);
-  }
-  if(!acts.length) acts.push(["ドリルを開く", ()=>go("drill")]);
+  const sug = todaySuggest();
+  $("todayTask").textContent = sug.t;
+  const acts = sug.acts.slice();
   $("todayActions").innerHTML=acts.map((a,i)=>`<button class="${i?"":"primary"}" data-a="${i}">${esc(a[0])}</button>`).join("");
   $("todayActions").querySelectorAll("button").forEach(b=> b.onclick=acts[+b.dataset.a][1]);
 
@@ -1822,36 +1792,6 @@ function renderHome(){
     `<div class="doccard" data-f="${esc(x.file)}"><h3>${esc(x.title)}</h3><p>${esc(x.desc)}</p></div>`).join("");
   $("homeDocs").querySelectorAll(".doccard").forEach(c=> c.onclick=()=>openNote(c.dataset.f));
 
-  const keys=Object.keys(PLAN).sort();
-  $("planLeft").textContent=`残り ${keys.filter(x=>x>=k).length} 日`;
-  $("planTable").innerHTML=
-    `<tr><th>日付</th><th>内容</th><th>読む資料</th><th>演習</th></tr>`+
-    keys.map(x=>{
-      const p=PLAN[x], past=x<k, now=x===k;
-      const d=p.note ? (window.NOTES||[]).find(y=>y.file===p.note) : null;
-      const note = d ? `<a class="lnk" data-note="${esc(p.note)}">${esc(d.title)}</a>` : "—";
-      const bs=banksOf(p);
-      const names=[...new Set(bs.map(b=>b.replace("過去問 ","")))]
-        .filter((n,_,all)=> !all.some(o=> o!==n && o.includes(n)));
-      let act="—";
-      if(p.moshi)      act=`<a class="lnk" data-act="moshi">模試</a>`;
-      else if(p.weak)  act=`<a class="lnk" data-act="weak">苦手</a>`;
-      else if(bs.length) act=`<a class="lnk" data-act="banks" data-d="${x}">${esc(names.join("／"))}</a>`;
-      else if(p.sel)   act=`<a class="lnk" data-act="sel">選択式</a>`;
-      return `<tr class="${now?"now":""}"${past?' style="opacity:.42"':''}>
-        <td class="nowrap">${x.slice(5)}</td><td>${esc(p.t)}</td><td>${note}</td><td>${act}</td></tr>`;
-    }).join("");
-  $("planTable").querySelectorAll("a.lnk").forEach(a=> a.onclick=()=>{
-    if(a.dataset.note) return openNote(a.dataset.note);
-    const act=a.dataset.act;
-    if(act==="moshi") return go("moshi");
-    if(act==="weak"){ $("filter").value="weak"; savePref(); return startDrill(); }
-    if(act==="sel"){  $("mode").value="sel";   savePref(); return startDrill(); }
-    if(act==="banks"){
-      const bs=banksOf(PLAN[a.dataset.d]);
-      if(bs.length){ pref.banks=bs; renderChips(); savePref(); startDrill(); }
-    }
-  });
 }
 
 /* ══════════ Markdown ══════════ */
