@@ -689,7 +689,7 @@
 <!-- ═══════════ 資料 ═══════════ -->
 <section id="t-notes" hidden>
   <div class="card" id="noteList">
-    <h2>整理資料<a class="mini" id="printAll" href="print.html" target="_blank"
+    <h2>整理資料<a class="mini" id="printAll" href="print" target="_blank"
        style="float:right;font-size:12px;padding:4px 10px;border:1px solid var(--line);
               border-radius:6px;text-decoration:none;color:var(--fg)">印刷用</a></h2>
     <div class="doclist" id="noteCards"></div>
@@ -1884,8 +1884,8 @@ function renderNoteList(){
   const box = $("printLinks");
   if(box && !box.dataset.done){
     box.dataset.done = "1";
-    box.innerHTML = `<a class="lnk" href="print.html" target="_blank">全部（99資料）</a>`
-      + PRINTS.map(g=>`<a class="lnk" href="print-${encodeURIComponent(g)}.html" target="_blank">${esc(g)}</a>`).join("");
+    box.innerHTML = `<a class="lnk" href="print" target="_blank">全部（99資料）</a>`
+      + PRINTS.map(g=>`<a class="lnk" href="print-${encodeURIComponent(g)}" target="_blank">${esc(g)}</a>`).join("");
   }
   $("noteList").hidden=false; $("noteView").hidden=true;
   $("noteCards").innerHTML=(window.NOTES||[]).map(d=>{
