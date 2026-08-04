@@ -689,12 +689,23 @@
 <!-- ═══════════ 資料 ═══════════ -->
 <section id="t-notes" hidden>
   <div class="card" id="noteList">
-    <h2>整理資料</h2>
+    <h2>整理資料<a class="mini" id="printAll" href="print.html" target="_blank"
+       style="float:right;font-size:12px;padding:4px 10px;border:1px solid var(--line);
+              border-radius:6px;text-decoration:none;color:var(--fg)">印刷用</a></h2>
     <div class="doclist" id="noteCards"></div>
-    <p class="selinfo" style="margin:14px 0 0">
-      本文は <code>notes/*.md</code> を埋め込んだもの。編集したら
-      <code>python3 kakomon/gen_notes.py</code> で再生成してください。
-    </p>
+    <details style="margin:14px 0 0">
+      <summary class="selinfo" style="cursor:pointer">紙に印刷して読む</summary>
+      <p class="selinfo" style="margin:8px 0 0">
+        リンクは紙では押せないので、印刷用では資料に通し番号を振り、
+        「<b>23 平均賃金</b>」のように番号で引ける形に置き換えています。巻頭に目次があります。
+      </p>
+      <div class="row" id="printLinks" style="margin:10px 0 0;flex-wrap:wrap;gap:8px"></div>
+      <p class="selinfo" style="margin:10px 0 0">
+        全体で A4 約370ページあります。ブラウザの印刷から
+        <b>用紙をA4縦</b>・<b>背景のグラフィックを入</b>にすると、表の罫線まで出ます。
+        PDFにしたいときは印刷先を「PDFに保存」にしてください。
+      </p>
+    </details>
   </div>
   <div class="card" id="noteView" hidden>
     <div class="nbar">
@@ -1868,7 +1879,14 @@ const chkStats = f => {
   return {done: ks.filter(k=>st[k]).length, total: (window.__chkTotal||{})[f]||0};
 };
 
+const PRINTS = ["はじめに","労基・安衛","労災・徴収","雇用","一般常識","健保","年金","横断・直前"];
 function renderNoteList(){
+  const box = $("printLinks");
+  if(box && !box.dataset.done){
+    box.dataset.done = "1";
+    box.innerHTML = `<a class="lnk" href="print.html" target="_blank">全部（99資料）</a>`
+      + PRINTS.map(g=>`<a class="lnk" href="print-${encodeURIComponent(g)}.html" target="_blank">${esc(g)}</a>`).join("");
+  }
   $("noteList").hidden=false; $("noteView").hidden=true;
   $("noteCards").innerHTML=(window.NOTES||[]).map(d=>{
     const no=d.file.slice(0,2), s=chkStats(d.file);

@@ -1,0 +1,863 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>社労士2026 学習資料｜労災・徴収</title>
+<style>
+@page { size: A4 portrait; margin: 16mm 14mm 18mm; }
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+body{margin:0; color:#111; background:#fff;
+  font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
+  font-size:9.6pt; line-height:1.72; text-align:justify;
+  font-feature-settings:"palt" 1;}
+.wrap{max-width:182mm; margin:0 auto; padding:10mm 6mm}
+/* ── 巻頭 ── */
+.cover{text-align:center; padding:40mm 0 0}
+.cover h1{font-size:22pt; letter-spacing:.06em; margin:0 0 6mm}
+.cover .sub{font-size:10pt; color:#555; line-height:2}
+.howto{margin:16mm auto 0; max-width:130mm; text-align:left;
+  border:1pt solid #bbb; padding:6mm 7mm; font-size:9pt; line-height:1.8}
+.howto b{font-size:9.6pt}
+/* ── 目次 ── */
+.toc h2{font-size:13pt; margin:0 0 4mm; padding-bottom:2mm; border-bottom:1.4pt solid #111}
+.toc .grp{margin:5mm 0 2mm; font-weight:700; font-size:10.5pt;
+  border-left:3pt solid #111; padding-left:3mm}
+.toc ol{list-style:none; margin:0; padding:0; columns:2; column-gap:10mm}
+.toc li{break-inside:avoid; font-size:9pt; line-height:1.85;
+  display:flex; gap:2mm; align-items:baseline}
+.toc .no{display:inline-block; min-width:9mm; font-weight:700; font-variant-numeric:tabular-nums}
+.toc .dots{flex:1; border-bottom:.4pt dotted #999; transform:translateY(-2px)}
+/* ── 各資料 ── */
+.doc{break-before:page; page-break-before:always}
+.doc:first-of-type{break-before:auto; page-break-before:auto}
+.doc > .head{border-bottom:1.6pt solid #111; padding-bottom:2.5mm; margin:0 0 5mm}
+.doc > .head .no{font-size:8.5pt; letter-spacing:.14em; color:#666}
+.doc > .head h1{font-size:16pt; margin:1mm 0 0; letter-spacing:-.01em}
+.doc > .head .desc{font-size:8.5pt; color:#555; margin:1.5mm 0 0}
+h2{font-size:12pt; margin:7mm 0 2.5mm; padding:1mm 0 1mm 3mm;
+  border-left:3.5pt solid #111; break-after:avoid; page-break-after:avoid}
+h3{font-size:10.6pt; margin:5mm 0 2mm; padding-bottom:.8mm;
+  border-bottom:.6pt solid #ccc; break-after:avoid; page-break-after:avoid}
+h4{font-size:9.8pt; margin:4mm 0 1.5mm; break-after:avoid; page-break-after:avoid}
+p{margin:0 0 2.4mm}
+ul,ol{margin:0 0 2.8mm; padding-left:6mm}
+li{margin:0 0 .8mm}
+ul.chk{list-style:none; padding-left:0}
+ul.chk li::before{content:"☐"; margin-right:2mm; font-size:11pt; line-height:1}
+strong{font-weight:700}
+code{font-family:"SFMono-Regular",Consolas,"Noto Sans Mono",monospace;
+  font-size:8.6pt; background:#f2f2f2; padding:.2mm 1mm; border-radius:1mm}
+pre{background:#f6f6f6; border:.5pt solid #ddd; padding:3mm 4mm; margin:0 0 3mm;
+  break-inside:avoid; page-break-inside:avoid; overflow:visible}
+pre code{background:none; padding:0; font-size:8.6pt; line-height:1.6; white-space:pre-wrap}
+blockquote{margin:0 0 3mm; padding:2mm 3mm; background:#f7f7f7;
+  border-left:2.5pt solid #888; break-inside:avoid; page-break-inside:avoid}
+blockquote p:last-child{margin-bottom:0}
+hr{border:0; border-top:.6pt solid #ddd; margin:5mm 0}
+table{border-collapse:collapse; width:100%; margin:0 0 3.5mm; font-size:8.6pt;
+  break-inside:avoid; page-break-inside:avoid}
+th,td{border:.5pt solid #999; padding:1.4mm 2mm; text-align:left; vertical-align:top;
+  line-height:1.55}
+th{background:#ececec; font-weight:700; white-space:nowrap}
+thead{display:table-header-group}
+/* 大きい表は途中で切れてよい。切れないと1ページに収まらず消える */
+table.big{break-inside:auto; page-break-inside:auto}
+table.big tr{break-inside:avoid; page-break-inside:avoid}
+/* ── 参照（紙ではリンクを押せないので番号で引く）── */
+.ref{white-space:nowrap; font-weight:600}
+.ref .n{font-size:8pt; border:.6pt solid #666; border-radius:1mm;
+  padding:0 1mm; margin-right:.8mm; font-variant-numeric:tabular-nums}
+.ref .sec{font-weight:400; color:#444}
+/* ── 画面で見るときだけの操作 ── */
+.bar{position:sticky; top:0; background:#fff; border-bottom:1pt solid #ddd;
+  padding:8px 12px; display:flex; gap:10px; align-items:center; font-size:13px; z-index:9}
+.bar a{color:#1a4fd6}
+.bar button{font:inherit; padding:5px 12px; border:1px solid #999; background:#fff;
+  border-radius:5px; cursor:pointer}
+@media print{ .bar{display:none} .wrap{padding:0} }
+</style>
+<div class="bar">
+  <button onclick="print()">印刷する</button>
+  <span>A4縦・18資料。ブラウザの印刷から「背景のグラフィック」を入にすると表の罫線がきれいに出ます。</span>
+</div>
+<div class="wrap"><div class="cover"><h1>社労士2026 学習資料｜労災・徴収</h1><div class="sub">全体版の資料 25〜42　（本文中の参照番号は全体版と共通です）</div>
+<div class="howto">
+<b>紙で読むときの約束ごと</b>
+<p style="margin:2mm 0 0">本文中の <span class="ref"><span class="n">23</span>平均賃金</span>
+のような表示は、ほかの資料への参照です。頭の番号が資料の通し番号なので、
+目次か各ページ右上の番号から引いてください。</p>
+<p style="margin:2mm 0 0"><span class="ref"><span class="n">5</span>労働基準法
+<span class="sec">「4. 労働時間・休憩・休日」</span></span> のように節名が付いているものは、
+その資料の中の該当する節を指します。</p>
+<p style="margin:2mm 0 0">□ は手で塗るためのものです。</p>
+</div>
+</div><div class="doc toc"><h2>目次</h2><div class="grp">労災・徴収</div><ol><li><span class="no">25</span><span>労災保険法</span><span class="dots"></span></li><li><span class="no">26</span><span>業務災害の認定</span><span class="dots"></span></li><li><span class="no">27</span><span>通勤災害</span><span class="dots"></span></li><li><span class="no">28</span><span>給付基礎日額とスライド</span><span class="dots"></span></li><li><span class="no">29</span><span>療養給付と休業給付</span><span class="dots"></span></li><li><span class="no">30</span><span>障害給付と遺族給付</span><span class="dots"></span></li><li><span class="no">31</span><span>特別加入</span><span class="dots"></span></li><li><span class="no">32</span><span>支給制限と第三者行為</span><span class="dots"></span></li><li><span class="no">33</span><span>社会復帰促進等事業</span><span class="dots"></span></li><li><span class="no">34</span><span>徴収法</span><span class="dots"></span></li><li><span class="no">35</span><span>保険関係の成立と消滅</span><span class="dots"></span></li><li><span class="no">36</span><span>事業の一括</span><span class="dots"></span></li><li><span class="no">37</span><span>賃金総額と保険料率</span><span class="dots"></span></li><li><span class="no">38</span><span>概算保険料と確定保険料</span><span class="dots"></span></li><li><span class="no">39</span><span>メリット制</span><span class="dots"></span></li><li><span class="no">40</span><span>印紙保険料と特例納付</span><span class="dots"></span></li><li><span class="no">41</span><span>督促・延滞金・時効</span><span class="dots"></span></li><li><span class="no">42</span><span>労働保険事務組合</span><span class="dots"></span></li></ol></div><div class="doc"><div class="head"><div class="no">資料 25 ／ 労災・徴収</div><h1>労災保険法</h1><div class="desc">択一7問。選択式で2点補正されやすい要注意科目</div></div><table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>択一</td><td>7問（徴収3問と合わせて10問）</td></tr><tr><td>選択</td><td>5点</td></tr><tr><td>特徴</td><td><strong>選択式で基準点が2点に補正された年が多い</strong>（第57回も労災は2点）＝落としやすい科目。条文の文言をそのまま覚えるのが最も効率的</td></tr></tbody></table>
+<hr>
+<h2>出題傾向（過去9年・第49〜57回の実データ）</h2>
+<h3>択一の設問形式</h3>
+<table class="big"><thead><tr><th>形式</th><th>問数</th><th>割合</th></tr></thead><tbody><tr><td>誤りを選ぶ</td><td>43</td><td>48%</td></tr><tr><td>正しいものを選ぶ</td><td>30</td><td>33%</td></tr><tr><td>個数問題</td><td>12</td><td>13%</td></tr><tr><td>組合せ問題</td><td>4</td><td>4%</td></tr><tr><td>その他</td><td>1</td><td>1%</td></tr></tbody></table>
+<p><strong>労災枠 計90問</strong>のうち、<strong>個数問題12問・組合せ問題4問（合わせて18%）</strong>。個数問題が多い科目です。個数は<strong>5肢すべての判断が必要</strong>で時間を食います。2肢以上分からなければ飛ばしてください。（→ <span class="ref"><span class="n">97</span>個数・組合せ問題<span class="sec">（全体版）</span></span>）</p>
+<h3>設問形式の推移（作問方針の変化）</h3>
+<table class="big"><thead><tr><th>年度</th><th>個数・組合せ</th><th>誤りを選ぶ</th><th>正しいものを選ぶ</th><th>肢の平均字数</th><th>判例に言及</th></tr></thead><tbody><tr><td>令和7</td><td>1</td><td>3</td><td>6</td><td>75</td><td>0</td></tr><tr><td>令和6</td><td>3</td><td>5</td><td>1</td><td>82</td><td>0</td></tr><tr><td>令和5</td><td>2</td><td>4</td><td>4</td><td>65</td><td>0</td></tr><tr><td>令和4</td><td>2</td><td>4</td><td>4</td><td>94</td><td>0</td></tr><tr><td>令和3</td><td>0</td><td>7</td><td>3</td><td>110</td><td>0</td></tr><tr><td>令和2</td><td>1</td><td>5</td><td>4</td><td>96</td><td>0</td></tr><tr><td>令和元</td><td>3</td><td>5</td><td>2</td><td>71</td><td>0</td></tr><tr><td>平成30</td><td>2</td><td>5</td><td>3</td><td>87</td><td>0</td></tr><tr><td>平成29</td><td>2</td><td>5</td><td>3</td><td>87</td><td>2</td></tr></tbody></table>
+<ul><li>肢が短くなっています（平均90字 → 79字）</li></ul>
+<h3>基準点補正の履歴（この科目が救済された年）</h3>
+<p><strong>選択式</strong>　令和7年度 <strong>2点</strong>に引下げ</p>
+<blockquote><p>選択式の引下げは9年で1回。<strong>例外的</strong>です。基準点は自力で超える前提で臨んでください。</p></blockquote>
+<h3>頻出条文（択一で9年間に参照された回数）</h3>
+<p><strong>上位9条で択一16回分</strong>。回数が多い条ほど、条文そのものを読んでおく価値があります。「詳しく読む」は、その条をいちばん詳しく扱っている別ページです。</p>
+<table class="big"><thead><tr><th>条文</th><th>何を定めているか</th><th>回数</th><th>出題された年度</th><th>詳しく読む</th></tr></thead><tbody><tr><td><strong>第34条</strong></td><td>特別加入</td><td>5</td><td>令和5・令和元・平成30・平成29</td><td><span class="ref"><span class="n">31</span>特別加入</span></td></tr><tr><td><strong>第33条</strong></td><td>特別加入</td><td>3</td><td>令和4・令和2</td><td><span class="ref"><span class="n">31</span>特別加入</span></td></tr><tr><td><strong>第7条</strong></td><td>通勤の定義</td><td>2</td><td>令和7・令和6</td><td><span class="ref"><span class="n">27</span>通勤災害</span></td></tr><tr><td><strong>第8条の3</strong></td><td>給付基礎日額とスライド</td><td>1</td><td>令和2</td><td><span class="ref"><span class="n">28</span>給付基礎日額とスライド</span></td></tr><tr><td><strong>第35条</strong></td><td>特別加入</td><td>1</td><td>令和5</td><td><span class="ref"><span class="n">31</span>特別加入</span></td></tr><tr><td><strong>第36条</strong></td><td>特別加入</td><td>1</td><td>令和5</td><td><span class="ref"><span class="n">31</span>特別加入</span></td></tr><tr><td><strong>第14条</strong></td><td>休業補償給付</td><td>1</td><td>令和6</td><td><span class="ref"><span class="n">29</span>療養給付と休業給付</span></td></tr><tr><td><strong>第8条の2</strong></td><td>給付基礎日額とスライド</td><td>1</td><td>令和7</td><td><span class="ref"><span class="n">28</span>給付基礎日額とスライド</span></td></tr><tr><td><strong>第46条の17</strong></td><td>—</td><td>1</td><td>令和7</td><td>—</td></tr></tbody></table>
+<h3>選択式が9年間で問うたこと（労災）</h3>
+<p><strong>45空欄</strong>の内訳は <strong>用語25</strong>（56%）、<strong>数字17</strong>（38%）、<strong>判示・条文の言い回し3</strong>（7%）。空欄は5つあり、<strong>3つ取れれば基準点</strong>です。長い判示は先頭だけを載せています。全文は <span class="ref"><span class="n">93</span>条文素読<span class="sec">（全体版）</span></span> にあります。</p>
+<table class="big"><thead><tr><th>年度</th><th>空欄</th><th>正答となった語</th><th>その年の根拠条文</th></tr></thead><tbody><tr><td>令和7</td><td>A</td><td>第5級以上</td><td>労災保険法15条／労災保険法36条</td></tr><tr><td></td><td>B</td><td>労働</td><td></td></tr><tr><td></td><td>C</td><td>10年</td><td></td></tr><tr><td></td><td>D</td><td>補完</td><td></td></tr><tr><td></td><td>E</td><td>労働基準監督署長</td><td></td></tr><tr><td>令和6</td><td>A</td><td>8</td><td>労災保険法14条</td></tr><tr><td></td><td>B</td><td>5</td><td></td></tr><tr><td></td><td>C</td><td>月の翌月</td><td></td></tr><tr><td></td><td>D</td><td>自己</td><td></td></tr><tr><td></td><td>E</td><td>被扶養利益の喪失</td><td></td></tr><tr><td>令和5</td><td>A</td><td>療養</td><td>労災保険法14条／労災保険法29条</td></tr><tr><td></td><td>B</td><td>4</td><td></td></tr><tr><td></td><td>C</td><td>100分の60</td><td></td></tr><tr><td></td><td>D</td><td>健康診断</td><td></td></tr><tr><td></td><td>E</td><td>賃金</td><td></td></tr><tr><td>令和4</td><td>A</td><td>9</td><td>労働保険徴収法16条／労働保険徴収法3条</td></tr><tr><td></td><td>B</td><td>290</td><td></td></tr><tr><td></td><td>C</td><td>労働者</td><td></td></tr><tr><td></td><td>D</td><td>労働者を使用するものがあること</td><td></td></tr><tr><td></td><td>E</td><td>営業等の事業に係る業務</td><td></td></tr><tr><td>令和3</td><td>A</td><td>負傷、疾病、障害又は死亡の原因又は要因となる事由…</td><td>労災保険法18条の3／労災保険法5条／労災保険法7条</td></tr><tr><td></td><td>B</td><td>その収入が当該複数事業労働者の生計を維持する程度…</td><td></td></tr><tr><td></td><td>C</td><td>その事由が生じた月の翌月からその事由が消滅した月まで</td><td></td></tr><tr><td></td><td>D</td><td>60</td><td></td></tr><tr><td></td><td>E</td><td>18</td><td></td></tr><tr><td>令和2</td><td>A</td><td>合理的</td><td></td></tr><tr><td></td><td>B</td><td>転任</td><td></td></tr><tr><td></td><td>C</td><td>要介護状態</td><td></td></tr><tr><td></td><td>D</td><td>介護</td><td></td></tr><tr><td></td><td>E</td><td>18</td><td></td></tr><tr><td>令和元</td><td>A</td><td>労働基準</td><td>労働保険徴収法4条の2／労災保険法1条</td></tr><tr><td></td><td>B</td><td>二次健康診断等</td><td></td></tr><tr><td></td><td>C</td><td>傷病</td><td></td></tr><tr><td></td><td>D</td><td>10日</td><td></td></tr><tr><td></td><td>E</td><td>1年</td><td></td></tr><tr><td>平成30</td><td>A</td><td>労働保険事務組合</td><td>労災保険法33条</td></tr><tr><td></td><td>B</td><td>サービス業</td><td></td></tr><tr><td></td><td>C</td><td>25，000円</td><td></td></tr><tr><td></td><td>D</td><td>林業</td><td></td></tr><tr><td></td><td>E</td><td>個人タクシー事業者</td><td></td></tr><tr><td>平成29</td><td>A</td><td>労働者災害補償保険審査官</td><td>労災保険法42条</td></tr><tr><td></td><td>B</td><td>労働保険審査会</td><td></td></tr><tr><td></td><td>C</td><td>3 か月</td><td></td></tr><tr><td></td><td>D</td><td>2年</td><td></td></tr><tr><td></td><td>E</td><td>5年</td><td></td></tr></tbody></table>
+<blockquote><p>この節は <code>kakomon/gen_trend.py</code> が過去問データから自動生成しています。</p></blockquote>
+<h2>深掘り（別ページ）</h2>
+<p>条文の趣旨・要件の切り分け・誤り肢の作られ方を論点ごとにまとめた別ページです。</p>
+<table class="big"><thead><tr><th>論点</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">26</span>業務災害の認定</span></td></tr><tr><td><span class="ref"><span class="n">27</span>通勤災害</span></td></tr><tr><td><span class="ref"><span class="n">28</span>給付基礎日額とスライド</span></td></tr><tr><td><span class="ref"><span class="n">29</span>療養給付と休業給付</span></td></tr><tr><td><span class="ref"><span class="n">30</span>障害給付と遺族給付</span></td></tr><tr><td><span class="ref"><span class="n">31</span>特別加入</span></td></tr><tr><td><span class="ref"><span class="n">32</span>支給制限と第三者行為</span></td></tr><tr><td><span class="ref"><span class="n">33</span>社会復帰促進等事業</span></td></tr></tbody></table>
+<h2>目的条文（選択式で出題実績あり／第51回・第56回）</h2>
+<p><strong>1条</strong></p>
+<blockquote><p>労働者災害補償保険は、<strong>業務上の事由</strong>、複数事業労働者の<strong>二以上の事業の業務を要因とする事由</strong>又は<strong>通勤</strong>による労働者の負傷、疾病、障害、死亡等に対して<strong>迅速かつ公正な保護</strong>をするため、必要な保険給付を行い、あわせて、…負傷し、又は疾病にかかつた労働者の<strong>社会復帰の促進</strong>、当該労働者及びその遺族の<strong>援護</strong>、労働者の<strong>安全及び衛生の確保</strong>等を図り、もつて労働者の<strong>福祉の増進</strong>に寄与することを目的とする。</p></blockquote>
+<p><strong>2条の2（社会復帰促進等事業）</strong></p>
+<blockquote><p>労働者災害補償保険は、第1条の目的を達成するため、業務災害、複数業務要因災害及び通勤災害に関して保険給付を行うほか、<strong>社会復帰促進等事業</strong>を行うことができる。</p></blockquote>
+<blockquote><p>「迅速かつ公正な保護」「社会復帰の促進」「援護」「安全及び衛生の確保」が定番の空欄。</p></blockquote>
+<hr>
+<h2>1. 目的・適用</h2>
+<h3>目的（1条）</h3>
+<p>業務上の事由、<strong>複数事業労働者の二以上の事業の業務を要因とする事由</strong>又は通勤による労働者の負傷、疾病、障害、死亡等に対して<strong>迅速かつ公正な保護</strong>をするため、必要な保険給付を行い、あわせて社会復帰促進等事業を行うことができる。</p>
+<h3>給付の3類型と名称</h3>
+<table class="big"><thead><tr><th>類型</th><th>給付の名称</th></tr></thead><tbody><tr><td><strong>業務災害</strong></td><td>◯◯<strong>補償</strong>給付（例：療養補償給付）</td></tr><tr><td><strong>複数業務要因災害</strong></td><td><strong>複数事業労働者</strong>◯◯給付</td></tr><tr><td><strong>通勤災害</strong></td><td>◯◯給付（例：療養給付）</td></tr></tbody></table>
+<blockquote><p><strong>「補償」の有無が業務災害かどうかの目印。</strong></p></blockquote>
+<h3>適用</h3>
+<table class="big"><thead><tr><th>区分</th><th>内容</th></tr></thead><tbody><tr><td>適用事業</td><td>労働者を使用する事業。<strong>国の直営事業・非現業の官公署は適用しない</strong></td></tr><tr><td><strong>暫定任意適用事業</strong></td><td>農業・林業・水産業の一部。常時5人未満の個人経営（<strong>林業は常時労働者を使用しないもの</strong>）</td></tr><tr><td>労働者</td><td>労基法9条と同じ概念。<strong>日雇・パート・アルバイト・外国人（不法就労を含む）も対象</strong></td></tr></tbody></table>
+<h3>特別加入（33条〜36条）</h3>
+<table class="big"><thead><tr><th>種別</th><th>対象</th><th>要件</th></tr></thead><tbody><tr><td><strong>第1種</strong></td><td>中小事業主等</td><td><strong>労働保険事務組合への委託が必要</strong></td></tr><tr><td><strong>第2種</strong></td><td>一人親方その他の自営業者、特定作業従事者</td><td>団体を通じて加入</td></tr><tr><td><strong>第3種</strong></td><td><strong>海外派遣者</strong></td><td>派遣元団体等を通じて加入</td></tr></tbody></table>
+<blockquote><p><strong>★引っかけ</strong>：<strong>海外出張</strong>は国内事業の労災が適用されるので特別加入不要。<strong>海外派遣</strong>が第3種。
+近年、フリーランス（特定受託事業者）等へ第2種の対象が拡大されている。</p></blockquote>
+<hr>
+<h2>2. 業務災害・通勤災害の認定</h2>
+<h3>業務災害</h3>
+<p><strong>業務遂行性</strong>（労働契約に基づき事業主の支配下にある状態）＋<strong>業務起因性</strong>（業務と傷病との相当因果関係）の双方が必要。</p>
+<blockquote><p><strong>業務遂行性が認められても業務起因性が当然に推定されるわけではない。</strong>
+休憩時間中の私的行為による負傷は、業務遂行性はあっても業務起因性がない（施設の欠陥による場合を除く）。</p></blockquote>
+<h3>通勤の3類型（7条2項）</h3>
+<table class="big"><thead><tr><th>類型</th><th>内容</th><th>保険関係</th></tr></thead><tbody><tr><td>①</td><td>住居と就業の場所との間の往復</td><td>—</td></tr><tr><td>②</td><td><strong>就業の場所から他の就業の場所への移動</strong></td><td><strong>移動の終点</strong>の事業場</td></tr><tr><td>③</td><td>住居と就業の場所との往復に先行・後続する住居間の移動（単身赴任者の帰省）</td><td>—</td></tr></tbody></table>
+<h3>逸脱・中断（7条3項）</h3>
+<ul><li><strong>逸脱・中断の間は通勤としない</strong>。合理的な経路に<strong>復した後</strong>が再び通勤となる</li><li>ただし<strong>日常生活上必要な行為</strong>をやむを得ない事由により最小限度の範囲で行う場合は、復した後が通勤となる</li><li><strong>ささいな行為</strong>（トイレ、公衆電話、新聞・雑誌の購入等）は逸脱・中断に当たらず、<strong>その間も通勤</strong></li></ul>
+<p><strong>日常生活上必要な行為</strong>
+① 日用品の購入その他これに準ずる行為
+② 職業訓練・学校教育法の教育その他これらに準ずる教育訓練
+③ 選挙権の行使その他これに準ずる行為
+④ 病院・診療所での診察・治療その他これに準ずる行為
+⑤ <strong>要介護状態にある配偶者・子・父母・孫・祖父母・兄弟姉妹の介護</strong>（継続的又は反復して行われるもの）</p>
+<hr>
+<h2>3. 保険給付の一覧</h2>
+<table class="big"><thead><tr><th>給付</th><th>支給事由</th><th>内容</th></tr></thead><tbody><tr><td>療養（補償）等給付</td><td>業務上・通勤による傷病の療養</td><td>療養の給付が原則。困難な場合は<strong>療養の費用</strong></td></tr><tr><td>休業（補償）等給付</td><td>療養のため労働できず賃金を受けない</td><td>第<strong>4日目</strong>から、給付基礎日額の<strong>60％</strong>（＋特別支給金20％）</td></tr><tr><td>傷病（補償）等年金</td><td>療養開始後<strong>1年6か月</strong>経過しても治らず傷病等級1〜3級</td><td><strong>職権支給（請求不要）</strong>。休業給付は打切り</td></tr><tr><td>障害（補償）等給付</td><td>傷病が治って障害が残った</td><td>1〜7級=<strong>年金</strong>、8〜14級=<strong>一時金</strong></td></tr><tr><td>遺族（補償）等給付</td><td>死亡</td><td>年金／受給資格者がいなければ一時金（<strong>1,000日分</strong>）</td></tr><tr><td>葬祭料（葬祭給付）</td><td>死亡</td><td><strong>330,000円＋給付基礎日額30日分</strong> と <strong>60日分</strong> の高い方 ⚠️</td></tr><tr><td>介護（補償）等給付</td><td>障害・傷病年金1級等の受給者が介護を受けている</td><td>常時介護＝最高<strong>186,050円</strong>／最低保障<strong>90,790円</strong>、随時介護＝最高<strong>92,980円</strong>／最低保障<strong>45,400円</strong> ⚠️</td></tr><tr><td>二次健康診断等給付</td><td>定期健診で4項目すべてに異常所見</td><td>二次健診＋特定保健指導</td></tr></tbody></table>
+<h3>待期3日</h3>
+<ul><li>継続・断続を<strong>問わない</strong></li><li><strong>業務災害</strong>の待期3日は、事業主が<strong>労基法76条の休業補償</strong>（平均賃金の60％）を行う</li><li><strong>通勤災害</strong>には事業主の補償義務は<strong>ない</strong></li></ul>
+<h3>一部負担金</h3>
+<p><strong>通勤災害の療養給付</strong>を受ける者から <strong>200円</strong>（健保の日雇特例被保険者は100円）。
+業務災害の療養補償給付には<strong>ない</strong>。
+第三者行為災害・既に徴収された者・特別加入者は徴収されない。</p>
+<h3>障害等級と日数</h3>
+<table class="big"><thead><tr><th>等級</th><th>1級</th><th>2級</th><th>3級</th><th>4級</th><th>5級</th><th>6級</th><th>7級</th></tr></thead><tbody><tr><td>障害（補償）年金</td><td><strong>313日</strong></td><td>277</td><td>245</td><td>213</td><td>184</td><td>156</td><td>131</td></tr></tbody></table>
+<p><strong>傷病（補償）年金</strong>は 1級313日・2級277日・3級245日で<strong>障害年金と同じ</strong>。
+障害（補償）一時金は 8級503日 〜 <strong>14級56日</strong>。</p>
+<h3>遺族（補償）等年金</h3>
+<table class="big"><thead><tr><th>遺族の数</th><th>1人</th><th>2人</th><th>3人</th><th>4人以上</th></tr></thead><tbody><tr><td>日数</td><td>153日</td><td>201日</td><td>223日</td><td><strong>245日</strong></td></tr></tbody></table>
+<p><strong>受給資格者</strong>：配偶者、子、父母、孫、祖父母、<strong>兄弟姉妹</strong>（死亡当時その収入によって生計を維持していた者）</p>
+<table class="big"><thead><tr><th>遺族</th><th>年齢・障害要件</th></tr></thead><tbody><tr><td><strong>妻</strong></td><td><strong>要件なし</strong></td></tr><tr><td>夫・父母・祖父母</td><td><strong>60歳以上</strong>（55歳以上60歳未満は受給資格者だが<strong>60歳まで支給停止＝若年停止</strong>）</td></tr><tr><td>子・孫</td><td>18歳到達年度末まで</td></tr><tr><td>兄弟姉妹</td><td>18歳到達年度末まで又は60歳以上</td></tr><tr><td>上記共通</td><td>一定の障害の状態にあれば年齢を問わない</td></tr></tbody></table>
+<h3>二次健康診断等給付（26条）</h3>
+<ul><li>定期健診等で <strong>血圧・血中脂質・血糖・腹囲又はBMI</strong> の<strong>4項目すべて</strong>に異常の所見</li><li>脳血管疾患・心臓疾患の<strong>症状を有していない</strong>こと</li><li>一次健診の受診日から<strong>3か月以内</strong>に請求</li><li>二次健診は<strong>1年度に1回</strong>、特定保健指導は二次健診ごとに1回</li><li>時効<strong>2年</strong></li></ul>
+<hr>
+<h2>4. 給付基礎日額</h2>
+<p>原則として<strong>労基法12条の平均賃金</strong>に相当する額。3つの調整がある。</p>
+<table class="big"><thead><tr><th>調整</th><th>内容</th></tr></thead><tbody><tr><td><strong>スライド制</strong></td><td>賃金水準の変動に応じて改定</td></tr><tr><td><strong>年齢階層別の最低・最高限度額</strong></td><td><strong>年金給付</strong>と、療養開始後<strong>1年6か月経過後</strong>の休業給付に適用</td></tr><tr><td><strong>最低保障額</strong></td><td>休業給付基礎日額・年金給付基礎日額の下限</td></tr></tbody></table>
+<blockquote><p><strong>★引っかけ</strong>：休業給付に年齢階層別限度額が適用されるのは<strong>1年6か月経過後</strong>。</p></blockquote>
+<p><strong>算定基礎日額</strong>（特別支給金の算定）＝ 特別給与（ボーナス）の総額 ÷ 365。上限は給付基礎日額の365倍の20％又は150万円のいずれか低い方。</p>
+<hr>
+<h2>5. 通則</h2>
+<h3>支給制限（12条の2の2）</h3>
+<table class="big"><thead><tr><th>区分</th><th>効果</th></tr></thead><tbody><tr><td><strong>故意</strong>に負傷・疾病・障害・死亡又は事故を生じさせた</td><td>保険給付を<strong>行わない</strong>（絶対的）</td></tr><tr><td><strong>故意の犯罪行為</strong>又は<strong>重大な過失</strong></td><td>全部又は一部を<strong>行わないことができる</strong>（相対的）</td></tr><tr><td>正当な理由なく療養に関する指示に従わず傷病を増悪させた</td><td>同上</td></tr></tbody></table>
+<blockquote><p>「行わない」と「行わないことができる」の書き分けが選択式でそのまま空欄になる。</p></blockquote>
+<h3>第三者行為災害（12条の4）</h3>
+<table class="big"><thead><tr><th>制度</th><th>内容</th></tr></thead><tbody><tr><td><strong>求償</strong></td><td>政府が保険給付を行ったとき、給付の価額の限度で受給権者の損害賠償請求権を取得</td></tr><tr><td><strong>控除</strong></td><td>受給権者が先に損害賠償を受けたとき、その価額の限度で保険給付をしないことができる</td></tr></tbody></table>
+<p>対象は災害発生後<strong>3年以内</strong>に支給事由が生じたものに限る（通達）。</p>
+<h3>時効（42条）</h3>
+<table class="big"><thead><tr><th>期間</th><th>給付</th></tr></thead><tbody><tr><td><strong>2年</strong></td><td>療養、休業、葬祭料、介護、二次健康診断等給付</td></tr><tr><td><strong>5年</strong></td><td><strong>障害、遺族</strong></td></tr></tbody></table>
+<blockquote><p>傷病（補償）年金は<strong>職権支給</strong>なので時効の問題は生じない。</p></blockquote>
+<h3>その他の通則</h3>
+<table class="big"><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td>12条の5</td><td><strong>譲渡・担保・差押えの禁止</strong>、<strong>公課の禁止</strong>（租税その他の公課を課してはならない）</td></tr><tr><td>12条の6</td><td>未支給の保険給付（配偶者・子・父母・孫・祖父母・兄弟姉妹で生計同一）</td></tr><tr><td>19条</td><td>傷病補償年金を療養開始後<strong>3年</strong>経過日に受けている場合、<strong>労基法の打切補償を支払ったものとみなす</strong>（解雇制限が外れる）</td></tr></tbody></table>
+<h3>不服申立て（38条・40条）</h3>
+<pre><code>労働者災害補償保険審査官（都道府県労働局）→ 労働保険審査会</code></pre>
+<ul><li>審査請求から<strong>3か月</strong>経過しても決定がないときは、棄却されたものとみなして再審査請求できる</li><li>処分取消しの訴えは<strong>審査請求に対する決定を経た後</strong>でなければ提起できない</li></ul>
+<hr>
+<h2>6. 社会復帰促進等事業（29条）</h2>
+<p>3本柱：<strong>社会復帰促進事業／被災労働者等援護事業／安全衛生確保等事業</strong></p>
+<h3>特別支給金</h3>
+<table class="big"><thead><tr><th>種類</th><th>額</th></tr></thead><tbody><tr><td>休業特別支給金</td><td>給付基礎日額の<strong>20％</strong></td></tr><tr><td>障害特別支給金</td><td>障害等級に応じた一時金</td></tr><tr><td><strong>遺族特別支給金</strong></td><td><strong>300万円</strong>（一時金）</td></tr><tr><td>傷病特別支給金</td><td>傷病等級に応じた一時金</td></tr><tr><td>各種特別年金・特別一時金</td><td><strong>算定基礎日額</strong>（ボーナス）を基礎に算定</td></tr></tbody></table>
+<p><strong>特別支給金は保険給付ではない</strong>ため：</p>
+<ul><li>第三者行為災害の<strong>求償・控除の対象外</strong></li><li>損害賠償との<strong>損益相殺の対象外</strong></li><li>支給決定への不服は<strong>労災保険審査官への審査請求ができない</strong>（行政不服審査法による）</li></ul>
+<hr>
+<h2>7. 選択式で狙われる条文</h2>
+<p><strong>12条の2の2（支給制限）</strong></p>
+<blockquote><p>労働者が、<strong>故意</strong>に負傷、疾病、障害若しくは死亡又はその直接の原因となった事故を生じさせたときは、政府は、保険給付を<strong>行わない</strong>。
+労働者が、<strong>故意の犯罪行為</strong>又は<strong>重大な過失</strong>により、…事故を生じさせ、又は正当な理由がなくて療養に関する指示に従わないことにより、負傷、疾病、障害若しくは死亡若しくはこれらの原因となった事故を生じさせ、又は負傷、疾病若しくは障害の程度を増進させ、若しくはその回復を妨げたときは、政府は、保険給付の全部又は一部を<strong>行わないことができる</strong>。</p></blockquote>
+<p><strong>42条（時効）</strong></p>
+<blockquote><p>療養補償給付、休業補償給付、葬祭料、介護補償給付…を受ける権利は、これらを行使することができる時から<strong>2年</strong>を経過したとき、障害補償給付、遺族補償給付…を受ける権利は、これらを行使することができる時から<strong>5年</strong>を経過したときは、時効によって消滅する。</p></blockquote>
+<p><strong>7条3項（逸脱・中断）</strong></p>
+<blockquote><p>労働者が、前項各号に掲げる移動の経路を<strong>逸脱</strong>し、又は同項各号に掲げる移動を<strong>中断</strong>した場合においては、当該逸脱又は中断の間及びその後の同項各号に掲げる移動は、第一項第三号の通勤としない。ただし、当該逸脱又は中断が、<strong>日常生活上必要な行為</strong>であつて厚生労働省令で定めるものをやむを得ない事由により行うための<strong>最小限度のもの</strong>である場合は、当該逸脱又は中断の<strong>間を除き</strong>、この限りでない。</p></blockquote>
+<hr>
+<h2>直前チェック（労災）</h2>
+<ul class="chk"><li>給付名の「補償」の有無で業務／通勤を見分ける</li><li>特別加入：第1種は<strong>事務組合への委託が必要</strong>、海外<strong>出張</strong>は特別加入不要</li><li>事業場間移動は<strong>終点</strong>の事業場の保険関係</li><li>逸脱・中断の<strong>間</strong>は通勤でない／ささいな行為は逸脱でない</li><li>通勤災害の療養給付は<strong>一部負担金200円</strong></li><li>傷病補償年金は<strong>職権支給</strong>（請求不要）</li><li>障害は1〜7級年金／8〜14級一時金。1級313日</li><li>遺族の範囲に<strong>兄弟姉妹を含む</strong>（厚年は含まない）／妻に年齢要件なし</li><li>時効：障害・遺族=<strong>5年</strong>、その他=2年</li><li>「行わない」と「行わないことができる」の書き分け</li><li>特別支給金は保険給付ではない（求償・控除・損益相殺の対象外）</li><li>二次健診は<strong>4項目すべて</strong>に異常所見／3か月以内に請求</li></ul>
+<hr>
+<h2>補遺｜過去問で問われているのに落としやすい論点</h2>
+<h3>業務上の疾病の認定基準 ★過去9年で8年分に登場（S級論点）</h3>
+<table class="big"><thead><tr><th>疾病</th><th>認定基準の骨格</th></tr></thead><tbody><tr><td><strong>脳・心臓疾患</strong>（過労死）</td><td>① <strong>異常な出来事</strong>（発症直前から前日） ② <strong>短期間の過重業務</strong>（発症前おおむね1週間） ③ <strong>長期間の過重業務</strong>（発症前おおむね6か月）。時間外労働が<strong>発症前1か月に100時間</strong>又は<strong>2〜6か月平均で80時間</strong>を超えると業務との関連性が強い</td></tr><tr><td><strong>精神障害</strong></td><td>① 対象疾病を発病 ② 発病前おおむね<strong>6か月</strong>の間に業務による<strong>強い心理的負荷</strong>が認められる ③ 業務以外の要因により発病したとは認められない。<strong>心理的負荷評価表</strong>により「強・中・弱」を判定</td></tr><tr><td>上肢障害・腰痛</td><td>作業態様・作業期間により判断</td></tr></tbody></table>
+<blockquote><p><strong>★引っかけ</strong>：脳・心臓疾患の「<strong>100時間／80時間</strong>」は、労基法36条の特別条項の上限（単月100時間未満・2〜6か月平均80時間以内）と<strong>同じ数字</strong>。過労死ラインを法律の上限に合わせた経緯があります。</p></blockquote>
+<blockquote><p>なお<strong>メリット制</strong>（労災保険率の増減）は徴収法の制度です → <span class="ref"><span class="n">34</span>徴収法</span></p></blockquote>
+<h3>複数業務要因災害（令和2年9月1日〜）</h3>
+<p>2以上の事業に使用される労働者（<strong>複数事業労働者</strong>）について、1つの事業では業務起因性が認められない場合でも、<strong>すべての事業の業務上の負荷を総合的に評価</strong>して労災認定する仕組み。</p>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>対象疾病</td><td>脳・心臓疾患、精神障害等（厚生労働省令で定めるもの）</td></tr><tr><td>給付名</td><td><strong>複数事業労働者◯◯給付</strong>（「補償」が付かない）</td></tr><tr><td>給付基礎日額</td><td><strong>すべての就業先の賃金額を合算</strong>して算定</td></tr><tr><td>業務災害との関係</td><td>まず業務災害として判断し、認められない場合に複数業務要因災害として判断する</td></tr></tbody></table>
+<h3>特別加入の細目</h3>
+<table class="big"><thead><tr><th>種別</th><th>給付基礎日額</th><th>業務災害の範囲</th></tr></thead><tbody><tr><td>第1種（中小事業主等）</td><td>3,500円〜25,000円の範囲で申請し<strong>厚生労働大臣が決定</strong></td><td>労働者の行う業務に準じた業務</td></tr><tr><td>第2種（一人親方・特定作業従事者）</td><td>同上</td><td>申請時に届け出た業務</td></tr><tr><td>第3種（海外派遣者）</td><td>同上</td><td>派遣先での業務</td></tr></tbody></table>
+<ul><li>特別加入者には<strong>通勤災害の適用がない者</strong>がいる（個人タクシー・個人貨物運送業者、漁船による自営業者、特定農作業従事者等）</li><li>中小事業主等の<strong>業務遂行性</strong>は、労働者と同様の業務を行っている時間に限られる</li></ul>
+<h3>給付基礎日額のスライドと限度額</h3>
+<table class="big"><thead><tr><th>調整</th><th>対象</th><th>内容</th></tr></thead><tbody><tr><td><strong>スライド制</strong></td><td>全給付</td><td>平均給与額が<strong>100分の110を超え又は100分の90を下回る</strong>に至った場合に改定</td></tr><tr><td><strong>年齢階層別の最低・最高限度額</strong></td><td>年金給付／療養開始後<strong>1年6か月経過後</strong>の休業給付</td><td>年齢階層ごとに上下限を設定</td></tr><tr><td><strong>最低保障額</strong></td><td>休業・年金給付基礎日額</td><td>自動変更対象額（⚠️年度で変わる）</td></tr></tbody></table>
+<h3>第三者行為災害の実務</h3>
+<table><thead><tr><th>制度</th><th>内容</th></tr></thead><tbody><tr><td><strong>求償</strong></td><td>政府が保険給付を行った → 給付の価額の限度で受給権者の損害賠償請求権を取得</td></tr><tr><td><strong>控除</strong></td><td>受給権者が先に損害賠償を受けた → その価額の限度で保険給付をしないことができる</td></tr><tr><td>期間の限度</td><td>災害発生後<strong>3年以内</strong>に支給事由が生じたものに限る（通達）</td></tr><tr><td><strong>示談</strong></td><td>受給権者が真正な示談で損害賠償請求権を放棄した場合、政府は<strong>保険給付を行わない</strong></td></tr><tr><td>提出書類</td><td><strong>第三者行為災害届</strong></td></tr></tbody></table>
+<h3>社会復帰促進等事業の3本柱（29条）</h3>
+<p>① <strong>社会復帰促進事業</strong>（療養施設の設置運営、義肢等補装具の支給、アフターケア）
+② <strong>被災労働者等援護事業</strong>（特別支給金、労災就学援護費、休業補償特別援護金）
+③ <strong>安全衛生確保等事業</strong>（未払賃金の立替払、健康診断施設の設置運営、労働災害防止対策）</p>
+<blockquote><p><strong>未払賃金の立替払</strong>（賃金の支払の確保等に関する法律）は労災保険の社会復帰促進等事業として行われる。
+立替払の額は未払賃金総額の<strong>100分の80</strong>、年齢に応じた<strong>上限額</strong>あり。</p></blockquote>
+<blockquote><p>年度依存の数値は <span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span> で照合すること。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">1</span>法改正まとめ<span class="sec">（全体版）</span></span></td><td>この科目の令和8年度改正を施行日で確認</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>時効・届出期限・遺族の範囲などを他科目と並べて比較</td></tr><tr><td><span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span></td><td><code>⚠️要確認</code> を付けた年度依存の数値を照合</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 26 ／ 労災・徴収</div><h1>業務災害の認定</h1><div class="desc">遂行性と起因性の順序。過労死の100時間/80時間</div></div><h3>二つの物差し</h3>
+<p>業務災害と認められるには、<strong>業務遂行性</strong>と<strong>業務起因性</strong>の両方が要ります。順番は遂行性が先です。</p>
+<table class="big"><thead><tr><th></th><th>意味</th></tr></thead><tbody><tr><td><strong>業務遂行性</strong></td><td>労働者が労働契約に基づき<strong>事業主の支配下にある</strong>状態で起きたこと</td></tr><tr><td><strong>業務起因性</strong></td><td>その業務に<strong>内在する危険が現実化</strong>したものといえること</td></tr></tbody></table>
+<p>遂行性が無ければ起因性を検討するまでもなく否定されます。逆に、遂行性があっても起因性が無ければ（私的な喧嘩、天災の単なる巻き添えなど）業務災害になりません。</p>
+<h3>業務遂行性の3類型</h3>
+<table class="big"><thead><tr><th>類型</th><th>例</th><th>起因性の判断</th></tr></thead><tbody><tr><td>① 支配下かつ管理下で<strong>業務に従事中</strong></td><td>作業中の負傷</td><td>原則として認められる</td></tr><tr><td>② 支配下かつ管理下だが<strong>業務に従事していない</strong></td><td>休憩中、就業前後</td><td>原則として否定。<strong>施設の欠陥</strong>によるものなら認められる</td></tr><tr><td>③ 支配下だが<strong>管理下を離れている</strong></td><td>出張中、社用外出中</td><td>出張の<strong>全過程</strong>が対象。積極的な私的行為の間を除き認められる</td></tr></tbody></table>
+<blockquote><p>★③の出張は「宿泊先で就寝中」も含みます。「事業場を離れているから業務災害ではない」は誤りです。</p></blockquote>
+<h3>よく問われる個別事例</h3>
+<table class="big"><thead><tr><th>事例</th><th>結論</th></tr></thead><tbody><tr><td>休憩時間中の<strong>私的行為</strong>による負傷</td><td>業務災害ではない</td></tr><tr><td>休憩時間中でも<strong>事業場施設の欠陥</strong>による負傷</td><td>業務災害</td></tr><tr><td><strong>通勤途上</strong>でも事業主の提供する専用交通機関の利用中</td><td><strong>業務災害</strong>（通勤災害ではない）</td></tr><tr><td>会社主催の<strong>運動会・宴会</strong>への参加</td><td>参加が<strong>強制</strong>されていれば業務災害</td></tr><tr><td><strong>天災地変</strong>による被災</td><td>事業場の立地・作業条件で危険が加重されていれば業務災害</td></tr><tr><td>他人の<strong>故意</strong>による加害（私的怨恨）</td><td>業務災害ではない</td></tr></tbody></table>
+<h3>業務上の疾病</h3>
+<p>労基法75条2項・<strong>労基則別表第1の2</strong>に列挙されています。列挙されたものに当たれば原則として業務起因性が推定されます。</p>
+<table class="big"><thead><tr><th>号</th><th>内容</th></tr></thead><tbody><tr><td>1号</td><td>業務上の負傷に起因する疾病</td></tr><tr><td>2号</td><td><strong>物理的因子</strong>による疾病（紫外線・赤外線・電離放射線・騒音・高温低温など）</td></tr><tr><td>3号</td><td><strong>身体に過度の負担のかかる作業態様</strong>に起因する疾病（腰痛、頸肩腕障害など）</td></tr><tr><td>4号</td><td><strong>化学物質等</strong>による疾病</td></tr><tr><td>5号</td><td><strong>粉じん</strong>を飛散する場所における業務による<strong>じん肺症</strong>等</td></tr><tr><td>6号</td><td><strong>細菌・ウイルス等の病原体</strong>による疾病</td></tr><tr><td>7号</td><td><strong>がん原性物質</strong>・がん原性因子・がん原性工程における業務による疾病</td></tr><tr><td>8号</td><td><strong>長期間にわたる長時間の業務</strong>その他血管病変等を著しく増悪させる業務による<strong>脳・心臓疾患</strong></td></tr><tr><td>9号</td><td>人の生命にかかわる事故への遭遇その他<strong>心理的に過度の負担</strong>を与える事象を伴う業務による<strong>精神及び行動の障害</strong></td></tr><tr><td>10号</td><td>前各号のほか、<strong>厚生労働大臣の指定する疾病</strong></td></tr><tr><td>11号</td><td>その他<strong>業務に起因することの明らかな</strong>疾病</td></tr></tbody></table>
+<blockquote><p>★10号と11号を入れ替える肢が出ます。<strong>大臣指定が10号、包括規定が11号</strong>の順です。</p></blockquote>
+<h3>脳・心臓疾患（いわゆる過労死）の認定</h3>
+<table class="big"><thead><tr><th>区分</th><th>目安</th></tr></thead><tbody><tr><td>異常な出来事</td><td>発症<strong>直前から前日</strong>まで</td></tr><tr><td>短期間の過重業務</td><td>発症前<strong>おおむね1週間</strong></td></tr><tr><td><strong>長期間</strong>の過重業務</td><td>発症前<strong>おおむね6か月</strong>。発症前1か月に<strong>おおむね100時間</strong>、または2〜6か月平均で<strong>月おおむね80時間</strong>を超える時間外労働</td></tr></tbody></table>
+<blockquote><p>★数字を入れ替える誤り肢が定番です。<strong>1か月100時間／2〜6か月平均80時間</strong>の組合せで覚えます。</p></blockquote>
+<h3>精神障害の認定</h3>
+<p>次の3つをすべて満たすことが必要です。</p>
+<ol><li>認定基準の対象となる精神障害を発病していること</li><li>発病前<strong>おおむね6か月</strong>の間に業務による<strong>強い心理的負荷</strong>が認められること</li><li>業務以外の心理的負荷・個体側要因により発病したとは認められないこと</li></ol>
+<p><strong>自殺</strong>については、業務による精神障害を発病した者が自殺を図った場合、<strong>故意（12条の2の2）には当たらない</strong>ものとして扱われます。</p>
+<h3>複数業務要因災害</h3>
+<p>令和2年9月施行。2以上の事業に使用される<strong>複数事業労働者</strong>について、<strong>一の事業のみでは業務と疾病等との因果関係が認められない</strong>場合に、<strong>すべての就業先の負荷を総合的に評価</strong>して判断します（7条1項2号）。</p>
+<p>給付基礎日額も<strong>すべての就業先の賃金額を合算</strong>して算定します。</p>
+<blockquote><p>★「一の事業で業務災害と認められる場合」は通常の業務災害として扱い、複数業務要因災害にはなりません。</p></blockquote>
+<h3>複数業務要因災害の認定の進め方</h3>
+<table><thead><tr><th>手順</th><th>内容</th></tr></thead><tbody><tr><td>①</td><td>まず<strong>それぞれの事業場ごと</strong>に業務災害として認定できるかを判断する</td></tr><tr><td>②</td><td>いずれの事業場でも認定できない場合に、<strong>すべての就業先の業務上の負荷を総合的に評価</strong>する</td></tr></tbody></table>
+<p><strong>負荷要因</strong>（労働時間、勤務形態、作業環境、心理的負荷など）を合算し、<strong>過重負荷</strong>があったといえるかを見ます。</p>
+<table><thead><tr><th>用語</th><th>意味</th></tr></thead><tbody><tr><td><strong>災害発生事業場</strong></td><td>労働者が被災した事業場</td></tr><tr><td><strong>非災害発生事業場</strong></td><td>それ以外の就業先。ここの負荷も<strong>全体評価</strong>に含める</td></tr></tbody></table>
+<blockquote><p>★<strong>給付基礎日額もすべての就業先の賃金を合算</strong>して算定します。
+★複数業務要因災害の対象となるのは、<strong>脳・心臓疾患</strong>と<strong>精神障害</strong>が中心です（負荷の合算がなじむもの）。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">25</span>労災保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険と並べて見る</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 27 ／ 労災・徴収</div><h1>通勤災害</h1><div class="desc">逸脱・中断の例外2段構え。日常生活上必要な5行為</div></div><h3>通勤の定義（7条2項）</h3>
+<blockquote><p>労働者が、<strong>就業に関し</strong>、次に掲げる移動を、<strong>合理的な経路及び方法</strong>により行うことをいい、<strong>業務の性質を有するものを除く</strong>。</p></blockquote>
+<table class="big"><thead><tr><th>号</th><th>移動</th></tr></thead><tbody><tr><td>1号</td><td><strong>住居と就業の場所</strong>との間の往復</td></tr><tr><td>2号</td><td>就業の場所から<strong>他の就業の場所</strong>への移動（複数就業者）</td></tr><tr><td>3号</td><td>1号の往復に<strong>先行・後続する住居間の移動</strong>（単身赴任者の帰省）</td></tr></tbody></table>
+<p>要件は4つです。<strong>①就業に関し ②住居と就業の場所等の移動 ③合理的な経路及び方法 ④業務の性質を有しない</strong>。</p>
+<blockquote><p>★④を満たさないもの（事業主提供の専用バス、緊急呼出しでの出勤）は<strong>業務災害</strong>になります。「通勤災害である」とする肢は誤りです。</p></blockquote>
+<h3>「就業に関し」</h3>
+<ul><li>業務に就くため、または業務を終えたことによる移動であること</li><li><strong>遅刻や早退</strong>でも就業との関連は失われない</li><li>前日の<strong>泊まり込み</strong>の後の帰宅は、就業との関連が認められる</li><li><strong>所定の就業日でない日</strong>の出勤（休日出勤）も対象</li></ul>
+<h3>住居</h3>
+<p>労働者が<strong>居住して日常生活の用に供している家屋等の場所</strong>で、本人の<strong>就業のための拠点</strong>となるところ。</p>
+<table class="big"><thead><tr><th>事例</th><th>住居に当たるか</th></tr></thead><tbody><tr><td>通常は家族のいる自宅、天災等でやむを得ずアパートに宿泊</td><td><strong>両方とも住居</strong></td></tr><tr><td>単身赴任先のアパート</td><td>住居</td></tr><tr><td>交通ストで会社近くのホテルに宿泊</td><td>住居</td></tr></tbody></table>
+<h3>逸脱・中断（7条3項）</h3>
+<p><strong>逸脱</strong>＝通勤の経路をそれること。<strong>中断</strong>＝経路上で通勤と関係のない行為を行うこと。</p>
+<blockquote><p><strong>逸脱・中断の間およびその後の移動は、通勤としない</strong>。</p></blockquote>
+<p>例外は2段構えです。</p>
+<ol><li><strong>ささいな行為</strong>（経路上の公衆トイレ、駅売店での新聞購入、ごく短時間の立ち話など）は逸脱・中断に当たらない → <strong>その間も通勤</strong></li><li><strong>日常生活上必要な行為をやむを得ない事由により最小限度</strong>で行う場合は、<strong>逸脱・中断の間を除き</strong>、合理的経路に復した後は<strong>再び通勤となる</strong></li></ol>
+<p>日常生活上必要な行為（労災則8条）は次の5つです。</p>
+<table class="big"><thead><tr><th></th><th>行為</th></tr></thead><tbody><tr><td>1号</td><td>日用品の購入その他これに準ずる行為</td></tr><tr><td>2号</td><td>職業訓練・学校教育法上の教育その他これらに準ずる<strong>教育訓練</strong>（職業能力の開発向上に資するもの）</td></tr><tr><td>3号</td><td><strong>選挙権</strong>の行使その他これに準ずる行為</td></tr><tr><td>4号</td><td><strong>病院・診療所</strong>での診察・治療その他これに準ずる行為</td></tr><tr><td>5号</td><td>要介護状態にある<strong>配偶者・子・父母・孫・祖父母・兄弟姉妹</strong>（配偶者の父母を含む）の<strong>介護</strong>（継続的・反復的に行われるもの）</td></tr></tbody></table>
+<blockquote><p>★5号の介護は「<strong>継続的又は反復的に行われるもの</strong>」に限られます。単発の介護は該当しません。</p></blockquote>
+<h3>給付の種類と特徴</h3>
+<table class="big"><thead><tr><th>業務災害</th><th>通勤災害</th></tr></thead><tbody><tr><td>療養<strong>補償</strong>給付</td><td>療養給付</td></tr><tr><td>休業<strong>補償</strong>給付</td><td>休業給付</td></tr><tr><td>障害<strong>補償</strong>給付</td><td>障害給付</td></tr><tr><td>遺族<strong>補償</strong>給付</td><td>遺族給付</td></tr><tr><td>葬祭料</td><td><strong>葬祭給付</strong></td></tr><tr><td>傷病<strong>補償</strong>年金</td><td>傷病年金</td></tr><tr><td>介護<strong>補償</strong>給付</td><td>介護給付</td></tr></tbody></table>
+<p>通勤災害には「補償」の2文字が付きません。<strong>葬祭料／葬祭給付</strong>の呼び分けも頻出です。</p>
+<h3>一部負担金（31条2項）</h3>
+<p><strong>療養給付</strong>を受ける労働者は、<strong>200円</strong>（日雇特例被保険者は100円）を一部負担金として負担します。最初に支給される<strong>休業給付から控除</strong>されます（22条の2第3項）。</p>
+<p>次の者は徴収されません。</p>
+<ul><li>第三者行為災害によるもの</li><li>療養開始後<strong>3日以内に死亡</strong>した者など休業給付を受けない者</li><li><strong>同一の通勤災害</strong>について既に一部負担金を徴収された者</li></ul>
+<blockquote><p>★業務災害には一部負担金はありません。「療養補償給付でも200円を負担する」は誤りです。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">25</span>労災保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険と並べて見る</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 28 ／ 労災・徴収</div><h1>給付基礎日額とスライド</h1><div class="desc">休業と年金で違う3つの日額。特別支給金は保険給付ではない</div></div><h3>原則（8条）</h3>
+<p>給付基礎日額は、原則として<strong>労基法12条の平均賃金に相当する額</strong>です。</p>
+<pre><code>算定事由発生日以前3か月間の賃金総額 ÷ その期間の総日数（暦日数）</code></pre>
+<p>算定事由発生日は、<strong>負傷・死亡の原因である事故が発生した日</strong>、または<strong>診断によって疾病の発生が確定した日</strong>です。</p>
+<blockquote><p>★「療養を開始した日」ではありません。ここを入れ替える肢が出ます。</p></blockquote>
+<p>複数事業労働者については、<strong>すべての就業先の賃金額を合算</strong>して算定します。</p>
+<h3>特別加入者</h3>
+<p>特別加入者には賃金がないため、<strong>給付基礎日額は申請に基づき厚生労働大臣が定める額</strong>（3,500円〜25,000円の範囲で選択）になります。平均賃金は使いません。</p>
+<h3>3つの日額の使い分け</h3>
+<table class="big"><thead><tr><th></th><th>使う場面</th><th>スライドと限度額</th></tr></thead><tbody><tr><td><strong>休業給付基礎日額</strong>（8条の2）</td><td>休業補償給付等</td><td>四半期ごとのスライド／療養開始後<strong>1年6か月</strong>経過後は年齢階層別の最低・最高限度額</td></tr><tr><td><strong>年金給付基礎日額</strong>（8条の3）</td><td>年金たる保険給付</td><td><strong>年度</strong>ごとのスライド／<strong>当初から</strong>年齢階層別の最低・最高限度額</td></tr><tr><td><strong>一時金の給付基礎日額</strong></td><td>障害一時金・遺族一時金など</td><td>年金給付基礎日額に準ずる</td></tr></tbody></table>
+<h3>休業給付基礎日額のスライド（8条の2第1項2号）</h3>
+<p><strong>毎月勤労統計の平均給与額</strong>が、算定事由発生日の属する四半期の平均給与額の<strong>110%を超え、または90%を下る</strong>に至った場合に改定します。</p>
+<p>適用は、上昇・低下した四半期の<strong>翌々四半期</strong>に属する最初の日以後に支給すべき事由が生じた分からです。</p>
+<blockquote><p>★「翌四半期」ではなく<strong>翌々四半期</strong>。「100分の110／100分の90」の数字も頻出です。</p></blockquote>
+<h3>年齢階層別の最低・最高限度額</h3>
+<table class="big"><thead><tr><th></th><th>休業給付基礎日額</th><th>年金給付基礎日額</th></tr></thead><tbody><tr><td>適用開始</td><td>療養開始日から<strong>1年6か月</strong>経過後</td><td><strong>当初から</strong></td></tr><tr><td>基準日</td><td>四半期の初日における年齢</td><td>8月1日における年齢</td></tr></tbody></table>
+<p>年齢階層は<strong>5歳きざみ</strong>で区分されます。最低限度額は、賃金月額の低い順に<strong>20の階層</strong>に区分したうちの最も低い階層の上限額を基礎に定めます（8条の2第3項）。</p>
+<h3>年金給付基礎日額のスライド（8条の3）</h3>
+<p>算定事由発生日の属する年度の<strong>翌々年度の8月</strong>以後に支給する分から、<strong>毎月勤労統計の平均給与額の変動率</strong>に応じて改定します。休業のような110%／90%の幅はなく、<strong>変動があれば必ず改定</strong>します。</p>
+<h3>特別支給金</h3>
+<p>保険給付とは別に、<strong>社会復帰促進等事業</strong>として支給されます（29条）。</p>
+<table><thead><tr><th>種類</th><th>内容</th></tr></thead><tbody><tr><td>休業特別支給金</td><td>休業4日目から<strong>給付基礎日額の20%</strong></td></tr><tr><td>障害特別支給金</td><td>障害等級に応じた<strong>一時金</strong>（1級342万円〜14級8万円）</td></tr><tr><td>遺族特別支給金</td><td><strong>300万円</strong>（遺族の数にかかわらず一律）</td></tr><tr><td>傷病特別支給金</td><td>傷病等級に応じ100万円〜114万円</td></tr><tr><td><strong>ボーナス特別支給金</strong>（障害特別年金など）</td><td><strong>算定基礎日額</strong>（特別給与の総額÷365）を基礎とする</td></tr></tbody></table>
+<blockquote><p>★特別支給金は<strong>保険給付ではない</strong>ため、<strong>支給制限・不服申立て・第三者行為求償の対象外</strong>です。ここが最頻出の引っかけです。
+★休業特別支給金と休業補償給付を合わせると給付基礎日額の<strong>80%</strong>になります。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">25</span>労災保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険と並べて見る</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 29 ／ 労災・徴収</div><h1>療養給付と休業給付</h1><div class="desc">待期3日は通算でよい。傷病補償年金だけ請求が要らない</div></div><h3>療養補償給付（13条）</h3>
+<p><strong>療養の給付</strong>（現物）が原則、<strong>療養の費用の支給</strong>（現金）が例外です。</p>
+<blockquote><p>政府が必要と認める場合に限り、療養の費用を支給することができる。</p></blockquote>
+<p>労災指定医療機関で受ける場合が現物給付、そうでない場合が費用の支給です。</p>
+<p>範囲は次のとおりで、<strong>政府が必要と認めるものに限られます</strong>。</p>
+<ol><li>診察</li><li>薬剤または治療材料の支給</li><li>処置、手術その他の治療</li><li>居宅における療養上の管理およびその療養に伴う世話その他の看護</li><li>病院・診療所への入院およびその療養に伴う世話その他の看護</li><li>移送</li></ol>
+<p><strong>期間の制限はなく</strong>、傷病が<strong>治ゆ</strong>するまで行われます。健康保険のような一部負担金もありません（通勤災害の200円を除く）。</p>
+<blockquote><p>★労災でいう「治ゆ」は、<strong>症状が固定し、医療効果が期待できなくなった状態</strong>を指します。完全に元どおりになることではありません。</p></blockquote>
+<h3>休業補償給付（14条）</h3>
+<p><strong>次の3要件をすべて満たす日</strong>について、<strong>第4日目</strong>から支給されます。</p>
+<ol><li>業務上の負傷・疾病による<strong>療養</strong>のため</li><li><strong>労働することができない</strong>ため</li><li><strong>賃金を受けない</strong></li></ol>
+<pre><code>1日につき　給付基礎日額 × 60/100
+（＋休業特別支給金 20/100 ＝ 合計 80/100）</code></pre>
+<h3>待期3日間</h3>
+<table class="big"><thead><tr><th></th><th>待期の扱い</th></tr></thead><tbody><tr><td><strong>業務災害</strong></td><td>事業主が労基法76条の<strong>休業補償</strong>を行う（平均賃金の60%）</td></tr><tr><td><strong>通勤災害</strong></td><td>事業主の補償義務は<strong>ない</strong></td></tr></tbody></table>
+<p>待期3日間は<strong>連続である必要はなく通算</strong>されます。所定休日も含まれます。</p>
+<blockquote><p>★「3日間連続していなければならない」は誤りです。</p></blockquote>
+<h3>一部労働した日（部分算定日）</h3>
+<p>所定労働時間の一部だけ労働した日、または賃金の支払われる休暇の日については、</p>
+<pre><code>（給付基礎日額 − その日に支払われる賃金額）× 60/100</code></pre>
+<blockquote><p>★給付基礎日額そのものに60%を掛けるのではなく、<strong>差額に</strong>掛けます。</p></blockquote>
+<h3>障害厚生年金・障害基礎年金との調整（14条2項）</h3>
+<p>同一の事由により障害厚生年金・障害基礎年金を受けられるときは、<strong>政令で定める率を乗じて減額</strong>します。</p>
+<p>休業補償給付には、<strong>傷病補償年金について定める率</strong>を用います（14条2項）。</p>
+<table class="big"><thead><tr><th>併給される年金</th><th>休業補償給付・傷病補償年金</th><th>（参考）障害補償年金</th></tr></thead><tbody><tr><td>障害厚生年金＋障害基礎年金</td><td><strong>0.73</strong></td><td><strong>0.73</strong></td></tr><tr><td>障害厚生年金のみ</td><td><strong>0.88</strong></td><td><strong>0.83</strong></td></tr><tr><td>障害基礎年金のみ</td><td><strong>0.88</strong></td><td><strong>0.88</strong></td></tr></tbody></table>
+<p>遺族補償年金は、遺族厚生年金＋遺族基礎年金で<strong>0.80</strong>、遺族厚生年金のみで<strong>0.84</strong>、遺族基礎年金のみで<strong>0.88</strong>です。</p>
+<p>減額後の額が、<strong>年金を加えても調整前の労災給付額を下回る</strong>ことのないよう最低保障があります。</p>
+<blockquote><p>★減額されるのは<strong>労災側</strong>です。厚生年金・国民年金側は減額されません。
+★<strong>特別支給金は調整の対象外</strong>です。</p></blockquote>
+<h3>傷病補償年金（12条の8第3項）</h3>
+<p>療養開始後<strong>1年6か月</strong>を経過した日、またはその後において、</p>
+<ol><li>傷病が<strong>治っていない</strong>こと</li><li>障害の程度が<strong>傷病等級</strong>（第1級〜第3級）に該当すること</li></ol>
+<p>の<strong>いずれにも該当</strong>するとき、その状態が続く間支給されます。</p>
+<table><thead><tr><th>特徴</th><th></th></tr></thead><tbody><tr><td>請求</td><td><strong>不要</strong>（政府の<strong>職権</strong>で決定する）</td></tr><tr><td>休業補償給付との関係</td><td>傷病補償年金に<strong>切り替わる</strong>（併給されない）</td></tr><tr><td>労基法19条の解雇制限</td><td>療養開始後<strong>3年</strong>を経過した日に打切補償を支払ったものと<strong>みなされる</strong>（労災法19条）</td></tr></tbody></table>
+<blockquote><p>★傷病補償年金は<strong>請求に基づかない</strong>唯一の保険給付です。「請求に基づいて行う」は誤りです。</p></blockquote>
+<h3>介護補償給付（12条の8第4項）</h3>
+<p><strong>障害補償年金または傷病補償年金</strong>を受ける権利を有する者のうち、<strong>第1級のすべて</strong>と<strong>第2級の精神・神経／胸腹部臓器の障害</strong>の者が対象です。</p>
+<p>現に介護を受けている月から支給され、<strong>常時介護</strong>と<strong>随時介護</strong>で上限額が異なります。次の間は支給されません。</p>
+<ul><li><strong>障害者支援施設</strong>に入所している間（生活介護を受けている場合に限る）</li><li>障害者支援施設に準ずる施設として厚生労働大臣が定めるものに入所している間</li><li><strong>病院・診療所に入院</strong>している間</li></ul>
+<blockquote><p>★月を単位として支給され、<strong>支給開始月には最低保障額がない</strong>（実際に支出した額）点が問われます。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">25</span>労災保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険と並べて見る</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 30 ／ 労災・徴収</div><h1>障害給付と遺族給付</h1><div class="desc">7級と8級の境目。妻に年齢要件がなく夫にはある</div></div><h3>障害補償給付（15条）</h3>
+<p><strong>傷病が治ゆした</strong>とき、障害が残った場合に障害等級に応じて支給されます。</p>
+<table class="big"><thead><tr><th>障害等級</th><th>給付</th><th>額</th></tr></thead><tbody><tr><td><strong>第1級〜第7級</strong></td><td>障害補償<strong>年金</strong></td><td>給付基礎日額の<strong>313日分</strong>（1級）〜<strong>131日分</strong>（7級）</td></tr><tr><td><strong>第8級〜第14級</strong></td><td>障害補償<strong>一時金</strong></td><td>給付基礎日額の<strong>503日分</strong>（8級）〜<strong>56日分</strong>（14級）</td></tr></tbody></table>
+<p>覚える境目は<strong>7級と8級の間</strong>です。</p>
+<h3>併合・加重・併合繰上げ</h3>
+<table class="big"><thead><tr><th>用語</th><th>内容</th></tr></thead><tbody><tr><td><strong>併合</strong></td><td>同一の事故で2以上の障害が残ったとき、重いほうの等級による</td></tr><tr><td><strong>併合繰上げ</strong></td><td>第13級以上が2以上→1級繰上げ／第8級以上が2以上→2級繰上げ／第5級以上が2以上→<strong>3級繰上げ</strong></td></tr><tr><td><strong>加重</strong></td><td>既に障害のある者が同一部位の障害を重くした場合、<strong>現在の等級の額から既存障害の等級の額を差し引いた額</strong>を支給</td></tr></tbody></table>
+<h3>障害補償年金前払一時金</h3>
+<p>障害補償年金を受ける者は、<strong>1回に限り</strong>前払一時金を請求できます。給付基礎日額の<strong>200日分〜1,340日分</strong>（等級により上限が異なる）のうち希望する額です。</p>
+<p>支給されると、各月分の年金の合計額が前払一時金の額に達するまで<strong>年金の支給が停止</strong>されます。</p>
+<h3>障害補償年金差額一時金</h3>
+<p>障害補償年金の受給権者が死亡した場合、既に支給された年金と前払一時金の合計額が<strong>一定額（等級ごとの日数分）に達していない</strong>ときに、その差額を遺族に支給します。</p>
+<table class="big"><thead><tr><th>受給の順位</th><th></th></tr></thead><tbody><tr><td>第1順位</td><td>死亡当時<strong>生計を同じくしていた</strong>配偶者・子・父母・孫・祖父母・兄弟姉妹</td></tr><tr><td>第2順位</td><td>生計を同じくしていなかった同じ範囲の遺族</td></tr></tbody></table>
+<blockquote><p>★遺族補償年金と違い、<strong>生計維持ではなく生計同一</strong>が基準で、<strong>年齢要件もありません</strong>。</p></blockquote>
+<h3>遺族補償年金を受けられる遺族（16条の2）</h3>
+<p><strong>労働者の死亡当時その収入によって生計を維持していた</strong>、配偶者・子・父母・孫・祖父母・兄弟姉妹。</p>
+<p><strong>妻以外</strong>は次の要件が必要です。</p>
+<table class="big"><thead><tr><th>続柄</th><th>要件</th></tr></thead><tbody><tr><td><strong>夫・父母・祖父母</strong></td><td><strong>60歳以上</strong></td></tr><tr><td><strong>子・孫</strong></td><td><strong>18歳に達する日以後の最初の3月31日</strong>までの間にあること</td></tr><tr><td><strong>兄弟姉妹</strong></td><td>18歳年度末までの間にあること、<strong>または60歳以上</strong></td></tr><tr><td>上記に該当しない者</td><td>厚生労働省令で定める<strong>障害の状態</strong>（障害等級第5級以上に相当）</td></tr></tbody></table>
+<blockquote><p>★<strong>妻には年齢・障害の要件がありません</strong>。夫には60歳以上の要件があります。この非対称が最頻出です。
+★55歳以上60歳未満の夫・父母・祖父母・兄弟姉妹は<strong>受給資格はあるが60歳まで支給停止</strong>（若年停止）です。</p></blockquote>
+<p><strong>胎児</strong>は、出生したときに将来に向かって生計維持していた子とみなされます。</p>
+<h3>受給の順位（16条の2第3項）</h3>
+<p><strong>配偶者 → 子 → 父母 → 孫 → 祖父母 → 兄弟姉妹</strong></p>
+<p>最先順位者のみが受給権者です（<strong>転給</strong>があります。最先順位者が失権すると次順位者に移ります）。</p>
+<blockquote><p>★転給があるのは<strong>労災の遺族補償年金だけ</strong>です。厚生年金の遺族厚生年金には転給がありません。</p></blockquote>
+<h3>年金額</h3>
+<p><strong>受給権者および受給権者と生計を同じくしている受給資格者の数</strong>（＝遺族の数）に応じます。</p>
+<table><thead><tr><th>遺族の数</th><th>年金額</th></tr></thead><tbody><tr><td>1人</td><td>給付基礎日額の<strong>153日分</strong>（55歳以上の妻・一定の障害状態の妻は<strong>175日分</strong>）</td></tr><tr><td>2人</td><td><strong>201日分</strong></td></tr><tr><td>3人</td><td><strong>223日分</strong></td></tr><tr><td>4人以上</td><td><strong>245日分</strong></td></tr></tbody></table>
+<h3>遺族補償一時金</h3>
+<p>次の場合に、給付基礎日額の<strong>1,000日分</strong>を支給します。</p>
+<ol><li>労働者の死亡当時、遺族補償<strong>年金</strong>を受ける遺族が<strong>いない</strong>とき</li><li>年金の受給権者が最後順位者まで<strong>すべて失権</strong>し、支給された年金等の合計が1,000日分に<strong>満たない</strong>とき</li></ol>
+<p>受給の順位は<strong>配偶者 → 生計維持していた子・父母・孫・祖父母 → その他の子・父母・孫・祖父母 → 兄弟姉妹</strong>です。</p>
+<h3>葬祭料・葬祭給付</h3>
+<p><strong>315,000円＋給付基礎日額の30日分</strong>。これが給付基礎日額の<strong>60日分</strong>に満たない場合は<strong>60日分</strong>。</p>
+<blockquote><p>★「葬祭を行う者」に支給されます。遺族でなくても、実際に葬祭を行った者（会社等）が請求できます。</p></blockquote>
+<h3>失権と失格</h3>
+<table><thead><tr><th>失権事由</th><th>死亡、婚姻（事実婚を含む）、直系血族・直系姻族以外の者の養子となったこと、離縁による親族関係の終了、18歳年度末に達したこと（障害状態にある場合を除く）、障害状態でなくなったこと</th></tr></thead><tbody><tr><td><strong>失格</strong></td><td>受給資格者が上記に該当したとき（受給権者でない者が資格を失う）</td></tr></tbody></table>
+<blockquote><p>★労働者の死亡当時<strong>胎児であった子が出生</strong>したときは、<strong>その子が最先順位</strong>となり、それまでの受給権者は失権します。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">25</span>労災保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険と並べて見る</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 31 ／ 労災・徴収</div><h1>特別加入</h1><div class="desc">第1種だけ事務組合への委託が要件。海外出張と海外派遣の違い</div></div><h3>制度の趣旨</h3>
+<p>労災保険は本来<strong>労働者</strong>のための制度ですが、業務の実態が労働者に準じ、保護するのが適当な者について、<strong>任意に加入</strong>を認めています（33条〜37条）。</p>
+<h3>4つの種別</h3>
+<table class="big"><thead><tr><th>種別</th><th>対象</th><th>加入手続</th></tr></thead><tbody><tr><td><strong>第1種</strong>（33条1号・2号）</td><td><strong>中小事業主等</strong>とその事業に従事する者</td><td><strong>労働保険事務組合に事務処理を委託</strong>していることが要件</td></tr><tr><td><strong>第2種</strong>（33条3号〜5号）</td><td><strong>一人親方その他の自営業者</strong>とその事業に従事する者、<strong>特定作業従事者</strong></td><td><strong>特別加入団体</strong>を通じて申請</td></tr><tr><td><strong>第3種</strong>（33条6号・7号）</td><td><strong>海外派遣者</strong></td><td>派遣元の団体・事業主が申請</td></tr></tbody></table>
+<h3>第1種の「中小事業主」の規模</h3>
+<table class="big"><thead><tr><th>業種</th><th>労働者数</th></tr></thead><tbody><tr><td>金融業・保険業・不動産業・小売業</td><td><strong>50人以下</strong></td></tr><tr><td>卸売業・サービス業</td><td><strong>100人以下</strong></td></tr><tr><td><strong>上記以外</strong>（製造業・建設業・運輸業など）</td><td><strong>300人以下</strong></td></tr></tbody></table>
+<blockquote><p>★労働保険事務組合への<strong>委託が要件</strong>なのは第1種だけです。第2種・第3種には要件ではありません。
+★事業主が加入する場合、<strong>その事業に従事する家族従事者等も包括して加入</strong>しなければなりません（事業主だけの加入は不可）。</p></blockquote>
+<h3>第2種の主な対象</h3>
+<p><strong>一人親方等</strong></p>
+<ul><li>個人タクシー・個人貨物運送業者</li><li><strong>建設</strong>の事業を行う者</li><li>漁船による水産動植物の採捕</li><li>林業</li><li>医薬品の配置販売</li><li>再生資源の取扱い</li><li><strong>船員</strong></li><li>柔道整復師、<strong>あん摩マッサージ指圧師・はり師・きゅう師</strong></li><li>高年齢者の<strong>就業機会確保事業</strong>に係る就業者</li><li><strong>芸能関係作業従事者、アニメーション制作作業従事者</strong></li><li><strong>柔道整復師</strong>、<strong>創業支援等措置に基づき事業を行う者</strong></li><li><strong>自転車を使用して行う貨物運送事業</strong>、<strong>ITフリーランス</strong></li></ul>
+<p><strong>特定作業従事者</strong></p>
+<ul><li>特定農作業従事者、指定農業機械作業従事者</li><li>職場適応訓練従事者</li><li>事業主団体等委託訓練従事者</li><li>家内労働者およびその補助者</li><li>労働組合等の一人専従役員</li><li>介護作業従事者・家事支援従事者</li><li><strong>歯科技工士</strong></li></ul>
+<h3>海外派遣者（第3種）</h3>
+<p><strong>海外の事業に派遣される労働者</strong>、および<strong>海外の中小規模の事業に派遣される事業主等</strong>が対象です。</p>
+<table class="big"><thead><tr><th>区分</th><th>特別加入</th></tr></thead><tbody><tr><td><strong>海外出張</strong></td><td><strong>不要</strong>（国内の労災保険がそのまま適用）</td></tr><tr><td><strong>海外派遣</strong></td><td><strong>必要</strong></td></tr></tbody></table>
+<p>区別は「国内の事業場に所属し、その事業場の使用者の指揮に従って勤務するか」です。</p>
+<blockquote><p>★「海外出張者も特別加入しなければ保護されない」は誤りです。</p></blockquote>
+<h3>給付の内容</h3>
+<p>原則として労働者と同じ保険給付が行われますが、次の違いがあります。</p>
+<table class="big"><thead><tr><th></th><th>特別加入者</th></tr></thead><tbody><tr><td>給付基礎日額</td><td>平均賃金ではなく、<strong>3,500円〜25,000円</strong>から選択し<strong>厚生労働大臣が定める額</strong></td></tr><tr><td><strong>二次健康診断等給付</strong></td><td><strong>行われない</strong></td></tr><tr><td>通勤災害</td><td>原則として対象。ただし<strong>一部の一人親方</strong>（自宅と作業場の区別がない者など）は<strong>対象外</strong></td></tr><tr><td>業務災害の範囲</td><td>「<strong>特別加入者の業務災害の認定基準</strong>」により、労働者より狭く限定される</td></tr></tbody></table>
+<h3>加入の効力と脱退</h3>
+<table><thead><tr><th>場面</th><th>効力発生</th></tr></thead><tbody><tr><td>加入申請の承認</td><td><strong>申請日の翌日から起算して30日以内</strong>で申請者が希望する日（承認があった日の翌日以後）</td></tr><tr><td>脱退の申請</td><td><strong>申請日の翌日</strong>に効力を失う</td></tr></tbody></table>
+<p><strong>保険料の滞納</strong>があると、その期間中の事故について<strong>支給制限</strong>（給付額の全部または一部を行わないことができる）を受けます。</p>
+<blockquote><p>★政府の<strong>職権</strong>による特別加入の<strong>取消し</strong>もあります（労働保険料の滞納、法令違反など）。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">25</span>労災保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険と並べて見る</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 32 ／ 労災・徴収</div><h1>支給制限と第三者行為</h1><div class="desc">求償と控除、費用徴収の100/40/30。時効は2年と5年</div></div><h3>支給制限（12条の2の2）</h3>
+<table class="big"><thead><tr><th>事由</th><th>効果</th></tr></thead><tbody><tr><td><strong>故意</strong>に負傷・疾病・障害・死亡またはその直接の原因となった事故を生じさせたとき</td><td>保険給付を<strong>行わない</strong>（絶対的）</td></tr><tr><td><strong>故意の犯罪行為または重大な過失</strong>により生じさせたとき</td><td>保険給付の<strong>全部または一部を行わないことができる</strong>（裁量的）</td></tr><tr><td><strong>正当な理由なく療養に関する指示に従わず</strong>、負傷等の程度を増進させ、または回復を妨げたとき</td><td>同上</td></tr></tbody></table>
+<blockquote><p>★「故意」は<strong>結果の発生を意図した</strong>場合です。業務上の精神障害による<strong>自殺は故意に当たらない</strong>扱いです。
+★重大な過失の例：<strong>故意に交通法規に違反</strong>した場合など。単なる過失では制限されません。</p></blockquote>
+<p>具体的な減額は、<strong>休業給付・傷病年金・障害給付</strong>について<strong>30%</strong>の減額（療養給付・遺族給付・葬祭料等は減額されない）とされています。</p>
+<h3>第三者行為災害（12条の4）</h3>
+<p><strong>保険給付の原因である事故が第三者の行為によって生じた場合</strong>の調整です。</p>
+<table class="big"><thead><tr><th>順序</th><th>効果</th></tr></thead><tbody><tr><td><strong>政府が先に給付</strong>したとき</td><td>給付の<strong>価額の限度</strong>で、受給権者が第三者に対して有する<strong>損害賠償請求権を取得</strong>する（<strong>求償</strong>）</td></tr><tr><td><strong>受給権者が先に損害賠償</strong>を受けたとき</td><td>その<strong>価額の限度</strong>で保険給付を<strong>行わないことができる</strong>（<strong>控除</strong>）</td></tr></tbody></table>
+<p><strong>求償・控除の期間は災害発生後3年以内</strong>に支給事由の生じたものに限られます。</p>
+<blockquote><p>★特別支給金は<strong>求償・控除の対象外</strong>です。
+★示談が<strong>真正に成立</strong>し、受給権者が全額の損害賠償を受けて残余の請求権を放棄したときは、政府は<strong>原則として保険給付を行いません</strong>。</p></blockquote>
+<p><strong>同一事業主の下で働く同僚労働者</strong>の行為による災害も第三者行為災害に当たります（事業主自身の行為は当たりません）。</p>
+<h3>費用徴収（31条）</h3>
+<p>政府が<strong>事業主から</strong>保険給付に要した費用の全部または一部を徴収できる場合です。</p>
+<table class="big"><thead><tr><th>事由</th><th>徴収割合</th></tr></thead><tbody><tr><td>① 事業主が<strong>保険関係成立届</strong>を提出していない期間中の事故</td><td>故意なら<strong>100%</strong>、重大な過失なら<strong>40%</strong></td></tr><tr><td>② 事業主が<strong>一般保険料を滞納</strong>している期間中の事故</td><td>滞納率に応じ<strong>40%を限度</strong></td></tr><tr><td>③ 事業主の<strong>故意または重大な過失</strong>による事故（安全衛生法令違反など）</td><td><strong>30%</strong></td></tr></tbody></table>
+<p>対象となるのは<strong>療養開始後3年以内</strong>の保険給付に限られます。ただし<strong>療養補償給付・介護補償給付・二次健康診断等給付</strong>は対象外です。</p>
+<blockquote><p>★①の「故意」は、<strong>成立手続について行政機関から指導等を受けていたにもかかわらず</strong>行わなかった場合です。
+★①の「重大な過失」は、<strong>保険関係成立から1年を経過してなお</strong>手続を行わない場合です。</p></blockquote>
+<h3>受給権の保護</h3>
+<table class="big"><thead><tr><th>条文</th><th>内容</th></tr></thead><tbody><tr><td>12条の5</td><td>保険給付を受ける権利は、労働者の<strong>退職によって変更されない</strong></td></tr><tr><td>12条の5第2項</td><td>保険給付を受ける権利は、<strong>譲り渡し、担保に供し、又は差し押さえることができない</strong></td></tr><tr><td>12条の6</td><td><strong>租税その他の公課は課さない</strong></td></tr></tbody></table>
+<blockquote><p>★「退職すると受給権を失う」は明確な誤りです。</p></blockquote>
+<h3>時効（42条）</h3>
+<table><thead><tr><th>給付</th><th>時効</th></tr></thead><tbody><tr><td><strong>療養（補償）給付、休業（補償）給付、葬祭料・葬祭給付、介護（補償）給付、二次健康診断等給付</strong></td><td><strong>2年</strong></td></tr><tr><td><strong>障害（補償）給付、遺族（補償）給付</strong></td><td><strong>5年</strong></td></tr><tr><td>障害（補償）年金・遺族（補償）年金の<strong>前払一時金</strong></td><td><strong>2年</strong></td></tr></tbody></table>
+<blockquote><p>★傷病補償年金は<strong>職権</strong>で支給決定されるため時効の問題が生じません。</p></blockquote>
+<h3>不服申立て（38条）</h3>
+<pre><code>保険給付に関する決定
+　↓ 処分があったことを知った日の翌日から3か月以内
+労働者災害補償保険審査官（各都道府県労働局）に審査請求
+　↓ 審査請求をした日から3か月を経過しても決定がないときは棄却とみなすことができる（38条2項）
+　↓ 決定書の謄本の送付を受けた日の翌日から2か月以内
+労働保険審査会に再審査請求
+　↓
+処分の取消しの訴え</code></pre>
+<p><strong>審査請求に対する決定を経た後</strong>でなければ、処分の取消しの訴えを提起できません（<strong>審査請求前置</strong>）。再審査請求は経ていなくてもかまいません。</p>
+<blockquote><p>★特別支給金の決定は保険給付ではないため、この不服申立ての対象になりません。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">25</span>労災保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険と並べて見る</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 33 ／ 労災・徴収</div><h1>社会復帰促進等事業</h1><div class="desc">二次健康診断は4項目すべてに異常。請求先は都道府県労働局長</div></div><h3>3つの柱（29条1項）</h3>
+<p>政府は、適用事業に係る労働者およびその遺族について、次の事業を行うことが<strong>できる</strong>（義務ではない）。</p>
+<table class="big"><thead><tr><th>号</th><th>事業</th><th>具体例</th></tr></thead><tbody><tr><td>1号</td><td><strong>社会復帰促進事業</strong></td><td>労災病院・医療リハビリテーションセンターの設置運営、義肢等補装具の支給</td></tr><tr><td>2号</td><td><strong>被災労働者等援護事業</strong></td><td><strong>特別支給金</strong>、労災就学援護費、休業補償特別援護金、労災就労保育援護費、アフターケア</td></tr><tr><td>3号</td><td><strong>安全衛生確保等事業</strong></td><td>未払賃金の<strong>立替払</strong>、災害防止対策の援助、健康診断施設の設置運営</td></tr></tbody></table>
+<blockquote><p>★<strong>未払賃金の立替払</strong>（賃金支払確保法）は3号に基づく事業です。労一の賃確法と関連して問われます。
+★1号のうち労災病院等の運営は<strong>独立行政法人労働者健康安全機構</strong>に行わせます（29条3項）。</p></blockquote>
+<h3>特別支給金の位置づけ</h3>
+<p><strong>保険給付ではありません</strong>。ここから次の帰結が出ます。</p>
+<table class="big"><thead><tr><th></th><th>特別支給金</th></tr></thead><tbody><tr><td>支給制限（12条の2の2）</td><td><strong>受けない</strong></td></tr><tr><td>第三者行為の求償・控除</td><td><strong>対象外</strong></td></tr><tr><td>費用徴収（31条）</td><td>対象外</td></tr><tr><td>不服申立て（38条）</td><td><strong>対象外</strong>（審査請求できない）</td></tr><tr><td>事業主からの損害賠償額との調整</td><td><strong>対象外</strong></td></tr><tr><td>譲渡・差押えの禁止、公課の禁止</td><td>労災法の規定は<strong>適用されない</strong>（社会復帰促進等事業支給金支給規則による）</td></tr></tbody></table>
+<h3>労災就学援護費と最高裁</h3>
+<p>労災就学援護費の支給・不支給の決定は、<strong>行政処分に当たり抗告訴訟の対象となる</strong>とされました（最判平成15年9月4日）。</p>
+<p>要綱に基づく給付であっても、支給要件が明確に定められ、支給が受給権を発生させるものである以上、処分性が認められるという判断です。</p>
+<h3>二次健康診断等給付（26条）</h3>
+<p><strong>平成13年</strong>に創設された、<strong>過労死の予防</strong>を目的とする給付です。</p>
+<h4>対象者</h4>
+<p><strong>労働安全衛生法66条1項</strong>の<strong>定期健康診断等（一次健康診断）</strong>において、次の<strong>4項目すべて</strong>に異常の所見があると診断された労働者。</p>
+<ol><li><strong>血圧</strong>の測定</li><li><strong>血中脂質</strong>検査（LDL・HDLコレステロールまたは血清トリグリセライドの量）</li><li><strong>血糖</strong>検査</li><li><strong>腹囲</strong>の検査または<strong>BMI</strong>の測定</li></ol>
+<blockquote><p>★「いずれかに異常」ではなく<strong>すべてに異常</strong>です。ここが最頻出です。
+★既に<strong>脳血管疾患・心臓疾患の症状を有する</strong>と認められる者は対象外です。</p></blockquote>
+<h4>給付の内容</h4>
+<table><thead><tr><th>給付</th><th>内容</th><th>回数</th></tr></thead><tbody><tr><td><strong>二次健康診断</strong></td><td>脳血管・心臓の状態を把握するための医師による検査</td><td><strong>1年度につき1回</strong>（同一の一次健診に基づき1回）</td></tr><tr><td><strong>特定保健指導</strong></td><td>二次健康診断の結果に基づく、医師・保健師による<strong>面接</strong>での栄養・運動・生活指導</td><td>二次健康診断<strong>1回につき1回</strong></td></tr></tbody></table>
+<p>いずれも<strong>現物給付</strong>（労災指定の健診給付病院等で受ける）で、費用の支給はありません。</p>
+<h4>請求</h4>
+<p><strong>一次健康診断を受けた日から3か月以内</strong>に、<strong>健診給付病院等を経由して所轄都道府県労働局長</strong>に請求します（労災則18条の19第4項）。天災その他やむを得ない理由があるときはこの限りではありません。</p>
+<blockquote><p>★請求先は<strong>労働基準監督署長ではなく都道府県労働局長</strong>です。経由も<strong>健診給付病院等</strong>です。
+★特別加入者は二次健康診断等給付を<strong>受けられません</strong>（労働者ではないため安衛法の健康診断の対象外）。</p></blockquote>
+<h4>事業主への通知</h4>
+<p>労働者から二次健康診断の結果の提出を受けた事業主は、<strong>安衛法66条の4</strong>により<strong>医師の意見を聴き</strong>、必要に応じて就業場所の変更・労働時間の短縮等の措置を講じなければなりません。</p>
+<h3>費用と財源</h3>
+<p>社会復帰促進等事業に要する費用は、<strong>労災保険率</strong>に含まれる分（一般保険料）でまかなわれます。<strong>国庫負担</strong>は労災保険には原則としてありません（事務の執行に要する費用の一部を除く）。</p>
+<blockquote><p>★「労災保険の保険給付に要する費用に国庫負担がある」は誤りです。健保・国年・厚年との横断で問われます。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">25</span>労災保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険と並べて見る</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 34 ／ 労災・徴収</div><h1>徴収法</h1><div class="desc">択一6問。選択式なし。期限と主体の暗記が中心</div></div><blockquote><p>本試験では「<strong>労働保険徴収法</strong>」と略記されます。労災枠3問・雇用枠3問で出題。</p></blockquote>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>択一</td><td><strong>6問</strong>（労災枠3問・雇用枠3問）</td></tr><tr><td>選択</td><td><strong>出題されない</strong></td></tr><tr><td>特徴</td><td>手続の「<strong>期限</strong>」と「<strong>誰に</strong>」の組合せが出題の中心。理屈より数字を機械的に覚えるのが最も費用対効果が高い</td></tr></tbody></table>
+<hr>
+<h2>出題傾向（過去9年・第49〜57回の実データ）</h2>
+<h3>択一の設問形式</h3>
+<table class="big"><thead><tr><th>形式</th><th>問数</th><th>割合</th></tr></thead><tbody><tr><td>誤りを選ぶ</td><td>78</td><td>43%</td></tr><tr><td>正しいものを選ぶ</td><td>75</td><td>42%</td></tr><tr><td>個数問題</td><td>17</td><td>9%</td></tr><tr><td>組合せ問題</td><td>9</td><td>5%</td></tr><tr><td>その他</td><td>1</td><td>1%</td></tr></tbody></table>
+<p><strong>労災・雇用枠 計180問</strong>のうち、<strong>個数問題17問・組合せ問題9問（合わせて14%）</strong>。個数問題が多い科目です。個数は<strong>5肢すべての判断が必要</strong>で時間を食います。2肢以上分からなければ飛ばしてください。（→ <span class="ref"><span class="n">97</span>個数・組合せ問題<span class="sec">（全体版）</span></span>）</p>
+<h3>設問形式の推移（作問方針の変化）</h3>
+<table class="big"><thead><tr><th>年度</th><th>個数・組合せ</th><th>誤りを選ぶ</th><th>正しいものを選ぶ</th><th>肢の平均字数</th><th>判例に言及</th></tr></thead><tbody><tr><td>令和7</td><td>2</td><td>6</td><td>12</td><td>79</td><td>0</td></tr><tr><td>令和6</td><td>4</td><td>10</td><td>5</td><td>88</td><td>0</td></tr><tr><td>令和5</td><td>3</td><td>6</td><td>11</td><td>74</td><td>0</td></tr><tr><td>令和4</td><td>3</td><td>9</td><td>8</td><td>96</td><td>0</td></tr><tr><td>令和3</td><td>0</td><td>12</td><td>8</td><td>109</td><td>0</td></tr><tr><td>令和2</td><td>1</td><td>10</td><td>9</td><td>97</td><td>0</td></tr><tr><td>令和元</td><td>4</td><td>10</td><td>6</td><td>82</td><td>0</td></tr><tr><td>平成30</td><td>6</td><td>7</td><td>7</td><td>69</td><td>0</td></tr><tr><td>平成29</td><td>3</td><td>8</td><td>9</td><td>84</td><td>2</td></tr></tbody></table>
+<ul><li><strong>「正しいものを選べ」が増えています</strong>（7.8問 → 9.0問）。誤りを探すより、<strong>正しい形を知っているか</strong>が問われる方向です</li></ul>
+<h3>基準点補正の履歴</h3>
+<p>徴収法は独立した科目ではなく、<strong>労災の択一10問中3問・雇用の択一10問中3問</strong>として出題されます。
+したがって徴収法単独の基準点はなく、労災・雇用の基準点に組み込まれます。</p>
+<blockquote><p>択一で<strong>計6問</strong>＝全70問の<strong>9%</strong>。ここは条文数が少なく得点しやすいので、<strong>6問中5問</strong>を目標にしてください。労災・雇用の基準点割れを防ぐ最大の保険になります。</p></blockquote>
+<h3>頻出条文（択一で9年間に参照された回数）</h3>
+<p><strong>上位12条で択一44回分</strong>。回数が多い条ほど、条文そのものを読んでおく価値があります。「詳しく読む」は、その条をいちばん詳しく扱っている別ページです。</p>
+<table class="big"><thead><tr><th>条文</th><th>何を定めているか</th><th>回数</th><th>出題された年度</th><th>詳しく読む</th></tr></thead><tbody><tr><td><strong>第15条</strong></td><td>概算保険料の納付</td><td>6</td><td>令和7・令和6・令和3・令和元</td><td><span class="ref"><span class="n">38</span>概算保険料と確定保険料</span></td></tr><tr><td><strong>第8条</strong></td><td>請負事業の一括</td><td>6</td><td>令和6・令和4</td><td><span class="ref"><span class="n">36</span>事業の一括</span></td></tr><tr><td><strong>第12条</strong></td><td>一般保険料に係る保険料率</td><td>5</td><td>令和5・令和4・令和2</td><td><span class="ref"><span class="n">37</span>賃金総額と保険料率</span></td></tr><tr><td><strong>第7条</strong></td><td>有期事業の一括</td><td>5</td><td>令和7・令和6</td><td><span class="ref"><span class="n">36</span>事業の一括</span></td></tr><tr><td><strong>第33条</strong></td><td>労働保険事務組合</td><td>4</td><td>令和7・令和5・令和4・令和3</td><td><span class="ref"><span class="n">42</span>労働保険事務組合</span></td></tr><tr><td><strong>第27条</strong></td><td>督促及び滞納処分</td><td>4</td><td>令和5・令和元</td><td><span class="ref"><span class="n">41</span>督促・延滞金・時効</span></td></tr><tr><td><strong>第19条</strong></td><td>確定保険料</td><td>3</td><td>令和6・令和4</td><td><span class="ref"><span class="n">38</span>概算保険料と確定保険料</span></td></tr><tr><td><strong>第26条</strong></td><td>特例納付保険料の納付等</td><td>3</td><td>令和3</td><td><span class="ref"><span class="n">40</span>印紙保険料と特例納付</span></td></tr><tr><td><strong>第2条</strong></td><td>定義</td><td>2</td><td>令和元・平成29</td><td>—</td></tr><tr><td><strong>第17条</strong></td><td>概算保険料の追加徴収</td><td>2</td><td>令和7・平成30</td><td>—</td></tr><tr><td><strong>第16条</strong></td><td>増加概算保険料の納付</td><td>2</td><td>令和3・平成30</td><td><span class="ref"><span class="n">38</span>概算保険料と確定保険料</span></td></tr><tr><td><strong>第10条</strong></td><td>労働保険料</td><td>2</td><td>令和5・令和元</td><td>—</td></tr></tbody></table>
+<blockquote><p>この節は <code>kakomon/gen_trend.py</code> が過去問データから自動生成しています。</p></blockquote>
+<h2>深掘り（別ページ）</h2>
+<p>条文の趣旨・要件の切り分け・誤り肢の作られ方を論点ごとにまとめた別ページです。</p>
+<table class="big"><thead><tr><th>論点</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">35</span>保険関係の成立と消滅</span></td></tr><tr><td><span class="ref"><span class="n">36</span>事業の一括</span></td></tr><tr><td><span class="ref"><span class="n">37</span>賃金総額と保険料率</span></td></tr><tr><td><span class="ref"><span class="n">38</span>概算保険料と確定保険料</span></td></tr><tr><td><span class="ref"><span class="n">39</span>メリット制</span></td></tr><tr><td><span class="ref"><span class="n">40</span>印紙保険料と特例納付</span></td></tr><tr><td><span class="ref"><span class="n">41</span>督促・延滞金・時効</span></td></tr><tr><td><span class="ref"><span class="n">42</span>労働保険事務組合</span></td></tr></tbody></table>
+<h2>目的条文（1条）</h2>
+<blockquote><p>この法律は、労働者災害補償保険及び雇用保険（以下「労働保険」という。）の事業の<strong>効率的な運営</strong>を図るため、
+労働保険の<strong>保険関係の成立及び消滅</strong>、労働保険料の<strong>納付の手続</strong>、労働保険事務組合等に関し必要な事項を定めるものとする。</p></blockquote>
+<p><strong>キーワード</strong>：「<strong>効率的な運営</strong>」「<strong>保険関係の成立及び消滅</strong>」「<strong>納付の手続</strong>」</p>
+<blockquote><p>労災保険法・雇用保険法の目的条文と違い、<strong>労働者の保護ではなく「事務の効率化」</strong>が目的である点が特徴です。
+徴収法は選択式の独立科目ではありませんが、<strong>労災・雇用の選択式で目的条文が問われた実績があります</strong>
+（令和6年度 労災、令和元年度 労災、令和7年度 雇用）。</p></blockquote>
+<hr>
+<h2>1. 保険関係の成立・消滅</h2>
+<h3>成立（3条〜5条）</h3>
+<p>保険関係は<strong>適用事業が開始された日に法律上当然に成立</strong>する（届出は確認的なもの）。</p>
+<table class="big"><thead><tr><th>手続</th><th>期限</th><th>提出先</th></tr></thead><tbody><tr><td><strong>保険関係成立届</strong></td><td>成立の日から<strong>10日以内</strong></td><td>労働基準監督署長／公共職業安定所長</td></tr><tr><td>名称・所在地等変更届</td><td>変更の日の翌日から<strong>10日以内</strong></td><td>同上</td></tr><tr><td>概算保険料申告書（成立時）</td><td>成立の日から<strong>50日以内</strong></td><td>同上</td></tr></tbody></table>
+<h3>任意加入（暫定任意適用事業）</h3>
+<table class="big"><thead><tr><th>保険</th><th>加入の同意</th><th>脱退</th></tr></thead><tbody><tr><td><strong>労災</strong></td><td>労働者の<strong>過半数</strong>の希望があれば申請しなければならない</td><td>労働者の<strong>4分の3以上</strong>の同意＋厚生労働大臣の認可</td></tr><tr><td><strong>雇用</strong></td><td>労働者の<strong>2分の1以上</strong>の同意（<strong>2分の1以上</strong>の希望があれば申請義務）</td><td>労働者の<strong>4分の3以上</strong>の同意</td></tr></tbody></table>
+<h3>消滅</h3>
+<p>事業の廃止・終了の日の<strong>翌日</strong>に消滅する（届出不要）。</p>
+<hr>
+<h2>2. 一元適用と二元適用</h2>
+<table class="big"><thead><tr><th>区分</th><th>内容</th></tr></thead><tbody><tr><td><strong>二元適用事業</strong></td><td>労災と雇用の保険関係を<strong>別個に</strong>取り扱う。<strong>「都・市・港・農・建」</strong></td></tr><tr><td>一元適用事業</td><td>それ以外すべて</td></tr></tbody></table>
+<p><strong>二元適用事業</strong>
+① 都道府県及び市町村の行う事業（これに準ずるものを含む）
+② 港湾労働法による<strong>港湾運送</strong>の行為を行う事業
+③ <strong>農林水産</strong>の事業（一定のものを除く）
+④ <strong>建設</strong>の事業</p>
+<hr>
+<h2>3. 事業の一括</h2>
+<table class="big"><thead><tr><th>制度</th><th>対象</th><th>手続</th></tr></thead><tbody><tr><td><strong>請負事業の一括</strong>（8条1項）</td><td><strong>建設の事業</strong>が数次の請負で行われる場合。<strong>労災のみ</strong></td><td><strong>法律上当然</strong>（認可・届出不要）。元請負人のみが事業主</td></tr><tr><td>下請負人を事業主とする特例（8条2項）</td><td>上記の例外</td><td>書面契約＋<strong>厚生労働大臣の認可</strong>。成立の日の翌日から<strong>10日以内</strong>に申請</td></tr><tr><td><strong>有期事業の一括</strong>（7条）</td><td>小規模な有期事業</td><td><strong>法律上当然</strong>（認可不要）</td></tr><tr><td><strong>継続事業の一括</strong>（9条)</td><td>継続事業</td><td><strong>厚生労働大臣の認可</strong>が必要</td></tr></tbody></table>
+<blockquote><p><strong>雇用保険は請負事業の一括の対象外</strong>（元請・下請それぞれで保険関係が成立）。</p></blockquote>
+<h3>有期事業の一括の要件（すべて満たすこと）</h3>
+<p>① 事業主が同一
+② それぞれが有期事業
+③ <strong>労災保険</strong>に係る保険関係が成立
+④ <strong>小規模</strong>であること
+　・概算保険料 <strong>160万円未満</strong> かつ
+　・建設の事業：請負金額 <strong>1億8,000万円未満</strong>
+　・立木の伐採：素材の見込生産量 <strong>1,000立方メートル未満</strong>
+⑤ 事業の種類が同じ
+⑥ 労働保険事務が一の事務所で処理される</p>
+<h3>継続事業の一括の要件</h3>
+<p>① <strong>事業主が同一</strong>
+② それぞれが継続事業
+③ 保険関係が同一（労災のみ／雇用のみ／両保険）
+④ <strong>事業の種類が同じ</strong></p>
+<blockquote><p>「労災保険率が同一であること」という要件は<strong>ない</strong>（事業の種類が同じなら結果的に同率）。
+認可されると、指定事業以外の事業に係る保険関係は<strong>消滅</strong>する。</p></blockquote>
+<hr>
+<h2>4. 労働保険料</h2>
+<h3>種類</h3>
+<table class="big"><thead><tr><th>保険料</th><th>内容</th><th>負担</th></tr></thead><tbody><tr><td>一般保険料</td><td>賃金総額 ×（労災保険率＋雇用保険率）</td><td>労災は事業主全額／雇用は労使</td></tr><tr><td>第1種特別加入保険料</td><td>中小事業主等</td><td>事業主</td></tr><tr><td>第2種特別加入保険料</td><td>一人親方等</td><td>本人</td></tr><tr><td>第3種特別加入保険料</td><td>海外派遣者</td><td>事業主</td></tr><tr><td><strong>印紙保険料</strong></td><td>日雇労働被保険者</td><td><strong>労使折半</strong></td></tr><tr><td>特例納付保険料</td><td>雇用保険の未手続期間の遡及</td><td>事業主</td></tr></tbody></table>
+<h3>賃金総額</h3>
+<table class="big"><thead><tr><th>含む</th><th>含まない</th></tr></thead><tbody><tr><td>賞与、<strong>通勤手当（非課税分も含む）</strong>、住宅手当、家族手当、<strong>休業手当（労基法26条）</strong>、大入袋、社会保険料の被保険者負担分を事業主が負担する場合</td><td>退職金、結婚祝金・死亡弔慰金・災害見舞金、<strong>休業補償費（労災）</strong>、傷病手当金、解雇予告手当、出張旅費・宿泊費、制服・作業衣、役員報酬</td></tr></tbody></table>
+<blockquote><p><strong>★定番の引っかけ</strong>：休業<strong>手当</strong>（労基法26条）は含む／休業<strong>補償費</strong>（労災）は含まない。</p></blockquote>
+<h3>保険料率</h3>
+<table class="big"><thead><tr><th>項目</th><th>令和8年度 ⚠️要確認</th></tr></thead><tbody><tr><td>労災保険率</td><td>事業の種類ごと。最高<strong>1000分の88</strong>／最低<strong>1000分の2.5</strong>。原則<strong>3年ごと</strong>に改定</td></tr><tr><td>雇用保険率（一般の事業）</td><td><strong>13.5/1000</strong>＝労働者<strong>5</strong>＋事業主<strong>8.5</strong>（うち二事業<strong>3.5</strong>）</td></tr><tr><td>雇用保険率（農林水産・清酒製造）</td><td><strong>15.5/1000</strong>＝労働者<strong>6</strong>＋事業主<strong>9.5</strong>（うち二事業<strong>3.5</strong>）</td></tr><tr><td>雇用保険率（<strong>建設</strong>）</td><td><strong>16.5/1000</strong>＝労働者<strong>6</strong>＋事業主<strong>10.5</strong>（うち二事業<strong>4.5</strong>）</td></tr></tbody></table>
+<blockquote><p><strong>雇用保険二事業に充てる部分は事業主が全額負担</strong> → だから労使折半にならない。
+★二事業分は一般・農林水産が<strong>3.5/1000</strong>、<strong>建設のみ4.5/1000</strong>。建設だけ高い点が引っかけ。
+<strong>労災保険率は全額事業主負担</strong>。</p></blockquote>
+<h3>申告・納付の期限 ★最頻出</h3>
+<table class="big"><thead><tr><th>内容</th><th>期限</th></tr></thead><tbody><tr><td>概算保険料（<strong>年度更新</strong>）</td><td>保険年度の<strong>6月1日から40日以内</strong>（＝<strong>7月10日</strong>）</td></tr><tr><td>概算保険料（年度中途の成立）</td><td>成立の日から<strong>50日以内</strong></td></tr><tr><td>確定保険料（継続事業）</td><td>次の保険年度の<strong>6月1日から40日以内</strong></td></tr><tr><td>確定保険料（保険関係消滅）</td><td>消滅の日から<strong>50日以内</strong></td></tr><tr><td>有期事業の概算保険料</td><td>保険関係成立の日から<strong>20日以内</strong></td></tr></tbody></table>
+<p><strong>確定保険料の精算</strong>：概算 &gt; 確定 なら<strong>還付請求</strong>又は<strong>次年度への充当</strong>（請求しなければ充当）。概算 &lt; 確定 なら不足額を同期限までに納付。</p>
+<h3>延納（分割納付）</h3>
+<table class="big"><thead><tr><th>事業</th><th>要件</th><th>期数</th></tr></thead><tbody><tr><td><strong>継続事業</strong></td><td>概算保険料<strong>40万円以上</strong>（労災・雇用の一方のみなら<strong>20万円以上</strong>）、又は<strong>事務組合に委託</strong></td><td><strong>最大3期</strong></td></tr><tr><td><strong>有期事業</strong></td><td>概算保険料<strong>75万円以上</strong>、又は事務組合に委託。かつ<strong>事業期間が6か月を超える</strong></td><td>—</td></tr></tbody></table>
+<p><strong>継続事業の納期限</strong></p>
+<table class="big"><thead><tr><th>期</th><th>通常</th><th>事務組合委託</th></tr></thead><tbody><tr><td>第1期</td><td>7月10日</td><td>7月10日</td></tr><tr><td>第2期</td><td>10月31日</td><td><strong>11月14日</strong></td></tr><tr><td>第3期</td><td>翌年1月31日</td><td><strong>翌年2月14日</strong></td></tr></tbody></table>
+<hr>
+<h2>5. メリット制</h2>
+<p>保険料負担の公平を図るため、<strong>労災保険率</strong>（雇用保険率には適用されない）を災害の発生状況に応じて増減する。</p>
+<h3>継続事業のメリット制</h3>
+<p><strong>適用要件</strong></p>
+<ul><li>連続する<strong>3保険年度</strong>中の最後の保険年度に属する3月31日において、保険関係成立後<strong>3年以上</strong>経過</li><li>3保険年度中の各保険年度において、次のいずれかを満たす</li></ul>
+<p>　・<strong>100人以上</strong>の労働者を使用
+　・<strong>20人以上100人未満</strong>で、<strong>災害度係数が0.4以上</strong></p>
+<p><strong>増減幅</strong></p>
+<table class="big"><thead><tr><th>区分</th><th>幅</th></tr></thead><tbody><tr><td>継続事業（原則）</td><td><strong>±40％</strong></td></tr><tr><td>立木の伐採の事業</td><td>±35％</td></tr><tr><td>20人以上100人未満で災害度係数0.4以上の<strong>中小事業</strong></td><td><strong>±30％</strong></td></tr><tr><td><strong>特例メリット制</strong>（安全衛生措置を講じた中小事業主）</td><td><strong>±45％</strong></td></tr><tr><td>有期事業（建設・立木の伐採）</td><td>±40％</td></tr></tbody></table>
+<hr>
+<h2>6. 印紙保険料</h2>
+<table class="big"><thead><tr><th>等級</th><th>賃金日額</th><th>印紙保険料 ⚠️</th></tr></thead><tbody><tr><td>第1級</td><td>11,300円以上</td><td>176円</td></tr><tr><td>第2級</td><td>8,200円以上11,300円未満</td><td>146円</td></tr><tr><td>第3級</td><td>8,200円未満</td><td>96円</td></tr></tbody></table>
+<ul><li><strong>労使折半</strong></li><li>納付方法：<strong>日雇労働被保険者手帳</strong>に雇用保険印紙を貼付して<strong>消印</strong>、又は納付計器による納付</li><li>印紙保険料の<strong>追徴金は100分の25</strong>（一般保険料等は<strong>100分の10</strong>）★率の違いが頻出</li></ul>
+<hr>
+<h2>7. 督促・延滞金・時効</h2>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>督促状の指定期限</td><td>発する日から起算して<strong>10日以上</strong>経過した日</td></tr><tr><td>延滞金</td><td>納期限の翌日から完納の日の前日まで、年<strong>14.6％</strong>（納期限の翌日から<strong>3か月</strong>を経過する日までは年<strong>7.3％</strong>）</td></tr><tr><td>延滞金を徴収しない</td><td>労働保険料の額が<strong>1,000円未満</strong></td></tr><tr><td>端数</td><td>延滞金の額に<strong>100円未満</strong>の端数があれば切捨て、全額が100円未満なら徴収しない</td></tr><tr><td><strong>時効</strong></td><td>保険料その他の徴収金を徴収する権利・還付を受ける権利ともに<strong>2年</strong></td></tr><tr><td>督促の効果</td><td><strong>時効の更新（中断）</strong></td></tr><tr><td>不服申立て</td><td><strong>行政不服審査法</strong>による（労働保険審査会ではない）</td></tr></tbody></table>
+<hr>
+<h2>8. 期限のまとめ（暗記シート）</h2>
+<table class="big"><thead><tr><th>日数</th><th>手続</th></tr></thead><tbody><tr><td><strong>10日</strong></td><td>保険関係成立届、名称所在地変更届、下請負人を事業主とする認可申請、督促状の指定期限（10日以上）</td></tr><tr><td><strong>20日</strong></td><td>有期事業の概算保険料</td></tr><tr><td><strong>40日</strong></td><td>年度更新（6月1日から）＝概算・確定とも</td></tr><tr><td><strong>50日</strong></td><td>年度中途の保険関係成立時の概算保険料、保険関係消滅時の確定保険料</td></tr></tbody></table>
+<hr>
+<h2>9. 労働保険事務組合（S級・9年で5〜6年出題）</h2>
+<h3>制度の位置づけ</h3>
+<p>中小事業主が労働保険の事務処理を委託できる団体。<strong>事業主団体（商工会・商工会議所・事業協同組合等）</strong>が
+<strong>厚生労働大臣の認可</strong>を受けて事務組合となる。労働保険料の<strong>申告・納付</strong>を代わって行う。</p>
+<h3>委託できる事業主の規模</h3>
+<table class="big"><thead><tr><th>業種</th><th>常時使用する労働者数</th></tr></thead><tbody><tr><td>金融業、保険業、不動産業、<strong>小売業</strong></td><td><strong>50人以下</strong></td></tr><tr><td><strong>卸売業</strong>、サービス業</td><td><strong>100人以下</strong></td></tr><tr><td>その他の事業</td><td><strong>300人以下</strong></td></tr></tbody></table>
+<blockquote><p><strong>★引っかけ</strong>：<strong>小売業（50人）と卸売業（100人）の入替え</strong>。「金・保・不・小＝50」で覚える。</p></blockquote>
+<h3>委託できる事務／できない事務</h3>
+<table class="big"><thead><tr><th>できる</th><th><strong>できない</strong></th></tr></thead><tbody><tr><td>概算・確定保険料等の<strong>申告・納付</strong>／保険関係成立届・任意加入の申請／雇用保険の被保険者に関する届出／労災保険の特別加入の申請／その他労働保険に関する申請・届出・報告</td><td><strong>印紙保険料</strong>に関する事項（<strong>帳簿の備付けを除く</strong>）／<strong>労災保険の保険給付に関する請求書等の提出</strong>／雇用保険の<strong>保険給付に関する請求</strong></td></tr></tbody></table>
+<blockquote><p>「<strong>保険給付の請求は委託できない</strong>」が最重要。給付は労働者本人の権利だから。</p></blockquote>
+<h3>事務組合に委託した場合の効果</h3>
+<table class="big"><thead><tr><th>項目</th><th>効果</th></tr></thead><tbody><tr><td><strong>延納</strong></td><td>概算保険料の額にかかわらず<strong>延納できる</strong>（通常は継続40万円・有期75万円以上が必要）</td></tr><tr><td>納期限</td><td>第2期<strong>11月14日</strong>・第3期<strong>翌年2月14日</strong>（通常は10月31日・翌年1月31日）</td></tr><tr><td><strong>特別加入</strong></td><td><strong>中小事業主等（第1種）の特別加入は事務組合への委託が前提</strong></td></tr><tr><td>通知・還付</td><td>政府からの通知は事務組合に、還付金も事務組合に</td></tr><tr><td><strong>報奨金</strong></td><td>委託事業主の常時使用労働者が<strong>30人以下</strong>で、納付すべき保険料を完納した場合に交付</td></tr></tbody></table>
+<h3>責任の所在</h3>
+<ul><li>事務組合が<strong>故意又は重大な過失</strong>により納付を怠り、<strong>追徴金・延滞金</strong>が課された場合は、<strong>事務組合が納付</strong>する責めに任ずる</li><li>ただし<strong>保険料本体</strong>の納付義務は<strong>事業主</strong>にある（事務組合が納付しなかった場合、政府は事業主に請求できる）</li><li>事務組合は<strong>労働保険事務等処理委託事業主名簿</strong>・<strong>労働保険料等徴収及び納付簿</strong>等を備える</li></ul>
+<hr>
+<h2>10. 増加概算保険料・追加徴収・還付</h2>
+<table class="big"><thead><tr><th>制度</th><th>内容</th></tr></thead><tbody><tr><td><strong>増加概算保険料</strong></td><td>賃金総額の見込額が<strong>2倍を超えて増加</strong>し、かつ増加後の概算保険料と申告済額との差額が<strong>13万円以上</strong>となる場合、<strong>30日以内</strong>に申告・納付</td></tr><tr><td>概算保険料の<strong>減額</strong></td><td>賃金総額の見込額が<strong>2分の1以下に減少</strong>し、差額が13万円以上のとき、<strong>都道府県労働局歳入徴収官の認可</strong>を受けて減額できる</td></tr><tr><td><strong>追加徴収</strong></td><td>保険料率が引き上げられた場合、政府は追加徴収する。<strong>30日以上</strong>の期限を指定して通知</td></tr><tr><td><strong>認定決定</strong></td><td>申告書を提出しない・記載に誤りがあるとき、政府が保険料額を決定し通知。この場合<strong>追徴金（100分の10）</strong>を徴収（印紙保険料は<strong>100分の25</strong>）</td></tr><tr><td><strong>還付</strong></td><td>確定保険料が概算保険料を下回るとき、<strong>還付請求</strong>又は<strong>次年度への充当</strong>（請求しなければ充当）</td></tr></tbody></table>
+<blockquote><p><strong>13万円</strong>という数字は増加・減少の両方で共通。「2倍を超えて増加」「2分の1以下に減少」もセットで。</p></blockquote>
+<hr>
+<h2>11. 納付の実務</h2>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>納付先</td><td><strong>都道府県労働局歳入徴収官</strong>（実務上は日本銀行・金融機関等）</td></tr><tr><td>納付書</td><td>申告書と一体（<strong>納入告知書</strong>によらず自主申告・自主納付が原則）</td></tr><tr><td><strong>口座振替</strong></td><td>概算・確定保険料について利用可。振替日は各期の納期限より後に設定される</td></tr><tr><td>電子申請</td><td>一定の法人は<strong>電子申請が義務</strong>（資本金1億円超等）</td></tr><tr><td><strong>督促</strong></td><td>督促状の指定期限は発する日から起算して<strong>10日以上</strong>経過した日</td></tr><tr><td><strong>延滞金</strong></td><td>年<strong>14.6％</strong>（納期限の翌日から3か月を経過する日までは年<strong>7.3％</strong>）。保険料額<strong>1,000円未満</strong>は徴収しない</td></tr><tr><td>先取特権</td><td>労働保険料等の徴収金は、<strong>国税及び地方税に次ぐ順位</strong>の先取特権を有する</td></tr></tbody></table>
+<h2>直前チェック（徴収）</h2>
+<ul class="chk"><li>保険関係は<strong>事業開始の日に当然成立</strong>（届出は確認的）</li><li>二元適用事業＝<strong>都・市・港・農・建</strong></li><li>請負事業の一括は<strong>建設業・労災のみ・当然一括</strong>／雇用は対象外</li><li>有期事業の一括は<strong>当然</strong>、継続事業の一括は<strong>認可必要</strong></li><li>有期事業の一括：160万円・1億8,000万円・1,000立方メートル</li><li>賃金総額：休業<strong>手当</strong>は含む／休業<strong>補償費</strong>は含まない／通勤手当は<strong>非課税分も含む</strong></li><li>二事業分は<strong>事業主のみ負担</strong></li><li>年度更新は6月1日から<strong>40日以内</strong>、年度中途成立は<strong>50日以内</strong></li><li>延納：継続<strong>40万円・3期</strong>／有期<strong>75万円・6か月超</strong></li><li>メリット制は<strong>労災保険率のみ</strong>。±40％、中小±30％、特例±45％</li><li>事務組合：小売<strong>50</strong>／卸売<strong>100</strong>／その他<strong>300</strong></li><li>追徴金：印紙<strong>25％</strong>／一般<strong>10％</strong></li><li>徴収金の時効は<strong>2年</strong>、不服申立ては<strong>行政不服審査法</strong></li><li>事務組合に<strong>保険給付の請求</strong>は委託できない（印紙保険料も帳簿以外は不可）</li><li>事務組合に委託すれば<strong>金額にかかわらず延納可</strong>／納期限は<strong>11/14・2/14</strong></li><li>報奨金は常時使用労働者<strong>30人以下</strong></li><li>増加概算保険料＝<strong>2倍超</strong>かつ差額<strong>13万円以上</strong>→<strong>30日以内</strong></li><li>追徴金は一般<strong>10％</strong>／印紙<strong>25％</strong></li></ul>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">1</span>法改正まとめ<span class="sec">（全体版）</span></span></td><td>この科目の令和8年度改正を施行日で確認</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>時効・届出期限・遺族の範囲などを他科目と並べて比較</td></tr><tr><td><span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span></td><td><code>⚠️要確認</code> を付けた年度依存の数値を照合</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 35 ／ 労災・徴収</div><h1>保険関係の成立と消滅</h1><div class="desc">成立届10日・概算50日。二元適用は都・準・港・農林水産・建設</div></div><h3>成立は「事業が開始された日」（3条・4条）</h3>
+<table class="big"><thead><tr><th>保険</th><th>成立日</th></tr></thead><tbody><tr><td>労災保険</td><td><strong>事業が開始された日</strong>、または適用事業に該当するに至った日</td></tr><tr><td>雇用保険</td><td>同上</td></tr></tbody></table>
+<p><strong>届出をした日ではありません</strong>。届出は成立の要件ではなく、成立は<strong>法律上当然</strong>に生じます。</p>
+<blockquote><p>★「保険関係成立届を提出した日に成立する」は誤りです。届出は<strong>確認的</strong>なものです。</p></blockquote>
+<h3>成立届（4条の2第1項）</h3>
+<blockquote><p>保険関係が成立した日から<strong>10日以内</strong>に、その成立した日、事業主の氏名または名称および住所、事業の種類、事業の行われる場所その他厚生労働省令で定める事項を<strong>政府に届け出</strong>なければならない。</p></blockquote>
+<table class="big"><thead><tr><th>届出</th><th>期限</th></tr></thead><tbody><tr><td><strong>保険関係成立届</strong></td><td>成立した日から<strong>10日以内</strong></td></tr><tr><td>名称・所在地等<strong>変更届</strong></td><td>変更の日の翌日から起算して<strong>10日以内</strong></td></tr><tr><td><strong>概算保険料申告書</strong></td><td>成立した日から<strong>50日以内</strong>（有期事業は<strong>20日以内</strong>）</td></tr><tr><td>適用事業報告（安衛法）</td><td>遅滞なく</td></tr></tbody></table>
+<blockquote><p>★成立届10日／概算申告50日。<strong>10と50</strong>をセットで覚えます。</p></blockquote>
+<h3>一元適用と二元適用</h3>
+<table class="big"><thead><tr><th></th><th>労災と雇用の保険関係を</th></tr></thead><tbody><tr><td><strong>一元適用事業</strong></td><td><strong>一つにまとめて</strong>扱う（原則）</td></tr><tr><td><strong>二元適用事業</strong></td><td><strong>別々に</strong>扱う</td></tr></tbody></table>
+<p>二元適用事業は次の5つです。</p>
+<ol><li><strong>都道府県および市町村</strong>の行う事業</li><li>都道府県・市町村に<strong>準ずるもの</strong>の行う事業</li><li><strong>港湾運送</strong>の行為を行う事業</li><li><strong>農林水産</strong>の事業</li><li><strong>建設</strong>の事業</li></ol>
+<blockquote><p>★暗記法「<strong>都・準・港・農林水産・建設</strong>」。二元適用事業では、労災分と雇用分で<strong>別々に</strong>保険関係が成立し、<strong>別々に</strong>申告・納付します。</p></blockquote>
+<h3>暫定任意適用事業</h3>
+<p><strong>強制適用されない</strong>事業です。労災・雇用で範囲が異なります。</p>
+<table class="big"><thead><tr><th></th><th>労災保険</th><th>雇用保険</th></tr></thead><tbody><tr><td>対象</td><td><strong>個人経営</strong>の<strong>農業</strong>（労働者常時5人未満・特定の危険有害作業を行わないもの）、<strong>林業</strong>（労働者を常時使用しない）、<strong>水産業</strong>（労働者常時5人未満で一定の海域外）</td><td><strong>個人経営</strong>の<strong>農林水産</strong>の事業で労働者<strong>常時5人未満</strong></td></tr><tr><td>加入</td><td>事業主が申請し<strong>厚生労働大臣の認可</strong></td><td>同左</td></tr><tr><td>労働者の<strong>過半数</strong>の希望</td><td>加入申請<strong>義務</strong>が生じる</td><td>労働者の<strong>2分の1以上</strong>の希望で申請義務</td></tr></tbody></table>
+<blockquote><p>★労災では<strong>過半数</strong>、雇用では<strong>2分の1以上</strong>が希望したときに事業主に申請義務が生じます。数字は同じでも表現が違うので、そのまま問われます。
+★脱退は、労災では<strong>労働者の過半数の同意</strong>、雇用では<strong>4分の3以上の同意</strong>が必要です。</p></blockquote>
+<h3>消滅（5条）</h3>
+<blockquote><p>保険関係は、その事業が<strong>廃止され、または終了した</strong>ときは、その<strong>翌日</strong>に消滅する。</p></blockquote>
+<p><strong>届出は不要</strong>です（消滅届という手続はありません。確定保険料の申告で処理します）。</p>
+<table><thead><tr><th>事由</th><th>消滅日</th></tr></thead><tbody><tr><td>事業の廃止・終了</td><td><strong>翌日</strong></td></tr><tr><td>暫定任意適用事業の<strong>任意脱退の認可</strong></td><td>認可があった日の<strong>翌日</strong></td></tr><tr><td>労災の<strong>擬制任意適用</strong>（一定期間経過）</td><td>該当するに至った日の<strong>翌日</strong></td></tr></tbody></table>
+<blockquote><p>★「廃止された日に消滅する」は誤り。<strong>翌日</strong>です。
+★事業の<strong>休止</strong>や<strong>労働者が一時的にいなくなった</strong>だけでは消滅しません。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">34</span>徴収法</span></td><td>条文と期限の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span></td><td>期限・端数処理の数字</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 36 ／ 労災・徴収</div><h1>事業の一括</h1><div class="desc">請負と有期は当然、継続は申請と認可。規模要件160万円と1億8000万円</div></div><p>事業の一括には3種類あります。<strong>要件・手続・効果</strong>の違いが問われます。</p>
+<table class="big"><thead><tr><th></th><th>請負事業の一括（8条）</th><th>有期事業の一括（7条）</th><th>継続事業の一括（9条）</th></tr></thead><tbody><tr><td>対象</td><td><strong>建設</strong>の事業</td><td>小規模な<strong>有期</strong>事業</td><td><strong>継続</strong>事業</td></tr><tr><td>手続</td><td><strong>法律上当然</strong>（手続不要）</td><td><strong>法律上当然</strong>（手続不要）</td><td><strong>申請＋厚生労働大臣の認可</strong></td></tr><tr><td>保険</td><td><strong>労災のみ</strong></td><td><strong>労災のみ</strong></td><td>労災・雇用<strong>どちらも</strong></td></tr></tbody></table>
+<h3>請負事業の一括（8条）</h3>
+<p><strong>建設の事業が数次の請負によって行われる場合</strong>、その事業を<strong>一の事業</strong>とみなし、<strong>元請負人のみを事業主</strong>とします。<strong>手続は不要</strong>で当然に一括されます。</p>
+<blockquote><p>★建設業だけの制度です。「製造業でも数次の請負なら一括される」は誤りです。</p></blockquote>
+<p><strong>下請負事業の分離</strong>：元請負人と下請負人が<strong>厚生労働省令で定めるところにより申請</strong>し、<strong>厚生労働大臣の認可</strong>を受けたときは、下請負人を事業主とすることができます。</p>
+<table><thead><tr><th>分離の要件</th><th>内容</th></tr></thead><tbody><tr><td>対象</td><td><strong>建設</strong>の事業</td></tr><tr><td>規模</td><td>下請負部分が<strong>請負金額1億8,000万円以上</strong>、または<strong>概算保険料160万円以上</strong></td></tr><tr><td>手続</td><td>保険関係成立の日の翌日から起算して<strong>10日以内</strong>に申請</td></tr></tbody></table>
+<h3>有期事業の一括（7条）</h3>
+<p>次の要件を<strong>すべて</strong>満たすと、当然に一括されます。</p>
+<ol><li>事業主が<strong>同一人</strong>であること</li><li>それぞれの事業が<strong>有期事業</strong>であること</li><li>それぞれの事業の<strong>規模が厚生労働省令で定める規模以下</strong>であること</li><li>それぞれの事業が、他のいずれかの事業の<strong>全部または一部と同時に行われる</strong>こと</li><li>その他厚生労働省令で定める要件に該当すること</li></ol>
+<p>規模要件は次のとおりです。</p>
+<table><thead><tr><th>事業</th><th>規模</th></tr></thead><tbody><tr><td><strong>建設</strong>の事業</td><td>概算保険料<strong>160万円未満</strong>、かつ請負金額（消費税抜き）<strong>1億8,000万円未満</strong></td></tr><tr><td><strong>立木の伐採</strong>の事業</td><td>概算保険料<strong>160万円未満</strong>、かつ素材の見込生産量<strong>1,000立方メートル未満</strong></td></tr></tbody></table>
+<p>さらに、<strong>労災保険率表による事業の種類が同じ</strong>であること、<strong>それぞれの事業が同一の都道府県労働局の管轄区域内</strong>（または隣接など一定の範囲内）にあることが必要です。</p>
+<blockquote><p>★<strong>申請も認可も不要</strong>です。要件を満たせば当然に一括されます。ここが継続事業との最大の違いです。
+★一括された事業は<strong>まとめて一の事業</strong>とみなされ、<strong>継続事業と同様に</strong>保険年度単位で申告納付します。</p></blockquote>
+<h3>継続事業の一括（9条）</h3>
+<p><strong>事業主が同一人</strong>である2以上の<strong>継続</strong>事業について、事業主が<strong>申請</strong>し、<strong>厚生労働大臣の認可</strong>を受けたときに一括されます。</p>
+<p>要件は次のとおりです。</p>
+<ol><li>事業主が<strong>同一人</strong>であること</li><li>それぞれの事業が、<strong>継続事業</strong>であること</li><li>それぞれの事業が次のいずれか一つのみに該当すること</li></ol>
+<ul><li><strong>二元適用事業</strong>であって<strong>労災</strong>保険に係る保険関係が成立している事業</li><li>二元適用事業であって<strong>雇用</strong>保険に係る保険関係が成立している事業</li><li><strong>一元適用事業</strong>であって労災・雇用<strong>両方</strong>の保険関係が成立している事業</li></ul>
+<ol><li>それぞれの事業が、<strong>労災保険率表による事業の種類</strong>を<strong>同じくする</strong>こと</li></ol>
+<p>認可されると、指定された<strong>一の事業</strong>にすべての労働者が使用されるものとみなされ、<strong>指定事業以外の保険関係は消滅</strong>します。</p>
+<blockquote><p>★<strong>都道府県をまたいでも一括できます</strong>（有期事業の一括と違い、地域の制限がありません）。
+★指定を受けるのは事業主ではなく<strong>厚生労働大臣が指定する一の事業</strong>です。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">34</span>徴収法</span></td><td>条文と期限の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span></td><td>期限・端数処理の数字</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 37 ／ 労災・徴収</div><h1>賃金総額と保険料率</h1><div class="desc">休業手当は入り休業補償は入らない。二事業分は事業主のみ</div></div><h3>一般保険料の額（11条）</h3>
+<pre><code>一般保険料 ＝ 賃金総額 × 一般保険料率</code></pre>
+<p>「<strong>賃金総額</strong>」とは、事業主がその事業に<strong>使用するすべての労働者</strong>に支払う<strong>賃金の総額</strong>です。</p>
+<blockquote><p>★「被保険者に支払う」ではなく「<strong>使用するすべての労働者</strong>」です。雇用保険の被保険者でない者（週20時間未満のパート等）の賃金も、<strong>労災分</strong>の賃金総額には含まれます。</p></blockquote>
+<h3>賃金に含まれるか</h3>
+<table class="big"><thead><tr><th>含まれる</th><th>含まれない</th></tr></thead><tbody><tr><td>基本給、家族手当、通勤手当、住宅手当</td><td><strong>役員報酬</strong>（労働者としての賃金部分を除く）</td></tr><tr><td><strong>賞与</strong>、期末手当</td><td><strong>退職金</strong>（退職を事由に支払われるもの）</td></tr><tr><td><strong>深夜・休日手当</strong></td><td><strong>結婚祝金・見舞金</strong>（恩恵的なもの）</td></tr><tr><td><strong>休業手当</strong>（労基法26条）</td><td><strong>休業補償</strong>（労基法76条・平均賃金の60%）</td></tr><tr><td>通勤定期券の現物支給</td><td><strong>解雇予告手当</strong></td></tr><tr><td>前払退職金（毎月支払われるもの）</td><td>出張旅費、<strong>制服・作業着</strong></td></tr><tr><td>生産奨励金、能率手当</td><td>退職金の<strong>打切支給</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>休業手当は含まれる／休業補償は含まれない</strong>。この対比が最頻出です。
+★通勤手当は<strong>非課税分も含めて全額</strong>が賃金です。税法上の扱いとは異なります。</p></blockquote>
+<h3>賃金総額の特例（11条3項）</h3>
+<p>正確な把握が困難な事業について、<strong>請負金額や素材生産量</strong>から賃金総額を算定します。</p>
+<table class="big"><thead><tr><th>事業</th><th>算定方法</th></tr></thead><tbody><tr><td><strong>請負による建設</strong>の事業</td><td>請負金額 × <strong>労務費率</strong></td></tr><tr><td><strong>立木の伐採</strong>の事業</td><td>素材の生産量 × 生産量1立方メートルあたりの<strong>労務費の額</strong></td></tr><tr><td><strong>造林、木炭・薪の生産</strong>等の事業</td><td>厚生労働大臣が定める<strong>平均賃金額</strong> × 使用労働者の<strong>延数</strong></td></tr></tbody></table>
+<blockquote><p>★建設の請負金額は<strong>消費税相当額を除いた額</strong>です。</p></blockquote>
+<h3>保険料率（12条）</h3>
+<table class="big"><thead><tr><th>保険関係</th><th>一般保険料率</th></tr></thead><tbody><tr><td>労災・雇用<strong>両方</strong></td><td><strong>労災保険率 ＋ 雇用保険率</strong></td></tr><tr><td><strong>労災のみ</strong></td><td>労災保険率</td></tr><tr><td><strong>雇用のみ</strong></td><td>雇用保険率</td></tr></tbody></table>
+<h3>労災保険率</h3>
+<ul><li><strong>事業の種類ごと</strong>に定められ、<strong>最高1000分の88／最低1000分の2.5</strong></li><li><strong>過去3年間</strong>の災害率等を考慮して<strong>厚生労働大臣</strong>が定める</li><li>原則として<strong>3年ごと</strong>に改定</li><li><strong>全額事業主負担</strong></li></ul>
+<p>労災保険率には<strong>非業務災害率</strong>（通勤災害・二次健康診断等給付に充てる分、<strong>1000分の0.6</strong>）が含まれます。メリット制で増減するのは<strong>労災保険率から非業務災害率を減じた率</strong>の部分です。</p>
+<h3>雇用保険率</h3>
+<p>3つの部分からできています（12条4項）。</p>
+<table class="big"><thead><tr><th>部分</th><th>本則の率</th><th>負担</th></tr></thead><tbody><tr><td><strong>失業等給付費等</strong>充当分</td><td>1000分の8（農林水産・清酒製造・建設は1000分の10）</td><td><strong>労使折半</strong></td></tr><tr><td><strong>育児休業給付費</strong>充当分</td><td>1000分の5</td><td><strong>労使折半</strong></td></tr><tr><td><strong>二事業費</strong>充当分</td><td>1000分の3.5（建設は1000分の4.5）</td><td><strong>事業主のみ</strong></td></tr></tbody></table>
+<p>実際に適用される率は、<strong>弾力条項</strong>により毎年度見直されます。令和8年度の率は <span class="ref"><span class="n">34</span>徴収法</span> の一覧を見てください。</p>
+<blockquote><p>★<strong>二事業（雇用安定事業・能力開発事業）分は事業主だけが負担</strong>します。これが労使折半にならない理由です。最頻出の理屈です。</p></blockquote>
+<h3>弾力条項</h3>
+<table class="big"><thead><tr><th>対象</th><th>発動要件</th><th>変更幅</th></tr></thead><tbody><tr><td><strong>雇用保険率</strong>（失業等給付分）</td><td>積立金 ÷ 失業等給付費 が<strong>2を超え、または1を下る</strong>に至った場合</td><td><strong>1000分の4</strong>の範囲内で変更（労働政策審議会の意見を聴く）</td></tr><tr><td><strong>育児休業給付</strong>分</td><td>育児休業給付資金の状況により</td><td><strong>1000分の4</strong>に変更できる</td></tr><tr><td><strong>二事業</strong>分</td><td>雇用安定資金が一般保険料徴収額の<strong>1000分の3.5</strong>に相当する額の<strong>1.5倍</strong>を超えるとき</td><td><strong>1000分の0.5</strong>を控除した率に変更</td></tr></tbody></table>
+<blockquote><p>★「厚生労働大臣が<strong>労働政策審議会の意見を聴いて</strong>、<strong>1年以内の期間</strong>を定めて変更する」という枠組みが共通です。</p></blockquote>
+<h3>特別加入保険料率</h3>
+<table class="big"><thead><tr><th>保険料</th><th>対象</th><th>率</th></tr></thead><tbody><tr><td><strong>第1種特別加入保険料</strong></td><td>中小事業主等</td><td><strong>第1種特別加入保険料率</strong>（その事業の労災保険率と同一の率から、社会復帰促進等事業等に係る率を減じた率）</td></tr><tr><td><strong>第2種特別加入保険料</strong></td><td>一人親方等・特定作業従事者</td><td><strong>第2種特別加入保険料率</strong>（事業または作業の種類ごとに厚生労働大臣が定める。1000分の3〜1000分の52）</td></tr><tr><td><strong>第3種特別加入保険料</strong></td><td>海外派遣者</td><td><strong>第3種特別加入保険料率</strong>（<strong>一律1000分の3</strong>）</td></tr></tbody></table>
+<p>いずれも<strong>給付基礎日額の365倍</strong>（＝保険料算定基礎額）に率を乗じて算定します。</p>
+<blockquote><p>★<strong>第3種だけが一律</strong>です。海外派遣は事業の種類による差を設けません。
+★特別加入保険料は<strong>全額が特別加入者本人（実際には事業主・団体）の負担</strong>です。</p></blockquote>
+<h3>徴収法に出てくるそのほかの届出</h3>
+<table><thead><tr><th>届出</th><th>期限・提出先</th></tr></thead><tbody><tr><td><strong>保険関係成立届</strong></td><td>成立した日から<strong>10日以内</strong></td></tr><tr><td><strong>名称、所在地等変更届</strong></td><td>変更の日の翌日から起算して<strong>10日以内</strong></td></tr><tr><td><strong>代理人選任・解任届</strong></td><td>あらかじめ</td></tr><tr><td><strong>確定保険料申告書</strong></td><td>次の保険年度の<strong>6月1日から40日以内</strong></td></tr><tr><td><strong>保険関係消滅</strong>（任意適用の脱退）</td><td><strong>厚生労働大臣の認可</strong>（申請）</td></tr></tbody></table>
+<p>事業ごとに<strong>労働保険番号</strong>（府県・所掌・管轄・基幹番号・枝番号）が付され、<strong>継続事業の一括</strong>では<strong>被一括事業</strong>の保険関係が消滅します。</p>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">34</span>徴収法</span></td><td>条文と期限の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span></td><td>期限・端数処理の数字</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 38 ／ 労災・徴収</div><h1>概算保険料と確定保険料</h1><div class="desc">40日・50日・20日。追徴金は確定だけ</div></div><p>労働保険料は<strong>まず見込みで納め（概算）、後で精算する（確定）</strong>しくみです。</p>
+<h3>概算保険料（15条）</h3>
+<table class="big"><thead><tr><th>区分</th><th>申告・納付期限</th></tr></thead><tbody><tr><td>継続事業（保険年度の当初から）</td><td>その保険年度の<strong>6月1日から40日以内</strong>（＝<strong>7月10日</strong>）</td></tr><tr><td>継続事業（保険年度の<strong>中途に成立</strong>）</td><td>保険関係が成立した日から<strong>50日以内</strong></td></tr><tr><td><strong>有期事業</strong></td><td>保険関係が成立した日から<strong>20日以内</strong></td></tr></tbody></table>
+<p>賃金総額の<strong>見込額</strong>に保険料率を乗じて算定します。見込額が<strong>直前の保険年度の賃金総額の100分の50以上100分の200以下</strong>であるときは、<strong>直前の保険年度の賃金総額</strong>を用います。</p>
+<blockquote><p>★「50%以上200%以下なら前年度の額を使う」＝<strong>大きく変わらなければ前年実績でよい</strong>という趣旨です。</p></blockquote>
+<h3>増加概算保険料（16条）</h3>
+<p>賃金総額の見込額が増加した場合、次の<strong>両方</strong>に該当すると、<strong>増加した日から30日以内</strong>に差額を申告・納付します。</p>
+<ol><li>増加後の見込額が、当初の見込額の<strong>100分の200を超える</strong>こと</li><li>増加後の概算保険料の額と当初の概算保険料の額との<strong>差額が13万円以上</strong>であること</li></ol>
+<blockquote><p>★<strong>2倍超かつ13万円以上</strong>。片方だけでは対象になりません。
+★見込額が<strong>減少</strong>した場合の手続はありません（確定精算で調整されます）。</p></blockquote>
+<h3>確定保険料（19条）</h3>
+<table class="big"><thead><tr><th>区分</th><th>申告・納付期限</th></tr></thead><tbody><tr><td>継続事業</td><td>次の保険年度の<strong>6月1日から40日以内</strong></td></tr><tr><td>継続事業（保険年度の<strong>中途に消滅</strong>）</td><td>保険関係が消滅した日から<strong>50日以内</strong></td></tr><tr><td><strong>有期事業</strong></td><td>保険関係が消滅した日から<strong>50日以内</strong></td></tr></tbody></table>
+<p><strong>申告書の提出は義務</strong>で、納付すべき額がない場合（概算で納めすぎていた場合）でも<strong>申告書は提出</strong>しなければなりません。</p>
+<h3>精算</h3>
+<table class="big"><thead><tr><th>状況</th><th>処理</th></tr></thead><tbody><tr><td>概算 <strong>＜</strong> 確定</td><td><strong>不足額</strong>を確定保険料申告書に添えて納付</td></tr><tr><td>概算 <strong>＞</strong> 確定</td><td><strong>充当</strong>（次の概算保険料等に充てる）または<strong>還付</strong>（請求により）</td></tr></tbody></table>
+<p>還付を受けるには<strong>労働保険料還付請求書</strong>の提出が必要です。請求がなければ<strong>次期の概算保険料等に充当</strong>されます。</p>
+<h3>認定決定と追徴金</h3>
+<table class="big"><thead><tr><th>場面</th><th>効果</th></tr></thead><tbody><tr><td>申告書を<strong>提出しない</strong>、または記載に<strong>誤り</strong>がある</td><td>政府が労働保険料の額を<strong>決定</strong>し事業主に<strong>通知</strong>（<strong>認定決定</strong>）</td></tr><tr><td>通知を受けたとき</td><td>通知を受けた日から<strong>15日以内</strong>に納付</td></tr><tr><td><strong>確定保険料</strong>についての認定決定</td><td>納付すべき額（1,000円未満切捨て）の<strong>100分の10</strong>の<strong>追徴金</strong></td></tr></tbody></table>
+<blockquote><p>★追徴金がかかるのは<strong>確定保険料</strong>についてだけです。<strong>概算保険料の認定決定には追徴金はありません</strong>。ここが定番の引っかけです。
+★事業主が<strong>申告書を提出しなかった</strong>場合でも、<strong>天災その他やむを得ない理由</strong>があるときは追徴金を徴収しません。</p></blockquote>
+<h3>延納（分割納付）</h3>
+<table class="big"><thead><tr><th></th><th>継続事業</th><th>有期事業</th></tr></thead><tbody><tr><td>要件</td><td>概算保険料が<strong>40万円以上</strong>（労災・雇用の一方のみ成立なら<strong>20万円以上</strong>）、または<strong>労働保険事務組合に委託</strong>していること</td><td>概算保険料が<strong>75万円以上</strong>、または労働保険事務組合に委託していること／かつ<strong>事業期間が6か月を超える</strong>こと</td></tr><tr><td>期別</td><td>最大<strong>3期</strong>（4/1〜7/31、8/1〜11/30、12/1〜3/31）</td><td>最大<strong>3期</strong>（各期は原則4か月）</td></tr><tr><td>各期の納期限</td><td><strong>7月10日／10月31日／翌年1月31日</strong>（事務組合委託の場合は<strong>11月14日／2月14日</strong>）</td><td>最初の期は成立日から<strong>20日以内</strong>、以後は<strong>3月31日／11月30日</strong>等</td></tr></tbody></table>
+<blockquote><p>★継続事業で<strong>10月1日以降</strong>に保険関係が成立した場合は<strong>延納できません</strong>（残り期間が1期しかないため）。
+★事務組合に委託していると、第2期・第3期の納期限が<strong>2週間延びます</strong>。</p></blockquote>
+<h3>端数処理</h3>
+<table><thead><tr><th>対象</th><th>処理</th></tr></thead><tbody><tr><td>賃金総額</td><td><strong>1,000円未満切捨て</strong></td></tr><tr><td>保険料の額</td><td><strong>1円未満切捨て</strong></td></tr><tr><td>延納の各期の額（割り切れないとき）</td><td><strong>最初の期</strong>に加算</td></tr><tr><td>追徴金・延滞金の基礎額</td><td><strong>1,000円未満切捨て</strong></td></tr><tr><td>追徴金・延滞金の額</td><td><strong>100円未満切捨て</strong></td></tr></tbody></table>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">34</span>徴収法</span></td><td>条文と期限の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span></td><td>期限・端数処理の数字</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 39 ／ 労災・徴収</div><h1>メリット制</h1><div class="desc">85%超と75%以下。雇用保険率には適用されない</div></div><h3>趣旨</h3>
+<p>災害の発生状況に応じて<strong>労災保険率</strong>（または保険料額）を増減し、<strong>保険料負担の公平</strong>と<strong>災害防止努力の促進</strong>を図る制度です。</p>
+<blockquote><p>★<strong>雇用保険率には適用されません</strong>。労災保険率だけです。最頻出の引っかけです。
+★増減するのは<strong>労災保険率から非業務災害率（1000分の0.6）を減じた率</strong>の部分です。非業務災害率の部分は増減しません。</p></blockquote>
+<h3>収支率</h3>
+<pre><code>　　　　　保険給付の額 ＋ 特別支給金の額
+収支率 ＝ ──────────────────────── × 100
+　　　　　　　保険料の額 × 調整率</code></pre>
+<p><strong>100分の85を超える</strong>か、<strong>100分の75以下</strong>であるときに増減されます（12条3項）。</p>
+<p>分子に含まれないもの（<strong>業務災害以外</strong>は入りません）。</p>
+<ul><li><strong>通勤災害</strong>に関する保険給付</li><li><strong>二次健康診断等給付</strong></li><li><strong>第三種特別加入者</strong>（海外派遣者）に係る保険給付</li><li>特定の<strong>遺族補償一時金</strong>（労災法16条の6第1項2号の場合）</li><li><strong>療養開始後3年</strong>を経過した日以後の<strong>傷病補償年金・障害補償年金</strong>等（一定のもの）</li></ul>
+<h3>継続事業のメリット制（12条3項）</h3>
+<p><strong>連続する3保険年度</strong>の各保険年度において次のいずれかに該当し、かつ<strong>最後の保険年度の3月31日（基準日）において労災保険の保険関係が成立した後3年以上</strong>経過していることが要件です。</p>
+<table class="big"><thead><tr><th>号</th><th>規模要件</th></tr></thead><tbody><tr><td>1号</td><td><strong>100人以上</strong>の労働者を使用する事業</td></tr><tr><td>2号</td><td><strong>20人以上100人未満</strong>の労働者を使用する事業であって、労働者数×（労災保険率−非業務災害率）が<strong>0.4以上</strong>（<strong>災害度係数</strong>）</td></tr><tr><td>3号</td><td><strong>一括有期事業</strong>（建設・立木の伐採）であって、確定保険料の額が<strong>40万円以上</strong></td></tr></tbody></table>
+<p>適用されるのは、<strong>基準日の属する保険年度の次の次の保険年度</strong>の労災保険率です。</p>
+<p>増減幅は<strong>100分の40</strong>の範囲内です（建設の事業・立木の伐採の事業で確定保険料が一定額未満のものは<strong>100分の30</strong>の範囲内）。</p>
+<blockquote><p>★「連続する3保険年度」＋「成立後3年以上」＋「<strong>次の次の</strong>保険年度から適用」。3つの「3」に注意します。</p></blockquote>
+<h3>有期事業のメリット制（20条）</h3>
+<p><strong>一括されていない単独の有期事業</strong>が対象です。</p>
+<table class="big"><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td><strong>建設</strong>の事業</td><td>確定保険料の額が<strong>40万円以上</strong>、または請負金額（消費税抜き）<strong>1億1,000万円以上</strong></td></tr><tr><td><strong>立木の伐採</strong>の事業</td><td>確定保険料の額が<strong>40万円以上</strong>、または素材の生産量<strong>1,000立方メートル以上</strong></td></tr></tbody></table>
+<p>事業が<strong>終了した日から3か月</strong>を経過した日前の状況で収支率を算定し、<strong>確定保険料の額そのもの</strong>を100分の40の範囲内で増減します（率ではなく額を増減する点が継続事業と違います）。</p>
+<h3>特例メリット制（12条の2）</h3>
+<p><strong>中小事業主</strong>が<strong>労働者の安全・衛生を確保するための措置</strong>を講じた場合の上乗せです。</p>
+<table><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>規模</td><td>常時<strong>100人未満</strong>（金融業・保険業・不動産業・小売業は50人以下、卸売業・サービス業は100人以下という事務組合委託の規模とは別の基準）</td></tr><tr><td>措置</td><td>厚生労働省令で定める<strong>安全衛生措置</strong>を講じたこと</td></tr><tr><td>申告</td><td>措置を講じた保険年度の<strong>次の保険年度の初日から6か月以内</strong>に申告</td></tr></tbody></table>
+<p>増減幅が<strong>100分の45</strong>に拡大されます。</p>
+<blockquote><p>★通常のメリット制が<strong>±40%</strong>、特例メリット制が<strong>±45%</strong>。この5ポイントの差が問われます。</p></blockquote>
+<h3>調整率</h3>
+<p>収支率の分母に掛ける率です。</p>
+<table><thead><tr><th>区分</th><th>率</th></tr></thead><tbody><tr><td><strong>第一種調整率</strong>（継続事業）</td><td>事業の種類により定められる</td></tr><tr><td><strong>第二種調整率</strong>（有期事業）</td><td>立木の伐採の事業 <strong>100分の43</strong>／建設の事業 <strong>100分の63</strong>／港湾貨物取扱・港湾荷役 <strong>100分の63</strong>／船舶所有者の事業 <strong>100分の35</strong></td></tr></tbody></table>
+<blockquote><p>★年金給付が長期にわたる分を織り込むための係数です。数値そのものが選択式で問われたことがあります。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">34</span>徴収法</span></td><td>条文と期限の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span></td><td>期限・端数処理の数字</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 40 ／ 労災・徴収</div><h1>印紙保険料と特例納付</h1><div class="desc">176/146/96円。追徴金は印紙だけ25%</div></div><h3>印紙保険料（22条）</h3>
+<p><strong>雇用保険の日雇労働被保険者</strong>を使用する事業主が、<strong>一般保険料に加えて</strong>納付するものです。</p>
+<pre><code>印紙保険料 ＝ 日雇労働被保険者1人につき1日当たりの定額</code></pre>
+<table class="big"><thead><tr><th>等級</th><th>賃金日額</th><th>印紙保険料の額</th></tr></thead><tbody><tr><td><strong>第1級</strong></td><td><strong>11,300円以上</strong></td><td><strong>176円</strong></td></tr><tr><td><strong>第2級</strong></td><td><strong>8,200円以上11,300円未満</strong></td><td><strong>146円</strong></td></tr><tr><td><strong>第3級</strong></td><td>8,200円未満</td><td><strong>96円</strong></td></tr></tbody></table>
+<p>負担は<strong>労使折半</strong>（端数は事業主負担）です。</p>
+<blockquote><p>★労災保険には印紙保険料はありません。<strong>雇用保険だけ</strong>の制度です。
+★厚生労働大臣は、<strong>失業等給付費等充当徴収保険率を変更した場合</strong>などに、印紙保険料の額を変更することができます。</p></blockquote>
+<h3>納付の方法</h3>
+<table class="big"><thead><tr><th>方法</th><th>内容</th></tr></thead><tbody><tr><td><strong>雇用保険印紙</strong>を貼付・消印</td><td>原則。<strong>日雇労働被保険者手帳</strong>に貼って<strong>消印</strong></td></tr><tr><td><strong>印紙保険料納付計器</strong>による納付印の押なつ</td><td>あらかじめ<strong>所轄都道府県労働局長の承認</strong>を受ける</td></tr></tbody></table>
+<p><strong>雇用保険印紙購入通帳</strong>の交付を受けて、<strong>日本郵便株式会社の営業所</strong>（郵便局）で購入します。</p>
+<table class="big"><thead><tr><th>手続</th><th>期限・要件</th></tr></thead><tbody><tr><td>購入通帳の交付申請</td><td>事業主が所轄公共職業安定所長に申請</td></tr><tr><td>通帳の<strong>有効期間</strong></td><td>交付の日から<strong>その日の属する保険年度の末日</strong>まで</td></tr><tr><td><strong>買戻し</strong>（印紙が不要になったとき）</td><td>所轄公共職業安定所長の<strong>確認</strong>を受けて、日本郵便の営業所で買い戻す</td></tr><tr><td><strong>印紙保険料納付状況報告書</strong></td><td>翌月末日までに所轄公共職業安定所長に提出</td></tr><tr><td><strong>帳簿</strong>の備付け</td><td>印紙の受払状況を記載し、<strong>翌年度の初日から3年間</strong>保存</td></tr></tbody></table>
+<blockquote><p>★買戻しには<strong>公共職業安定所長の確認</strong>が必要です。「都道府県労働局長」とする肢は誤りです。</p></blockquote>
+<h3>印紙保険料の追徴金</h3>
+<p>事業主が印紙保険料を納付しなかったとき（貼付・消印を怠ったとき）、政府が<strong>認定決定</strong>を行い、その額の<strong>100分の25</strong>の追徴金が徴収されます。</p>
+<blockquote><p>★一般保険料の追徴金は<strong>10%</strong>、印紙保険料は<strong>25%</strong>。この違いが定番です。</p></blockquote>
+<h3>特例納付保険料（26条）</h3>
+<p><strong>雇用保険の被保険者資格の確認</strong>があった場合に、事業主が<strong>過去にさかのぼって</strong>保険料を納める制度です。</p>
+<table><thead><tr><th>対象</th><th>内容</th></tr></thead><tbody><tr><td>きっかけ</td><td>雇用保険法<strong>22条5項</strong>の規定により、<strong>2年を超えてさかのぼって</strong>被保険者であった期間が認められた者がいること</td></tr><tr><td>誰が</td><td>対象となる被保険者を使用していた<strong>事業主</strong>（保険料を納付していなかった者）</td></tr><tr><td>手続</td><td>厚生労働大臣が事業主に<strong>勧奨</strong> → 事業主が<strong>申出</strong> → 政府が<strong>額を決定・通知</strong> → <strong>納付</strong></td></tr><tr><td>額</td><td>さかのぼった期間のうち<strong>時効により徴収できなくなった期間</strong>に係る一般保険料額に相当する額＋その<strong>100分の10</strong>に相当する額</td></tr></tbody></table>
+<blockquote><p>★事業主の<strong>申出があってはじめて</strong>納付義務が生じます。申出は任意で、強制はされません。
+★通知を受けた事業主は、<strong>通知を受けた日から30日以内</strong>（指定された期限まで）に納付します。</p></blockquote>
+<h3>口座振替（21条の2）</h3>
+<p>事業主から申出があり、政府が納付が確実と認め、かつ徴収上有利と認めるときは、<strong>口座振替による納付</strong>を承認できます。対象は<strong>印紙保険料以外</strong>の労働保険料です。</p>
+<blockquote><p>★印紙保険料は口座振替の対象外です。
+★口座振替を利用すると、納期限が通常より<strong>後ろ倒し</strong>になります（概算・確定の第1期は9月上旬など）。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">34</span>徴収法</span></td><td>条文と期限の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span></td><td>期限・端数処理の数字</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 41 ／ 労災・徴収</div><h1>督促・延滞金・時効</h1><div class="desc">延滞金は本来の納期限の翌日から。徴収金の時効はすべて2年</div></div><h3>督促（27条）</h3>
+<p>労働保険料その他の徴収金を納付しない者があるときは、政府は<strong>期限を指定して督促</strong>しなければなりません。</p>
+<table class="big"><thead><tr><th></th><th>内容</th></tr></thead><tbody><tr><td>督促状</td><td><strong>納付すべき期限を指定</strong>して発する</td></tr><tr><td>指定期限</td><td>督促状を<strong>発する日から起算して10日以上</strong>経過した日</td></tr><tr><td>期限までに納付しないとき</td><td><strong>国税滞納処分の例</strong>によって処分する（差押え等）</td></tr></tbody></table>
+<blockquote><p>★「10日以内」ではなく「<strong>10日以上経過した日</strong>」を指定します。事業主に猶予を与える趣旨です。
+★督促は<strong>保険料の徴収の前提</strong>であるとともに、<strong>延滞金</strong>発生と<strong>時効の更新</strong>の効果を持ちます。</p></blockquote>
+<h3>延滞金（28条）</h3>
+<p><strong>督促をしたとき</strong>に徴収します。督促をしなければ延滞金は発生しません。</p>
+<pre><code>延滞金 ＝ 労働保険料の額 × 期間の日数 × 率</code></pre>
+<table class="big"><thead><tr><th>期間</th><th>率</th></tr></thead><tbody><tr><td>納期限の翌日から<strong>2か月</strong>を経過する日まで</td><td><strong>年7.3%</strong></td></tr><tr><td>それ以後</td><td><strong>年14.6%</strong></td></tr></tbody></table>
+<p>期間は<strong>納期限の翌日から、完納または財産差押えの日の前日まで</strong>です。</p>
+<p>延滞金を徴収しない場合。</p>
+<ol><li>労働保険料の額が<strong>1,000円未満</strong>であるとき</li><li>納付すべき労働保険料の額に<strong>1,000円未満の端数</strong>があるとき（その端数は切り捨て）</li><li>延滞金の額が<strong>100円未満</strong>であるとき</li><li>労働保険料について<strong>滞納処分の停止</strong>をしたとき</li><li><strong>納付義務者の住所・居所が国内にない</strong>ため公示送達の方法で督促したとき</li><li><strong>天災その他やむを得ない理由</strong>があるとき</li></ol>
+<blockquote><p>★起算日は<strong>督促状の指定期限の翌日ではなく、本来の納期限の翌日</strong>です。ここが最頻出の引っかけです。</p></blockquote>
+<h3>追徴金（21条）との違い</h3>
+<table class="big"><thead><tr><th></th><th>追徴金</th><th>延滞金</th></tr></thead><tbody><tr><td>発生原因</td><td><strong>確定保険料</strong>の<strong>認定決定</strong></td><td><strong>督促</strong></td></tr><tr><td>率</td><td><strong>10%</strong>（印紙保険料は<strong>25%</strong>）</td><td>年7.3%／年14.6%</td></tr><tr><td>性格</td><td><strong>制裁</strong>（申告義務違反）</td><td><strong>利息</strong>（納付遅延）</td></tr><tr><td>概算保険料の認定決定</td><td><strong>かからない</strong></td><td>督促すればかかる</td></tr></tbody></table>
+<h3>先取特権（29条）</h3>
+<p>労働保険料その他の徴収金の先取特権の順位は、<strong>国税および地方税に次ぐ</strong>ものとされています。</p>
+<h3>時効（41条）</h3>
+<table><thead><tr><th>対象</th><th>時効</th></tr></thead><tbody><tr><td><strong>労働保険料</strong>その他この法律の規定による<strong>徴収金</strong>を徴収し、またはその<strong>還付</strong>を受ける権利</td><td><strong>2年</strong></td></tr></tbody></table>
+<blockquote><p>★労災の保険給付は2年・5年、雇用の給付は2年ですが、<strong>徴収法上の徴収金・還付はすべて2年</strong>です。</p></blockquote>
+<p><strong>政府が行う徴収金の告知または督促</strong>は、<strong>時効の更新</strong>の効力を生じます（民法の規定にかかわらず）。</p>
+<h3>書類の保存</h3>
+<table><thead><tr><th>書類</th><th>保存期間</th></tr></thead><tbody><tr><td>労働保険に関する<strong>書類</strong>（一般）</td><td>完結の日から<strong>3年間</strong></td></tr><tr><td><strong>雇用保険</strong>に関する書類（被保険者に関するものを除く）</td><td>完結の日から<strong>2年間</strong></td></tr><tr><td>雇用保険の<strong>被保険者</strong>に関する書類</td><td>完結の日から<strong>4年間</strong></td></tr><tr><td><strong>雇用保険印紙</strong>の受払簿</td><td>翌年度の初日から<strong>3年間</strong></td></tr></tbody></table>
+<blockquote><p>★労基法の<strong>記録の保存は5年（当分の間3年）</strong>。徴収法は3年。混同しやすいところです。</p></blockquote>
+<h3>報告・立入検査（42条・43条）</h3>
+<p>行政庁は、事業主・労働保険事務組合に対し、<strong>労働保険料に関する事項について報告・文書の提出・出頭</strong>を命ずることができ、<strong>当該職員に立入検査</strong>をさせることができます。</p>
+<p>立入検査の職員は<strong>その身分を示す証票を携帯</strong>し、関係者に提示しなければなりません。この権限は<strong>犯罪捜査のために認められたものと解してはならない</strong>とされています。</p>
+<h3>罰則（46条）</h3>
+<p>事業主が次のいずれかに該当すると、<strong>6か月以下の拘禁刑または30万円以下の罰金</strong>に処せられます。</p>
+<ol><li><strong>雇用保険印紙を貼らず、または消印しなかった</strong>とき（23条2項違反）</li><li><strong>帳簿</strong>を備えず、記載せず、虚偽の記載をし、または<strong>報告</strong>をせず、虚偽の報告をしたとき（24条違反）</li><li><strong>報告徴収</strong>（42条）の命令に違反して報告をせず、虚偽の報告をし、文書を提出せず、虚偽の文書を提出したとき</li><li><strong>立入検査</strong>（43条1項）の質問に答弁せず、虚偽の答弁をし、検査を拒み・妨げ・忌避したとき</li></ol>
+<p><strong>労災保険法35条1項の団体</strong>（特別加入団体）が3号・4号に該当する場合は、<strong>違反行為をした団体の代表者・代理人・使用人その他の従業者</strong>も同様に処罰されます。</p>
+<blockquote><p>★徴収法の罰則は<strong>保険料の未納そのものには科されません</strong>（滞納処分で対応）。<strong>印紙・帳簿・報告・検査</strong>に関する義務違反が対象です。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">34</span>徴収法</span></td><td>条文と期限の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span></td><td>期限・端数処理の数字</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 42 ／ 労災・徴収</div><h1>労働保険事務組合</h1><div class="desc">50/100/300人。印紙保険料と保険給付の請求は委託できない</div></div><h3>位置づけ（33条）</h3>
+<p><strong>中小事業主</strong>の労働保険事務処理の負担を軽くするため、<strong>事業主の委託</strong>を受けて事務を処理する団体です。<strong>厚生労働大臣の認可</strong>を受けます。</p>
+<p>認可を受けられるのは、<strong>事業主の団体またはその連合団体</strong>です。</p>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>認可</td><td><strong>厚生労働大臣</strong>（実際は都道府県労働局長に委任）</td></tr><tr><td>認可の申請</td><td>主たる事務所の所在地を管轄する<strong>都道府県労働局長</strong>を経由</td></tr><tr><td>法人格</td><td><strong>不要</strong>（法人でない団体でも、代表者の定めがあり規約があればよい）</td></tr></tbody></table>
+<blockquote><p>★「法人でなければならない」は誤りです。</p></blockquote>
+<h3>委託できる事業主の規模（33条1項、則20条の2）</h3>
+<table class="big"><thead><tr><th>業種</th><th>常時使用する労働者数</th></tr></thead><tbody><tr><td><strong>金融業・保険業・不動産業・小売業</strong></td><td><strong>50人以下</strong></td></tr><tr><td><strong>卸売業・サービス業</strong></td><td><strong>100人以下</strong></td></tr><tr><td><strong>上記以外</strong>（製造業・建設業・運輸業など）</td><td><strong>300人以下</strong></td></tr></tbody></table>
+<blockquote><p>★労災保険の<strong>第1種特別加入</strong>（中小事業主等）と同じ区分です。セットで覚えます。
+★「常時使用する」なので、一時的に超えても直ちに委託できなくなるわけではありません。</p></blockquote>
+<h3>委託できる事務／できない事務</h3>
+<table class="big"><thead><tr><th>委託できる</th><th>委託できない</th></tr></thead><tbody><tr><td><strong>概算・確定保険料</strong>等の申告・納付</td><td><strong>印紙保険料</strong>に関する事項</td></tr><tr><td>保険関係<strong>成立届</strong>、任意加入の申請、事業廃止等の届出</td><td><strong>雇用保険二事業</strong>に係る事務</td></tr><tr><td><strong>雇用保険の被保険者</strong>に関する届出等</td><td><strong>労災保険の保険給付</strong>に関する請求</td></tr><tr><td><strong>労災保険の特別加入</strong>の申請</td><td><strong>雇用保険の給付</strong>に関する請求</td></tr></tbody></table>
+<blockquote><p>★<strong>印紙保険料</strong>は委託できません。日雇労働被保険者の手帳への貼付・消印は事業主自身が行います。
+★<strong>保険給付の請求</strong>は労働者本人が行うものなので、委託の対象外です。</p></blockquote>
+<h3>委託した場合の効果</h3>
+<table class="big"><thead><tr><th>事項</th><th>効果</th></tr></thead><tbody><tr><td><strong>政府からの通知</strong></td><td>事務組合に対して行えば、<strong>事業主に対して行ったものとみなす</strong></td></tr><tr><td><strong>納入告知書・納付書</strong></td><td>事務組合に交付</td></tr><tr><td><strong>納期限の延長</strong></td><td>延納の第2期・第3期が<strong>11月14日・2月14日</strong>（通常は10月31日・1月31日）</td></tr><tr><td><strong>延納の要件</strong></td><td>概算保険料の額にかかわらず<strong>延納できる</strong></td></tr><tr><td><strong>報奨金</strong></td><td>一定の要件を満たすと国から交付される</td></tr></tbody></table>
+<h3>責任の所在（35条）</h3>
+<p>ここが最頻出です。</p>
+<table class="big"><thead><tr><th>場面</th><th>責任</th></tr></thead><tbody><tr><td>事務組合が<strong>政府に納付すべき徴収金</strong>を納付しない</td><td><strong>事務組合</strong>が納付の責めに任ずる</td></tr><tr><td>事業主から<strong>交付を受けた金額の限度</strong>で、事務組合が滞納</td><td>事務組合が<strong>その限度で</strong>責任を負い、政府はまず<strong>事務組合</strong>に対して滞納処分をする</td></tr><tr><td><strong>事務組合の財産</strong>につき滞納処分をしてもなお不足</td><td><strong>事業主</strong>から徴収する</td></tr><tr><td><strong>追徴金・延滞金</strong>のうち、事務組合の<strong>責めに帰すべき理由</strong>によるもの</td><td><strong>事務組合</strong>が負担する</td></tr></tbody></table>
+<blockquote><p>★事業主が事務組合に金銭を交付していれば、<strong>その限度で事業主は義務を免れる</strong>わけではなく、事務組合の財産で不足する場合には事業主から徴収されます。「事業主は一切責任を負わない」は誤りです。
+★逆に、事業主が<strong>金銭を交付していない</strong>場合は、事務組合は納付の責任を負いません。</p></blockquote>
+<h3>報奨金（附則）</h3>
+<table><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>対象</td><td>常時<strong>15人以下</strong>の労働者を使用する事業主から委託を受けた事務組合</td></tr><tr><td>納入率</td><td>前年度の労働保険料について、<strong>5月15日までに95%以上</strong>を納付していること</td></tr><tr><td>額</td><td>納付額の<strong>一定割合</strong>（年度により定められる）</td></tr></tbody></table>
+<h3>認可の取消し（33条4項）</h3>
+<p>厚生労働大臣は、事務組合が<strong>この法律・命令に違反</strong>したときは、<strong>認可を取り消す</strong>ことができます。取消し後は、委託していた事業主が自ら事務を処理することになります。</p>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">34</span>徴収法</span></td><td>条文と期限の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span></td><td>期限・端数処理の数字</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div></div>

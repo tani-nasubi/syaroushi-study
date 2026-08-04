@@ -1,0 +1,486 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>社労士2026 学習資料｜雇用</title>
+<style>
+@page { size: A4 portrait; margin: 16mm 14mm 18mm; }
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+body{margin:0; color:#111; background:#fff;
+  font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
+  font-size:9.6pt; line-height:1.72; text-align:justify;
+  font-feature-settings:"palt" 1;}
+.wrap{max-width:182mm; margin:0 auto; padding:10mm 6mm}
+/* ── 巻頭 ── */
+.cover{text-align:center; padding:40mm 0 0}
+.cover h1{font-size:22pt; letter-spacing:.06em; margin:0 0 6mm}
+.cover .sub{font-size:10pt; color:#555; line-height:2}
+.howto{margin:16mm auto 0; max-width:130mm; text-align:left;
+  border:1pt solid #bbb; padding:6mm 7mm; font-size:9pt; line-height:1.8}
+.howto b{font-size:9.6pt}
+/* ── 目次 ── */
+.toc h2{font-size:13pt; margin:0 0 4mm; padding-bottom:2mm; border-bottom:1.4pt solid #111}
+.toc .grp{margin:5mm 0 2mm; font-weight:700; font-size:10.5pt;
+  border-left:3pt solid #111; padding-left:3mm}
+.toc ol{list-style:none; margin:0; padding:0; columns:2; column-gap:10mm}
+.toc li{break-inside:avoid; font-size:9pt; line-height:1.85;
+  display:flex; gap:2mm; align-items:baseline}
+.toc .no{display:inline-block; min-width:9mm; font-weight:700; font-variant-numeric:tabular-nums}
+.toc .dots{flex:1; border-bottom:.4pt dotted #999; transform:translateY(-2px)}
+/* ── 各資料 ── */
+.doc{break-before:page; page-break-before:always}
+.doc:first-of-type{break-before:auto; page-break-before:auto}
+.doc > .head{border-bottom:1.6pt solid #111; padding-bottom:2.5mm; margin:0 0 5mm}
+.doc > .head .no{font-size:8.5pt; letter-spacing:.14em; color:#666}
+.doc > .head h1{font-size:16pt; margin:1mm 0 0; letter-spacing:-.01em}
+.doc > .head .desc{font-size:8.5pt; color:#555; margin:1.5mm 0 0}
+h2{font-size:12pt; margin:7mm 0 2.5mm; padding:1mm 0 1mm 3mm;
+  border-left:3.5pt solid #111; break-after:avoid; page-break-after:avoid}
+h3{font-size:10.6pt; margin:5mm 0 2mm; padding-bottom:.8mm;
+  border-bottom:.6pt solid #ccc; break-after:avoid; page-break-after:avoid}
+h4{font-size:9.8pt; margin:4mm 0 1.5mm; break-after:avoid; page-break-after:avoid}
+p{margin:0 0 2.4mm}
+ul,ol{margin:0 0 2.8mm; padding-left:6mm}
+li{margin:0 0 .8mm}
+ul.chk{list-style:none; padding-left:0}
+ul.chk li::before{content:"☐"; margin-right:2mm; font-size:11pt; line-height:1}
+strong{font-weight:700}
+code{font-family:"SFMono-Regular",Consolas,"Noto Sans Mono",monospace;
+  font-size:8.6pt; background:#f2f2f2; padding:.2mm 1mm; border-radius:1mm}
+pre{background:#f6f6f6; border:.5pt solid #ddd; padding:3mm 4mm; margin:0 0 3mm;
+  break-inside:avoid; page-break-inside:avoid; overflow:visible}
+pre code{background:none; padding:0; font-size:8.6pt; line-height:1.6; white-space:pre-wrap}
+blockquote{margin:0 0 3mm; padding:2mm 3mm; background:#f7f7f7;
+  border-left:2.5pt solid #888; break-inside:avoid; page-break-inside:avoid}
+blockquote p:last-child{margin-bottom:0}
+hr{border:0; border-top:.6pt solid #ddd; margin:5mm 0}
+table{border-collapse:collapse; width:100%; margin:0 0 3.5mm; font-size:8.6pt;
+  break-inside:avoid; page-break-inside:avoid}
+th,td{border:.5pt solid #999; padding:1.4mm 2mm; text-align:left; vertical-align:top;
+  line-height:1.55}
+th{background:#ececec; font-weight:700; white-space:nowrap}
+thead{display:table-header-group}
+/* 大きい表は途中で切れてよい。切れないと1ページに収まらず消える */
+table.big{break-inside:auto; page-break-inside:auto}
+table.big tr{break-inside:avoid; page-break-inside:avoid}
+/* ── 参照（紙ではリンクを押せないので番号で引く）── */
+.ref{white-space:nowrap; font-weight:600}
+.ref .n{font-size:8pt; border:.6pt solid #666; border-radius:1mm;
+  padding:0 1mm; margin-right:.8mm; font-variant-numeric:tabular-nums}
+.ref .sec{font-weight:400; color:#444}
+/* ── 画面で見るときだけの操作 ── */
+.bar{position:sticky; top:0; background:#fff; border-bottom:1pt solid #ddd;
+  padding:8px 12px; display:flex; gap:10px; align-items:center; font-size:13px; z-index:9}
+.bar a{color:#1a4fd6}
+.bar button{font:inherit; padding:5px 12px; border:1px solid #999; background:#fff;
+  border-radius:5px; cursor:pointer}
+@media print{ .bar{display:none} .wrap{padding:0} }
+</style>
+<div class="bar">
+  <button onclick="print()">印刷する</button>
+  <span>A4縦・10資料。ブラウザの印刷から「背景のグラフィック」を入にすると表の罫線がきれいに出ます。</span>
+</div>
+<div class="wrap"><div class="cover"><h1>社労士2026 学習資料｜雇用</h1><div class="sub">全体版の資料 43〜52　（本文中の参照番号は全体版と共通です）</div>
+<div class="howto">
+<b>紙で読むときの約束ごと</b>
+<p style="margin:2mm 0 0">本文中の <span class="ref"><span class="n">23</span>平均賃金</span>
+のような表示は、ほかの資料への参照です。頭の番号が資料の通し番号なので、
+目次か各ページ右上の番号から引いてください。</p>
+<p style="margin:2mm 0 0"><span class="ref"><span class="n">5</span>労働基準法
+<span class="sec">「4. 労働時間・休憩・休日」</span></span> のように節名が付いているものは、
+その資料の中の該当する節を指します。</p>
+<p style="margin:2mm 0 0">□ は手で塗るためのものです。</p>
+</div>
+</div><div class="doc toc"><h2>目次</h2><div class="grp">雇用</div><ol><li><span class="no">43</span><span>雇用保険法</span><span class="dots"></span></li><li><span class="no">44</span><span>被保険者と適用</span><span class="dots"></span></li><li><span class="no">45</span><span>基本手当の受給要件</span><span class="dots"></span></li><li><span class="no">46</span><span>賃金日額と基本手当日額</span><span class="dots"></span></li><li><span class="no">47</span><span>所定給付日数</span><span class="dots"></span></li><li><span class="no">48</span><span>待期と給付制限</span><span class="dots"></span></li><li><span class="no">49</span><span>高年齢・短期・日雇</span><span class="dots"></span></li><li><span class="no">50</span><span>就職促進給付</span><span class="dots"></span></li><li><span class="no">51</span><span>教育訓練給付</span><span class="dots"></span></li><li><span class="no">52</span><span>雇用継続給付と育児休業給付</span><span class="dots"></span></li></ol></div><div class="doc"><div class="head"><div class="no">資料 43 ／ 雇用</div><h1>雇用保険法</h1><div class="desc">択一7問。令和7年改正が集中し過去問が効かない</div></div><table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>択一</td><td>7問（徴収3問と合わせて10問）</td></tr><tr><td>選択</td><td>5点</td></tr><tr><td>特徴</td><td><strong>令和7年4月・10月の改正が集中</strong>しており、過去問がそのままでは使えない科目。第57回では択一の基準点が<strong>3点に補正</strong>された（受験生が最も崩れた科目）</td></tr></tbody></table>
+<hr>
+<h2>出題傾向（過去9年・第49〜57回の実データ）</h2>
+<h3>択一の設問形式</h3>
+<table class="big"><thead><tr><th>形式</th><th>問数</th><th>割合</th></tr></thead><tbody><tr><td>正しいものを選ぶ</td><td>45</td><td>50%</td></tr><tr><td>誤りを選ぶ</td><td>35</td><td>39%</td></tr><tr><td>個数問題</td><td>5</td><td>6%</td></tr><tr><td>組合せ問題</td><td>5</td><td>6%</td></tr></tbody></table>
+<p><strong>雇用枠 計90問</strong>のうち、<strong>個数問題5問・組合せ問題5問（合わせて11%）</strong>。個数問題が多い科目です。個数は<strong>5肢すべての判断が必要</strong>で時間を食います。2肢以上分からなければ飛ばしてください。（→ <span class="ref"><span class="n">97</span>個数・組合せ問題<span class="sec">（全体版）</span></span>）</p>
+<h3>設問形式の推移（作問方針の変化）</h3>
+<table class="big"><thead><tr><th>年度</th><th>個数・組合せ</th><th>誤りを選ぶ</th><th>正しいものを選ぶ</th><th>肢の平均字数</th><th>判例に言及</th></tr></thead><tbody><tr><td>令和7</td><td>1</td><td>3</td><td>6</td><td>83</td><td>0</td></tr><tr><td>令和6</td><td>1</td><td>5</td><td>4</td><td>93</td><td>0</td></tr><tr><td>令和5</td><td>1</td><td>2</td><td>7</td><td>82</td><td>0</td></tr><tr><td>令和4</td><td>1</td><td>5</td><td>4</td><td>99</td><td>0</td></tr><tr><td>令和3</td><td>0</td><td>5</td><td>5</td><td>107</td><td>0</td></tr><tr><td>令和2</td><td>0</td><td>5</td><td>5</td><td>99</td><td>0</td></tr><tr><td>令和元</td><td>1</td><td>5</td><td>4</td><td>92</td><td>0</td></tr><tr><td>平成30</td><td>4</td><td>2</td><td>4</td><td>51</td><td>0</td></tr><tr><td>平成29</td><td>1</td><td>3</td><td>6</td><td>80</td><td>0</td></tr></tbody></table>
+<ul><li>9年を通じて設問形式に大きな変化はありません。過去問の解き方がそのまま通用します。</li></ul>
+<h3>基準点補正の履歴（この科目が救済された年）</h3>
+<p><strong>選択式</strong>　平成29年度 <strong>2点</strong>に引下げ</p>
+<p><strong>択一式</strong>　令和7年度 <strong>3点</strong>に引下げ</p>
+<blockquote><p>選択式の引下げは9年で1回。<strong>例外的</strong>です。基準点は自力で超える前提で臨んでください。</p></blockquote>
+<h3>頻出条文（択一で9年間に参照された回数）</h3>
+<p><strong>上位12条で択一28回分</strong>。回数が多い条ほど、条文そのものを読んでおく価値があります。「詳しく読む」は、その条をいちばん詳しく扱っている別ページです。</p>
+<table class="big"><thead><tr><th>条文</th><th>何を定めているか</th><th>回数</th><th>出題された年度</th><th>詳しく読む</th></tr></thead><tbody><tr><td><strong>第5条</strong></td><td>適用事業</td><td>6</td><td>令和7・令和6・令和元</td><td><span class="ref"><span class="n">44</span>被保険者と適用</span></td></tr><tr><td><strong>第22条</strong></td><td>所定給付日数</td><td>5</td><td>令和7・令和3・平成30・平成29</td><td><span class="ref"><span class="n">47</span>所定給付日数</span></td></tr><tr><td><strong>第60条の2</strong></td><td>教育訓練給付金</td><td>3</td><td>令和7・令和3・平成29</td><td><span class="ref"><span class="n">51</span>教育訓練給付</span></td></tr><tr><td><strong>第9条</strong></td><td>確認</td><td>3</td><td>令和3・令和2・令和元</td><td><span class="ref"><span class="n">44</span>被保険者と適用</span></td></tr><tr><td><strong>第21条</strong></td><td>待期</td><td>2</td><td>令和4・平成29</td><td><span class="ref"><span class="n">48</span>待期と給付制限</span></td></tr><tr><td><strong>第56条の3</strong></td><td>就業促進手当</td><td>2</td><td>令和5・令和元</td><td><span class="ref"><span class="n">50</span>就職促進給付</span></td></tr><tr><td><strong>第6条</strong></td><td>適用除外</td><td>2</td><td>令和4・令和2</td><td><span class="ref"><span class="n">44</span>被保険者と適用</span></td></tr><tr><td><strong>第83条の2</strong></td><td>—</td><td>1</td><td>平成30</td><td>—</td></tr><tr><td><strong>第14条</strong></td><td>被保険者期間</td><td>1</td><td>令和元</td><td><span class="ref"><span class="n">45</span>基本手当の受給要件</span></td></tr><tr><td><strong>第38条</strong></td><td>短期雇用特例被保険者</td><td>1</td><td>令和元</td><td>—</td></tr><tr><td><strong>第66条</strong></td><td>国庫の負担</td><td>1</td><td>令和元</td><td>—</td></tr><tr><td><strong>第7条</strong></td><td>被保険者に関する届出</td><td>1</td><td>令和2</td><td><span class="ref"><span class="n">44</span>被保険者と適用</span></td></tr></tbody></table>
+<h3>選択式が9年間で問うたこと（雇用）</h3>
+<p><strong>45空欄</strong>の内訳は <strong>数字30</strong>（67%）、<strong>用語13</strong>（29%）、<strong>判示・条文の言い回し2</strong>（4%）。空欄は5つあり、<strong>3つ取れれば基準点</strong>です。長い判示は先頭だけを載せています。全文は <span class="ref"><span class="n">93</span>条文素読<span class="sec">（全体版）</span></span> にあります。</p>
+<table class="big"><thead><tr><th>年度</th><th>空欄</th><th>正答となった語</th><th>その年の根拠条文</th></tr></thead><tbody><tr><td>令和7</td><td>A</td><td>並びに労働者が子を養育するための休業及び所定労働…</td><td>雇用保険法1条／雇用保険法37条の4／雇用保険法53条</td></tr><tr><td></td><td>B</td><td>失業の予防</td><td></td></tr><tr><td></td><td>C</td><td>1年</td><td></td></tr><tr><td></td><td>D</td><td>求職の申込みをした上</td><td></td></tr><tr><td></td><td>E</td><td>78日</td><td></td></tr><tr><td>令和6</td><td>A</td><td>一般被保険者又は高年齢被保険者であるとき</td><td>雇用保険法23条／雇用保険法24条の2／雇用保険法37条の5</td></tr><tr><td></td><td>B</td><td>2</td><td></td></tr><tr><td></td><td>C</td><td>28</td><td></td></tr><tr><td></td><td>D</td><td>120</td><td></td></tr><tr><td></td><td>E</td><td>雇用保険法の適用除外</td><td></td></tr><tr><td>令和5</td><td>A</td><td>通所手当</td><td>労働保険徴収法10条／雇用保険法19条／雇用保険法22条</td></tr><tr><td></td><td>B</td><td>40日</td><td></td></tr><tr><td></td><td>C</td><td>通算して26日</td><td></td></tr><tr><td></td><td>D</td><td>通算して60日</td><td></td></tr><tr><td></td><td>E</td><td>10月31日</td><td></td></tr><tr><td>令和4</td><td>A</td><td>最後の完全な6 賃金月</td><td>雇用保険法13条／雇用保険法60条の2</td></tr><tr><td></td><td>B</td><td>雇用保険被保険者離職票</td><td></td></tr><tr><td></td><td>C</td><td>2，061円</td><td></td></tr><tr><td></td><td>D</td><td>令和3年8月31日</td><td></td></tr><tr><td></td><td>E</td><td>4，000円を超えない</td><td></td></tr><tr><td>令和3</td><td>A</td><td>1年間</td><td>雇用保険法22条／雇用保険法32条</td></tr><tr><td></td><td>B</td><td>30</td><td></td></tr><tr><td></td><td>C</td><td>1</td><td></td></tr><tr><td></td><td>D</td><td>求人への応募書類の郵送</td><td></td></tr><tr><td></td><td>E</td><td>巡回職業相談所</td><td></td></tr><tr><td>令和2</td><td>A</td><td>20時間以上</td><td>雇用保険法38条／雇用保険法7条</td></tr><tr><td></td><td>B</td><td>31日以上</td><td></td></tr><tr><td></td><td>C</td><td>10</td><td></td></tr><tr><td></td><td>D</td><td>公共職業安定所長</td><td></td></tr><tr><td></td><td>E</td><td>4</td><td></td></tr><tr><td>令和元</td><td>A</td><td>疾病又は負傷</td><td>雇用保険法21条／雇用保険法61条の4</td></tr><tr><td></td><td>B</td><td>通算して7日</td><td></td></tr><tr><td></td><td>C</td><td>休業を開始した日</td><td></td></tr><tr><td></td><td>D</td><td>引き続き30日</td><td></td></tr><tr><td></td><td>E</td><td>通算して12 箇月</td><td></td></tr><tr><td>平成30</td><td>A</td><td>15日</td><td>雇用保険法14条／雇用保険法61条の2</td></tr><tr><td></td><td>B</td><td>11日</td><td></td></tr><tr><td></td><td>C</td><td>2分の1 箇月</td><td></td></tr><tr><td></td><td>D</td><td>5年</td><td></td></tr><tr><td></td><td>E</td><td>100日</td><td></td></tr><tr><td>平成29</td><td>A</td><td>失業</td><td>雇用保険法31条／雇用保険法43条／雇用保険法64条の2</td></tr><tr><td></td><td>B</td><td>2月</td><td></td></tr><tr><td></td><td>C</td><td>18日</td><td></td></tr><tr><td></td><td>D</td><td>職業の安定</td><td></td></tr><tr><td></td><td>E</td><td>労働生産性</td><td></td></tr></tbody></table>
+<blockquote><p>この節は <code>kakomon/gen_trend.py</code> が過去問データから自動生成しています。</p></blockquote>
+<h2>深掘り（別ページ）</h2>
+<p>条文の趣旨・要件の切り分け・誤り肢の作られ方を論点ごとにまとめた別ページです。</p>
+<table class="big"><thead><tr><th>論点</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">44</span>被保険者と適用</span></td></tr><tr><td><span class="ref"><span class="n">45</span>基本手当の受給要件</span></td></tr><tr><td><span class="ref"><span class="n">46</span>賃金日額と基本手当日額</span></td></tr><tr><td><span class="ref"><span class="n">47</span>所定給付日数</span></td></tr><tr><td><span class="ref"><span class="n">48</span>待期と給付制限</span></td></tr><tr><td><span class="ref"><span class="n">49</span>高年齢・短期・日雇</span></td></tr><tr><td><span class="ref"><span class="n">50</span>就職促進給付</span></td></tr><tr><td><span class="ref"><span class="n">51</span>教育訓練給付</span></td></tr><tr><td><span class="ref"><span class="n">52</span>雇用継続給付と育児休業給付</span></td></tr></tbody></table>
+<h2>目的条文（選択式で出題実績あり／第57回）</h2>
+<p><strong>1条</strong></p>
+<blockquote><p>雇用保険は、労働者が<strong>失業</strong>した場合及び労働者について<strong>雇用の継続が困難となる事由</strong>が生じた場合に必要な給付を行うほか、労働者が自ら<strong>職業に関する教育訓練</strong>を受けた場合及び労働者が<strong>子を養育するための休業</strong>をした場合に必要な給付を行うことにより、労働者の<strong>生活及び雇用の安定</strong>を図るとともに、<strong>求職活動を容易にする</strong>等その就職を促進し、あわせて、労働者の<strong>職業の安定</strong>に資するため、失業の予防、雇用状態の是正及び雇用機会の増大、労働者の能力の開発及び向上その他労働者の<strong>福祉の増進</strong>を図ることを目的とする。</p></blockquote>
+<blockquote><p>給付の4本柱（失業／雇用継続／教育訓練／育児休業）が目的条文にそのまま現れている。
+「生活及び雇用の安定」「職業の安定」「福祉の増進」の書き分けに注意。</p></blockquote>
+<hr>
+<h2>1. 目的・適用</h2>
+<h3>事業（3条）</h3>
+<p>① 失業等給付 ② 育児休業等給付 ③ 雇用保険二事業（<strong>雇用安定事業・能力開発事業</strong>）</p>
+<blockquote><p>令和2年4月から<strong>育児休業給付が失業等給付から分離</strong>され、独立の区分となった（保険料率も別建て）。</p></blockquote>
+<h3>適用除外（6条）</h3>
+<table class="big"><thead><tr><th>対象</th><th>除外が外れる要件</th></tr></thead><tbody><tr><td><strong>週所定労働時間20時間未満</strong></td><td>—</td></tr><tr><td>同一の事業主に継続して<strong>31日以上</strong>雇用される見込みがない者</td><td>—</td></tr><tr><td>季節的に雇用される者で、4か月以内の期間を定めて雇用／週30時間未満</td><td>—</td></tr><tr><td><strong>昼間学生</strong></td><td>卒業見込証明書を有し卒業前に就職／休学中／定時制 等は被保険者となる</td></tr><tr><td>船員のうち一定の者</td><td>—</td></tr><tr><td>国・都道府県等に雇用され、離職時に求職者給付を超える給付を受ける者</td><td>—</td></tr></tbody></table>
+<blockquote><p>★週<strong>10時間</strong>以上への適用拡大は<strong>令和10年10月1日施行</strong>＝令和8年度試験では<strong>未施行</strong>。現行は週20時間以上。</p></blockquote>
+<h3>被保険者の4種類</h3>
+<table class="big"><thead><tr><th>種類</th><th>対象</th><th>失業時の給付</th></tr></thead><tbody><tr><td><strong>一般被保険者</strong></td><td>下記3つ以外</td><td>基本手当</td></tr><tr><td><strong>高年齢被保険者</strong></td><td><strong>65歳以上</strong></td><td><strong>高年齢求職者給付金</strong>（一時金）</td></tr><tr><td><strong>短期雇用特例被保険者</strong></td><td>季節的業務に雇用され4か月超かつ週30時間以上</td><td>特例一時金</td></tr><tr><td><strong>日雇労働被保険者</strong></td><td>日々雇用・30日以内の期間を定めて雇用</td><td>日雇労働求職者給付金</td></tr></tbody></table>
+<p><strong>マルチジョブホルダー制度</strong>：<strong>65歳以上</strong>で2以上の事業主に雇用され、1事業主での週所定労働時間が5時間以上20時間未満、2つを合計して<strong>20時間以上</strong>、各々31日以上雇用見込み → <strong>本人の申出</strong>により高年齢被保険者となる。</p>
+<h3>届出の期限</h3>
+<table class="big"><thead><tr><th>届出</th><th>期限</th></tr></thead><tbody><tr><td>資格<strong>取得</strong>届</td><td>その事実のあった日の属する月の<strong>翌月10日</strong>まで</td></tr><tr><td>資格<strong>喪失</strong>届</td><td>その事実のあった日の<strong>翌日から起算して10日以内</strong></td></tr><tr><td>転勤届</td><td>同じく<strong>10日以内</strong></td></tr></tbody></table>
+<blockquote><p><strong>★引っかけ</strong>：取得は「翌月10日」、喪失は「10日以内」という非対称。健保・厚年はどちらも5日以内。</p></blockquote>
+<hr>
+<h2>2. 基本手当</h2>
+<h3>受給要件（13条）</h3>
+<table class="big"><thead><tr><th>区分</th><th>算定対象期間</th><th>被保険者期間</th></tr></thead><tbody><tr><td>原則</td><td>離職の日以前<strong>2年間</strong></td><td>通算<strong>12か月</strong>以上</td></tr><tr><td><strong>特定受給資格者・特定理由離職者</strong></td><td>離職の日以前<strong>1年間</strong></td><td>通算<strong>6か月</strong>以上</td></tr></tbody></table>
+<p><strong>被保険者期間の計算（14条）</strong>
+離職日から1か月ごとに区切り、賃金支払基礎日数が<strong>11日以上</strong>の月を1か月と計算。11日以上の月がない場合は、賃金支払の基礎となった<strong>労働時間数が80時間以上</strong>の月も1か月と計算。</p>
+<h3>離職理由の区分</h3>
+<table class="big"><thead><tr><th>区分</th><th>内容</th></tr></thead><tbody><tr><td><strong>特定受給資格者</strong></td><td>倒産・解雇等（会社都合）</td></tr><tr><td><strong>特定理由離職者</strong></td><td>① 有期労働契約が更新されなかった（本人が更新を希望したのに）② 正当な理由のある自己都合離職</td></tr><tr><td>一般の受給資格者</td><td>自己都合・定年等</td></tr></tbody></table>
+<h3>所定給付日数</h3>
+<p><strong>一般の離職者（就職困難者を除く）— 年齢は関係ない</strong></p>
+<table class="big"><thead><tr><th>算定基礎期間</th><th>1年以上10年未満</th><th>10年以上20年未満</th><th>20年以上</th></tr></thead><tbody><tr><td>日数</td><td><strong>90日</strong></td><td><strong>120日</strong></td><td><strong>150日</strong></td></tr></tbody></table>
+<p><strong>特定受給資格者・特定理由離職者 — 年齢と算定基礎期間で細分。最大 330日</strong>（45歳以上60歳未満・20年以上）</p>
+<p><strong>就職困難者</strong></p>
+<table class="big"><thead><tr><th>年齢</th><th>日数</th></tr></thead><tbody><tr><td>45歳未満</td><td>300日</td></tr><tr><td><strong>45歳以上65歳未満</strong></td><td><strong>360日</strong></td></tr></tbody></table>
+<blockquote><p><strong>識別点</strong>：一般は年齢を問わない／特定受給資格者は年齢で変わる。</p></blockquote>
+<h3>賃金日額・基本手当日額（16条〜18条）</h3>
+<pre><code>賃金日額 ＝ 被保険者期間として計算された最後の6か月間の賃金総額 ÷ 180</code></pre>
+<ul><li>賞与等（3か月を超える期間ごとに支払われる賃金）は<strong>算入しない</strong></li><li>給付率：<strong>80％〜50％</strong>（<strong>60歳以上65歳未満は80％〜45％</strong>）。賃金日額が低いほど高率</li><li>年齢区分ごとの<strong>上限額</strong>と全年齢共通の<strong>下限額</strong>があり、毎年<strong>8月1日</strong>に毎月勤労統計の平均定期給与額の変動に応じて改定</li></ul>
+<h3>待期と給付制限</h3>
+<pre><code>離職 → 待期7日（離職理由を問わず全員）→ 給付制限（該当者のみ）→ 支給</code></pre>
+<p><strong>給付制限（33条）★令和7年4月1日改正</strong></p>
+<table class="big"><thead><tr><th>事由</th><th>期間</th></tr></thead><tbody><tr><td>正当な理由のない自己都合離職</td><td><strong>1か月</strong>（従来2か月）</td></tr><tr><td><strong>5年間に3回以上</strong>の自己都合離職</td><td><strong>3か月</strong></td></tr><tr><td>離職期間中又は離職前一定期間に<strong>自ら教育訓練を受けた</strong></td><td><strong>給付制限なし</strong></td></tr><tr><td>自己の責めに帰すべき<strong>重大な理由による解雇</strong></td><td><strong>3か月</strong></td></tr><tr><td>紹介された職業を拒否／指示された職業訓練を拒否</td><td><strong>1か月</strong></td></tr></tbody></table>
+<h3>受給期間（20条）</h3>
+<table class="big"><thead><tr><th>区分</th><th>期間</th></tr></thead><tbody><tr><td>原則</td><td>離職の日の翌日から<strong>1年</strong></td></tr><tr><td>所定給付日数330日</td><td>1年＋30日</td></tr><tr><td>所定給付日数360日</td><td>1年＋60日</td></tr><tr><td><strong>60歳以上の定年等</strong>による離職で求職の申込みをしない</td><td>最長1年延長（＝<strong>最長2年</strong>）</td></tr><tr><td>疾病・負傷・妊娠・出産・育児・親族の看護等で引き続き<strong>30日以上</strong>就職できない</td><td>その日数を加算し<strong>最長4年</strong></td></tr></tbody></table>
+<blockquote><p>受給期間は延長されるが、<strong>所定給付日数そのものは増えない</strong>。</p></blockquote>
+<h3>失業の認定</h3>
+<p>原則<strong>4週間に1回</strong>、直前28日の各日について認定。認定日に出頭できないやむを得ない理由がある場合の特例あり。</p>
+<h3>その他の求職者給付</h3>
+<table class="big"><thead><tr><th>給付</th><th>額</th></tr></thead><tbody><tr><td><strong>高年齢求職者給付金</strong></td><td>被保険者期間1年未満<strong>30日分</strong>／1年以上<strong>50日分</strong>（一時金）</td></tr><tr><td><strong>特例一時金</strong></td><td><strong>30日分</strong>（当分の間<strong>40日分</strong>）</td></tr><tr><td>日雇労働求職者給付金</td><td>印紙保険料の納付状況に応じて日額（第1級〜第3級）</td></tr><tr><td>技能習得手当・寄宿手当・傷病手当</td><td>基本手当の補完</td></tr></tbody></table>
+<blockquote><p><strong>傷病手当</strong>（雇用保険）は、受給資格者が求職の申込み後に疾病・負傷で15日以上職業に就けない場合に、基本手当に代えて支給。健保の傷病手当<strong>金</strong>とは別物。</p></blockquote>
+<hr>
+<h2>3. 就職促進給付</h2>
+<table class="big"><thead><tr><th>給付</th><th>内容</th></tr></thead><tbody><tr><td><strong>再就職手当</strong></td><td>支給残日数が所定給付日数の<strong>3分の2以上</strong> → 基本手当日額×残日数×<strong>10分の7</strong>／<strong>3分の1以上</strong>3分の2未満 → <strong>10分の6</strong></td></tr><tr><td><strong>就業促進定着手当</strong></td><td>再就職手当の受給者が同一事業主に<strong>6か月以上</strong>雇用され、みなし賃金日額が離職前を下回る場合。上限は基本手当日額×残日数×<strong>10分の2</strong>（令和7年4月に引下げ）</td></tr><tr><td>常用就職支度手当</td><td>就職困難者等が安定した職業に就いた場合</td></tr><tr><td>移転費・広域求職活動費・短期訓練受講費・求職活動関係役務利用費</td><td>—</td></tr></tbody></table>
+<blockquote><p>★<strong>就業手当は令和7年4月1日に廃止</strong>された。</p></blockquote>
+<hr>
+<h2>4. 教育訓練給付</h2>
+<table class="big"><thead><tr><th>種類</th><th>給付率</th></tr></thead><tbody><tr><td>一般教育訓練給付金</td><td><strong>20％</strong>（上限10万円）</td></tr><tr><td>特定一般教育訓練給付金</td><td><strong>40％</strong>＋資格取得等で<strong>10％</strong> ＝ 最大50％</td></tr><tr><td><strong>専門実践教育訓練給付金</strong></td><td><strong>50％</strong>＋資格取得等で<strong>20％</strong>＋<strong>賃金が5％以上上昇</strong>で<strong>10％</strong> ＝ <strong>最大80％</strong></td></tr></tbody></table>
+<ul><li>支給要件期間は原則3年以上（初回は一般・特定一般1年以上、専門実践2年以上）</li><li><strong>教育訓練支援給付金</strong>：45歳未満の離職者が専門実践教育訓練を受講する場合、基本手当日額の一定割合を支給</li></ul>
+<h3>教育訓練休暇給付金（60条の3）★令和7年10月1日創設</h3>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>対象</td><td><strong>一般被保険者</strong>が、就業規則等の制度に基づき<strong>30日以上の無給</strong>の教育訓練休暇を取得した場合</td></tr><tr><td>特徴</td><td><strong>離職していないのに基本手当相当額</strong>が支給される</td></tr><tr><td>要件①</td><td>休暇開始前<strong>2年間に被保険者期間12か月以上</strong>（基本手当と同じ）</td></tr><tr><td>要件②</td><td>休暇開始前に<strong>5年以上</strong>の雇用保険加入期間があること</td></tr><tr><td>日額</td><td>基本手当の日額と同じ算定方法</td></tr><tr><td>給付日数</td><td>被保険者期間 5年以上10年未満<strong>90日</strong>／10年以上20年未満<strong>120日</strong>／20年以上<strong>150日</strong></td></tr><tr><td>支給される期間</td><td>休暇を開始した日から起算して<strong>1年以内</strong>に取得した日</td></tr></tbody></table>
+<blockquote><p><strong>「無給の休暇であること」が要件</strong>。過去問に存在しない新設給付なので狙われやすい。</p></blockquote>
+<hr>
+<h2>5. 雇用継続給付・育児休業等給付</h2>
+<h3>高年齢雇用継続給付（61条）★令和7年4月1日改正</h3>
+<table class="big"><thead><tr><th>区分</th><th>給付率</th></tr></thead><tbody><tr><td><strong>令和7年4月1日以後</strong>に60歳到達</td><td>最大<strong>10％</strong></td></tr><tr><td>令和7年3月31日までに60歳到達</td><td>従前の<strong>15％</strong>（経過措置）</td></tr></tbody></table>
+<ul><li>対象：60歳以上65歳未満の被保険者で、被保険者であった期間が<strong>5年以上</strong></li><li>みなし賃金日額に比べて各支給対象月の賃金が<strong>75％未満</strong>に低下した場合</li><li><strong>高年齢再就職給付金</strong>（基本手当受給後に再就職）も同様</li></ul>
+<h3>介護休業給付金</h3>
+<p>休業開始時賃金日額×支給日数の<strong>67％</strong>。対象家族1人につき通算<strong>93日</strong>、<strong>3回</strong>まで分割。</p>
+<h3>育児休業等給付</h3>
+<table class="big"><thead><tr><th>給付</th><th>率</th></tr></thead><tbody><tr><td><strong>育児休業給付金</strong></td><td>180日目まで<strong>67％</strong>／181日目以降<strong>50％</strong></td></tr><tr><td><strong>出生時育児休業給付金</strong>（産後パパ育休）</td><td><strong>67％</strong>。出生後8週間以内に<strong>4週間（28日）</strong>限度、2回分割可</td></tr><tr><td><strong>出生後休業支援給付金</strong> ★令和7年4月創設</td><td><strong>13％</strong>（最大28日）。育休給付67％と合わせて<strong>80％＝手取り10割相当</strong></td></tr><tr><td><strong>育児時短就業給付金</strong> ★令和7年4月創設</td><td>2歳未満の子を養育するための時短勤務中、賃金の<strong>10％</strong></td></tr></tbody></table>
+<p><strong>出生後休業支援給付金</strong>：被保険者<strong>及びその配偶者の双方</strong>が子の出生直後の一定期間に14日以上の育児休業を取得した場合。配偶者が一定の場合（ひとり親等）は配偶者要件が不要。</p>
+<hr>
+<h2>6. 通則</h2>
+<table class="big"><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td>10条の3</td><td><strong>未支給の失業等給付</strong>：配偶者（事実婚含む）・子・父母・孫・祖父母・兄弟姉妹で生計同一。死亡日の翌日から<strong>6か月以内</strong>に請求</td></tr><tr><td>10条の4</td><td><strong>不正受給</strong>：返還命令＋<strong>その額の2倍以下</strong>の納付命令（＝いわゆる3倍返し）</td></tr><tr><td>11条</td><td><strong>未支給給付の非課税等</strong>、譲渡・担保・差押えの禁止</td></tr><tr><td><strong>74条</strong></td><td><strong>時効：2年</strong>（失業等給付を受ける権利、返還・納付を命ずる権利とも）</td></tr></tbody></table>
+<h3>不服申立て</h3>
+<pre><code>雇用保険審査官（都道府県労働局）→ 労働保険審査会</code></pre>
+<hr>
+<h2>7. 令和7年改正の総まとめ ★</h2>
+<table class="big"><thead><tr><th>施行日</th><th>内容</th></tr></thead><tbody><tr><td><strong>令和7年4月1日</strong></td><td>給付制限 2か月→<strong>1か月</strong>（5年3回以上は3か月、自ら教育訓練を受ければ制限なし）</td></tr><tr><td>令和7年4月1日</td><td>高年齢雇用継続給付 15％→<strong>10％</strong></td></tr><tr><td>令和7年4月1日</td><td><strong>出生後休業支援給付金</strong>・<strong>育児時短就業給付金</strong>の創設</td></tr><tr><td>令和7年4月1日</td><td><strong>就業手当の廃止</strong>、就業促進定着手当の上限引下げ</td></tr><tr><td><strong>令和7年10月1日</strong></td><td><strong>教育訓練休暇給付金</strong>の創設</td></tr><tr><td>令和6年10月1日</td><td>教育訓練給付金の追加給付（賃金上昇等で10％）</td></tr><tr><td><strong>令和10年10月1日</strong>（未施行）</td><td>週<strong>10時間</strong>以上への適用拡大</td></tr></tbody></table>
+<hr>
+<h2>8. 選択式で狙われる条文</h2>
+<p><strong>13条（受給要件）</strong></p>
+<blockquote><p>基本手当は、被保険者が失業した場合において、離職の日以前<strong>2年間</strong>（…）に、被保険者期間が通算して<strong>12箇月</strong>以上であつたときに、支給する。</p></blockquote>
+<p><strong>33条（給付制限）</strong></p>
+<blockquote><p>被保険者が自己の責めに帰すべき重大な理由によつて解雇され、又は正当な理由がなく自己の都合によつて退職した場合には、…<strong>待期期間の満了後1箇月以上3箇月以内</strong>の間で公共職業安定所長の定める期間は、基本手当を支給しない。</p></blockquote>
+<p><strong>20条（受給期間）</strong></p>
+<blockquote><p>基本手当は、…<strong>離職の日の翌日から起算して1年</strong>（…）の期間内の失業している日について、所定給付日数に相当する日数分を限度として支給する。</p></blockquote>
+<hr>
+<h2>直前チェック（雇用）</h2>
+<ul class="chk"><li>適用除外の下限は週<strong>20時間</strong>（10時間は未施行）</li><li>取得届=<strong>翌月10日</strong>、喪失届=<strong>10日以内</strong></li><li>受給要件 2年12か月／特定は1年6か月。基礎日数<strong>11日</strong>（又は80時間）</li><li>所定給付日数：一般は<strong>年齢無関係</strong>（90/120/150）、特定は最大330日、就職困難者は最大360日</li><li>待期<strong>7日</strong>は全員／給付制限は待期の<strong>後</strong>から起算</li><li>給付制限：自己都合<strong>1か月</strong>／3回以上<strong>3か月</strong>／教育訓練で<strong>なし</strong>／重責解雇<strong>3か月</strong></li><li>受給期間は延長されるが<strong>所定給付日数は増えない</strong></li><li>高年齢求職者給付金は<strong>30日／50日分の一時金</strong></li><li>再就職手当 3分の2以上=<strong>7割</strong>、3分の1以上=<strong>6割</strong></li><li>教育訓練休暇給付金は<strong>無給の休暇</strong>が要件</li><li>高年齢雇用継続給付は<strong>令和7年4月以後60歳到達で10％</strong></li><li>育休給付 67％→50％、出生後休業支援は<strong>13％</strong></li><li>時効は<strong>2年</strong>、不正受給は<strong>3倍返し</strong></li></ul>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">1</span>法改正まとめ<span class="sec">（全体版）</span></span></td><td>この科目の令和8年度改正を施行日で確認</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>時効・届出期限・遺族の範囲などを他科目と並べて比較</td></tr><tr><td><span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span></td><td><code>⚠️要確認</code> を付けた年度依存の数値を照合</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 44 ／ 雇用</div><h1>被保険者と適用</h1><div class="desc">4種類の被保険者と適用除外6号。マルチジョブホルダーは本人の申出</div></div><h3>適用事業（5条）</h3>
+<blockquote><p>労働者が雇用される事業を<strong>適用事業</strong>とする。</p></blockquote>
+<p><strong>業種・規模を問わず</strong>、労働者を1人でも雇用すれば適用事業です。事業主の意思や届出とは関係なく、<strong>当然に</strong>適用されます。</p>
+<p>例外は<strong>暫定任意適用事業</strong>（個人経営の農林水産の事業で常時<strong>5人未満</strong>の労働者を雇用するもの）だけです。</p>
+<blockquote><p>★「常時5人以上の労働者を使用する事業に適用される」は誤りです。</p></blockquote>
+<h3>4種類の被保険者</h3>
+<table class="big"><thead><tr><th>種類</th><th>対象</th></tr></thead><tbody><tr><td><strong>一般</strong>被保険者</td><td>下の3つ以外</td></tr><tr><td><strong>高年齢</strong>被保険者</td><td><strong>65歳以上</strong>の被保険者（短期雇用特例・日雇を除く）</td></tr><tr><td><strong>短期雇用特例</strong>被保険者</td><td><strong>季節的</strong>に雇用される者（4か月以内の期間を定めて雇用される者、週所定20時間未満の者を除く）</td></tr><tr><td><strong>日雇</strong>労働被保険者</td><td>日々雇用される者、<strong>30日以内</strong>の期間を定めて雇用される者</td></tr></tbody></table>
+<blockquote><p>★65歳以上でも<strong>適用除外ではなく高年齢被保険者</strong>です。平成29年からの取扱いです。</p></blockquote>
+<h3>適用除外（6条）</h3>
+<table class="big"><thead><tr><th>号</th><th>除外される者</th></tr></thead><tbody><tr><td>1号</td><td>1週間の所定労働時間が<strong>20時間未満</strong>である者（日雇労働被保険者に該当する者を除く）</td></tr><tr><td>2号</td><td><strong>同一の事業主に継続して31日以上</strong>雇用されることが見込まれない者</td></tr><tr><td>3号</td><td><strong>季節的</strong>に雇用される者のうち、4か月以内の期間を定めて雇用される者・週20時間以上30時間未満の者</td></tr><tr><td>4号</td><td><strong>学校教育法</strong>の学生生徒等（<strong>昼間学生</strong>）。ただし<strong>休学中</strong>、<strong>卒業見込みで卒業後も引き続き雇用される</strong>者などは被保険者となる</td></tr><tr><td>5号</td><td><strong>船員</strong>であって、漁船に乗り組むため1年を通じて雇用される場合を除く者</td></tr><tr><td>6号</td><td><strong>国・都道府県・市町村等</strong>の事業に雇用される者のうち、離職した場合に求職者給付等を超える給付が受けられる者</td></tr></tbody></table>
+<blockquote><p>★令和10年10月1日から、<strong>週10時間以上</strong>に適用が拡大されます（未施行）。
+★<strong>法人の役員</strong>は原則として被保険者になりませんが、<strong>取締役であって同時に部長等の従業員としての身分を有する者</strong>は、雇用関係が明確なら被保険者となります。</p></blockquote>
+<h3>二重に雇用される場合</h3>
+<p>原則として、<strong>主たる賃金を受ける一の雇用関係</strong>についてのみ被保険者となります。</p>
+<p><strong>65歳以上</strong>の者については、令和4年から<strong>雇用保険マルチジョブホルダー制度</strong>があります。</p>
+<table class="big"><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>年齢</td><td><strong>65歳以上</strong></td></tr><tr><td>事業所</td><td><strong>2つ</strong>の事業所（1つの事業所での週所定労働時間が<strong>5時間以上20時間未満</strong>）</td></tr><tr><td>合計</td><td>2つの事業所の週所定労働時間の合計が<strong>20時間以上</strong></td></tr><tr><td>雇用見込み</td><td>各事業所で<strong>31日以上</strong></td></tr><tr><td>申出</td><td>本人の<strong>申出</strong>が必要（申出た日から被保険者となる）</td></tr></tbody></table>
+<blockquote><p>★<strong>本人の申出</strong>が必要で、事業主の届出だけでは資格取得しません。名称は「<strong>マルチ高年齢被保険者</strong>」です。</p></blockquote>
+<h3>資格の得喪（7条〜9条）</h3>
+<table><thead><tr><th>届出</th><th>期限</th></tr></thead><tbody><tr><td><strong>資格取得届</strong></td><td>資格を取得した日の属する月の<strong>翌月10日</strong>まで</td></tr><tr><td><strong>資格喪失届</strong></td><td>資格を喪失した日の<strong>翌日から起算して10日以内</strong></td></tr><tr><td>離職証明書</td><td>資格喪失届に添える（本人が59歳以上の場合は<strong>必ず</strong>添える）</td></tr></tbody></table>
+<table><thead><tr><th>資格取得日</th><th>資格喪失日</th></tr></thead><tbody><tr><td>雇用された日／適用事業に該当するに至った日</td><td>離職した日の<strong>翌日</strong>／死亡した日の翌日／適用除外に該当した日</td></tr></tbody></table>
+<blockquote><p>★取得は「その日」、喪失は「<strong>翌日</strong>」。健保・厚年と同じ考え方です。</p></blockquote>
+<h3>確認（9条）</h3>
+<p>厚生労働大臣は、<strong>届出もしくは請求により、または職権で</strong>、被保険者となったこと・でなくなったことの<strong>確認</strong>を行います。</p>
+<p>労働者は、<strong>いつでも</strong>確認の請求ができます（8条）。事業主が届出を怠っていても、確認によって被保険者であったことが認められます。</p>
+<p><strong>確認の効力</strong>：資格取得の確認は、原則として<strong>確認があった日の2年前の日</strong>まで遡ります。ただし、<strong>被保険者負担分の保険料が賃金から控除されていたことが明らかである期間</strong>については、<strong>2年を超えて</strong>遡ることができます（22条5項）。</p>
+<blockquote><p>★この「2年を超えてさかのぼる」場合に、徴収法の<strong>特例納付保険料</strong>（26条）が問題になります。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">43</span>雇用保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">1</span>法改正まとめ<span class="sec">（全体版）</span></span></td><td>令和7年4月の改正点</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 45 ／ 雇用</div><h1>基本手当の受給要件</h1><div class="desc">2年12か月と1年6か月。11日以上／80時間以上の数え方</div></div><h3>3つの柱（13条）</h3>
+<ol><li><strong>離職により被保険者資格を喪失</strong>したことの確認を受けたこと</li><li><strong>労働の意思および能力</strong>を有するにもかかわらず<strong>職業に就くことができない状態</strong>（＝失業）にあること</li><li>算定対象期間に<strong>被保険者期間</strong>が通算して一定以上あること</li></ol>
+<blockquote><p>★「労働の意思と能力」がないと失業ではありません。<strong>病気で就労できない・妊娠出産・家事に専念・自営を開始</strong>した場合は失業に当たりません。</p></blockquote>
+<h3>算定対象期間と被保険者期間</h3>
+<table class="big"><thead><tr><th>区分</th><th>算定対象期間</th><th>必要な被保険者期間</th></tr></thead><tbody><tr><td><strong>一般</strong>の受給資格者</td><td>離職の日以前<strong>2年間</strong></td><td>通算<strong>12か月</strong>以上</td></tr><tr><td><strong>特定受給資格者</strong>・<strong>特定理由離職者</strong>（一部）</td><td>離職の日以前<strong>1年間</strong></td><td>通算<strong>6か月</strong>以上</td></tr></tbody></table>
+<p>算定対象期間は、疾病・負傷・出産等により<strong>引き続き30日以上賃金の支払を受けられなかった</strong>場合、その日数だけ延長されます（<strong>最長4年</strong>）。</p>
+<h3>被保険者期間の数え方（14条）</h3>
+<p><strong>離職日から1か月ごとに区切った期間</strong>のうち、</p>
+<ul><li><strong>賃金支払の基礎となった日数が11日以上</strong>ある月 → <strong>1か月</strong></li><li>11日以上の月がない場合、<strong>賃金の支払の基礎となった労働時間が80時間以上</strong>ある月 → <strong>1か月</strong></li><li>1か月未満の端数期間で、日数が15日以上かつ賃金支払基礎日数11日以上（または労働時間80時間以上） → <strong>2分の1か月</strong></li></ul>
+<blockquote><p>★<strong>11日以上／80時間以上</strong>の両方を覚えます。80時間の基準は令和2年8月に追加されました。
+★次の期間は被保険者期間に含めません。</p>
+<ul><li>最後に<strong>被保険者となった日前</strong>に、受給資格・高年齢受給資格・特例受給資格を取得したことがある場合の、その資格に係る<strong>離職日以前</strong>の期間</li><li><strong>育児休業給付金</strong>または<strong>出生時育児休業給付金</strong>の支給に係る休業期間</li></ul></blockquote>
+<h3>特定受給資格者（23条2項）</h3>
+<p><strong>倒産・解雇等</strong>により<strong>再就職の準備をする時間的余裕なく</strong>離職を余儀なくされた者。所定給付日数が手厚くなります。</p>
+<table><thead><tr><th>類型</th><th>例</th></tr></thead><tbody><tr><td><strong>倒産等</strong>による離職</td><td>倒産、事業所の廃止、事業所の移転により通勤困難となった</td></tr><tr><td><strong>解雇等</strong>による離職</td><td>解雇（自己の責めに帰すべき重大な理由によるものを除く）、労働条件の相違、<strong>賃金の3分の1を超える額が支払期日までに支払われなかった</strong>、<strong>離職の日の属する月の前6か月のうちいずれか連続する3か月で45時間、1か月で100時間、または2〜6か月平均で月80時間を超える時間外労働</strong>、上司・同僚からの<strong>嫌がらせ</strong>、<strong>期間の定めのある労働契約の更新により3年以上引き続き雇用</strong>されていた者の雇止め</td></tr></tbody></table>
+<h3>特定理由離職者</h3>
+<table><thead><tr><th>類型</th><th>内容</th></tr></thead><tbody><tr><td><strong>Ⅰ</strong></td><td><strong>期間の定めのある労働契約が更新されなかった</strong>（本人が更新を希望したのに、更新の合意が成立しなかった）</td></tr><tr><td><strong>Ⅱ</strong></td><td><strong>正当な理由のある自己都合</strong>離職（体力の不足、心身の障害、家族の看護、配偶者との別居生活の継続が困難、通勤不可能、希望退職への応募など）</td></tr></tbody></table>
+<blockquote><p>★<strong>Ⅰだけ</strong>が所定給付日数について特定受給資格者と<strong>同じ扱い</strong>（当分の間）を受けます。Ⅱは給付制限が課されないだけで、日数は一般の受給資格者と同じです。</p></blockquote>
+<h3>受給手続の流れ</h3>
+<pre><code>離職 → 離職票の交付
+　↓
+公共職業安定所に出頭し、求職の申込み＋離職票の提出
+　↓
+受給資格の決定（失業の認定日を指定）
+　↓
+待期7日（＋給付制限）
+　↓
+4週間に1回の失業の認定 → 基本手当の支給</code></pre>
+<p><strong>失業の認定</strong>（15条）は、<strong>4週間に1回</strong>ずつ、直前の28日の各日について行われます。認定日には<strong>原則として本人が出頭</strong>しなければなりません。</p>
+<blockquote><p>★認定を受けるには、原則として<strong>認定対象期間中に2回以上</strong>の求職活動の実績が必要です。
+★<strong>証明書による認定</strong>が認められる場合（疾病・負傷で15日未満、公共職業訓練の受講、就職、面接など）があります。<strong>15日以上</strong>の疾病・負傷は<strong>傷病手当</strong>の対象になります。</p></blockquote>
+<h3>未支給の基本手当（10条の3）</h3>
+<p>受給資格者が死亡したため受けられなかった基本手当は、<strong>生計を同じくしていた</strong>配偶者・子・父母・孫・祖父母・兄弟姉妹が、自己の名で請求できます。順位はこの並びのとおりです。</p>
+<blockquote><p>★死亡の日の翌日から起算して<strong>6か月以内</strong>に請求します。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">43</span>雇用保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">1</span>法改正まとめ<span class="sec">（全体版）</span></span></td><td>令和7年4月の改正点</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 46 ／ 雇用</div><h1>賃金日額と基本手当日額</h1><div class="desc">6か月÷180で賞与は入らない。60歳台前半だけ下限45%</div></div><h3>賃金日額（17条）</h3>
+<pre><code>賃金日額 ＝ 算定対象期間（被保険者期間として計算された最後の6か月）に
+　　　　　　支払われた賃金の総額 ÷ 180</code></pre>
+<table class="big"><thead><tr><th>含む</th><th>含まない</th></tr></thead><tbody><tr><td>基本給、諸手当、通勤手当</td><td><strong>臨時に支払われる賃金</strong></td></tr><tr><td></td><td><strong>3か月を超える期間ごとに支払われる賃金</strong>（＝賞与）</td></tr></tbody></table>
+<blockquote><p>★労基法の平均賃金は「3か月・暦日数」、雇用保険の賃金日額は「<strong>6か月・180</strong>」。分母の考え方が違います。
+★<strong>賞与は入りません</strong>。ここが最頻出です。</p></blockquote>
+<p><strong>最低保障</strong>：日給・時給・出来高払で計算した額が上記より高いときは、その額（労働日数で除して70%を乗じた額）を賃金日額とします。</p>
+<h3>上限額・下限額</h3>
+<p>賃金日額には<strong>年齢区分ごとの上限額</strong>と、<strong>全年齢共通の下限額</strong>が定められ、毎年8月1日に<strong>毎月勤労統計の平均給与額の変動</strong>に応じて改定されます（18条）。</p>
+<table class="big"><thead><tr><th>区分</th><th></th></tr></thead><tbody><tr><td>上限額</td><td><strong>29歳以下／30〜44歳／45〜59歳／60〜64歳</strong>の4区分</td></tr><tr><td>下限額</td><td><strong>全年齢共通</strong>（1つだけ）</td></tr></tbody></table>
+<blockquote><p>★上限は4区分、下限は1つ。<strong>65歳以上</strong>は「60〜64歳」ではなく「<strong>45〜59歳</strong>」の区分を使います（高年齢求職者給付金）。</p></blockquote>
+<h3>基本手当日額（16条）</h3>
+<pre><code>基本手当日額 ＝ 賃金日額 × 給付率</code></pre>
+<p>給付率は<strong>賃金日額が低いほど高く</strong>なります（<strong>逆スライド</strong>）。</p>
+<table><thead><tr><th>離職時の年齢</th><th>給付率</th></tr></thead><tbody><tr><td><strong>60歳未満</strong>（および65歳以上）</td><td><strong>100分の50〜100分の80</strong></td></tr><tr><td><strong>60歳以上65歳未満</strong></td><td><strong>100分の45〜100分の80</strong></td></tr></tbody></table>
+<blockquote><p>★60歳以上65歳未満だけ下限が<strong>45%</strong>です。<strong>在職老齢年金・高年齢雇用継続給付との調整</strong>があるためです。
+★上限の80%は共通です。「60歳以上は上限も45%」は誤りです。</p></blockquote>
+<p>基本手当日額にも、年齢区分ごとの<strong>上限額</strong>が定められています。</p>
+<h3>自動変更対象額（18条）</h3>
+<p>賃金日額の上限額・下限額、および控除額は、<strong>毎年8月1日</strong>に、<strong>毎月勤労統計の平均給与額</strong>が前年度と比べて<strong>上下したときにその比率に応じて</strong>変更されます。</p>
+<blockquote><p>★労災の給付基礎日額のスライドは「110%超／90%未満」という幅がありますが、雇用保険は<strong>上下すれば変更</strong>します。</p></blockquote>
+<h3>減額（19条）</h3>
+<p>失業の認定に係る期間中に<strong>自己の労働によって収入</strong>を得た場合、次のように減額されます。</p>
+<pre><code>収入の1日分の額 － 控除額 ＝ Ａ
+Ａ ＋ 基本手当日額 と 賃金日額の80% を比べる</code></pre>
+<table><thead><tr><th>状況</th><th>支給額</th></tr></thead><tbody><tr><td>Ａ＋基本手当日額 ≦ 賃金日額の<strong>80%</strong></td><td><strong>全額</strong>支給</td></tr><tr><td>超える場合</td><td>超えた額を基本手当日額から<strong>減じた額</strong>を支給</td></tr><tr><td>減じた結果が<strong>0以下</strong></td><td><strong>不支給</strong></td></tr></tbody></table>
+<blockquote><p>★「収入があれば一律不支給」ではありません。<strong>賃金日額の80%</strong>が判定の物差しです。
+★1日の労働時間が<strong>4時間以上</strong>なら「就職」とみなされてその日は基本手当が支給されず（就業促進手当の対象）、<strong>4時間未満</strong>なら「内職・手伝い」として上の減額計算が適用されます。</p></blockquote>
+<h3>待期中の扱い</h3>
+<p>待期期間（7日）中に収入を得ても、<strong>待期は進行</strong>します。ただし、<strong>1日の労働時間が4時間以上</strong>なら失業していないので、その日は待期の日数に<strong>算入されません</strong>。</p>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">43</span>雇用保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">1</span>法改正まとめ<span class="sec">（全体版）</span></span></td><td>令和7年4月の改正点</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 47 ／ 雇用</div><h1>所定給付日数</h1><div class="desc">一般は年齢を見ない。最大330日と就職困難者の360日</div></div><h3>3つの表を区別する</h3>
+<table class="big"><thead><tr><th>区分</th><th>特徴</th></tr></thead><tbody><tr><td>① <strong>一般の受給資格者</strong></td><td>年齢に関係なく、<strong>被保険者であった期間</strong>だけで決まる</td></tr><tr><td>② <strong>特定受給資格者・特定理由離職者Ⅰ</strong></td><td><strong>年齢</strong>と<strong>被保険者であった期間</strong>の両方で決まる</td></tr><tr><td>③ <strong>就職困難者</strong></td><td><strong>年齢</strong>（45歳を境）と被保険者であった期間で決まる</td></tr></tbody></table>
+<h3>① 一般の受給資格者（22条1項）</h3>
+<table class="big"><thead><tr><th>被保険者であった期間</th><th>所定給付日数</th></tr></thead><tbody><tr><td><strong>1年未満</strong></td><td><strong>—</strong>（受給資格なし。ただし特定受給資格者等は90日）</td></tr><tr><td><strong>1年以上10年未満</strong></td><td><strong>90日</strong></td></tr><tr><td><strong>10年以上20年未満</strong></td><td><strong>120日</strong></td></tr><tr><td><strong>20年以上</strong></td><td><strong>150日</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>年齢は関係ありません</strong>。「60歳以上は日数が増える」は誤りです。
+★覚え方：<strong>90／120／150</strong>、区切りは<strong>10年・20年</strong>。</p></blockquote>
+<h3>② 特定受給資格者・特定理由離職者Ⅰ（23条）</h3>
+<table class="big"><thead><tr><th>年齢＼被保険者期間</th><th>1年未満</th><th>1〜5年</th><th>5〜10年</th><th>10〜20年</th><th>20年以上</th></tr></thead><tbody><tr><td><strong>30歳未満</strong></td><td>90</td><td>90</td><td>120</td><td>180</td><td>—</td></tr><tr><td><strong>30〜35歳未満</strong></td><td>90</td><td><strong>120</strong></td><td>180</td><td>210</td><td>240</td></tr><tr><td><strong>35〜45歳未満</strong></td><td>90</td><td><strong>150</strong></td><td>180</td><td>240</td><td>270</td></tr><tr><td><strong>45〜60歳未満</strong></td><td>90</td><td>180</td><td>240</td><td>270</td><td><strong>330</strong></td></tr><tr><td><strong>60〜65歳未満</strong></td><td>90</td><td>150</td><td>180</td><td>210</td><td>240</td></tr></tbody></table>
+<blockquote><p>★<strong>最大は330日</strong>（45歳以上60歳未満・20年以上）です。「360日」は就職困難者の表です。
+★<strong>1年未満はすべて90日</strong>。ここは年齢に関係ありません。
+★30歳未満には「20年以上」の欄がありません（年齢的にあり得ないため）。</p></blockquote>
+<h3>③ 就職困難者（22条2項）</h3>
+<p><strong>身体障害者・知的障害者・精神障害者、刑法等の規定により保護観察に付された者、社会的事情により就職が著しく阻害されている者</strong>が対象です。</p>
+<table class="big"><thead><tr><th>年齢＼被保険者期間</th><th>1年未満</th><th>1年以上</th></tr></thead><tbody><tr><td><strong>45歳未満</strong></td><td><strong>150日</strong></td><td><strong>300日</strong></td></tr><tr><td><strong>45歳以上65歳未満</strong></td><td>150日</td><td><strong>360日</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>最大360日</strong>。1年未満は年齢を問わず<strong>150日</strong>です。</p></blockquote>
+<h3>受給期間（20条）</h3>
+<p>所定給付日数のある期間ではなく、<strong>基本手当を受けられる期限</strong>です。</p>
+<table class="big"><thead><tr><th>区分</th><th>受給期間</th></tr></thead><tbody><tr><td>原則</td><td>離職の日の翌日から<strong>1年</strong></td></tr><tr><td>所定給付日数<strong>330日</strong>の者</td><td><strong>1年＋30日</strong></td></tr><tr><td>所定給付日数<strong>360日</strong>の者</td><td><strong>1年＋60日</strong></td></tr></tbody></table>
+<blockquote><p>★所定給付日数が受給期間を超える分だけ延長される、という考え方です。</p></blockquote>
+<p><strong>受給期間の延長</strong></p>
+<table class="big"><thead><tr><th>事由</th><th>延長</th></tr></thead><tbody><tr><td>疾病・負傷・妊娠・出産・育児（3歳未満）その他厚生労働省令で定める理由により、<strong>引き続き30日以上</strong>職業に就くことができないとき</td><td>その日数だけ延長。<strong>通算して4年</strong>が限度</td></tr><tr><td><strong>60歳以上の定年退職等</strong>により、しばらく求職の申込みをしないことを希望するとき</td><td><strong>1年</strong>を限度に延長（<strong>通算2年</strong>が限度）</td></tr></tbody></table>
+<blockquote><p>★定年退職による延長の申出は、離職の日の翌日から<strong>2か月以内</strong>に行います。
+★疾病等による延長の申出には期限の定めがありますが、<strong>受給期間の最後の日までに</strong>行えばよいとされています。</p></blockquote>
+<h3>個別延長給付・広域延長給付・全国延長給付・訓練延長給付</h3>
+<table><thead><tr><th>種類</th><th>内容</th></tr></thead><tbody><tr><td><strong>訓練延長給付</strong>（24条）</td><td>公共職業訓練等を受ける期間について。受講待期中<strong>90日</strong>、受講中<strong>2年</strong>が限度、修了後<strong>30日</strong></td></tr><tr><td><strong>個別延長給付</strong>（24条の2）</td><td>特定受給資格者等で就職が困難な者に<strong>60日</strong>（35歳以上60歳未満で所定給付日数270日・330日の者は<strong>30日</strong>）、災害離職者は<strong>120日</strong></td></tr><tr><td><strong>広域延長給付</strong>（25条）</td><td>広域職業紹介活動が必要な地域について<strong>90日</strong></td></tr><tr><td><strong>全国延長給付</strong>（27条）</td><td>全国的に失業の状況が著しく悪化したとき<strong>90日</strong></td></tr></tbody></table>
+<p><strong>支給順序</strong>は、<strong>訓練延長 → 個別延長 → 広域延長 → 全国延長</strong>です。</p>
+<blockquote><p>★延長給付が行われる間は、受給期間もその日数だけ延長されます。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">43</span>雇用保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">1</span>法改正まとめ<span class="sec">（全体版）</span></span></td><td>令和7年4月の改正点</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 48 ／ 雇用</div><h1>待期と給付制限</h1><div class="desc">自己都合は1か月、5年で3回以上は3か月。不正受給は最大3倍</div></div><h3>待期（21条）</h3>
+<blockquote><p>基本手当は、受給資格者が離職後最初に公共職業安定所に<strong>求職の申込み</strong>をした日以後において、<strong>失業している日</strong>（疾病または負傷のため職業に就くことができない日を含む）が<strong>通算して7日</strong>に満たない間は、支給しない。</p></blockquote>
+<table class="big"><thead><tr><th>ポイント</th><th></th></tr></thead><tbody><tr><td>起算</td><td><strong>求職の申込みをした日</strong>以後（離職日ではない）</td></tr><tr><td>日数</td><td>通算<strong>7日</strong></td></tr><tr><td>連続</td><td><strong>不要</strong>（通算でよい）</td></tr><tr><td>疾病・負傷の日</td><td><strong>含まれる</strong></td></tr></tbody></table>
+<blockquote><p>★待期は<strong>すべての受給資格者に共通</strong>です。給付制限の有無にかかわらず必要です。
+★1日の労働時間が<strong>4時間以上</strong>の日は失業していないため、待期に算入されません。</p></blockquote>
+<h3>給付制限（32条・33条）</h3>
+<table class="big"><thead><tr><th>事由</th><th>制限</th></tr></thead><tbody><tr><td><strong>正当な理由なく</strong>公共職業安定所の紹介する職業に就くこと、または指示された公共職業訓練等を受けることを<strong>拒んだ</strong>とき（32条1項）</td><td><strong>その日から1か月間</strong></td></tr><tr><td><strong>正当な理由なく</strong>、再就職を促進するために必要な<strong>職業指導</strong>を受けることを拒んだとき（32条2項）</td><td><strong>その日から1か月を超えない範囲</strong>で定める期間</td></tr><tr><td><strong>自己の責めに帰すべき重大な理由</strong>によって解雇された（重責解雇）（33条）</td><td>待期満了後<strong>3か月</strong>（一部は1か月）</td></tr><tr><td><strong>正当な理由がなく自己の都合</strong>によって退職した（33条）</td><td>待期満了後<strong>1か月</strong></td></tr><tr><td>5年間に<strong>3回以上</strong>の正当な理由のない自己都合離職</td><td>待期満了後<strong>3か月</strong></td></tr></tbody></table>
+<blockquote><p>★令和7年4月1日から、自己都合離職の給付制限が<strong>2か月→1か月</strong>に短縮されました。ただし<strong>5年間に3回以上</strong>の場合は<strong>3か月</strong>です。
+★<strong>離職期間中または離職日前1年以内に、自ら教育訓練を受けた場合</strong>は、給付制限が<strong>解除</strong>されます（給付制限なし）。</p></blockquote>
+<h3>紹介拒否の「正当な理由」</h3>
+<p>次の場合は、拒んでも給付制限を受けません（32条1項ただし書）。</p>
+<ol><li>紹介された職業・受けることを指示された訓練が、<strong>受給資格者の能力からみて不適当</strong>であるとき</li><li>就職しようとする地域の<strong>賃金水準に比べて不当に低い</strong>賃金であるとき</li><li>職業安定機関の<strong>紹介する職業が労働争議の行われている事業所</strong>に関するものであるとき</li><li>その他<strong>正当な理由</strong>があるとき</li></ol>
+<blockquote><p>★「賃金が前職より低い」だけでは正当な理由になりません。<strong>地域の賃金水準</strong>との比較です。</p></blockquote>
+<h3>不正受給（34条）</h3>
+<p><strong>偽りその他不正の行為</strong>により求職者給付・就職促進給付を受け、または受けようとした者には、</p>
+<table class="big"><thead><tr><th>効果</th><th></th></tr></thead><tbody><tr><td>支給停止</td><td><strong>その日以後</strong>、基本手当を支給しない</td></tr><tr><td>例外</td><td>やむを得ない理由があるときは、<strong>支給を制限しないことができる</strong></td></tr><tr><td><strong>返還命令</strong>（10条の4）</td><td>支給を受けた額の<strong>全部または一部</strong>の返還を命ずることができる</td></tr><tr><td><strong>納付命令</strong></td><td>さらに、受けた額の<strong>2倍</strong>に相当する額以下の金額の納付を命ずることができる</td></tr></tbody></table>
+<p>合計すると最大で受給額の<strong>3倍</strong>（返還1倍＋納付2倍）です。</p>
+<blockquote><p>★<strong>事業主・職業紹介事業者等が偽りの届出・報告・証明</strong>をしたためであるときは、これらの者に対し<strong>連帯して</strong>返還・納付を命ずることができます。
+★不正受給による返還金・納付金は、<strong>国税徴収の例により徴収</strong>されます。</p></blockquote>
+<h3>受給権の保護</h3>
+<table class="big"><thead><tr><th>条文</th><th>内容</th></tr></thead><tbody><tr><td>11条</td><td>失業等給付を受ける権利は、<strong>譲渡・担保・差押えができない</strong></td></tr><tr><td>12条</td><td><strong>租税その他の公課</strong>は、失業等給付として支給を受けた金銭を標準として課することができない</td></tr></tbody></table>
+<blockquote><p>★ただし、<strong>未支給の失業等給付</strong>を受ける権利や、不正受給による返還金債権には別の扱いがあります。</p></blockquote>
+<h3>時効・不服申立て</h3>
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>時効</strong>（74条）</td><td>失業等給付の<strong>支給を受ける権利</strong>、返還・納付を命じられた金額を徴収する権利は<strong>2年</strong></td></tr><tr><td><strong>不服申立て</strong>（69条）</td><td>被保険者資格・給付に関する処分 → <strong>雇用保険審査官</strong>に審査請求 → <strong>労働保険審査会</strong>に再審査請求</td></tr><tr><td>審査請求の期間</td><td>処分があったことを知った日の翌日から<strong>3か月以内</strong></td></tr><tr><td>みなし棄却</td><td>審査請求をした日から<strong>3か月</strong>を経過しても決定がないとき</td></tr></tbody></table>
+<blockquote><p>★処分の取消しの訴えは、<strong>審査請求に対する決定を経た後</strong>でなければ提起できません（審査請求前置）。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">43</span>雇用保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">1</span>法改正まとめ<span class="sec">（全体版）</span></span></td><td>令和7年4月の改正点</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 49 ／ 雇用</div><h1>高年齢・短期・日雇</h1><div class="desc">30日/50日と40日。高年齢求職者給付金は年金と併給できる</div></div><p>一般被保険者以外の3類型は、<strong>求職者給付が一時金</strong>である点が共通します。</p>
+<table class="big"><thead><tr><th></th><th>高年齢求職者給付金</th><th>特例一時金</th><th>日雇労働求職者給付金</th></tr></thead><tbody><tr><td>対象</td><td><strong>高年齢</strong>被保険者</td><td><strong>短期雇用特例</strong>被保険者</td><td><strong>日雇労働</strong>被保険者</td></tr><tr><td>要件（被保険者期間）</td><td>離職前<strong>1年間に6か月</strong>以上</td><td>離職前<strong>1年間に6か月</strong>以上</td><td>前2か月に<strong>通算26日分</strong>以上の印紙保険料納付</td></tr><tr><td>額</td><td>基本手当日額の<strong>30日分または50日分</strong></td><td>基本手当日額の<strong>30日分</strong>（当分の間<strong>40日分</strong>）</td><td>印紙保険料の納付状況による日額</td></tr><tr><td>待期</td><td><strong>7日</strong></td><td><strong>7日</strong></td><td>—</td></tr><tr><td>受給期限</td><td>離職の日の翌日から<strong>1年</strong></td><td>離職の日の翌日から<strong>6か月</strong></td><td>—</td></tr></tbody></table>
+<h3>高年齢求職者給付金（37条の2〜37条の4）</h3>
+<p><strong>65歳以上</strong>の高年齢被保険者が失業した場合の一時金です。</p>
+<table class="big"><thead><tr><th>算定基礎期間</th><th>支給額</th></tr></thead><tbody><tr><td><strong>1年以上</strong></td><td>基本手当日額の<strong>50日分</strong></td></tr><tr><td><strong>1年未満</strong></td><td>基本手当日額の<strong>30日分</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>年金（老齢厚生年金）との併給調整はありません</strong>。基本手当は特別支給の老齢厚生年金と併給できませんが、高年齢求職者給付金は<strong>併給できます</strong>。最頻出です。
+★賃金日額の上限は「<strong>45歳以上60歳未満</strong>」の区分を用います。
+★受給期限は離職の日の翌日から<strong>1年</strong>で、<strong>延長の制度はありません</strong>。</p></blockquote>
+<h3>特例一時金（39条〜41条）</h3>
+<p><strong>季節的</strong>に雇用される短期雇用特例被保険者が失業した場合の一時金です。</p>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>額</td><td>基本手当日額の<strong>30日分</strong>（<strong>当分の間40日分</strong>）</td></tr><tr><td>受給期限</td><td>離職の日の翌日から<strong>6か月</strong></td></tr><tr><td>失業の認定</td><td><strong>1回</strong>だけ</td></tr></tbody></table>
+<p><strong>公共職業訓練等を受ける場合</strong>には、特例一時金に代えて<strong>基本手当・技能習得手当・寄宿手当</strong>が支給されます（40条4項）。</p>
+<blockquote><p>★受給期限内に訓練を受け始めると、一時金ではなく<strong>通常の求職者給付</strong>に切り替わります。
+★受給期限は<strong>6か月</strong>（延長なし）。高年齢の1年と混同しやすいところです。</p></blockquote>
+<h3>日雇労働被保険者（42条〜56条）</h3>
+<table class="big"><thead><tr><th>対象（42条）</th><th></th></tr></thead><tbody><tr><td>①</td><td><strong>日々</strong>雇用される者</td></tr><tr><td>②</td><td><strong>30日以内</strong>の期間を定めて雇用される者</td></tr></tbody></table>
+<p>ただし、次の①②のいずれかに該当する必要があります（43条）。</p>
+<ol><li>適用区域（特別区・公共職業安定所の所在する市町村等）に<strong>居住</strong>し、適用事業に雇用される者</li><li>適用区域外に居住し、適用区域内の<strong>適用事業に雇用</strong>される者</li><li>適用区域外に居住し、適用区域外の<strong>厚生労働大臣が指定した適用事業</strong>に雇用される者</li><li>上記以外で、<strong>公共職業安定所長の認可</strong>を受けた者</li></ol>
+<p><strong>2か月の各月において18日以上</strong>同一の事業主に雇用された場合、または<strong>同一の事業主に継続して31日以上</strong>雇用された場合は、原則として<strong>日雇労働被保険者でなくなります</strong>（一般被保険者等になる）。ただし<strong>公共職業安定所長の認可</strong>を受ければ日雇のままでいられます。</p>
+<h3>日雇労働求職者給付金</h3>
+<table><thead><tr><th>区分</th><th>内容</th></tr></thead><tbody><tr><td><strong>普通給付</strong>（45条）</td><td>失業の日の属する月の<strong>前2月間</strong>に印紙保険料が通算して<strong>26日分以上</strong>納付されていること。<strong>1か月につき13日〜17日分</strong>を限度に支給</td></tr><tr><td><strong>特例給付</strong>（53条）</td><td>継続する<strong>6か月間</strong>に印紙保険料が各月11日分以上かつ通算<strong>78日分以上</strong>納付されていること。<strong>4か月間</strong>に<strong>60日分</strong>を限度</td></tr></tbody></table>
+<table><thead><tr><th>等級</th><th>日額</th><th>要件（前2月の印紙保険料）</th></tr></thead><tbody><tr><td><strong>第1級</strong></td><td><strong>7,500円</strong></td><td>第1級印紙保険料が<strong>24日分以上</strong></td></tr><tr><td><strong>第2級</strong></td><td><strong>6,200円</strong></td><td>第1級・第2級が<strong>24日分以上</strong>、または第1〜3級の平均が第2級以上</td></tr><tr><td><strong>第3級</strong></td><td><strong>4,100円</strong></td><td>上記以外</td></tr></tbody></table>
+<blockquote><p>★普通給付は<strong>日ごと</strong>に失業の認定を受け、<strong>その都度</strong>支給されます。
+★特例給付を受けようとする者は、<strong>基礎期間の最後の月の翌月以後4か月以内</strong>に公共職業安定所長に申出をします。
+★普通給付と特例給付は<strong>選択</strong>であり、両方は受けられません。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">43</span>雇用保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">1</span>法改正まとめ<span class="sec">（全体版）</span></span></td><td>令和7年4月の改正点</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 50 ／ 雇用</div><h1>就職促進給付</h1><div class="desc">再就職手当70%と60%の境目。就業手当は令和7年4月に廃止</div></div><h3>全体像（56条の3・58条・59条）</h3>
+<table class="big"><thead><tr><th>分類</th><th>給付</th></tr></thead><tbody><tr><td><strong>就業促進手当</strong></td><td><strong>再就職手当</strong>／<strong>就業促進定着手当</strong>／<strong>常用就職支度手当</strong></td></tr><tr><td><strong>移転費</strong></td><td>公共職業安定所の紹介した職業に就くため、または指示された訓練を受けるため住所を変更する場合</td></tr><tr><td><strong>求職活動支援費</strong></td><td>広域求職活動費／短期訓練受講費／求職活動関係役務利用費</td></tr></tbody></table>
+<blockquote><p>★<strong>就業手当は令和7年4月1日に廃止</strong>されました。「常用雇用等以外の形態で就業した場合に支給される」という肢は現在では誤りです。</p></blockquote>
+<h3>再就職手当（56条の3第1項1号ロ）</h3>
+<p><strong>安定した職業に就いた</strong>受給資格者に支給されます。</p>
+<table class="big"><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>支給残日数</td><td>所定給付日数の<strong>3分の1以上</strong>残っていること</td></tr><tr><td>就職の形態</td><td><strong>1年を超えて</strong>引き続き雇用されることが確実と認められる職業に就いたこと、または<strong>事業を開始</strong>したこと</td></tr><tr><td>離職前事業主</td><td>離職前の事業主に<strong>再び雇用されたものでない</strong>こと（関連事業主も不可）</td></tr><tr><td>給付制限</td><td>待期満了後<strong>1か月</strong>の間は、<strong>公共職業安定所・職業紹介事業者の紹介</strong>による就職であること（給付制限を受けた者）</td></tr><tr><td>過去の受給</td><td>就職日前<strong>3年以内</strong>の就職について再就職手当・常用就職支度手当を受けていないこと</td></tr></tbody></table>
+<pre><code>再就職手当 ＝ 支給残日数 × 給付率 × 基本手当日額</code></pre>
+<table class="big"><thead><tr><th>支給残日数</th><th>給付率</th></tr></thead><tbody><tr><td>所定給付日数の<strong>3分の2以上</strong></td><td><strong>70%</strong></td></tr><tr><td>所定給付日数の<strong>3分の1以上</strong>3分の2未満</td><td><strong>60%</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>早く決まるほど率が高い</strong>しくみです。3分の2で70%、3分の1で60%。
+★基本手当日額には<strong>上限</strong>があります（60歳以上65歳未満は別の上限）。</p></blockquote>
+<h3>就業促進定着手当</h3>
+<p>再就職手当を受けた者が、<strong>同一の事業主</strong>に<strong>6か月以上</strong>雇用され、かつ<strong>みなし賃金日額</strong>が離職前の賃金日額を<strong>下回る</strong>場合に支給されます。</p>
+<pre><code>就業促進定着手当 ＝（離職前の賃金日額 － みなし賃金日額）× 6か月間の賃金支払基礎日数</code></pre>
+<p>上限は、<strong>基本手当日額 × 支給残日数 ×（100% － 再就職手当の給付率）</strong>です（再就職手当と合わせて支給残日数分が限度）。</p>
+<blockquote><p>★申請は、6か月間の雇用が経過した日の<strong>翌日から2か月以内</strong>です。</p></blockquote>
+<h3>常用就職支度手当（56条の3第1項1号イ）</h3>
+<p><strong>就職が困難な者</strong>が安定した職業に就いた場合の給付です。</p>
+<table class="big"><thead><tr><th>対象</th><th><strong>障害者等の就職困難者</strong>、<strong>45歳以上</strong>の受給資格者で再就職援助計画等の対象者など</th></tr></thead><tbody><tr><td>支給残日数</td><td>所定給付日数の<strong>3分の1未満</strong>であること（3分の1以上なら再就職手当）</td></tr></tbody></table>
+<pre><code>常用就職支度手当 ＝ 90（支給残日数が90日未満なら支給残日数、45日未満なら45）× 40% × 基本手当日額</code></pre>
+<blockquote><p>★再就職手当と常用就職支度手当は<strong>支給残日数で棲み分け</strong>ています。3分の1が境目です。</p></blockquote>
+<h3>移転費（58条）</h3>
+<p><strong>公共職業安定所の紹介</strong>した職業に就くため、または<strong>指示</strong>された公共職業訓練等を受けるため、<strong>住所または居所を変更</strong>する場合に支給されます。</p>
+<table><thead><tr><th>内訳</th><th>鉄道賃、船賃、航空賃、車賃、移転料、着後手当</th></tr></thead><tbody><tr><td>要件</td><td>待期満了後であること、<strong>受給資格者等</strong>であること、公共職業安定所長が<strong>必要と認める</strong>こと</td></tr><tr><td>支給されない場合</td><td><strong>就職準備金その他これに準ずるもの</strong>が就職先から支給されるとき（額が移転費に満たない場合を除く）</td></tr></tbody></table>
+<blockquote><p>★<strong>職業紹介事業者の紹介</strong>でも支給されます（平成30年改正）。
+★申請は、移転の日の<strong>翌日から1か月以内</strong>です。</p></blockquote>
+<h3>求職活動支援費（59条）</h3>
+<table><thead><tr><th>種類</th><th>内容</th></tr></thead><tbody><tr><td><strong>広域求職活動費</strong></td><td>公共職業安定所の紹介により<strong>遠隔地</strong>の求人者を訪問して求職活動を行う場合。<strong>鉄道賃等＋宿泊料</strong></td></tr><tr><td><strong>短期訓練受講費</strong></td><td>教育訓練を受け<strong>修了</strong>した場合。受講費用の<strong>20%</strong>（上限<strong>10万円</strong>）</td></tr><tr><td><strong>求職活動関係役務利用費</strong></td><td>求人者との<strong>面接</strong>等、または教育訓練の受講のため、<strong>保育等サービス</strong>を利用した場合。費用の<strong>80%</strong>（上限あり、面接等は<strong>15日分</strong>、訓練は<strong>60日分</strong>が限度）</td></tr></tbody></table>
+<blockquote><p>★広域求職活動費の「遠隔地」は、公共職業安定所から訪問先まで<strong>往復200km以上</strong>が目安です。
+★短期訓練受講費は<strong>教育訓練給付金の支給を受けていない</strong>ことが要件です。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">43</span>雇用保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">1</span>法改正まとめ<span class="sec">（全体版）</span></span></td><td>令和7年4月の改正点</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 51 ／ 雇用</div><h1>教育訓練給付</h1><div class="desc">20%/40%/50%と最大80%。教育訓練休暇給付金は令和7年10月創設</div></div><h3>3種類（60条の2）</h3>
+<table class="big"><thead><tr><th>種類</th><th>給付率</th><th>上限</th></tr></thead><tbody><tr><td><strong>一般教育訓練給付金</strong></td><td>受講費用の<strong>20%</strong></td><td><strong>10万円</strong></td></tr><tr><td><strong>特定一般教育訓練給付金</strong></td><td>受講費用の<strong>40%</strong></td><td><strong>20万円</strong></td></tr><tr><td><strong>専門実践教育訓練給付金</strong></td><td>受講費用の<strong>50%</strong>（＋資格取得等で<strong>20%</strong>、さらに賃金上昇で<strong>10%</strong>）</td><td>最大<strong>80%</strong></td></tr></tbody></table>
+<blockquote><p>★令和6年10月から、専門実践に<strong>賃金が5%以上上昇した場合の追加10%</strong>が加わり、上限が<strong>最大80%</strong>になりました。</p></blockquote>
+<h3>支給要件期間</h3>
+<table class="big"><thead><tr><th>区分</th><th>必要な支給要件期間</th></tr></thead><tbody><tr><td><strong>初めて</strong>受給する場合</td><td><strong>1年以上</strong>（専門実践・特定一般は<strong>2年以上</strong>）</td></tr><tr><td><strong>2回目以降</strong></td><td><strong>3年以上</strong></td></tr></tbody></table>
+<p>「支給要件期間」は、<strong>同一の事業主に引き続き雇用された期間</strong>ではなく、<strong>被保険者であった期間を通算</strong>したものです。前回の教育訓練給付を受けた場合は、その受講開始日<strong>以後</strong>の期間だけを数えます。</p>
+<blockquote><p>★<strong>離職後1年以内</strong>（適用対象期間の延長があればその期間内）に受講を開始すれば、離職者でも受給できます。
+★受講開始日に<strong>被保険者でない者</strong>は、離職日の翌日から受講開始日までが<strong>1年以内</strong>であることが必要です。妊娠・出産・育児・疾病等により引き続き30日以上教育訓練を受けられない場合は、<strong>最大20年</strong>まで延長できます。</p></blockquote>
+<h3>専門実践教育訓練の対象</h3>
+<table class="big"><thead><tr><th>例</th></tr></thead><tbody><tr><td>業務独占資格・名称独占資格の取得を目標とする課程（<strong>看護師、介護福祉士、保育士、社会福祉士、美容師、調理師</strong>など）</td></tr><tr><td><strong>専門学校</strong>の職業実践専門課程</td></tr><tr><td><strong>専門職大学院</strong>（MBA、法科大学院、教職大学院など）</td></tr><tr><td>一定の<strong>ITスキル</strong>に関する講座（ITSSレベル3以上）</td></tr><tr><td><strong>第四次産業革命スキル習得講座</strong></td></tr></tbody></table>
+<p><strong>受講前</strong>に、<strong>訓練対応キャリアコンサルタント</strong>による<strong>キャリアコンサルティング</strong>を受け、<strong>ジョブ・カード</strong>を作成して、受講開始日の<strong>1か月前まで</strong>に申請します。</p>
+<blockquote><p>★一般教育訓練にはキャリアコンサルティングの義務はありませんが、<strong>特定一般教育訓練</strong>には<strong>必要</strong>です。</p></blockquote>
+<h3>教育訓練支援給付金（附則11条の2）</h3>
+<p><strong>45歳未満</strong>で専門実践教育訓練を受ける<strong>離職者</strong>に、訓練期間中、<strong>基本手当日額の80%</strong>（令和7年4月から<strong>60%</strong>）に相当する額を支給する制度です。</p>
+<table class="big"><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>年齢</td><td>受講開始時に<strong>45歳未満</strong></td></tr><tr><td>状況</td><td><strong>離職中</strong>で、基本手当の支給を受け終わっていること</td></tr><tr><td>期間</td><td>令和8年3月31日以前に受講開始する場合（暫定措置）</td></tr></tbody></table>
+<blockquote><p>★<strong>専門実践</strong>だけが対象です。一般・特定一般では支給されません。</p></blockquote>
+<h3>教育訓練休暇給付金（令和7年10月1日創設）</h3>
+<p><strong>在職中</strong>の被保険者が、教育訓練のために<strong>無給の休暇</strong>を取得した場合に、<strong>基本手当に相当する額</strong>を支給する新しい給付です。</p>
+<table class="big"><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>被保険者期間</td><td><strong>5年以上</strong></td></tr><tr><td>休暇</td><td>事業主から<strong>賃金の支払を受けずに</strong>教育訓練のための休暇を取得すること</td></tr><tr><td>給付日数</td><td>被保険者であった期間に応じ<strong>90日・120日・150日</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>求職者給付ではなく教育訓練給付</strong>に位置づけられます。失業していなくても受けられる点が新しいところです。</p></blockquote>
+<h3>支給申請</h3>
+<table><thead><tr><th>種類</th><th>申請期限</th></tr></thead><tbody><tr><td>一般・特定一般</td><td>受講修了日の翌日から<strong>1か月以内</strong></td></tr><tr><td>専門実践（受講中）</td><td>受講開始日から<strong>6か月ごと</strong>の期間の末日の翌日から<strong>1か月以内</strong></td></tr><tr><td>専門実践（追加給付）</td><td>資格取得等をして被保険者となった日の翌日から<strong>1か月以内</strong></td></tr></tbody></table>
+<blockquote><p>★申請は<strong>本人が住所を管轄する公共職業安定所</strong>に行います。事業主経由ではありません。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">43</span>雇用保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">1</span>法改正まとめ<span class="sec">（全体版）</span></span></td><td>令和7年4月の改正点</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 52 ／ 雇用</div><h1>雇用継続給付と育児休業給付</h1><div class="desc">高年齢は15%→10%。出生後休業支援13%と育児時短10%</div></div><p>令和2年の改正で<strong>育児休業給付は失業等給付から独立</strong>しました。現在の体系は次のとおりです。</p>
+<table class="big"><thead><tr><th>分類</th><th>給付</th></tr></thead><tbody><tr><td><strong>雇用継続給付</strong>（失業等給付）</td><td><strong>高年齢雇用継続給付</strong>／<strong>介護休業給付</strong></td></tr><tr><td><strong>育児休業等給付</strong>（独立）</td><td><strong>育児休業給付金</strong>／<strong>出生時育児休業給付金</strong>／<strong>出生後休業支援給付金</strong>／<strong>育児時短就業給付金</strong></td></tr></tbody></table>
+<blockquote><p>★育児休業給付は<strong>失業等給付ではありません</strong>。保険料率も別建て（育児休業給付費充当分1000分の5）です。</p></blockquote>
+<h3>高年齢雇用継続給付（61条）★令和7年4月改正</h3>
+<table class="big"><thead><tr><th>種類</th><th>対象</th></tr></thead><tbody><tr><td><strong>高年齢雇用継続基本給付金</strong></td><td>基本手当を受けずに継続雇用されている者</td></tr><tr><td><strong>高年齢再就職給付金</strong></td><td>基本手当を受給後、支給残日数<strong>100日以上</strong>を残して再就職した者</td></tr></tbody></table>
+<table class="big"><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>年齢</td><td><strong>60歳以上65歳未満</strong></td></tr><tr><td>被保険者であった期間</td><td><strong>5年以上</strong></td></tr><tr><td>賃金</td><td>60歳到達時等の賃金月額に比べて<strong>75%未満</strong>に低下したこと</td></tr></tbody></table>
+<pre><code>支給額 ＝ 支給対象月の賃金額 × 最大10%（令和7年3月までは15%）</code></pre>
+<p>賃金の低下率が<strong>64%以下</strong>のとき最大率、<strong>64%超75%未満</strong>では逓減します。</p>
+<blockquote><p>★令和7年4月1日から<strong>15%→10%</strong>に引き下げられました。低下率の境目も<strong>61%→64%</strong>に変わっています。
+★支給対象月の賃金額と給付額の合計が<strong>支給限度額</strong>を超えるときは、超えた分が減額されます。</p></blockquote>
+<p><strong>高年齢再就職給付金の支給期間</strong></p>
+<table class="big"><thead><tr><th>基本手当の支給残日数</th><th>支給期間</th></tr></thead><tbody><tr><td><strong>200日以上</strong></td><td><strong>2年</strong>（65歳に達する月まで）</td></tr><tr><td><strong>100日以上200日未満</strong></td><td><strong>1年</strong>（同上）</td></tr></tbody></table>
+<blockquote><p>★<strong>再就職手当</strong>と<strong>高年齢再就職給付金</strong>は<strong>どちらか一方</strong>を選択します。両方は受けられません。
+★高年齢雇用継続給付を受けると、<strong>在職老齢年金がさらに最大6%停止</strong>されます（厚年との調整）。</p></blockquote>
+<h3>介護休業給付（61条の4）</h3>
+<table class="big"><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>対象家族</td><td><strong>配偶者（事実婚を含む）・父母・子・配偶者の父母・祖父母・兄弟姉妹・孫</strong></td></tr><tr><td>状態</td><td><strong>2週間以上</strong>にわたり常時介護を必要とする状態</td></tr><tr><td>被保険者期間</td><td>休業開始日前<strong>2年間に賃金支払基礎日数11日以上</strong>の月が<strong>12か月以上</strong></td></tr><tr><td>期間</td><td>対象家族<strong>1人につき通算93日</strong>を限度に<strong>3回</strong>まで分割可</td></tr></tbody></table>
+<pre><code>支給額 ＝ 休業開始時賃金日額 × 支給日数 × 67%</code></pre>
+<blockquote><p>★育児と違い<strong>67%のまま</strong>（段階的な引下げはありません）。
+★休業期間中に賃金が支払われた場合、賃金額が休業開始時賃金月額の<strong>80%以上</strong>なら不支給、<strong>13%超80%未満</strong>なら差額調整されます。</p></blockquote>
+<h3>育児休業給付金（61条の7）</h3>
+<table class="big"><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>被保険者期間</td><td>休業開始日前<strong>2年間に賃金支払基礎日数11日以上</strong>（または就業時間80時間以上）の月が<strong>12か月以上</strong></td></tr><tr><td>対象</td><td><strong>1歳未満</strong>の子（一定の場合は<strong>1歳2か月・1歳6か月・2歳</strong>まで延長）</td></tr></tbody></table>
+<pre><code>支給額 ＝ 休業開始時賃金日額 × 支給日数 ×
+　　　　　67%（休業開始から通算180日まで）／50%（181日目以後）</code></pre>
+<table class="big"><thead><tr><th>延長事由</th><th>上限</th></tr></thead><tbody><tr><td><strong>パパ・ママ育休プラス</strong></td><td><strong>1歳2か月</strong>（1人あたりの上限は1年）</td></tr><tr><td>保育所に入れない等</td><td><strong>1歳6か月</strong> → さらに<strong>2歳</strong></td></tr></tbody></table>
+<blockquote><p>★支給単位期間中に<strong>就業した日数が10日以下</strong>（10日を超える場合は就業時間が80時間以下）であることが必要です。</p></blockquote>
+<h3>出生時育児休業給付金（61条の8）</h3>
+<p><strong>産後パパ育休</strong>（出生時育児休業）に対応する給付です。</p>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>期間</td><td>子の出生後<strong>8週間以内</strong>に<strong>通算28日</strong>を限度</td></tr><tr><td>分割</td><td><strong>2回</strong>まで</td></tr><tr><td>率</td><td>休業開始時賃金日額 × 支給日数 × <strong>67%</strong></td></tr></tbody></table>
+<p>支給された日数は、育児休業給付金の<strong>67%の期間（180日）に通算</strong>されます。</p>
+<h3>出生後休業支援給付金（令和7年4月創設）</h3>
+<table class="big"><thead><tr><th>要件</th><th>被保険者<strong>とその配偶者の双方</strong>が、子の出生直後の一定期間に<strong>14日以上</strong>の育児休業を取得したこと</th></tr></thead><tbody><tr><td>率</td><td><strong>13%</strong>（最大<strong>28日</strong>）</td></tr><tr><td>効果</td><td>育児休業給付67%と合わせて<strong>80%</strong>＝社会保険料免除と非課税を考慮すると<strong>手取り10割相当</strong></td></tr></tbody></table>
+<blockquote><p>★配偶者が<strong>いない</strong>場合、配偶者が<strong>育児休業を取得できない</strong>場合（自営業、ひとり親等）は、<strong>配偶者の要件が不要</strong>になります。</p></blockquote>
+<h3>育児時短就業給付金（令和7年4月創設）</h3>
+<table><thead><tr><th>要件</th><th><strong>2歳未満</strong>の子を養育するために<strong>時短勤務</strong>をしていること</th></tr></thead><tbody><tr><td>率</td><td>時短勤務中に支払われた<strong>賃金額の10%</strong></td></tr><tr><td>調整</td><td>賃金と給付の合計が時短前の賃金を超えないよう調整</td></tr></tbody></table>
+<blockquote><p>★育児休業給付金や出生時育児休業給付金を受けている月は支給されません。</p></blockquote>
+<h3>雇用保険二事業（62条・63条）</h3>
+<p>失業等給付とは別に、<strong>事業主のみが負担する保険料</strong>（二事業費充当分1000分の3.5）でまかなわれます。</p>
+<table><thead><tr><th>事業</th><th>内容</th></tr></thead><tbody><tr><td><strong>雇用安定事業</strong>（62条）</td><td><strong>雇用調整助成金</strong>、労働移動支援助成金、特定求職者雇用開発助成金、<strong>両立支援等助成金</strong>、65歳超雇用推進助成金など</td></tr><tr><td><strong>能力開発事業</strong>（63条）</td><td>職業訓練の実施、<strong>人材開発支援助成金</strong>、公共職業能力開発施設の設置運営、技能検定の援助</td></tr></tbody></table>
+<p><strong>雇用調整助成金</strong>は、<strong>景気の変動、産業構造の変化その他の経済上の理由</strong>により事業活動の縮小を余儀なくされた事業主が、<strong>休業・教育訓練・出向</strong>によって雇用を維持した場合に、休業手当等の一部を助成するものです。</p>
+<blockquote><p>★二事業は<strong>事業主だけが負担</strong>するので、<strong>労働者は受給できません</strong>（助成金は事業主に支給されます）。
+★<strong>求職者支援制度</strong>（求職者支援法）の<strong>職業訓練受講給付金</strong>は、雇用保険の<strong>被保険者でない求職者</strong>が対象で、<strong>国庫負担と雇用保険料</strong>でまかなわれます。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">43</span>雇用保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">1</span>法改正まとめ<span class="sec">（全体版）</span></span></td><td>令和7年4月の改正点</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div></div>

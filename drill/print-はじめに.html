@@ -1,0 +1,227 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>社労士2026 学習資料｜はじめに</title>
+<style>
+@page { size: A4 portrait; margin: 16mm 14mm 18mm; }
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+body{margin:0; color:#111; background:#fff;
+  font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
+  font-size:9.6pt; line-height:1.72; text-align:justify;
+  font-feature-settings:"palt" 1;}
+.wrap{max-width:182mm; margin:0 auto; padding:10mm 6mm}
+/* ── 巻頭 ── */
+.cover{text-align:center; padding:40mm 0 0}
+.cover h1{font-size:22pt; letter-spacing:.06em; margin:0 0 6mm}
+.cover .sub{font-size:10pt; color:#555; line-height:2}
+.howto{margin:16mm auto 0; max-width:130mm; text-align:left;
+  border:1pt solid #bbb; padding:6mm 7mm; font-size:9pt; line-height:1.8}
+.howto b{font-size:9.6pt}
+/* ── 目次 ── */
+.toc h2{font-size:13pt; margin:0 0 4mm; padding-bottom:2mm; border-bottom:1.4pt solid #111}
+.toc .grp{margin:5mm 0 2mm; font-weight:700; font-size:10.5pt;
+  border-left:3pt solid #111; padding-left:3mm}
+.toc ol{list-style:none; margin:0; padding:0; columns:2; column-gap:10mm}
+.toc li{break-inside:avoid; font-size:9pt; line-height:1.85;
+  display:flex; gap:2mm; align-items:baseline}
+.toc .no{display:inline-block; min-width:9mm; font-weight:700; font-variant-numeric:tabular-nums}
+.toc .dots{flex:1; border-bottom:.4pt dotted #999; transform:translateY(-2px)}
+/* ── 各資料 ── */
+.doc{break-before:page; page-break-before:always}
+.doc:first-of-type{break-before:auto; page-break-before:auto}
+.doc > .head{border-bottom:1.6pt solid #111; padding-bottom:2.5mm; margin:0 0 5mm}
+.doc > .head .no{font-size:8.5pt; letter-spacing:.14em; color:#666}
+.doc > .head h1{font-size:16pt; margin:1mm 0 0; letter-spacing:-.01em}
+.doc > .head .desc{font-size:8.5pt; color:#555; margin:1.5mm 0 0}
+h2{font-size:12pt; margin:7mm 0 2.5mm; padding:1mm 0 1mm 3mm;
+  border-left:3.5pt solid #111; break-after:avoid; page-break-after:avoid}
+h3{font-size:10.6pt; margin:5mm 0 2mm; padding-bottom:.8mm;
+  border-bottom:.6pt solid #ccc; break-after:avoid; page-break-after:avoid}
+h4{font-size:9.8pt; margin:4mm 0 1.5mm; break-after:avoid; page-break-after:avoid}
+p{margin:0 0 2.4mm}
+ul,ol{margin:0 0 2.8mm; padding-left:6mm}
+li{margin:0 0 .8mm}
+ul.chk{list-style:none; padding-left:0}
+ul.chk li::before{content:"☐"; margin-right:2mm; font-size:11pt; line-height:1}
+strong{font-weight:700}
+code{font-family:"SFMono-Regular",Consolas,"Noto Sans Mono",monospace;
+  font-size:8.6pt; background:#f2f2f2; padding:.2mm 1mm; border-radius:1mm}
+pre{background:#f6f6f6; border:.5pt solid #ddd; padding:3mm 4mm; margin:0 0 3mm;
+  break-inside:avoid; page-break-inside:avoid; overflow:visible}
+pre code{background:none; padding:0; font-size:8.6pt; line-height:1.6; white-space:pre-wrap}
+blockquote{margin:0 0 3mm; padding:2mm 3mm; background:#f7f7f7;
+  border-left:2.5pt solid #888; break-inside:avoid; page-break-inside:avoid}
+blockquote p:last-child{margin-bottom:0}
+hr{border:0; border-top:.6pt solid #ddd; margin:5mm 0}
+table{border-collapse:collapse; width:100%; margin:0 0 3.5mm; font-size:8.6pt;
+  break-inside:avoid; page-break-inside:avoid}
+th,td{border:.5pt solid #999; padding:1.4mm 2mm; text-align:left; vertical-align:top;
+  line-height:1.55}
+th{background:#ececec; font-weight:700; white-space:nowrap}
+thead{display:table-header-group}
+/* 大きい表は途中で切れてよい。切れないと1ページに収まらず消える */
+table.big{break-inside:auto; page-break-inside:auto}
+table.big tr{break-inside:avoid; page-break-inside:avoid}
+/* ── 参照（紙ではリンクを押せないので番号で引く）── */
+.ref{white-space:nowrap; font-weight:600}
+.ref .n{font-size:8pt; border:.6pt solid #666; border-radius:1mm;
+  padding:0 1mm; margin-right:.8mm; font-variant-numeric:tabular-nums}
+.ref .sec{font-weight:400; color:#444}
+/* ── 画面で見るときだけの操作 ── */
+.bar{position:sticky; top:0; background:#fff; border-bottom:1pt solid #ddd;
+  padding:8px 12px; display:flex; gap:10px; align-items:center; font-size:13px; z-index:9}
+.bar a{color:#1a4fd6}
+.bar button{font:inherit; padding:5px 12px; border:1px solid #999; background:#fff;
+  border-radius:5px; cursor:pointer}
+@media print{ .bar{display:none} .wrap{padding:0} }
+</style>
+<div class="bar">
+  <button onclick="print()">印刷する</button>
+  <span>A4縦・1資料。ブラウザの印刷から「背景のグラフィック」を入にすると表の罫線がきれいに出ます。</span>
+</div>
+<div class="wrap"><div class="cover"><h1>社労士2026 学習資料｜はじめに</h1><div class="sub">全体版の資料 1〜1　（本文中の参照番号は全体版と共通です）</div>
+<div class="howto">
+<b>紙で読むときの約束ごと</b>
+<p style="margin:2mm 0 0">本文中の <span class="ref"><span class="n">23</span>平均賃金</span>
+のような表示は、ほかの資料への参照です。頭の番号が資料の通し番号なので、
+目次か各ページ右上の番号から引いてください。</p>
+<p style="margin:2mm 0 0"><span class="ref"><span class="n">5</span>労働基準法
+<span class="sec">「4. 労働時間・休憩・休日」</span></span> のように節名が付いているものは、
+その資料の中の該当する節を指します。</p>
+<p style="margin:2mm 0 0">□ は手で塗るためのものです。</p>
+</div>
+</div><div class="doc toc"><h2>目次</h2><div class="grp">はじめに</div><ol><li><span class="no">1</span><span>法改正まとめ</span><span class="dots"></span></li></ol></div><div class="doc"><div class="head"><div class="no">資料 1 ／ はじめに</div><h1>法改正まとめ</h1><div class="desc">今年の改正を施行日で仕分け。過去問に存在しない論点</div></div><p><strong>法令基準日：令和8年4月10日</strong>現在で施行されている法令
+（※ 受験案内の官報公示で最終確認すること）</p>
+<p>過去問には存在しない論点なので、ここだけは新規インプットが必要。
+<strong>択一で数問、選択式でも狙われる</strong>。<span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span> と対で使う。</p>
+<blockquote><p>⚠️ 数値には <code>⚠️要確認</code> を付けている。最新の受験対策教材で必ず照合すること。
+教材と食い違ったら<strong>教材を信じてください</strong>。</p></blockquote>
+<hr>
+<h2>施行日で仕分ける（これが最重要の視点）</h2>
+<p>法改正問題は「<strong>内容は正しいが施行日が違う</strong>」という形で作られる。
+成立済みでも令和8年4月10日より後に施行されるものは<strong>条文問題の対象外</strong>。</p>
+<h3>✅ 施行済み＝試験対象</h3>
+<table class="big"><thead><tr><th>施行日</th><th>内容</th><th>科目</th></tr></thead><tbody><tr><td>令和8年4月1日</td><td>在職老齢年金 支給停止調整額 <strong>65万円</strong></td><td>厚年</td></tr><tr><td>令和8年4月1日</td><td>年金分割の請求期限 2年→<strong>5年</strong></td><td>厚年</td></tr><tr><td>令和8年4月1日</td><td>女性活躍推進法 <strong>101人以上</strong>に情報公表義務</td><td>労一</td></tr><tr><td>令和8年4月1日</td><td>労働施策総合推進法 治療と仕事の両立支援</td><td>労一</td></tr><tr><td>令和8年4月1日</td><td>安衛法 個人事業者等対策・高年齢労働者対策</td><td>安衛</td></tr><tr><td>令和8年4月1日</td><td>子ども・子育て支援金の徴収開始</td><td>社一・健保</td></tr><tr><td>令和7年10月1日</td><td><strong>教育訓練休暇給付金</strong>の創設</td><td>雇用</td></tr><tr><td>令和7年10月1日</td><td>育介法 柔軟な働き方を実現するための措置</td><td>労一</td></tr><tr><td>令和7年6月1日</td><td>懲役・禁錮→<strong>拘禁刑</strong>に一本化</td><td>全科目</td></tr><tr><td>令和7年4月1日</td><td>給付制限 2か月→<strong>1か月</strong></td><td>雇用</td></tr><tr><td>令和7年4月1日</td><td>高年齢雇用継続給付 15％→<strong>10％</strong></td><td>雇用</td></tr><tr><td>令和7年4月1日</td><td>出生後休業支援給付金・育児時短就業給付金の創設</td><td>雇用</td></tr><tr><td>令和7年4月1日</td><td>子の看護等休暇・残業免除の対象拡大</td><td>労一</td></tr></tbody></table>
+<h3>❌ 未施行＝条文問題の対象外（内容は一般常識対策として押さえる）</h3>
+<table class="big"><thead><tr><th>施行日</th><th>内容</th></tr></thead><tbody><tr><td><strong>令和8年10月1日</strong></td><td>カスハラ対策の義務化、求職者等セクハラ対策</td></tr><tr><td>令和9年9月</td><td>厚年 標準報酬月額の上限 65万→<strong>75万円</strong>（段階的）</td></tr><tr><td>令和9年10月〜</td><td>厚年 企業規模要件の撤廃（36〜50人から段階的に令和17年10月まで）</td></tr><tr><td><strong>令和10年4月1日</strong></td><td>遺族厚生年金の男女差解消・<strong>5年有期給付化</strong></td></tr><tr><td>令和10年10月1日</td><td>雇用保険の適用拡大（週<strong>10時間</strong>以上）</td></tr><tr><td>令和10年5月まで</td><td>ストレスチェック <strong>50人未満</strong>事業場への義務化</td></tr></tbody></table>
+<hr>
+<h2>1. 全科目共通｜拘禁刑への一本化</h2>
+<p>刑法改正（令和4年成立・<strong>令和7年6月1日施行</strong>）により「懲役」「禁錮」が<strong>拘禁刑</strong>に一本化。
+これに伴い労働・社会保険諸法令の罰則も改正された。</p>
+<ul><li><strong>刑期の年数・罰金額そのものに変更はない</strong></li><li>条文を丸暗記している場合、選択式で「拘禁刑」と書けるかがポイント</li><li>例：労基法5条（強制労働の禁止）＝「<strong>1年以上10年以下の拘禁刑</strong>又は20万円以上300万円以下の罰金」</li></ul>
+<hr>
+<h2>2. 厚生年金保険法 ★今年の最重要</h2>
+<h3>2-1. 在職老齢年金の支給停止調整額 → <strong>65万円</strong>（令和8年4月1日）</h3>
+<p>令和7年年金制度改正法により、令和6年度価格で <strong>50万円 → 62万円</strong> に引上げ。
+令和8年度の実額が <strong>65万円</strong>。</p>
+<pre><code>支給停止額（月額）＝（基本月額 ＋ 総報酬月額相当額 － 65万円）× 1/2</code></pre>
+<table class="big"><thead><tr><th>用語</th><th>定義</th></tr></thead><tbody><tr><td>基本月額</td><td>老齢厚生年金（<strong>加給年金額を除く</strong>）の額 ÷ 12</td></tr><tr><td>総報酬月額相当額</td><td>その月の標準報酬月額 ＋ その月以前1年間の標準賞与額の合計 ÷ 12</td></tr></tbody></table>
+<ul><li>停止されるのは<strong>報酬比例部分のみ</strong>。老齢基礎年金・経過的加算は停止されない</li><li>報酬比例部分が全額停止されると<strong>加給年金額も支給されない</strong></li><li>計算式そのものは改正されていない（変わったのは金額だけ）</li></ul>
+<h3>2-2. 年金分割の請求期限 2年 → <strong>5年</strong>（令和8年4月1日）⚠️要確認</h3>
+<ul><li><strong>合意分割</strong>：合意又は裁判手続で按分割合を決定。上限<strong>2分の1</strong></li><li><strong>3号分割</strong>：平成20年4月1日以後の第3号被保険者期間。<strong>合意不要・一律2分の1</strong></li><li>どちらも請求期限が離婚等をした日の翌日から起算して<strong>5年</strong>に延長</li></ul>
+<h3>2-3. 遺族厚生年金の見直し ★<strong>令和10年4月1日施行＝未施行</strong></h3>
+<ul><li>20〜30歳代で子のない配偶者への遺族厚生年金を<strong>5年間の有期給付</strong>に</li><li>夫の55歳以上という年齢要件を撤廃し<strong>男女差を解消</strong></li><li>20年かけて段階的に対象年齢を引上げ</li></ul>
+<p><strong>今年は未施行</strong>なので、条文問題では現行（夫・父母・祖父母は55歳以上、30歳未満の子のない妻は5年有期）で解答する。</p>
+<h3>2-4. 適用拡大 ★<strong>令和9年10月〜段階的＝未施行</strong></h3>
+<p>企業規模要件（現行 被保険者数常時51人以上）の撤廃：
+令和9年10月 36〜50人 → 令和11年10月 21〜35人 → 令和14年10月 11〜20人 → 令和17年10月 10人以下</p>
+<p>賃金要件（月額8.8万円以上）の撤廃も含め、<strong>令和8年度試験では未施行</strong>。</p>
+<hr>
+<h2>3. 国民年金法｜令和8年度の年金額改定</h2>
+<table class="big"><thead><tr><th>項目</th><th>値</th></tr></thead><tbody><tr><td>物価変動率</td><td>＋3.2％</td></tr><tr><td>名目手取り賃金変動率</td><td>＋2.1％</td></tr><tr><td>マクロ経済スライド調整率</td><td>基礎▲0.2％／報酬比例▲0.1％</td></tr><tr><td><strong>基礎年金の改定率</strong></td><td><strong>＋1.9％</strong></td></tr><tr><td><strong>厚生年金（報酬比例）の改定率</strong></td><td><strong>＋2.0％</strong></td></tr><tr><td><strong>老齢基礎年金 満額</strong></td><td>月額 <strong>70,608円</strong>（年額 <strong>847,300円</strong>）</td></tr><tr><td>国民年金保険料</td><td>月額 <strong>17,920円</strong> ⚠️</td></tr></tbody></table>
+<h3>改定ルール（毎年変わらない＝選択式頻出）</h3>
+<ul><li>新規裁定者（68歳到達年度前）→ <strong>名目手取り賃金変動率</strong></li><li>既裁定者（68歳到達年度以後）→ <strong>物価変動率</strong></li><li>ただし「<strong>物価 ＞ 賃金</strong>」のときは既裁定者も<strong>名目手取り賃金変動率</strong>を用いる</li></ul>
+<p>令和8年度は物価＋3.2％ ＞ 賃金＋2.1％ だったので<strong>全員が賃金基準</strong>。
+そこにマクロ経済スライドを適用して ＋1.9％／＋2.0％。</p>
+<p>※令和5年度に改定率が分岐したため、<strong>昭和31年4月1日以前生まれ</strong>は 月額<strong>70,408円</strong>／年額<strong>844,900円</strong>（月200円低い）。</p>
+<hr>
+<h2>4. 雇用保険法 ★改正が集中＝過去問が役に立たない科目</h2>
+<h3>4-1. 給付制限の短縮（令和7年4月1日）</h3>
+<table class="big"><thead><tr><th>事由</th><th>期間</th></tr></thead><tbody><tr><td>正当な理由のない自己都合離職</td><td><strong>1か月</strong>（従来2か月）</td></tr><tr><td>5年間に<strong>3回以上</strong>の自己都合離職</td><td><strong>3か月</strong></td></tr><tr><td>離職期間中等に<strong>自ら教育訓練を受けた</strong></td><td><strong>給付制限なし</strong></td></tr><tr><td>自己の責めに帰すべき重大な理由による解雇</td><td><strong>3か月</strong></td></tr></tbody></table>
+<p>いずれも<strong>待期7日の満了後</strong>から起算する。</p>
+<h3>4-2. 教育訓練休暇給付金の創設（令和7年10月1日）</h3>
+<p><strong>離職していないのに基本手当相当額が支給される</strong>という点が新しい。</p>
+<ul><li><strong>一般被保険者</strong>が、就業規則等の制度に基づき<strong>30日以上の無給</strong>の教育訓練休暇を取得した場合に支給</li><li>休暇開始前<strong>2年間に被保険者期間12か月以上</strong>、かつ<strong>5年以上</strong>の雇用保険加入期間</li><li>1日あたりの額は基本手当の日額と同じ算定方法</li><li>給付日数：5年以上10年未満<strong>90日</strong>／10年以上20年未満<strong>120日</strong>／20年以上<strong>150日</strong></li><li>支給されるのは休暇開始日から起算して<strong>1年以内</strong>に取得した日</li></ul>
+<p><strong>「無給」「30日以上」「加入5年以上」の3つが要件</strong>。ここが引っかけになりやすい。</p>
+<h3>4-3. 高年齢雇用継続給付の引下げ（令和7年4月1日）</h3>
+<ul><li>最大 <strong>15％ → 10％</strong></li><li><strong>令和7年3月31日までに60歳に達した者</strong>には従前の15％（経過措置）</li><li>高年齢再就職給付金も同様</li><li>「いつ60歳に達したか」で率が変わる</li></ul>
+<h3>4-4. 育児関係の新設給付（令和7年4月1日）</h3>
+<table class="big"><thead><tr><th>給付</th><th>内容</th></tr></thead><tbody><tr><td><strong>出生後休業支援給付金</strong></td><td>被保険者とその配偶者の双方が子の出生直後に14日以上の育休を取得した場合、休業開始時賃金日額の<strong>13％</strong>を最大28日間。育休給付67％と合わせて<strong>80％＝手取り10割相当</strong></td></tr><tr><td><strong>育児時短就業給付金</strong></td><td>2歳未満の子を養育するための時短勤務中、支払われた賃金額の<strong>10％</strong></td></tr></tbody></table>
+<p>配偶者が一定の場合（ひとり親等）は配偶者要件が不要。</p>
+<h3>4-5. 就業促進給付の見直し（令和7年4月1日）</h3>
+<ul><li><strong>就業手当は廃止</strong></li><li>就業促進定着手当の上限を引下げ（基本手当日額×支給残日数×<strong>10分の2</strong>）</li></ul>
+<h3>4-6. 適用拡大 ★<strong>令和10年10月1日＝未施行</strong></h3>
+<p>被保険者となる週所定労働時間の下限を <strong>20時間 → 10時間</strong> に引下げ。
+<strong>今年は未施行</strong>なので現行の週20時間以上で解答する。</p>
+<hr>
+<h2>5. 健康保険法</h2>
+<h3>5-1. 被扶養者の年間収入基準 ⚠️要確認</h3>
+<table class="big"><thead><tr><th>区分</th><th>基準</th></tr></thead><tbody><tr><td>原則</td><td><strong>130万円未満</strong></td></tr><tr><td><strong>19歳以上23歳未満</strong></td><td><strong>150万円未満</strong>★新設</td></tr><tr><td>60歳以上／障害厚生年金の受給要件に該当する程度の障害者</td><td><strong>180万円未満</strong></td></tr></tbody></table>
+<p>いわゆる「年収の壁」対応。<strong>130／150／180</strong> の3つを年齢・区分と結びつけて覚える。</p>
+<h3>5-2. 保険料率（令和8年度）</h3>
+<table class="big"><thead><tr><th>項目</th><th>率</th></tr></thead><tbody><tr><td>一般保険料率</td><td><strong>都道府県ごと</strong>（東京 9.85％、最高 佐賀県、最低 新潟県）⚠️</td></tr><tr><td><strong>介護保険料率</strong></td><td><strong>全国一律 1000分の16.2</strong>（令和7年度15.9から引上げ）</td></tr><tr><td><strong>子ども・子育て支援金率</strong></td><td><strong>全国一律 1000分の2.3</strong>（令和8年4月〜）⚠️</td></tr><tr><td>法定範囲</td><td><strong>1000分の30 〜 1000分の130</strong></td></tr></tbody></table>
+<p><strong>引っかけ</strong>：一般保険料率は都道府県単位／介護保険料率と支援金率は<strong>全国一律</strong>。</p>
+<hr>
+<h2>6. 労働安全衛生法（令和8年4月1日）</h2>
+<h3>6-1. 個人事業者等に対する安全衛生対策</h3>
+<p>建設アスベスト訴訟の最高裁判決（令和3年）を受けた改正。労働者以外の作業従事者にも保護を及ぼす。</p>
+<ul><li><strong>注文者</strong>の措置義務の対象を個人事業者等に拡大（31条等）</li><li><strong>機械等貸与者</strong>の措置を個人事業者への貸与にも適用</li><li><strong>建築物貸与者</strong>の対象範囲を拡大（倉庫・物流センター、商業施設バックヤード等）⚠️</li><li><strong>元方安全衛生管理者</strong>に作業従事者・関係請負人の労災防止の権限 ⚠️</li></ul>
+<h3>6-2. 高年齢労働者の労働災害防止 → <strong>努力義務</strong></h3>
+<p>身体機能低下等に対応した作業環境の改善等を講ずるよう<strong>努めなければならない</strong>。
+国が指針（エイジフレンドリーガイドラインの格上げ）を策定。</p>
+<p><strong>「義務／努力義務」の入替えが定番の引っかけ</strong>。</p>
+<h3>6-3. 化学物質関係</h3>
+<p>SDS通知について、営業秘密に該当する場合に<strong>代替化学名</strong>による通知を認め、記録を<strong>5年間</strong>保存 ⚠️</p>
+<h3>6-4. ストレスチェック 50人未満への義務化 ★<strong>未施行</strong></h3>
+<p>改正法は成立済みだが、施行は公布から3年以内の政令で定める日（<strong>令和10年5月まで</strong>の予定）。
+<strong>今年は50人未満は努力義務のまま</strong>。</p>
+<hr>
+<h2>7. 労働一般常識</h2>
+<h3>7-1. 女性活躍推進法（令和8年4月1日）</h3>
+<table class="big"><thead><tr><th>規模</th><th>義務</th></tr></thead><tbody><tr><td><strong>101人以上</strong></td><td>一般事業主行動計画の策定・届出、<strong>情報公表</strong>（女性管理職比率・男女賃金差異を含む）</td></tr><tr><td>100人以下</td><td>努力義務</td></tr></tbody></table>
+<ul><li>男女賃金差異の公表義務が <strong>301人以上 → 101人以上</strong> に拡大</li><li><strong>女性管理職比率</strong>が公表項目に追加</li><li>同法の有効期限を<strong>10年延長</strong></li><li>女性の健康支援の取組を評価する認定（<strong>えるぼしプラス</strong>）を新設 ⚠️名称要確認</li></ul>
+<h3>7-2. 労働施策総合推進法（令和8年4月1日）</h3>
+<p>治療と仕事の両立支援について、ガイドラインを法律に基づく<strong>指針</strong>に格上げし、事業主の<strong>努力義務</strong>を明記。</p>
+<h3>7-3. カスタマーハラスメント対策 ★<strong>令和8年10月1日＝未施行</strong></h3>
+<ul><li>改正労働施策総合推進法（令和7年6月11日公布）</li><li>労働者を1人でも雇用する<strong>全ての事業主</strong>に適用、経過措置なし</li><li>指針は「方針の明確化・相談体制・事後対応・抑止措置」の4つの柱</li><li><strong>求職者等に対するセクハラ対策</strong>の義務化も同日施行</li></ul>
+<p><strong>今年は未施行</strong>なので条文問題の対象外。ただし時事的出題に備えて内容は押さえる。</p>
+<h3>7-4. 育児・介護休業法</h3>
+<p><strong>令和7年4月1日</strong></p>
+<ul><li>子の看護休暇 → <strong>子の看護等休暇</strong>（対象を<strong>小学校第3学年修了</strong>まで拡大）</li><li>取得事由に<strong>感染症に伴う学級閉鎖等</strong>、<strong>入園（学）式・卒園（業）式</strong>を追加</li><li>労使協定による除外から「継続雇用期間6か月未満」を撤廃</li><li>所定外労働の制限（残業免除）の対象を <strong>3歳未満 → 小学校就学の始期</strong>まで拡大</li><li>介護に直面した労働者への<strong>個別周知・意向確認</strong>、40歳到達時等の<strong>情報提供</strong>を義務化</li></ul>
+<p><strong>令和7年10月1日</strong></p>
+<ul><li><strong>柔軟な働き方を実現するための措置</strong>：①始業時刻等の変更 ②テレワーク等 ③保育施設の設置運営等 ④養育両立支援休暇 ⑤短時間勤務 のうち事業主が<strong>2以上</strong>を措置し、労働者が<strong>1つ</strong>を選択して利用</li><li>3歳になるまでの適切な時期に<strong>個別の意向聴取・配慮</strong>を義務化</li></ul>
+<p><strong>混同注意</strong>：看護等休暇は<strong>小3修了</strong>まで／残業免除は<strong>小学校就学前</strong>まで。範囲が異なる。</p>
+<h3>7-5. 最低賃金（令和7年度）</h3>
+<ul><li>全国加重平均 <strong>1,121円</strong>（前年1,055円、<strong>＋66円</strong>）</li><li>引上げ額66円は昭和53年度の目安制度開始以降で<strong>最高額</strong></li><li><strong>全都道府県で1,000円を突破</strong></li><li>令和8年度の改定は10月頃＝<strong>試験後</strong>なので、試験対象は令和7年度の数値</li></ul>
+<hr>
+<h2>8. 社会保険一般常識</h2>
+<h3>8-1. 子ども・子育て支援金（令和8年4月1日）</h3>
+<ul><li>子ども・子育て支援法に基づく新たな拠出金</li><li><strong>医療保険者が医療保険料と一体で徴収</strong></li><li>協会けんぽの支援金率は全国一律 <strong>1000分の2.3</strong> ⚠️</li><li>健保・国保・後期高齢者医療の各制度に上乗せ、被保険者と事業主で折半</li></ul>
+<h3>8-2. 介護保険法 ⚠️</h3>
+<p>包括的支援事業に<strong>被保険者情報の共有・活用促進事業</strong>を追加。</p>
+<h3>8-3. 社会保険労務士法 ⚠️要確認</h3>
+<p>令和8年度向けの改正が見込まれる論点あり（社員1人での法人設立要件等）。最新教材で確認すること。</p>
+<hr>
+<h2>9. 労災保険法</h2>
+<table><thead><tr><th>項目</th><th>改正内容</th></tr></thead><tbody><tr><td>葬祭料の定額部分</td><td>315,000円 → <strong>330,000円</strong> ⚠️</td></tr><tr><td>介護補償給付 常時介護</td><td>最高<strong>186,050円</strong>／最低保障<strong>90,790円</strong> ✅／随時介護 最高<strong>92,980円</strong>／最低保障<strong>45,400円</strong></td></tr></tbody></table>
+<p>葬祭料の算式そのもの（「定額＋給付基礎日額30日分」と「60日分」の高い方）は不変。</p>
+<hr>
+<h2>10. 徴収法（令和8年度の料率）</h2>
+<table><thead><tr><th>項目</th><th>率</th></tr></thead><tbody><tr><td>雇用保険料率（一般の事業）</td><td><strong>13.5/1000</strong>（労5／事8.5。二事業3.5）</td></tr><tr><td>雇用保険料率（建設）</td><td><strong>16.5/1000</strong>（労6／事10.5。<strong>二事業4.5</strong>）</td></tr><tr><td>労災保険率</td><td>令和7年度から<strong>変更なし</strong>（最高 1000分の88／最低 1000分の2.5）⚠️</td></tr></tbody></table>
+<p>二事業分（1000分の3.5）は<strong>事業主のみ負担</strong>＝労使折半にならない理由。</p>
+<hr>
+<h2>使い方</h2>
+<ul><li><strong>7/27</strong>：この資料を通読し、知らなかった論点に印をつける</li><li><strong>7/28〜8/8</strong>：各科目の学習日に、該当セクションを再読</li><li><strong>8/20</strong>：法改正の最終確認として通読</li><li>ドリルで法改正問題だけを回すには：出題範囲を「法改正のみ」相当に絞るか、科目チップで「法改正」だけを選択する</li></ul>
+<h2>出典</h2>
+<ul><li>社会保険労務士試験オフィシャルサイト（試験日程・出題範囲）</li><li>厚生労働省（年金額改定、各法改正の施行日、最低賃金）</li><li>全国健康保険協会（令和8年度保険料率）</li><li>各受験指導機関の法改正まとめ</li></ul>
+<p><strong>再掲：<code>⚠️</code> の数値は必ず手持ちの教材で照合してください。教材と食い違ったら教材が正しいです。</strong></p>
+<hr>
+<h2>直前チェック（法改正）</h2>
+<p>法改正論点は<strong>過去問に存在しない</strong>ので、ここだけは過去問演習で埋まりません。
+前日にこのリストだけは目を通してください。</p>
+<ul class="chk"><li><strong>雇用保険料率</strong>（令和8年度）… 一般 労5.0/1000＋事8.5/1000＝<strong>13.5/1000</strong></li><li>二事業率は<strong>建設のみ4.5/1000</strong>、他は3.5/1000</li><li>農林水産・清酒製造 <strong>15.5/1000</strong>／建設 <strong>16.5/1000</strong></li><li><strong>教育訓練休暇給付金</strong>… <strong>30日以上</strong>の無給休暇／被保険者期間<strong>5年以上</strong>／開始から<strong>1年以内</strong></li><li><strong>自己都合退職の給付制限</strong>… 原則<strong>1か月</strong>（教育訓練を受けた場合は<strong>なし</strong>）</li><li><strong>出生後休業支援給付金</strong>（13%）／<strong>育児時短就業給付金</strong>（10%）</li><li><strong>健康保険料率</strong>… 協会けんぽ平均 <strong>9.9%</strong>、東京 9.85%、最高 佐賀 10.55%、最低 新潟 9.21%</li><li>適用時期… 健保・介護は<strong>令和8年3月分（4月納付）</strong>／子ども・子育て支援金は<strong>令和8年4月分（5月納付）</strong></li><li><strong>年金額改定</strong>… 老齢基礎年金 満額 <strong>月70,608円</strong>（昭31.4.2以後生まれ）</li><li><strong>在職老齢年金</strong>の支給停止調整額</li><li><strong>標準報酬月額</strong>の上限改定の有無</li><li><strong>社会保険の適用拡大</strong>（企業規模要件）</li><li><strong>労災保険率</strong>の改定</li></ul>
+<blockquote><p>⚠️ 改正論点は<strong>選択式で狙われます</strong>。数値は<span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span>と突き合わせてください。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span></td><td>改正後の数値の一覧</td></tr><tr><td><span class="ref"><span class="n">94</span>得点源リスト<span class="sec">（全体版）</span></span></td><td>改正以外で優先すべき論点</td></tr><tr><td><span class="ref"><span class="n">99</span>最終確認シート<span class="sec">（全体版）</span></span></td><td>当日の手順</td></tr></tbody></table></div></div>

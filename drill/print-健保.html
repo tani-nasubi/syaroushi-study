@@ -1,0 +1,488 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>社労士2026 学習資料｜健保</title>
+<style>
+@page { size: A4 portrait; margin: 16mm 14mm 18mm; }
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+body{margin:0; color:#111; background:#fff;
+  font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
+  font-size:9.6pt; line-height:1.72; text-align:justify;
+  font-feature-settings:"palt" 1;}
+.wrap{max-width:182mm; margin:0 auto; padding:10mm 6mm}
+/* ── 巻頭 ── */
+.cover{text-align:center; padding:40mm 0 0}
+.cover h1{font-size:22pt; letter-spacing:.06em; margin:0 0 6mm}
+.cover .sub{font-size:10pt; color:#555; line-height:2}
+.howto{margin:16mm auto 0; max-width:130mm; text-align:left;
+  border:1pt solid #bbb; padding:6mm 7mm; font-size:9pt; line-height:1.8}
+.howto b{font-size:9.6pt}
+/* ── 目次 ── */
+.toc h2{font-size:13pt; margin:0 0 4mm; padding-bottom:2mm; border-bottom:1.4pt solid #111}
+.toc .grp{margin:5mm 0 2mm; font-weight:700; font-size:10.5pt;
+  border-left:3pt solid #111; padding-left:3mm}
+.toc ol{list-style:none; margin:0; padding:0; columns:2; column-gap:10mm}
+.toc li{break-inside:avoid; font-size:9pt; line-height:1.85;
+  display:flex; gap:2mm; align-items:baseline}
+.toc .no{display:inline-block; min-width:9mm; font-weight:700; font-variant-numeric:tabular-nums}
+.toc .dots{flex:1; border-bottom:.4pt dotted #999; transform:translateY(-2px)}
+/* ── 各資料 ── */
+.doc{break-before:page; page-break-before:always}
+.doc:first-of-type{break-before:auto; page-break-before:auto}
+.doc > .head{border-bottom:1.6pt solid #111; padding-bottom:2.5mm; margin:0 0 5mm}
+.doc > .head .no{font-size:8.5pt; letter-spacing:.14em; color:#666}
+.doc > .head h1{font-size:16pt; margin:1mm 0 0; letter-spacing:-.01em}
+.doc > .head .desc{font-size:8.5pt; color:#555; margin:1.5mm 0 0}
+h2{font-size:12pt; margin:7mm 0 2.5mm; padding:1mm 0 1mm 3mm;
+  border-left:3.5pt solid #111; break-after:avoid; page-break-after:avoid}
+h3{font-size:10.6pt; margin:5mm 0 2mm; padding-bottom:.8mm;
+  border-bottom:.6pt solid #ccc; break-after:avoid; page-break-after:avoid}
+h4{font-size:9.8pt; margin:4mm 0 1.5mm; break-after:avoid; page-break-after:avoid}
+p{margin:0 0 2.4mm}
+ul,ol{margin:0 0 2.8mm; padding-left:6mm}
+li{margin:0 0 .8mm}
+ul.chk{list-style:none; padding-left:0}
+ul.chk li::before{content:"☐"; margin-right:2mm; font-size:11pt; line-height:1}
+strong{font-weight:700}
+code{font-family:"SFMono-Regular",Consolas,"Noto Sans Mono",monospace;
+  font-size:8.6pt; background:#f2f2f2; padding:.2mm 1mm; border-radius:1mm}
+pre{background:#f6f6f6; border:.5pt solid #ddd; padding:3mm 4mm; margin:0 0 3mm;
+  break-inside:avoid; page-break-inside:avoid; overflow:visible}
+pre code{background:none; padding:0; font-size:8.6pt; line-height:1.6; white-space:pre-wrap}
+blockquote{margin:0 0 3mm; padding:2mm 3mm; background:#f7f7f7;
+  border-left:2.5pt solid #888; break-inside:avoid; page-break-inside:avoid}
+blockquote p:last-child{margin-bottom:0}
+hr{border:0; border-top:.6pt solid #ddd; margin:5mm 0}
+table{border-collapse:collapse; width:100%; margin:0 0 3.5mm; font-size:8.6pt;
+  break-inside:avoid; page-break-inside:avoid}
+th,td{border:.5pt solid #999; padding:1.4mm 2mm; text-align:left; vertical-align:top;
+  line-height:1.55}
+th{background:#ececec; font-weight:700; white-space:nowrap}
+thead{display:table-header-group}
+/* 大きい表は途中で切れてよい。切れないと1ページに収まらず消える */
+table.big{break-inside:auto; page-break-inside:auto}
+table.big tr{break-inside:avoid; page-break-inside:avoid}
+/* ── 参照（紙ではリンクを押せないので番号で引く）── */
+.ref{white-space:nowrap; font-weight:600}
+.ref .n{font-size:8pt; border:.6pt solid #666; border-radius:1mm;
+  padding:0 1mm; margin-right:.8mm; font-variant-numeric:tabular-nums}
+.ref .sec{font-weight:400; color:#444}
+/* ── 画面で見るときだけの操作 ── */
+.bar{position:sticky; top:0; background:#fff; border-bottom:1pt solid #ddd;
+  padding:8px 12px; display:flex; gap:10px; align-items:center; font-size:13px; z-index:9}
+.bar a{color:#1a4fd6}
+.bar button{font:inherit; padding:5px 12px; border:1px solid #999; background:#fff;
+  border-radius:5px; cursor:pointer}
+@media print{ .bar{display:none} .wrap{padding:0} }
+</style>
+<div class="bar">
+  <button onclick="print()">印刷する</button>
+  <span>A4縦・8資料。ブラウザの印刷から「背景のグラフィック」を入にすると表の罫線がきれいに出ます。</span>
+</div>
+<div class="wrap"><div class="cover"><h1>社労士2026 学習資料｜健保</h1><div class="sub">全体版の資料 64〜71　（本文中の参照番号は全体版と共通です）</div>
+<div class="howto">
+<b>紙で読むときの約束ごと</b>
+<p style="margin:2mm 0 0">本文中の <span class="ref"><span class="n">23</span>平均賃金</span>
+のような表示は、ほかの資料への参照です。頭の番号が資料の通し番号なので、
+目次か各ページ右上の番号から引いてください。</p>
+<p style="margin:2mm 0 0"><span class="ref"><span class="n">5</span>労働基準法
+<span class="sec">「4. 労働時間・休憩・休日」</span></span> のように節名が付いているものは、
+その資料の中の該当する節を指します。</p>
+<p style="margin:2mm 0 0">□ は手で塗るためのものです。</p>
+</div>
+</div><div class="doc toc"><h2>目次</h2><div class="grp">健保</div><ol><li><span class="no">64</span><span>健康保険法</span><span class="dots"></span></li><li><span class="no">65</span><span>適用事業所と被保険者</span><span class="dots"></span></li><li><span class="no">66</span><span>標準報酬と保険料</span><span class="dots"></span></li><li><span class="no">67</span><span>療養の給付と一部負担金</span><span class="dots"></span></li><li><span class="no">68</span><span>高額療養費と傷病手当金</span><span class="dots"></span></li><li><span class="no">69</span><span>被扶養者とその他の給付</span><span class="dots"></span></li><li><span class="no">70</span><span>保険者と費用負担</span><span class="dots"></span></li><li><span class="no">71</span><span>不服申立て・時効・雑則</span><span class="dots"></span></li></ol></div><div class="doc"><div class="head"><div class="no">資料 64 ／ 健保</div><h1>健康保険法</h1><div class="desc">択一10問。保険給付と標準報酬が中心</div></div><table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>択一</td><td><strong>10問</strong></td></tr><tr><td>選択</td><td>5点</td></tr><tr><td>特徴</td><td>大科目。<strong>保険給付</strong>と<strong>標準報酬</strong>からの出題が中心。令和8年度は被扶養者の年収要件と保険料率に改正がある</td></tr></tbody></table>
+<hr>
+<h2>出題傾向（過去9年・第49〜57回の実データ）</h2>
+<h3>択一の設問形式</h3>
+<table class="big"><thead><tr><th>形式</th><th>問数</th><th>割合</th></tr></thead><tbody><tr><td>正しいものを選ぶ</td><td>36</td><td>40%</td></tr><tr><td>誤りを選ぶ</td><td>35</td><td>39%</td></tr><tr><td>組合せ問題</td><td>15</td><td>17%</td></tr><tr><td>個数問題</td><td>4</td><td>4%</td></tr></tbody></table>
+<p><strong>健保枠 計90問</strong>のうち、<strong>個数問題4問・組合せ問題15問（合わせて21%）</strong>。組合せのほうが多い科目です。組合せは<strong>2肢の正誤が分かれば98.5%で正解が決まる</strong>ので、時間はかかりません。飛ばす候補は個数問題だけです。（→ <span class="ref"><span class="n">97</span>個数・組合せ問題<span class="sec">（全体版）</span></span>）</p>
+<h3>設問形式の推移（作問方針の変化）</h3>
+<table class="big"><thead><tr><th>年度</th><th>個数・組合せ</th><th>誤りを選ぶ</th><th>正しいものを選ぶ</th><th>肢の平均字数</th><th>判例に言及</th></tr></thead><tbody><tr><td>令和7</td><td>2</td><td>4</td><td>4</td><td>138</td><td>0</td></tr><tr><td>令和6</td><td>2</td><td>3</td><td>5</td><td>113</td><td>0</td></tr><tr><td>令和5</td><td>2</td><td>3</td><td>5</td><td>107</td><td>0</td></tr><tr><td>令和4</td><td>1</td><td>4</td><td>5</td><td>148</td><td>0</td></tr><tr><td>令和3</td><td>2</td><td>4</td><td>4</td><td>105</td><td>0</td></tr><tr><td>令和2</td><td>2</td><td>6</td><td>2</td><td>107</td><td>0</td></tr><tr><td>令和元</td><td>3</td><td>5</td><td>2</td><td>96</td><td>0</td></tr><tr><td>平成30</td><td>3</td><td>1</td><td>6</td><td>83</td><td>0</td></tr><tr><td>平成29</td><td>2</td><td>5</td><td>3</td><td>95</td><td>0</td></tr></tbody></table>
+<ul><li><strong>「正しいものを選べ」が増えています</strong>（3.4問 → 4.8問）。誤りを探すより、<strong>正しい形を知っているか</strong>が問われる方向です</li></ul>
+<h3>基準点補正の履歴（この科目が救済された年）</h3>
+<p><strong>選択式</strong>　令和2年度 <strong>2点</strong>に引下げ／平成29年度 <strong>2点</strong>に引下げ</p>
+<blockquote><p>選択式の引下げは9年で2回。<strong>例外的</strong>です。基準点は自力で超える前提で臨んでください。</p></blockquote>
+<h3>頻出条文（択一で9年間に参照された回数）</h3>
+<p><strong>上位12条で択一16回分</strong>。回数が多い条ほど、条文そのものを読んでおく価値があります。「詳しく読む」は、その条をいちばん詳しく扱っている別ページです。</p>
+<table class="big"><thead><tr><th>条文</th><th>何を定めているか</th><th>回数</th><th>出題された年度</th><th>詳しく読む</th></tr></thead><tbody><tr><td><strong>第3条</strong></td><td>定義</td><td>4</td><td>令和5・令和4・平成29</td><td><span class="ref"><span class="n">65</span>適用事業所と被保険者</span></td></tr><tr><td><strong>第65条</strong></td><td>保険医療機関又は保険薬局の指定</td><td>2</td><td>令和6・平成29</td><td><span class="ref"><span class="n">67</span>療養の給付と一部負担金</span></td></tr><tr><td><strong>第110条</strong></td><td>家族療養費</td><td>1</td><td>平成29</td><td><span class="ref"><span class="n">69</span>被扶養者とその他の給付</span></td></tr><tr><td><strong>第87条</strong></td><td>療養費</td><td>1</td><td>平成30</td><td><span class="ref"><span class="n">67</span>療養の給付と一部負担金</span></td></tr><tr><td><strong>第53条の2</strong></td><td>法人の役員に係る保険給付の特例</td><td>1</td><td>平成30</td><td><span class="ref"><span class="n">69</span>被扶養者とその他の給付</span></td></tr><tr><td><strong>第100条</strong></td><td>埋葬料</td><td>1</td><td>令和4</td><td><span class="ref"><span class="n">69</span>被扶養者とその他の給付</span></td></tr><tr><td><strong>第7条の14</strong></td><td>役員の解任</td><td>1</td><td>令和4</td><td>—</td></tr><tr><td><strong>第84条</strong></td><td>保険者が指定する病院等における療養の給付</td><td>1</td><td>令和4</td><td>—</td></tr><tr><td><strong>第116条</strong></td><td>給付制限</td><td>1</td><td>令和4</td><td><span class="ref"><span class="n">69</span>被扶養者とその他の給付</span></td></tr><tr><td><strong>第63条</strong></td><td>療養の給付</td><td>1</td><td>令和5</td><td><span class="ref"><span class="n">67</span>療養の給付と一部負担金</span></td></tr><tr><td><strong>第38条</strong></td><td>任意継続被保険者の資格喪失</td><td>1</td><td>令和5</td><td><span class="ref"><span class="n">65</span>適用事業所と被保険者</span></td></tr><tr><td><strong>第172条</strong></td><td>保険料の繰上徴収</td><td>1</td><td>令和5</td><td>本体の<span class="ref"><span class="n">64</span>健康保険法<span class="sec">「保険料の徴収」</span></span></td></tr></tbody></table>
+<h3>選択式が9年間で問うたこと（健保）</h3>
+<p><strong>45空欄</strong>の内訳は <strong>数字21</strong>（47%）、<strong>用語20</strong>（44%）、<strong>判示・条文の言い回し4</strong>（9%）。空欄は5つあり、<strong>3つ取れれば基準点</strong>です。長い判示は先頭だけを載せています。全文は <span class="ref"><span class="n">93</span>条文素読<span class="sec">（全体版）</span></span> にあります。</p>
+<table class="big"><thead><tr><th>年度</th><th>空欄</th><th>正答となった語</th><th>その年の根拠条文</th></tr></thead><tbody><tr><td>令和7</td><td>A</td><td>48 万8，000</td><td>健康保険法31条</td></tr><tr><td></td><td>B</td><td>3</td><td></td></tr><tr><td></td><td>C</td><td>85</td><td></td></tr><tr><td></td><td>D</td><td>4分の3</td><td></td></tr><tr><td></td><td>E</td><td>日本年金機構又は地方厚生局長</td><td></td></tr><tr><td>令和6</td><td>A</td><td>患者に対する情報提供を前提として</td><td>健康保険法111条</td></tr><tr><td></td><td>B</td><td>資格を取得した日の前日まで引き続き1年以上被保険…</td><td></td></tr><tr><td></td><td>C</td><td>被扶養者</td><td></td></tr><tr><td></td><td>D</td><td>家族訪問看護療養費</td><td></td></tr><tr><td></td><td>E</td><td>家族療養費</td><td></td></tr><tr><td>令和5</td><td>A</td><td>厚生労働大臣</td><td>健康保険法102条／健康保険法5条</td></tr><tr><td></td><td>B</td><td>12 か月</td><td></td></tr><tr><td></td><td>C</td><td>140，100円</td><td></td></tr><tr><td></td><td>D</td><td>通算されない</td><td></td></tr><tr><td></td><td>E</td><td>98</td><td></td></tr><tr><td>令和4</td><td>A</td><td>88，000円以上</td><td>健康保険法3条</td></tr><tr><td></td><td>B</td><td>200以上</td><td></td></tr><tr><td></td><td>C</td><td>180日</td><td></td></tr><tr><td></td><td>D</td><td>10</td><td></td></tr><tr><td></td><td>E</td><td>厚生労働大臣</td><td></td></tr><tr><td>令和3</td><td>A</td><td>特定保険料率</td><td>健康保険法156条</td></tr><tr><td></td><td>B</td><td>その額から健康保険法第153条及び第154条の規…</td><td></td></tr><tr><td></td><td>C</td><td>総報酬額の総額</td><td></td></tr><tr><td></td><td>D</td><td>9月1日</td><td></td></tr><tr><td></td><td>E</td><td>100分の0．5</td><td></td></tr><tr><td>令和2</td><td>A</td><td>地方社会保険医療協議会に諮問する</td><td>健康保険法181条の2／健康保険法29条／健康保険法48条</td></tr><tr><td></td><td>B</td><td>標準報酬月額が28 万円</td><td></td></tr><tr><td></td><td>C</td><td>125，570円</td><td></td></tr><tr><td></td><td>D</td><td>所轄公共職業安定所長</td><td></td></tr><tr><td></td><td>E</td><td>当該事業の意義及び内容</td><td></td></tr><tr><td>令和元</td><td>A</td><td>9月30日における当該任意継続被保険者の属する保…</td><td>健康保険法153条</td></tr><tr><td></td><td>B</td><td>4月5日から</td><td></td></tr><tr><td></td><td>C</td><td>日</td><td></td></tr><tr><td></td><td>D</td><td>当該事業年度及びその直前の2 事業年度内</td><td></td></tr><tr><td></td><td>E</td><td>12分の1</td><td></td></tr><tr><td>平成30</td><td>A</td><td>疾病構造の変化</td><td>健康保険法102条／健康保険法2条</td></tr><tr><td></td><td>B</td><td>運営の効率化</td><td></td></tr><tr><td></td><td>C</td><td>質の向上</td><td></td></tr><tr><td></td><td>D</td><td>以前42日</td><td></td></tr><tr><td></td><td>E</td><td>後56日</td><td></td></tr><tr><td>平成29</td><td>A</td><td>標準価額の3分の2以上</td><td>健康保険法160条／健康保険法90条</td></tr><tr><td></td><td>B</td><td>年齢階級別の分布状況</td><td></td></tr><tr><td></td><td>C</td><td>総報酬額の平均額</td><td></td></tr><tr><td></td><td>D</td><td>自ら</td><td></td></tr><tr><td></td><td>E</td><td>3，000</td><td></td></tr></tbody></table>
+<blockquote><p>この節は <code>kakomon/gen_trend.py</code> が過去問データから自動生成しています。</p></blockquote>
+<h2>深掘り（別ページ）</h2>
+<p>条文の趣旨・要件の切り分け・誤り肢の作られ方を論点ごとにまとめた別ページです。</p>
+<table class="big"><thead><tr><th>論点</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">65</span>適用事業所と被保険者</span></td></tr><tr><td><span class="ref"><span class="n">66</span>標準報酬と保険料</span></td></tr><tr><td><span class="ref"><span class="n">67</span>療養の給付と一部負担金</span></td></tr><tr><td><span class="ref"><span class="n">68</span>高額療養費と傷病手当金</span></td></tr><tr><td><span class="ref"><span class="n">69</span>被扶養者とその他の給付</span></td></tr><tr><td><span class="ref"><span class="n">70</span>保険者と費用負担</span></td></tr><tr><td><span class="ref"><span class="n">71</span>不服申立て・時効・雑則</span></td></tr></tbody></table>
+<h2>目的条文</h2>
+<p><strong>1条</strong></p>
+<blockquote><p>この法律は、労働者又はその被扶養者の<strong>業務災害以外</strong>の疾病、負傷若しくは死亡又は<strong>出産</strong>に関して保険給付を行い、もつて<strong>国民の生活の安定と福祉の向上</strong>に寄与することを目的とする。</p></blockquote>
+<p><strong>2条（基本的理念）</strong></p>
+<blockquote><p>健康保険制度については、これが<strong>医療保険制度の基本</strong>をなすものであることにかんがみ、高齢化の進展、疾病構造の変化、社会経済情勢の変化等に対応し、その他の医療保険制度及び<strong>後期高齢者医療制度</strong>並びにこれらに密接に関連する制度と併せてその<strong>在り方に関して常に検討</strong>が加えられ、その結果に基づき、<strong>医療保険の運営の効率化</strong>、給付の内容及び費用の負担の<strong>適正化</strong>並びに<strong>国民が受ける医療の質の向上</strong>を総合的に図りつつ、実施されなければならない。</p></blockquote>
+<blockquote><p>「<strong>業務災害以外</strong>」が健保の守備範囲を決める。業務災害は労災の管轄。
+2条は第50回の選択式で「疾病構造の変化」が正答になっている。</p></blockquote>
+<hr>
+<h2>1. 保険者</h2>
+<table class="big"><thead><tr><th>保険者</th><th>管掌</th></tr></thead><tbody><tr><td><strong>全国健康保険協会</strong>（協会けんぽ）</td><td>健康保険組合の組合員でない被保険者</td></tr><tr><td><strong>健康保険組合</strong></td><td>組合の被保険者</td></tr></tbody></table>
+<h3>全国健康保険協会</h3>
+<ul><li>主たる事務所は<strong>東京都</strong>、従たる事務所（支部）は各都道府県</li><li><strong>運営委員会</strong>：事業主・被保険者・学識経験者を代表する委員<strong>各3人</strong>（計9人）</li><li>都道府県ごとに<strong>評議会</strong>を置く</li></ul>
+<h3>健康保険組合</h3>
+<table class="big"><thead><tr><th>区分</th><th>設立要件</th></tr></thead><tbody><tr><td><strong>単一組合</strong></td><td>常時<strong>700人以上</strong>の被保険者を使用する事業主</td></tr><tr><td><strong>総合組合</strong></td><td>同種同業の複数事業主が共同で設立。合算して常時<strong>3,000人以上</strong></td></tr></tbody></table>
+<ul><li>設立には<strong>厚生労働大臣の認可</strong>と被保険者の<strong>2分の1以上</strong>の同意</li><li><strong>組合会</strong>が議決機関。組合会議員は<strong>選定議員</strong>（事業主が選定）と<strong>互選議員</strong>（被保険者が互選）が<strong>同数</strong></li><li>理事は組合会において選定議員・互選議員がそれぞれ選挙。<strong>理事長は選定議員である理事のうちから選挙</strong></li></ul>
+<hr>
+<h2>2. 被保険者</h2>
+<h3>適用事業所</h3>
+<table class="big"><thead><tr><th>区分</th><th>内容</th></tr></thead><tbody><tr><td>強制適用</td><td><strong>法人</strong>の事業所（業種・人数を問わず）／<strong>個人</strong>で常時<strong>5人以上</strong>の法定17業種</td></tr><tr><td>非適用業種（個人・5人以上でも任意）</td><td>農林水産業、<strong>宗教業</strong>、その他のサービス業（旅館、飲食店、理美容業等）</td></tr><tr><td>任意適用</td><td>従業員の<strong>2分の1以上</strong>の同意＋厚生労働大臣の<strong>認可</strong>。取消しは<strong>4分の3以上</strong>の同意</td></tr></tbody></table>
+<blockquote><p>令和4年10月から<strong>士業</strong>（弁護士・社労士等）は適用業種に追加。</p></blockquote>
+<h3>適用除外（3条1項）</h3>
+<table class="big"><thead><tr><th>対象</th><th>除外が外れる要件</th></tr></thead><tbody><tr><td>日々雇い入れられる者</td><td><strong>1か月</strong>を超えて引き続き使用</td></tr><tr><td>2か月以内の期間を定めて使用される者</td><td>当該期間を超えて使用されることが<strong>見込まれる</strong>場合</td></tr><tr><td><strong>所在地が一定しない事業所</strong>に使用される者</td><td><strong>例外なし</strong>（絶対的除外）</td></tr><tr><td>季節的業務に使用される者</td><td>継続して<strong>4か月</strong>を超えて使用される予定</td></tr><tr><td>臨時的事業の事業所に使用される者</td><td>継続して<strong>6か月</strong>を超えて使用される予定</td></tr><tr><td><strong>後期高齢者医療の被保険者等</strong></td><td>—</td></tr></tbody></table>
+<h3>短時間労働者（3条1項9号）</h3>
+<p><strong>特定適用事業所</strong>（厚生年金保険の被保険者数が常時<strong>51人以上</strong>）に使用される短時間労働者は、次の<strong>すべて</strong>を満たすと被保険者。</p>
+<p>① 週の所定労働時間が<strong>20時間以上</strong>
+② 報酬月額が<strong>88,000円以上</strong>
+③ 継続して<strong>2か月を超えて</strong>使用される見込み
+④ <strong>学生でない</strong>こと</p>
+<blockquote><p>⚠️企業規模要件の撤廃は<strong>令和9年10月から段階的</strong>、賃金要件の撤廃も含め<strong>令和8年度試験では未施行</strong>。</p></blockquote>
+<h3>任意継続被保険者（3条4項・37条・38条）</h3>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>要件</td><td>資格喪失の日の<strong>前日まで継続して2か月以上</strong>被保険者</td></tr><tr><td>申出</td><td>資格を喪失した日から<strong>20日以内</strong></td></tr><tr><td>期間</td><td>最長<strong>2年</strong></td></tr><tr><td>保険料</td><td><strong>全額自己負担</strong>（事業主負担なし）</td></tr><tr><td>標準報酬月額</td><td>① 資格喪失時の標準報酬月額 と ② 前年9月30日における全被保険者の平均標準報酬月額（⚠️令和8年度は要確認）の<strong>いずれか低い額</strong>。健保組合は規約で①とすることができる</td></tr><tr><td>給付</td><td><strong>傷病手当金・出産手当金は支給されない</strong>（継続給付として受けるものを除く）</td></tr><tr><td>資格喪失</td><td>保険料を納付期日までに納付しないと<strong>翌日に喪失</strong>／令和4年1月から<strong>任意の資格喪失が可能</strong>（申出が受理された日の属する月の末日）</td></tr></tbody></table>
+<h3>被扶養者（3条7項）★令和8年度改正</h3>
+<p><strong>年間収入の基準</strong></p>
+<table class="big"><thead><tr><th>区分</th><th>基準</th></tr></thead><tbody><tr><td>原則</td><td><strong>130万円未満</strong></td></tr><tr><td>★<strong>19歳以上23歳未満</strong></td><td><strong>150万円未満</strong>（新設）⚠️要確認</td></tr><tr><td>60歳以上／障害厚生年金の受給要件に該当する程度の障害者</td><td><strong>180万円未満</strong></td></tr></tbody></table>
+<p>加えて、<strong>同一世帯</strong>なら被保険者の年間収入の<strong>2分の1未満</strong>、<strong>別世帯</strong>なら被保険者からの<strong>援助額より少ない</strong>こと。</p>
+<p><strong>被扶養者の範囲</strong></p>
+<table class="big"><thead><tr><th>同一世帯要件</th><th>対象</th></tr></thead><tbody><tr><td><strong>不要</strong></td><td>配偶者（<strong>事実婚を含む</strong>）、子、孫、<strong>兄弟姉妹</strong>、直系尊属</td></tr><tr><td><strong>必要</strong></td><td>上記以外の<strong>三親等内の親族</strong>、事実婚の配偶者の父母・子（配偶者死亡後も含む）</td></tr></tbody></table>
+<p><strong>国内居住要件</strong>：原則として日本国内に住所を有すること（留学生等は例外）。</p>
+<hr>
+<h2>3. 標準報酬</h2>
+<table class="big"><thead><tr><th>項目</th><th>健保</th><th>（参考）厚年</th></tr></thead><tbody><tr><td>等級数</td><td><strong>50等級</strong></td><td>32等級</td></tr><tr><td>下限</td><td>第1級 <strong>58,000円</strong></td><td>第1級 88,000円</td></tr><tr><td>上限</td><td>第50級 <strong>1,390,000円</strong></td><td>第32級 650,000円</td></tr><tr><td><strong>標準賞与額の上限</strong></td><td><strong>年度累計 573万円</strong>（4/1〜翌3/31）</td><td>1か月 150万円</td></tr></tbody></table>
+<blockquote><p><strong>★引っかけ</strong>：健保は<strong>年度累計</strong>、厚年は<strong>1か月ごと</strong>。</p></blockquote>
+<h3>決定・改定</h3>
+<table class="big"><thead><tr><th>種類</th><th>内容</th></tr></thead><tbody><tr><td><strong>資格取得時決定</strong></td><td>1月〜5月決定→その年の8月まで／6月〜12月決定→翌年8月まで</td></tr><tr><td><strong>定時決定</strong></td><td>毎年<strong>7月1日</strong>現在の被保険者について、<strong>4・5・6月</strong>の報酬の平均で決定。その年の<strong>9月から翌年8月</strong>まで適用</td></tr><tr><td><strong>随時改定（月変）</strong></td><td>① <strong>固定的賃金の変動</strong> ② 変動月以後継続した<strong>3か月</strong>の平均で<strong>2等級以上</strong>の差 ③ 3か月とも支払基礎日数<strong>17日以上</strong>（短時間労働者は11日以上）→ 変動月から<strong>4か月目</strong>に改定</td></tr><tr><td><strong>育児休業等終了時改定／産前産後休業終了時改定</strong></td><td><strong>本人の申出</strong>により、<strong>1等級</strong>の差でも改定</td></tr></tbody></table>
+<p><strong>定時決定の対象外</strong>：6月1日〜7月1日に被保険者となった者、7月〜9月に随時改定等が行われる者</p>
+<p><strong>報酬・賞与</strong></p>
+<ul><li>報酬＝労働の対償として受けるすべてのもの。ただし<strong>臨時に受けるもの</strong>及び<strong>3か月を超える期間ごとに受けるもの</strong>を除く</li><li>賞与＝3か月を超える期間ごとに受けるもの</li></ul>
+<hr>
+<h2>4. 保険給付</h2>
+<h3>給付の一覧</h3>
+<table class="big"><thead><tr><th>給付</th><th>被保険者</th><th>被扶養者</th></tr></thead><tbody><tr><td>療養の給付</td><td>○</td><td>家族療養費</td></tr><tr><td>入院時食事療養費・入院時生活療養費</td><td>○</td><td>家族療養費に含む</td></tr><tr><td>保険外併用療養費</td><td>○</td><td>家族療養費に含む</td></tr><tr><td>療養費</td><td>○</td><td>家族療養費</td></tr><tr><td>訪問看護療養費</td><td>○</td><td>家族訪問看護療養費</td></tr><tr><td>移送費</td><td>○</td><td>家族移送費</td></tr><tr><td><strong>傷病手当金</strong></td><td>○</td><td><strong>×</strong></td></tr><tr><td><strong>出産手当金</strong></td><td>○</td><td><strong>×</strong></td></tr><tr><td>出産育児一時金</td><td>○</td><td>家族出産育児一時金</td></tr><tr><td>埋葬料（埋葬費）</td><td>○</td><td>家族埋葬料</td></tr><tr><td>高額療養費・高額介護合算療養費</td><td>○</td><td>○</td></tr></tbody></table>
+<blockquote><p><strong>傷病手当金と出産手当金は被扶養者にはない</strong>（所得保障だから）。</p></blockquote>
+<h3>一部負担金</h3>
+<table class="big"><thead><tr><th>区分</th><th>割合</th></tr></thead><tbody><tr><td>義務教育就学前</td><td><strong>2割</strong></td></tr><tr><td>義務教育就学後70歳未満</td><td><strong>3割</strong></td></tr><tr><td>70歳以上</td><td><strong>2割</strong>（現役並み所得者は<strong>3割</strong>）</td></tr></tbody></table>
+<h3>現物給付の各給付</h3>
+<table class="big"><thead><tr><th>給付</th><th>内容</th><th>押さえどころ</th></tr></thead><tbody><tr><td><strong>入院時食事療養費</strong>（85条）</td><td>入院中の食事。<strong>食事療養標準負担額</strong>を控除した額を保険者が負担</td><td>標準負担額は所得・入院期間で区分（⚠️年度で変わる）</td></tr><tr><td><strong>入院時生活療養費</strong>（85条の2）</td><td><strong>65歳以上</strong>の療養病床入院者の食費＋居住費</td><td>対象が65歳以上に限られる点が引っかけ</td></tr><tr><td><strong>保険外併用療養費</strong>（86条）</td><td>保険外診療を併用しても、基礎的部分は保険給付</td><td>下記3類型</td></tr><tr><td><strong>療養費</strong>（87条）</td><td>療養の給付等が<strong>困難</strong>なとき、又は保険医療機関以外での診療が<strong>やむを得ない</strong>と認めるとき</td><td>保険者が<strong>償還払い</strong>。被保険者が全額立替</td></tr><tr><td><strong>訪問看護療養費</strong>（88条）</td><td>主治医の指示で指定訪問看護事業者の訪問看護を受けたとき</td><td><strong>基本利用料</strong>（3割等）＋その他の利用料を負担</td></tr><tr><td><strong>移送費</strong>（97条）</td><td>療養の給付を受けるため移送されたとき</td><td>①適切な療養を受けたこと ②移動が著しく困難 ③緊急その他やむを得ない の3要件。<strong>最も経済的な通常の経路・方法</strong>により算定</td></tr></tbody></table>
+<p><strong>保険外併用療養費の3類型</strong></p>
+<table class="big"><thead><tr><th>類型</th><th>内容</th></tr></thead><tbody><tr><td><strong>評価療養</strong></td><td>先進医療、医薬品・医療機器の<strong>治験</strong>、薬事承認後・保険収載前の医薬品の使用 等（将来の保険導入を評価するもの）</td></tr><tr><td><strong>患者申出療養</strong></td><td>国内未承認医薬品等の使用を希望する<strong>患者の申出</strong>を起点とする（平成28年4月創設）</td></tr><tr><td><strong>選定療養</strong></td><td>特別の療養環境（<strong>差額ベッド</strong>）、予約診療、時間外診療、<strong>大病院の初診・再診</strong>、制限回数を超える医療行為、金属床総義歯、180日超の入院、<strong>長期収載品</strong>（令和6年10月〜）</td></tr></tbody></table>
+<blockquote><p><strong>★引っかけ</strong>：<strong>患者申出療養は評価療養とは別の類型</strong>。「評価療養に含まれる」は誤り。</p></blockquote>
+<h3>高額療養費（115条）</h3>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>計算単位</td><td><strong>同一月・同一医療機関・同一診療</strong>ごと（<strong>入院と外来、医科と歯科は別</strong>に計算）</td></tr><tr><td>所得区分</td><td>70歳未満は標準報酬月額により<strong>5区分</strong>（83万円以上／53〜79万円／28〜50万円／26万円以下／低所得者）</td></tr><tr><td><strong>世帯合算</strong></td><td>同一世帯で<strong>21,000円以上</strong>の自己負担が複数あれば合算（70歳以上は金額を問わず合算）</td></tr><tr><td><strong>多数回該当</strong></td><td>直近<strong>12か月</strong>に<strong>3回以上</strong>該当すると、<strong>4回目</strong>から限度額が引き下げられる</td></tr><tr><td>現物給付化</td><td><strong>限度額適用認定証</strong>の提示、又はオンライン資格確認により、窓口負担を限度額までにできる</td></tr><tr><td>時効</td><td>診療月の翌月1日から<strong>2年</strong></td></tr></tbody></table>
+<p><strong>高額介護合算療養費</strong>（115条の2）
+毎年<strong>8月1日から翌年7月31日</strong>までの1年間の医療保険と介護保険の自己負担を合算し、限度額を超える分を支給。</p>
+<h3>傷病手当金（99条）</h3>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>支給開始</td><td>労務に服することができなくなった日から起算して<strong>3日</strong>（<strong>継続した</strong>3日間＝待期）を経過した日から</td></tr><tr><td><strong>支給期間</strong></td><td>支給を始めた日から<strong>通算して1年6か月</strong>（令和4年1月から通算化）</td></tr><tr><td><strong>額</strong></td><td>支給開始日の属する月以前の<strong>直近の継続した12か月間</strong>の各月の標準報酬月額を平均した額 ÷ 30 × <strong>3分の2</strong></td></tr><tr><td>12か月未満の場合</td><td>① 当該期間の平均 と ② 全被保険者の平均標準報酬月額 のいずれか<strong>少ない額</strong></td></tr><tr><td>調整</td><td>報酬を受ける場合、<strong>障害厚生年金・障害手当金</strong>、老齢退職年金給付、<strong>出産手当金</strong>との併給調整</td></tr></tbody></table>
+<blockquote><p>労災の休業補償給付の待期3日は<strong>継続・断続を問わない</strong>のに対し、健保は<strong>継続した3日</strong>が必要。</p></blockquote>
+<h3>出産関係</h3>
+<table class="big"><thead><tr><th>給付</th><th>内容</th></tr></thead><tbody><tr><td><strong>出産手当金</strong></td><td>出産の日以前<strong>42日</strong>（多胎<strong>98日</strong>）から出産の日後<strong>56日</strong>までの労務に服さなかった期間。額は傷病手当金と同じ算定</td></tr><tr><td><strong>出産育児一時金</strong></td><td>政令で定める額（⚠️近年50万円）。産科医療補償制度に加入する医療機関等での出産でない場合は減額</td></tr><tr><td>対象となる出産</td><td><strong>妊娠4か月（85日）以上</strong>（死産・流産を含む）</td></tr></tbody></table>
+<blockquote><p>労基法65条の産前6週間＝<strong>42日</strong>、多胎14週間＝<strong>98日</strong>、産後8週間＝<strong>56日</strong>と対応。
+傷病手当金と出産手当金が同時に受けられるときは<strong>出産手当金が優先</strong>し、傷病手当金は差額のみ。</p></blockquote>
+<h3>埋葬料（100条）</h3>
+<ul><li><strong>5万円</strong>（定額）。被保険者により生計を維持していた者で埋葬を行うもの</li><li>受けるべき者がない場合は<strong>埋葬費</strong>として、埋葬料の金額の範囲内で実際に埋葬に要した費用</li><li>被扶養者の死亡は<strong>家族埋葬料 5万円</strong></li></ul>
+<h3>資格喪失後の給付</h3>
+<table class="big"><thead><tr><th>給付</th><th>要件</th></tr></thead><tbody><tr><td><strong>継続給付</strong>（傷病手当金・出産手当金）</td><td>資格喪失日の前日まで<strong>引き続き1年以上</strong>被保険者（<strong>任意継続被保険者・共済組合員であった期間は算入しない</strong>）</td></tr><tr><td>資格喪失後の<strong>出産育児一時金</strong></td><td>上記の要件＋資格喪失後<strong>6か月以内</strong>の出産</td></tr><tr><td>資格喪失後の<strong>埋葬料</strong></td><td>資格喪失後<strong>3か月以内</strong>の死亡、又は継続給付を受けている間・受けなくなって3か月以内の死亡</td></tr></tbody></table>
+<blockquote><p><strong>1年以上／6か月以内／3か月以内</strong> の3つの数字を給付と結びつけること。</p></blockquote>
+<h3>給付制限（116条〜120条）</h3>
+<table class="big"><thead><tr><th>事由</th><th>効果</th></tr></thead><tbody><tr><td><strong>故意の犯罪行為・故意</strong>による事故</td><td>保険給付を<strong>行わない</strong></td></tr><tr><td>闘争・泥酔・著しい不行跡</td><td><strong>全部又は一部を行わないことができる</strong></td></tr><tr><td>正当な理由なく療養に関する指示に従わない</td><td><strong>一部</strong>を行わないことができる</td></tr><tr><td>少年院・刑事施設等に拘禁</td><td>疾病・負傷・出産に係る給付を行わない（<strong>家族給付は行う</strong>）</td></tr></tbody></table>
+<h3>保険給付の調整</h3>
+<table class="big"><thead><tr><th>相手</th><th>調整</th></tr></thead><tbody><tr><td><strong>労災保険</strong>（55条1項）</td><td>業務災害・通勤災害として労災の給付を受けられるときは、<strong>健康保険の給付は行わない</strong></td></tr><tr><td>介護保険</td><td>訪問看護等で給付が重なる場合は<strong>介護保険が優先</strong></td></tr><tr><td>他の法令</td><td>国家公務員災害補償法等による給付があるときはその限度で行わない</td></tr><tr><td><strong>第三者行為</strong>（57条）</td><td>保険者は給付の価額の限度で<strong>損害賠償請求権を代位取得</strong>。先に賠償を受けたときはその限度で給付を行わない</td></tr></tbody></table>
+<h3>不正利得の徴収（58条）</h3>
+<table class="big"><thead><tr><th>対象</th><th>内容</th></tr></thead><tbody><tr><td>被保険者等</td><td>偽りその他不正の行為で保険給付を受けた者から、給付の価額の<strong>全部又は一部</strong>を徴収できる</td></tr><tr><td><strong>事業主</strong></td><td>虚偽の届出等が原因のときは、事業主に<strong>連帯して</strong>徴収金を納付させることができる</td></tr><tr><td><strong>保険医療機関等</strong></td><td>不正に療養の給付に関する費用を受けたときは、<strong>返還額に100分の40を加算</strong>した額を徴収できる</td></tr></tbody></table>
+<blockquote><p>「100分の40の加算」は健保特有の数字。</p></blockquote>
+<hr>
+<h2>5. 費用の負担</h2>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>保険料</td><td>標準報酬月額・標準賞与額 ×（一般保険料率＋介護保険料率＋子ども・子育て支援金率）</td></tr><tr><td>負担割合</td><td>原則<strong>労使折半</strong>。健保組合は規約で<strong>事業主負担割合を2分の1超</strong>とすることができる</td></tr><tr><td>納付義務</td><td><strong>事業主</strong>（被保険者負担分を報酬から控除して納付）</td></tr><tr><td>納期限</td><td>翌月<strong>末日</strong></td></tr></tbody></table>
+<h3>令和8年度の保険料率 ⚠️要確認</h3>
+<table class="big"><thead><tr><th>項目</th><th>率</th></tr></thead><tbody><tr><td>一般保険料率（協会けんぽ）</td><td><strong>都道府県ごと</strong>（東京 9.85％、最高 佐賀県、最低 新潟県）</td></tr><tr><td><strong>法定範囲</strong></td><td><strong>1000分の30 〜 1000分の130</strong></td></tr><tr><td><strong>介護保険料率</strong></td><td><strong>全国一律 1000分の16.2</strong>（令和7年度15.9から引上げ）</td></tr><tr><td><strong>子ども・子育て支援金率</strong> ★令和8年4月〜</td><td><strong>全国一律 1000分の2.3</strong></td></tr></tbody></table>
+<blockquote><p><strong>★引っかけ</strong>：一般保険料率は<strong>都道府県単位</strong>、介護保険料率と支援金率は<strong>全国一律</strong>。</p></blockquote>
+<h3>保険料の免除</h3>
+<table class="big"><thead><tr><th>免除</th><th>内容</th></tr></thead><tbody><tr><td><strong>産前産後休業期間</strong></td><td>事業主の申出により<strong>労使双方</strong>を免除</td></tr><tr><td><strong>育児休業等期間</strong></td><td>同上</td></tr><tr><td>免除期間の扱い</td><td><strong>被保険者期間に算入</strong>される（年金額にも反映）</td></tr></tbody></table>
+<p><strong>免除の対象月</strong></p>
+<ul><li>その月の<strong>末日が休業期間中</strong>である月</li><li>育児休業等は、<strong>同一月内に14日以上</strong>取得した場合もその月が対象</li><li><strong>賞与に係る保険料</strong>は、育児休業等が<strong>1か月を超える</strong>場合に限り免除（令和4年10月〜）</li></ul>
+<hr>
+<h2>5-2. 届出と保険料の徴収実務</h2>
+<h3>主な届出（事業主が行う）</h3>
+<table class="big"><thead><tr><th>届出</th><th>期限</th></tr></thead><tbody><tr><td>被保険者資格取得届・喪失届</td><td><strong>5日以内</strong>（船員は10日以内）</td></tr><tr><td>被扶養者（異動）届</td><td><strong>5日以内</strong></td></tr><tr><td><strong>報酬月額算定基礎届</strong>（定時決定）</td><td>毎年<strong>7月10日</strong>まで</td></tr><tr><td>報酬月額変更届（随時改定）</td><td>速やかに</td></tr><tr><td><strong>賞与支払届</strong></td><td><strong>5日以内</strong></td></tr><tr><td>産前産後休業・育児休業等取得者申出書</td><td>休業期間中</td></tr></tbody></table>
+<h3>保険料の徴収</h3>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td><strong>納付義務者</strong></td><td><strong>事業主</strong>（被保険者負担分を報酬から控除して納付）</td></tr><tr><td>控除の時期</td><td><strong>前月分</strong>の保険料を当月の報酬から控除（167条）。<strong>賞与からは当月分</strong>を控除できる</td></tr><tr><td>納期限</td><td>翌月<strong>末日</strong></td></tr><tr><td><strong>繰上徴収</strong>（172条）</td><td>国税・地方税の滞納処分、強制執行、破産手続開始、法人の解散、事業の廃止 等の場合、納期前でも徴収できる</td></tr><tr><td><strong>督促</strong>（180条）</td><td>督促状の指定期限は、発する日から起算して<strong>10日以上</strong>経過した日</td></tr><tr><td><strong>延滞金</strong>（181条）</td><td>年<strong>14.6％</strong>（納期限の翌日から<strong>3か月</strong>を経過する日までは年<strong>7.3％</strong>）。保険料額が<strong>1,000円未満</strong>なら徴収しない</td></tr><tr><td>徴収の方法</td><td>保険料その他の徴収金は<strong>国税徴収の例</strong>による</td></tr></tbody></table>
+<h3>国庫負担・補助</h3>
+<table class="big"><thead><tr><th>区分</th><th>内容</th></tr></thead><tbody><tr><td><strong>国庫負担</strong></td><td>健康保険事業の<strong>事務の執行に要する費用</strong></td></tr><tr><td><strong>国庫補助</strong></td><td>協会が管掌する健康保険の給付費等に対し、給付費等の<strong>1000分の130〜1000分の200</strong>の範囲内で政令で定める割合（当分の間<strong>1000分の164</strong>）⚠️要確認</td></tr><tr><td>健康保険組合</td><td>給付費等に対する国庫補助は<strong>予算の範囲内</strong>で行うことができる</td></tr></tbody></table>
+<hr>
+<h2>5-3. 健康保険組合の運営</h2>
+<table class="big"><thead><tr><th>事項</th><th>内容</th></tr></thead><tbody><tr><td><strong>設立</strong></td><td>単一組合＝常時<strong>700人以上</strong>／総合組合＝合算して常時<strong>3,000人以上</strong>。被保険者の<strong>2分の1以上</strong>の同意＋<strong>厚生労働大臣の認可</strong></td></tr><tr><td><strong>組合会</strong></td><td>議決機関。選定議員（事業主が選定）と互選議員（被保険者が互選）が<strong>同数</strong>。理事長は<strong>選定議員である理事</strong>のうちから選挙</td></tr><tr><td><strong>合併・分割</strong></td><td>組合会の議決＋厚生労働大臣の<strong>認可</strong></td></tr><tr><td><strong>解散</strong></td><td>① 組合会議員の定数の<strong>4分の3以上</strong>の多数による議決 ② 健康保険事業の継続不能 ③ <strong>厚生労働大臣による解散命令</strong>。①②は厚生労働大臣の認可が必要</td></tr><tr><td>解散後</td><td>権利義務は<strong>全国健康保険協会</strong>が承継する</td></tr><tr><td>規約</td><td>変更には厚生労働大臣の認可（軽微な事項は届出）</td></tr><tr><td><strong>調整保険料</strong></td><td>財政窮迫組合への交付金等の財源として、健康保険組合連合会が徴収</td></tr></tbody></table>
+<h3>保健事業・福祉事業（150条）</h3>
+<p>被保険者・被扶養者の健康の保持増進のため、<strong>健康教育・健康相談・健康診査</strong>その他必要な事業を行うよう努める。
+<strong>特定健康診査・特定保健指導</strong>（高齢者医療確保法）は、<strong>40歳以上75歳未満</strong>の加入者に対し保険者が実施する義務を負う。</p>
+<hr>
+<h2>6. 通則</h2>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td><strong>時効</strong></td><td>保険給付を受ける権利・保険料を徴収する権利ともに<strong>2年</strong></td></tr><tr><td>届出期限</td><td>資格取得届・喪失届とも<strong>5日以内</strong>（船員は10日以内）</td></tr><tr><td>譲渡・差押えの禁止</td><td>保険給付を受ける権利は譲り渡し、担保に供し、差し押さえることができない</td></tr><tr><td>不服申立て</td><td><strong>社会保険審査官 → 社会保険審査会</strong>。<strong>資格・標準報酬・保険料</strong>に関する処分は再審査請求を経ずに訴訟可</td></tr><tr><td>日雇特例被保険者</td><td>適用事業所に使用される日雇労働者。<strong>健康保険印紙</strong>による保険料納付。特別療養費、傷病手当金（<strong>6か月</strong>を限度）等</td></tr></tbody></table>
+<hr>
+<h2>直前チェック（健保）</h2>
+<ul class="chk"><li>健保組合の設立：単一<strong>700人</strong>／総合<strong>3,000人</strong>／同意<strong>2分の1以上</strong></li><li>適用除外の日数（1か月・2か月・4か月・6か月）と、<strong>所在地が一定しない事業所は例外なし</strong></li><li>短時間労働者の4要件（20時間・88,000円・2か月超・学生でない）</li><li>任意継続：<strong>2か月・20日・2年・全額自己負担・傷病手当金なし</strong></li><li>被扶養者：<strong>130万／150万（19〜23歳）／180万</strong>、同一世帯なら<strong>2分の1未満</strong></li><li>標準報酬：健保<strong>50等級58,000〜1,390,000円</strong>、賞与は<strong>年度累計573万円</strong></li><li>定時決定は<strong>4〜6月の平均・9月から翌年8月</strong></li><li>随時改定は<strong>固定的賃金の変動＋2等級＋17日</strong>、育休終了時は<strong>1等級</strong></li><li>傷病手当金：<strong>継続3日</strong>の待期・<strong>通算1年6か月</strong>・<strong>12か月平均÷30×2/3</strong></li><li>出産手当金：<strong>42日／98日／56日</strong></li><li>埋葬料<strong>5万円</strong>（定額）</li><li>資格喪失後：継続給付<strong>1年以上</strong>／出産育児一時金<strong>6か月以内</strong>／埋葬料<strong>3か月以内</strong></li><li>保険料率の法定範囲<strong>30〜130</strong>、介護保険料率は<strong>全国一律</strong></li><li>時効は保険料も給付も<strong>2年</strong></li><li>保険外併用療養費の3類型（<strong>患者申出療養は評価療養と別</strong>）</li><li>入院時<strong>生活</strong>療養費は<strong>65歳以上</strong>の療養病床</li><li>移送費の3要件／最も経済的な通常の経路・方法</li><li>高額療養費：世帯合算<strong>21,000円</strong>・多数回該当<strong>12か月に3回</strong></li><li>労災の給付を受けられるときは<strong>健保の給付は行わない</strong></li><li>保険医療機関の不正には<strong>100分の40</strong>を加算して徴収</li><li>保険料は<strong>前月分</strong>を当月報酬から控除／賞与は<strong>当月分</strong></li><li>国庫補助は当分の間<strong>1000分の164</strong></li><li>組合の解散議決は<strong>4分の3以上</strong>、権利義務は<strong>協会が承継</strong></li></ul>
+<hr>
+<h2>補遺｜過去問で問われているのに落としやすい論点</h2>
+<h3>保険医療機関・保険薬局／保険医・保険薬剤師（63条〜）</h3>
+<p><strong>過去9年で15問</strong>に登場する頻出項目。</p>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>指定・登録</td><td><strong>厚生労働大臣</strong>が行う（保険医療機関の<strong>指定</strong>／保険医の<strong>登録</strong>）</td></tr><tr><td>有効期間</td><td>保険医療機関の指定は<strong>6年</strong>（更新可）</td></tr><tr><td>辞退</td><td><strong>1か月以上</strong>の予告期間を設けて指定を辞退できる</td></tr><tr><td>取消し</td><td>厚生労働大臣は、療養担当規則に違反した場合等に指定・登録を取り消せる</td></tr><tr><td>地方社会保険医療協議会</td><td>指定・取消しに際して<strong>諮問</strong>する</td></tr></tbody></table>
+<h3>指定訪問看護（88条）</h3>
+<p>居宅で継続して療養を受ける状態にある被保険者が、<strong>主治医の指示</strong>に基づき指定訪問看護事業者から訪問看護を受けたとき、<strong>訪問看護療養費</strong>を支給。
+利用者は<strong>基本利用料</strong>（3割等）と、時間外等の<strong>その他の利用料</strong>を負担する。</p>
+<h3>現物給付と現金給付</h3>
+<table><thead><tr><th>現物給付</th><th>現金給付</th></tr></thead><tbody><tr><td>療養の給付、入院時食事療養費、入院時生活療養費、保険外併用療養費、訪問看護療養費</td><td>療養費、移送費、傷病手当金、出産育児一時金、出産手当金、埋葬料、高額療養費</td></tr></tbody></table>
+<blockquote><p>入院時食事療養費等は法律上「費」だが<strong>現物給付</strong>として扱われる（保険者が直接支払う）点に注意。</p></blockquote>
+<h3>日雇特例被保険者（3条2項）</h3>
+<p>適用事業所に使用される日雇労働者。<strong>健康保険印紙</strong>を貼付して保険料を納付。
+特別療養費、傷病手当金（<strong>6か月</strong>を限度。結核性は1年6か月）、出産育児一時金 等。</p>
+<blockquote><p>年度依存の数値は <span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span> で照合すること。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">1</span>法改正まとめ<span class="sec">（全体版）</span></span></td><td>この科目の令和8年度改正を施行日で確認</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>時効・届出期限・遺族の範囲などを他科目と並べて比較</td></tr><tr><td><span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span></td><td><code>⚠️要確認</code> を付けた年度依存の数値を照合</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 65 ／ 健保</div><h1>適用事業所と被保険者</h1><div class="desc">加入は2分の1・脱退は4分の3。2か月以内でも見込みがあれば最初から</div></div><h3>適用事業所（3条3項）</h3>
+<table class="big"><thead><tr><th>区分</th><th>内容</th></tr></thead><tbody><tr><td><strong>強制</strong>適用事業所</td><td>① <strong>法人</strong>の事業所（業種・人数を問わず、<strong>代表者1人でも</strong>適用）&lt;br&gt;② <strong>個人</strong>経営で、<strong>常時5人以上</strong>の従業員を使用する<strong>法定17業種</strong>の事業所</td></tr><tr><td><strong>任意</strong>適用事業所</td><td>上記以外。<strong>従業員の2分の1以上の同意</strong>を得て事業主が申請し、<strong>厚生労働大臣の認可</strong>を受ける</td></tr></tbody></table>
+<p><strong>法定17業種に含まれないもの</strong>（個人経営なら5人以上でも強制適用にならない）。</p>
+<ul><li><strong>農林水産業</strong></li><li><strong>飲食店、旅館などのサービス業</strong>（ただし令和4年10月から<strong>士業</strong>は追加された）</li><li><strong>宗教業</strong>（神社、寺院、教会）</li></ul>
+<blockquote><p>★令和4年10月から、<strong>弁護士・公認会計士・税理士・社会保険労務士などの士業</strong>が法定業種に加わりました。
+★任意適用事業所の<strong>取消し</strong>には、<strong>従業員の4分の3以上の同意</strong>と厚生労働大臣の認可が必要です。加入は2分の1、脱退は4分の3。</p></blockquote>
+<h3>被保険者（3条1項）</h3>
+<p>適用事業所に使用される者は、<strong>国籍・性別・賃金の額を問わず</strong>被保険者となります。</p>
+<p><strong>適用除外</strong>（3条1項但書）。</p>
+<table class="big"><thead><tr><th>号</th><th>除外される者</th></tr></thead><tbody><tr><td>1号</td><td><strong>船員保険</strong>の被保険者</td></tr><tr><td>2号</td><td>臨時に使用される者で、<strong>日々雇い入れられる者</strong>（1か月を超えて引き続き使用されるに至った場合を除く）</td></tr><tr><td>3号</td><td>臨時に使用される者で、<strong>2か月以内</strong>の期間を定めて使用される者（所定の期間を超えて引き続き使用されることが<strong>見込まれる</strong>場合を除く）</td></tr><tr><td>4号</td><td><strong>季節的業務</strong>（4か月以内）に使用される者</td></tr><tr><td>5号</td><td><strong>臨時的事業の事業所</strong>（6か月以内）に使用される者</td></tr><tr><td>6号</td><td><strong>所在地が一定しない</strong>事業所に使用される者</td></tr><tr><td>7号</td><td>国民健康保険組合の事業所に使用される者</td></tr><tr><td>8号</td><td><strong>後期高齢者医療の被保険者</strong>等</td></tr><tr><td>9号</td><td>厚生労働大臣等の<strong>承認</strong>を受けた者（<strong>任意適用事業所の取消し</strong>等）</td></tr></tbody></table>
+<blockquote><p>★3号は令和4年10月改正。<strong>当初から2か月を超えて使用される見込みがある場合</strong>は、<strong>最初から被保険者</strong>になります。「2か月経過してから」は誤りです。</p></blockquote>
+<h3>短時間労働者の適用拡大</h3>
+<table class="big"><thead><tr><th>要件</th><th>内容</th></tr></thead><tbody><tr><td>① 週の所定労働時間</td><td><strong>20時間以上</strong></td></tr><tr><td>② 賃金</td><td>月額<strong>8.8万円以上</strong>（賞与・残業代・通勤手当を除く）</td></tr><tr><td>③ 雇用期間</td><td><strong>2か月を超えて</strong>使用される見込み</td></tr><tr><td>④ 学生</td><td><strong>学生でない</strong>こと</td></tr><tr><td>⑤ 企業規模</td><td>被保険者の総数が常時<strong>50人を超える</strong>（令和6年10月〜）</td></tr></tbody></table>
+<p><strong>特定適用事業所</strong>に該当しない企業でも、<strong>労使合意</strong>（被保険者の2分の1以上の同意）により<strong>任意特定適用事業所</strong>として適用できます。</p>
+<blockquote><p>★通常の被保険者は「<strong>4分の3基準</strong>」（週の所定労働時間および月の所定労働日数が、通常の労働者の<strong>4分の3以上</strong>）で判定します。4分の3未満の者について上の5要件を見ます。</p></blockquote>
+<h3>任意継続被保険者（3条4項・37条）</h3>
+<table class="big"><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>資格喪失前の被保険者期間</td><td><strong>継続して2か月以上</strong></td></tr><tr><td>申出</td><td>資格を喪失した日から<strong>20日以内</strong>に保険者に申し出る（<strong>正当な理由</strong>があれば期間経過後も可）</td></tr><tr><td>期間</td><td><strong>2年間</strong></td></tr><tr><td>保険料</td><td><strong>全額自己負担</strong>（事業主負担なし）。<strong>前納</strong>もできる</td></tr></tbody></table>
+<p><strong>資格喪失事由</strong>（38条）。</p>
+<ol><li>任意継続被保険者となった日から起算して<strong>2年</strong>を経過したとき</li><li><strong>死亡</strong>したとき</li><li>保険料を<strong>納付期日までに納付しなかった</strong>とき（<strong>納付期日の翌日</strong>に喪失。正当な理由があれば除く）</li><li><strong>被保険者</strong>となったとき</li><li><strong>船員保険</strong>の被保険者となったとき</li><li><strong>後期高齢者医療</strong>の被保険者等となったとき</li><li><strong>任意継続被保険者でなくなることを希望</strong>する旨を保険者に申し出た場合において、その申出が受理された日の属する<strong>月の末日が到来</strong>したとき</li></ol>
+<blockquote><p>★7号は令和4年1月から。<strong>本人の希望で脱退できる</strong>ようになりました。
+★保険料の基礎となる標準報酬月額は、<strong>資格喪失時の標準報酬月額</strong>と<strong>全被保険者の平均標準報酬月額</strong>の<strong>いずれか低い額</strong>です（保険者が定める場合はその額）。</p></blockquote>
+<h3>特例退職被保険者</h3>
+<p><strong>特定健康保険組合</strong>（厚生労働大臣の認可）の組合員であった者で、<strong>老齢厚生年金等の受給権者</strong>が対象です。<strong>後期高齢者医療の被保険者となるまで</strong>（75歳まで）継続できます。</p>
+<blockquote><p>★任意継続の2年制限がありません。ここが違いです。</p></blockquote>
+<h3>資格の得喪と確認</h3>
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>取得</td><td>適用事業所に<strong>使用されるに至った日</strong>、適用事業所となった日、適用除外に該当しなくなった日</td></tr><tr><td>喪失</td><td>死亡した日の<strong>翌日</strong>、事業所に使用されなくなった日の<strong>翌日</strong>、適用除外に該当した<strong>その日</strong>、任意適用事業所の取消しの認可があった日の<strong>翌日</strong></td></tr><tr><td>確認</td><td>保険者等の<strong>確認</strong>によって効力を生ずる（<strong>任意継続被保険者・特例退職被保険者を除く</strong>）</td></tr></tbody></table>
+<blockquote><p>★<strong>適用除外に該当したときだけ「その日」</strong>に喪失します（翌日ではありません）。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">64</span>健康保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>厚年・国年と並べて見る</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 66 ／ 健保</div><h1>標準報酬と保険料</h1><div class="desc">健保50等級・厚年32等級。賞与は年度573万円と1回150万円</div></div><h3>標準報酬月額（40条）</h3>
+<p><strong>第1級58,000円 〜 第50級1,390,000円</strong>の<strong>50等級</strong>に区分されています。</p>
+<blockquote><p>★厚年は<strong>第1級88,000円〜第32級650,000円の32等級</strong>。健保との違いが最頻出です。</p></blockquote>
+<p><strong>等級の改定</strong>：毎年3月31日における全被保険者の標準報酬月額を平均した額の<strong>2倍</strong>に相当する額が、最高等級の標準報酬月額を超える状態が継続すると認められるときは、その年の<strong>9月1日</strong>から、<strong>政令</strong>で等級を追加できます。</p>
+<h3>報酬（3条5項）と賞与（3条6項）</h3>
+<table class="big"><thead><tr><th></th><th>定義</th></tr></thead><tbody><tr><td><strong>報酬</strong></td><td>賃金、給料、俸給、手当、賞与その他いかなる名称であるかを問わず、<strong>労働者が労働の対償として受けるすべてのもの</strong>。ただし<strong>臨時に受けるもの</strong>および<strong>3か月を超える期間ごとに受けるもの</strong>を除く</td></tr><tr><td><strong>賞与</strong></td><td>上記のうち<strong>3か月を超える期間ごとに受けるもの</strong></td></tr></tbody></table>
+<blockquote><p>★区切りは「<strong>3か月を超える期間ごと</strong>」。年4回以上支給される賞与は<strong>報酬</strong>に含めます（＝標準報酬月額の対象）。年3回以下なら<strong>賞与</strong>です。
+★<strong>現物給与</strong>（食事・住宅等）も報酬に含まれ、<strong>厚生労働大臣が定める価額</strong>（都道府県ごと）で換算します。</p></blockquote>
+<h3>4つの決定・改定</h3>
+<table class="big"><thead><tr><th>種類</th><th>条</th><th>時期</th><th>内容</th></tr></thead><tbody><tr><td><strong>資格取得時決定</strong></td><td>42条</td><td>資格取得時</td><td>月給制は<strong>その月の報酬額</strong>、日給・時給制は<strong>同様の業務に従事し同様の報酬を受ける者の報酬の平均額</strong>から算定</td></tr><tr><td><strong>定時決定</strong></td><td>41条</td><td><strong>毎年7月1日</strong>現在</td><td><strong>4月・5月・6月</strong>に受けた報酬の平均。<strong>その年の9月から翌年8月</strong>まで適用</td></tr><tr><td><strong>随時改定</strong></td><td>43条</td><td>随時</td><td>固定的賃金の変動等により、<strong>継続した3か月間</strong>の報酬の平均が<strong>2等級以上</strong>変動したとき。<strong>4か月目</strong>から改定</td></tr><tr><td><strong>育児休業等終了時改定</strong></td><td>43条の2</td><td>育休終了時</td><td>育休終了日の翌日が属する月以後<strong>3か月間</strong>の報酬の平均。<strong>2等級以上の変動は不要</strong>。4か月目から</td></tr><tr><td><strong>産前産後休業終了時改定</strong></td><td>43条の3</td><td>産休終了時</td><td>同上</td></tr></tbody></table>
+<p><strong>定時決定の対象外</strong>（41条1項但書）。</p>
+<ul><li><strong>6月1日から7月1日</strong>までに被保険者の資格を取得した者</li><li><strong>7月・8月・9月</strong>に随時改定・育休終了時改定・産休終了時改定が行われる（または行われるべき）者</li></ul>
+<p><strong>随時改定の3要件</strong>（すべて必要）。</p>
+<ol><li><strong>固定的賃金</strong>の変動または<strong>賃金体系</strong>の変更があったこと</li><li>変動月以後の<strong>継続した3か月間</strong>の各月とも、支払基礎日数が<strong>17日以上</strong>であること</li><li>3か月間の報酬の平均による標準報酬月額と現在のものとの間に<strong>2等級以上</strong>の差が生じたこと</li></ol>
+<blockquote><p>★<strong>残業手当の増減だけ</strong>では随時改定は行われません（固定的賃金の変動が必要）。
+★定時決定では、支払基礎日数<strong>17日未満</strong>の月を除いて平均します。<strong>短時間労働者</strong>は<strong>11日以上</strong>、パートタイム（4分の3基準を満たす者）は3か月とも17日未満なら<strong>15日以上</strong>の月で算定します。</p></blockquote>
+<h3>標準賞与額（45条）</h3>
+<p>賞与額から<strong>1,000円未満を切り捨てた額</strong>。</p>
+<table class="big"><thead><tr><th></th><th>上限</th></tr></thead><tbody><tr><td><strong>健康保険</strong></td><td><strong>年度（4月1日〜翌年3月31日）の累計で573万円</strong></td></tr><tr><td><strong>厚生年金保険</strong></td><td><strong>1回につき150万円</strong></td></tr></tbody></table>
+<blockquote><p>★健保は<strong>年度累計573万円</strong>、厚年は<strong>1回150万円</strong>。ここは必ず問われます。</p></blockquote>
+<h3>保険料（156条）</h3>
+<pre><code>保険料額 ＝（標準報酬月額 ＋ 標準賞与額）×（一般保険料率 ＋ 介護保険料率）</code></pre>
+<table class="big"><thead><tr><th>保険料率</th><th>内容</th></tr></thead><tbody><tr><td><strong>一般保険料率</strong></td><td><strong>基本保険料率 ＋ 特定保険料率</strong>。協会けんぽは<strong>都道府県単位</strong>で1000分の<strong>30〜130</strong>の範囲</td></tr><tr><td><strong>特定保険料率</strong></td><td>後期高齢者支援金・前期高齢者納付金等に充てる分</td></tr><tr><td><strong>介護保険料率</strong></td><td><strong>介護保険第2号被保険者</strong>（40歳以上65歳未満）である被保険者について</td></tr></tbody></table>
+<p><strong>健康保険組合</strong>は、規約で<strong>事業主負担割合を2分の1を超えて</strong>定めることができます（協会けんぽは<strong>労使折半</strong>が原則）。</p>
+<blockquote><p>★<strong>任意継続被保険者は全額自己負担</strong>です。</p></blockquote>
+<h3>保険料の納付（161条・164条）</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>納付義務者</td><td><strong>事業主</strong>（被保険者負担分も含めて納付する）</td></tr><tr><td>納期限</td><td><strong>翌月末日</strong></td></tr><tr><td>控除</td><td>事業主は、被保険者に<strong>通貨をもって報酬を支払う際</strong>に、前月分の保険料を控除できる（<strong>前月分控除の原則</strong>）</td></tr><tr><td>賞与からの控除</td><td>賞与を支払う際は<strong>その月</strong>の標準賞与額に係る保険料を控除できる</td></tr></tbody></table>
+<blockquote><p>★<strong>資格喪失月の保険料は徴収されません</strong>（月末退職の場合、喪失日は翌月1日なので、その月の保険料は徴収されます）。
+★<strong>同月得喪</strong>（同じ月に資格取得と喪失）の場合、健保では<strong>1か月分の保険料を徴収</strong>します（厚年は令和2年から徴収しない扱いに変更）。</p></blockquote>
+<h3>産前産後休業・育児休業中の免除（159条・159条の3）</h3>
+<table><thead><tr><th>休業</th><th>免除される期間</th></tr></thead><tbody><tr><td><strong>産前産後休業</strong></td><td>開始月から終了日の翌日が属する月の<strong>前月</strong>まで</td></tr><tr><td><strong>育児休業等</strong></td><td>同上。ただし<strong>同一月内に14日以上</strong>の育児休業を取得した場合はその月も免除。<strong>賞与</strong>に係る保険料は<strong>1か月を超える</strong>育児休業の場合に免除</td></tr></tbody></table>
+<blockquote><p>★免除されるのは<strong>事業主負担分も含めた全額</strong>です。免除期間中も<strong>被保険者資格は継続</strong>し、<strong>保険料を納めたものとして扱われます</strong>。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">64</span>健康保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>厚年・国年と並べて見る</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 67 ／ 健保</div><h1>療養の給付と一部負担金</h1><div class="desc">指定は機関・登録は人。選定療養だけ保険導入を前提としない</div></div><h3>療養の給付（63条）</h3>
+<p>被保険者の<strong>疾病・負傷</strong>に関して、次の給付を<strong>現物</strong>で行います。</p>
+<ol><li><strong>診察</strong></li><li><strong>薬剤または治療材料</strong>の支給</li><li><strong>処置、手術その他の治療</strong></li><li><strong>居宅</strong>における療養上の管理およびその療養に伴う世話その他の看護</li><li><strong>病院・診療所への入院</strong>およびその療養に伴う世話その他の看護</li></ol>
+<p><strong>給付されないもの</strong>。</p>
+<table class="big"><thead><tr><th>除外</th><th>理由</th></tr></thead><tbody><tr><td><strong>食事の提供</strong>である療養（入院時食事療養費で対応）</td><td>別建ての給付</td></tr><tr><td><strong>生活療養</strong>（療養病床に入院する65歳以上）（入院時生活療養費で対応）</td><td>同上</td></tr><tr><td><strong>評価療養・患者申出療養・選定療養</strong>（保険外併用療養費で対応）</td><td>同上</td></tr></tbody></table>
+<blockquote><p>★<strong>業務災害・通勤災害</strong>は労災保険の対象なので、健保からは給付されません（55条）。
+★令和4年から、<strong>業務外の事由</strong>であれば<strong>副業・兼業先の業務</strong>によるものも健保の対象です（従来の「業務上」の除外が労災の対象に限定された）。</p></blockquote>
+<h3>保険医療機関・保険薬局（63条3項・65条）</h3>
+<p>被保険者は、次のいずれかで療養の給付を受けます。</p>
+<ol><li><strong>厚生労働大臣の指定</strong>を受けた病院・診療所（<strong>保険医療機関</strong>）または薬局（<strong>保険薬局</strong>）</li><li>特定の保険者が管掌する被保険者に対し療養の給付を行う<strong>健康保険組合が開設する病院・診療所・薬局</strong></li><li><strong>健康保険組合である保険者</strong>が開設する病院・診療所・薬局</li></ol>
+<table class="big"><thead><tr><th>手続</th><th></th></tr></thead><tbody><tr><td>指定</td><td><strong>厚生労働大臣</strong>が、病院・診療所・薬局の<strong>開設者の申請</strong>により行う</td></tr><tr><td>有効期間</td><td><strong>6年</strong>（<strong>申出がなければ自動更新</strong>される場合がある）</td></tr><tr><td>辞退</td><td><strong>1か月以上の予告期間</strong>を設けて辞退できる</td></tr><tr><td>取消し</td><td>厚生労働大臣。取消し後<strong>5年</strong>を経過しないものは再指定を拒否できる</td></tr></tbody></table>
+<p><strong>保険医・保険薬剤師</strong>は、<strong>厚生労働大臣の登録</strong>を受けた医師・歯科医師・薬剤師です（64条）。指定は「機関」、登録は「人」です。</p>
+<blockquote><p>★指定・登録の<strong>取消し・拒否</strong>をするときは、<strong>地方社会保険医療協議会に諮問</strong>しなければなりません。</p></blockquote>
+<h3>一部負担金（74条）</h3>
+<table class="big"><thead><tr><th>年齢・区分</th><th>負担割合</th></tr></thead><tbody><tr><td><strong>義務教育就学前</strong></td><td><strong>2割</strong></td></tr><tr><td><strong>義務教育就学後〜70歳未満</strong></td><td><strong>3割</strong></td></tr><tr><td><strong>70歳以上75歳未満</strong>（一般・低所得者）</td><td><strong>2割</strong></td></tr><tr><td><strong>70歳以上75歳未満</strong>（<strong>現役並み所得者</strong>）</td><td><strong>3割</strong></td></tr></tbody></table>
+<blockquote><p>★健保の被保険者・被扶養者は<strong>75歳になると後期高齢者医療</strong>に移ります。
+★「現役並み所得者」は、標準報酬月額<strong>28万円以上</strong>の者（一定の収入基準に該当すれば申請により2割になる場合があります）。</p></blockquote>
+<p><strong>一部負担金の減免（75条の2）</strong></p>
+<p>保険者は、<strong>災害その他の厚生労働省令で定める特別の事情</strong>により一部負担金を支払うことが困難であると認められる者に対し、次の措置をとることができます。</p>
+<ol><li><strong>減額</strong></li><li><strong>支払を免除</strong></li><li>保険医療機関等への支払に代えて、<strong>直接徴収</strong>することとし、その徴収を<strong>猶予</strong></li></ol>
+<blockquote><p>★「しなければならない」ではなく「<strong>とることができる</strong>」（<strong>任意</strong>）です。</p></blockquote>
+<h3>保険外併用療養費（86条）</h3>
+<table class="big"><thead><tr><th>種類</th><th>内容</th></tr></thead><tbody><tr><td><strong>評価療養</strong></td><td>先進医療、医薬品・医療機器の<strong>治験</strong>に係る診療、薬事承認後で保険収載前の使用など。<strong>保険導入のための評価</strong>を行うもの</td></tr><tr><td><strong>患者申出療養</strong></td><td>高度の医療技術を用いた療養であって、<strong>患者の申出</strong>に基づき、<strong>未承認薬等</strong>を使用するもの（平成28年創設）</td></tr><tr><td><strong>選定療養</strong></td><td><strong>特別の療養環境</strong>（差額ベッド）、<strong>予約診療</strong>、<strong>時間外診療</strong>、<strong>200床以上</strong>の病院の未紹介患者の初診、制限回数を超える医療行為、<strong>長期収載品</strong>の選定療養（令和6年10月〜）など。<strong>保険導入を前提としない</strong>もの</td></tr></tbody></table>
+<p>基礎的部分は保険給付（保険外併用療養費）、上乗せ部分は<strong>全額自己負担</strong>です。</p>
+<blockquote><p>★<strong>選定療養だけが「保険導入を前提としない」</strong>。ここが最頻出です。</p></blockquote>
+<h3>入院時食事療養費（85条）・入院時生活療養費（85条の2）</h3>
+<table class="big"><thead><tr><th></th><th>対象</th><th>自己負担</th></tr></thead><tbody><tr><td><strong>入院時食事療養費</strong></td><td>入院中の<strong>食事</strong>の提供</td><td><strong>標準負担額</strong>（一般：1食510円※令和8年度の額は最新の告示による）</td></tr><tr><td><strong>入院時生活療養費</strong></td><td><strong>療養病床に入院する65歳以上</strong>の食事・<strong>居住費</strong></td><td>標準負担額</td></tr></tbody></table>
+<blockquote><p>★<strong>標準負担額は高額療養費の対象になりません</strong>。ここが定番の引っかけです。</p></blockquote>
+<h3>療養費（87条）</h3>
+<p><strong>現物給付が困難</strong>であると保険者が認めるとき、または<strong>保険医療機関以外</strong>で診療を受けたことにつき<strong>やむを得ない</strong>と認めるときに、<strong>現金</strong>で支給されます。</p>
+<table><thead><tr><th>例</th></tr></thead><tbody><tr><td>保険証を持たずに受診し全額自己負担した</td></tr><tr><td>海外で療養を受けた（<strong>海外療養費</strong>）</td></tr><tr><td><strong>柔道整復師</strong>、<strong>あん摩マッサージ指圧師・はり師・きゅう師</strong>の施術（医師の同意が必要）</td></tr><tr><td><strong>治療用装具</strong>（コルセット等）を購入した</td></tr></tbody></table>
+<blockquote><p>★療養費は<strong>保険者が必要と認めた場合に支給される</strong>もので、<strong>被保険者に請求権があるわけではありません</strong>（「支給することができる」）。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">64</span>健康保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>厚年・国年と並べて見る</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 68 ／ 健保</div><h1>高額療養費と傷病手当金</h1><div class="desc">83/53/28万円の区分。待期3日は連続、支給は通算1年6か月</div></div><h3>高額療養費（115条）</h3>
+<p><strong>一部負担金等の額</strong>が著しく高額であるときに、自己負担限度額を超えた分が支給されます。</p>
+<table class="big"><thead><tr><th>70歳未満の所得区分</th><th>自己負担限度額（月額）</th></tr></thead><tbody><tr><td>区分ア（標準報酬月額<strong>83万円以上</strong>）</td><td>252,600円＋(医療費−842,000円)×1%</td></tr><tr><td>区分イ（<strong>53万〜79万円</strong>）</td><td>167,400円＋(医療費−558,000円)×1%</td></tr><tr><td>区分ウ（<strong>28万〜50万円</strong>）</td><td>80,100円＋(医療費−267,000円)×1%</td></tr><tr><td>区分エ（<strong>26万円以下</strong>）</td><td><strong>57,600円</strong></td></tr><tr><td>区分オ（<strong>低所得者</strong>＝市町村民税非課税等）</td><td><strong>35,400円</strong></td></tr></tbody></table>
+<blockquote><p>★区分の境目は標準報酬月額<strong>83／53／28</strong>万円。医療費から引く額（842,000／558,000／267,000）は、それぞれ<strong>限度額の×約1/300</strong>の関係にあります。</p></blockquote>
+<p><strong>多数回該当</strong>：直近<strong>12か月</strong>間に<strong>3回以上</strong>高額療養費が支給された場合、<strong>4回目</strong>から限度額が下がります（区分ウなら<strong>44,400円</strong>、区分オなら<strong>24,600円</strong>）。</p>
+<p><strong>世帯合算</strong>：同一世帯（同一の被保険者に係る被保険者・被扶養者）で、同一月に<strong>21,000円以上</strong>の自己負担が複数あるときは合算できます（70歳未満）。</p>
+<blockquote><p>★合算のハードルは<strong>21,000円</strong>。70歳以上には金額の制限がなく<strong>すべて合算</strong>できます。</p></blockquote>
+<p><strong>現物給付化</strong>：<strong>限度額適用認定証</strong>（またはマイナ保険証によるオンライン資格確認）を提示すれば、窓口での支払が限度額までで済みます。</p>
+<p><strong>対象外</strong>：<strong>入院時食事療養費・入院時生活療養費の標準負担額</strong>、<strong>保険外併用療養費の自己負担分（上乗せ部分）</strong>、<strong>差額ベッド代</strong>などは対象になりません。</p>
+<h3>高額介護合算療養費（115条の2）</h3>
+<p><strong>8月1日から翌年7月31日</strong>までの1年間に、<strong>医療保険</strong>と<strong>介護保険</strong>の自己負担の合計が著しく高額であるときに支給されます。</p>
+<blockquote><p>★期間が<strong>8月〜翌年7月</strong>である点、<strong>医療と介護の合算</strong>である点が問われます。</p></blockquote>
+<h3>傷病手当金（99条）</h3>
+<p><strong>療養のため労務に服することができない</strong>ときに、生活保障として支給されます。</p>
+<table class="big"><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>①</td><td><strong>療養のため</strong>であること（<strong>保険給付として受ける療養に限りません</strong>。自費診療でもよい）</td></tr><tr><td>②</td><td><strong>労務に服することができない</strong>こと</td></tr><tr><td>③</td><td><strong>継続した3日間</strong>（<strong>待期</strong>）を経過していること</td></tr><tr><td>④</td><td><strong>報酬を受けていない</strong>こと（受けていても傷病手当金より少なければ差額を支給）</td></tr></tbody></table>
+<pre><code>1日あたりの額 ＝ 支給開始日以前の継続した12か月間の各月の
+　　　　　　　　標準報酬月額の平均額 ÷ 30 × 3分の2</code></pre>
+<p>被保険者期間が12か月に満たない場合は、<strong>①資格取得月以後の各月の標準報酬月額の平均額</strong>と、<strong>②当該年度の前年度9月30日における全被保険者の標準報酬月額の平均額</strong>（政令で定める額）の、<strong>いずれか少ない額</strong>を用います。</p>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>待期</strong></td><td><strong>継続した3日間</strong>（<strong>連続が必要</strong>。労災の休業補償給付は通算でよいのと対照的）</td></tr><tr><td><strong>支給期間</strong></td><td><strong>支給を始めた日から通算して1年6か月</strong></td></tr></tbody></table>
+<blockquote><p>★令和4年1月から「<strong>通算</strong>」になりました。途中で出勤した期間があれば、その分だけ後ろに延びます。
+★待期の3日間には、<strong>有給休暇・公休日</strong>も含まれます。報酬の有無は関係ありません。</p></blockquote>
+<h3>調整（傷病手当金と他の給付）</h3>
+<table class="big"><thead><tr><th>併給</th><th>調整</th></tr></thead><tbody><tr><td><strong>出産手当金</strong></td><td>出産手当金が優先。傷病手当金の額が出産手当金を超えるときは<strong>差額</strong>を支給</td></tr><tr><td><strong>障害厚生年金</strong></td><td>同一の傷病について、障害厚生年金の額（同一支給事由の障害基礎年金があればその合算額）の<strong>360分の1</strong>が傷病手当金の額より少ないときは<strong>差額</strong>を支給</td></tr><tr><td><strong>障害手当金</strong></td><td>傷病手当金の額の合計額が障害手当金の額に達するまで<strong>支給されない</strong></td></tr><tr><td><strong>老齢退職年金給付</strong>（資格喪失後の継続給付の場合）</td><td>年金額の<strong>360分の1</strong>が傷病手当金より少ないときは<strong>差額</strong>を支給</td></tr><tr><td><strong>労災の休業補償給付</strong></td><td>同一の疾病・負傷について<strong>傷病手当金は支給されない</strong>（休業補償給付が優先）</td></tr></tbody></table>
+<blockquote><p>★調整は「<strong>360分の1</strong>」で日額に直して比べます。「365分の1」は誤りです。</p></blockquote>
+<h3>資格喪失後の継続給付（104条）</h3>
+<table><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>①</td><td>資格喪失の日の<strong>前日</strong>まで<strong>引き続き1年以上</strong>被保険者（任意継続被保険者・特例退職被保険者であった期間を除く）であったこと</td></tr><tr><td>②</td><td>資格喪失の際に<strong>傷病手当金または出産手当金の支給を受けている</strong>こと</td></tr></tbody></table>
+<blockquote><p>★①の「1年以上」は<strong>継続</strong>していることが必要です。合算ではありません。
+★資格喪失時に<strong>受けられる状態</strong>にあればよく、実際に受給していなくても（待期が完成していれば）継続給付の対象になります。
+★資格喪失後に<strong>傷病が再発</strong>しても、いったん労務可能になっていれば継続給付は受けられません。</p></blockquote>
+<h3>出産手当金（102条）</h3>
+<p><strong>出産の日</strong>（出産の日が出産の予定日後であるときは出産の予定日）<strong>以前42日</strong>（多胎妊娠の場合は<strong>98日</strong>）から、<strong>出産の日後56日</strong>までの間において労務に服さなかった期間について支給されます。</p>
+<p>額の計算は傷病手当金と同じです。<strong>待期はありません</strong>。</p>
+<blockquote><p>★<strong>42日・98日・56日</strong>。出産が予定日より遅れた場合、遅れた期間も支給対象になります（産前は「予定日以前42日」で計算するため）。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">64</span>健康保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>厚年・国年と並べて見る</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 69 ／ 健保</div><h1>被扶養者とその他の給付</h1><div class="desc">兄弟姉妹と孫は同居不要。傷病手当金と出産手当金に家族版はない</div></div><h3>被扶養者の範囲（3条7項）</h3>
+<table class="big"><thead><tr><th>号</th><th>範囲</th><th>同一世帯の要否</th></tr></thead><tbody><tr><td>1号</td><td><strong>直系尊属、配偶者</strong>（事実婚を含む）、<strong>子、孫、兄弟姉妹</strong></td><td><strong>不要</strong>（生計維持だけでよい）</td></tr><tr><td>2号</td><td>被保険者の<strong>三親等内の親族</strong>で1号以外の者</td><td><strong>必要</strong></td></tr><tr><td>3号</td><td>被保険者の<strong>事実婚の配偶者の父母および子</strong></td><td><strong>必要</strong></td></tr><tr><td>4号</td><td>3号の配偶者の<strong>死亡後</strong>におけるその父母および子</td><td><strong>必要</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>兄弟姉妹</strong>は同一世帯不要（平成28年改正）。<strong>孫</strong>も不要です。「兄弟姉妹は同居が必要」は誤りです。
+★<strong>三親等内</strong>の親族が範囲です（四親等はどんな場合も不可）。</p></blockquote>
+<h3>収入要件</h3>
+<table class="big"><thead><tr><th>区分</th><th>要件</th></tr></thead><tbody><tr><td><strong>同一世帯</strong>の場合</td><td>年間収入が<strong>130万円未満</strong>（<strong>60歳以上</strong>または<strong>障害厚生年金の受給要件に該当する程度の障害者</strong>は<strong>180万円未満</strong>）、かつ<strong>被保険者の年間収入の2分の1未満</strong></td></tr><tr><td><strong>同一世帯でない</strong>場合</td><td>上記の収入未満、かつ<strong>被保険者からの援助額より少ない</strong>こと</td></tr></tbody></table>
+<blockquote><p>★収入には<strong>雇用保険の基本手当・公的年金・傷病手当金</strong>などの<strong>非課税の収入も含まれます</strong>。所得税法上の扶養とは基準が違います。
+★2分の1以上でも、被保険者の収入により生計を維持していると保険者が認めれば被扶養者となる場合があります。</p></blockquote>
+<h3>国内居住要件（令和2年4月〜）</h3>
+<p>被扶養者は、原則として<strong>日本国内に住所を有する</strong>ことが必要です。</p>
+<p><strong>例外</strong>（国内に住所がなくても被扶養者となる）。</p>
+<ol><li><strong>外国において留学</strong>をする学生</li><li>外国に<strong>赴任する被保険者に同行</strong>する者</li><li><strong>観光、保養またはボランティア活動</strong>その他就労以外の目的で一時的に海外に渡航する者</li><li>被保険者が外国に赴任している間に<strong>当該被保険者との身分関係が生じた者</strong>で、2号に相当すると認められるもの</li><li>上記のほか、<strong>渡航目的その他の事情を考慮して日本国内に生活の基礎があると認められる</strong>者</li></ol>
+<p>逆に、日本に住所があっても<strong>医療滞在ビザ</strong>・<strong>観光等の目的で一時的に滞在する者</strong>は被扶養者になりません。</p>
+<h3>家族に関する給付</h3>
+<table class="big"><thead><tr><th>給付</th><th>内容</th></tr></thead><tbody><tr><td><strong>家族療養費</strong>（110条）</td><td>被扶養者の療養。<strong>保険者が被扶養者に対して支給</strong>する（形式上は被保険者に支給）</td></tr><tr><td><strong>家族訪問看護療養費</strong>（111条）</td><td>被扶養者の訪問看護</td></tr><tr><td><strong>家族移送費</strong>（112条）</td><td>被扶養者の移送</td></tr><tr><td><strong>家族埋葬料</strong>（113条）</td><td>被扶養者が死亡したとき<strong>5万円</strong></td></tr><tr><td><strong>家族出産育児一時金</strong>（114条）</td><td>被扶養者が出産したとき <strong>50万円</strong>（産科医療補償制度に未加入の場合は48.8万円）</td></tr></tbody></table>
+<blockquote><p>★<strong>傷病手当金・出産手当金には家族版がありません</strong>。被扶養者は所得保障の対象外です。ここが最頻出です。</p></blockquote>
+<h3>埋葬料・埋葬費（100条）</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>埋葬料</strong></td><td>被保険者が死亡したとき、<strong>埋葬を行う者</strong>（被保険者により生計を維持していた者）に<strong>5万円</strong></td></tr><tr><td><strong>埋葬費</strong></td><td>埋葬料を受けるべき者がいないとき、<strong>実際に埋葬を行った者</strong>に、埋葬に要した費用に相当する額（<strong>5万円を上限</strong>）</td></tr></tbody></table>
+<blockquote><p>★埋葬料の受給者は「生計維持関係のある者」で、<strong>同一世帯である必要はなく、親族でなくてもかまいません</strong>。
+★資格喪失後<strong>3か月以内</strong>に死亡したときも埋葬料が支給されます（105条）。</p></blockquote>
+<h3>出産育児一時金（101条）</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>額</td><td><strong>50万円</strong>（産科医療補償制度に加入していない医療機関等での出産は<strong>48.8万円</strong>）</td></tr><tr><td>対象</td><td><strong>妊娠4か月（85日）以上</strong>の出産。<strong>死産・流産・人工妊娠中絶</strong>も含む</td></tr><tr><td>直接支払制度</td><td>保険者から医療機関へ直接支払う</td></tr></tbody></table>
+<blockquote><p>★<strong>妊娠85日以上</strong>であれば生産・死産を問いません。ここが問われます。
+★資格喪失後<strong>6か月以内</strong>の出産についても支給されます（106条）。ただし<strong>任意継続被保険者となった場合を除く</strong>などの取扱いに注意。</p></blockquote>
+<h3>移送費（97条）・訪問看護療養費（88条）</h3>
+<table class="big"><thead><tr><th>給付</th><th>要件</th></tr></thead><tbody><tr><td><strong>移送費</strong></td><td>療養の給付を受けるため<strong>病院・診療所に移送</strong>されたとき。<strong>保険者が必要と認める場合</strong>に、最も経済的な通常の経路・方法による<strong>実費</strong>を支給</td></tr><tr><td><strong>訪問看護療養費</strong></td><td><strong>居宅</strong>において継続して療養を受ける状態にある者が、<strong>指定訪問看護事業者</strong>から訪問看護を受けたとき。<strong>主治医の指示</strong>が必要</td></tr></tbody></table>
+<blockquote><p>★移送費は<strong>現金給付</strong>、訪問看護療養費は<strong>現物給付</strong>です。</p></blockquote>
+<h3>給付制限（116条〜122条）</h3>
+<table class="big"><thead><tr><th>条</th><th>事由</th><th>効果</th></tr></thead><tbody><tr><td>116条</td><td><strong>故意の犯罪行為</strong>により、または<strong>故意</strong>に給付事由を生じさせたとき</td><td>保険給付を<strong>行わない</strong></td></tr><tr><td>117条</td><td><strong>闘争、泥酔または著しい不行跡</strong>によって給付事由を生じさせたとき</td><td>保険給付の<strong>全部または一部を行わないことができる</strong></td></tr><tr><td>118条</td><td><strong>少年院等に収容</strong>されたとき、<strong>刑事施設等に拘禁</strong>されたとき</td><td>疾病・負傷・出産についての給付を<strong>行わない</strong>（<strong>埋葬料・家族給付は除く</strong>）</td></tr><tr><td>119条</td><td>正当な理由なく<strong>療養に関する指示に従わない</strong>とき</td><td>保険給付の<strong>一部を行わないことができる</strong></td></tr><tr><td>120条</td><td>正当な理由なく<strong>保険者の届出・書類提出・質問・診断</strong>に応じないとき</td><td>保険給付の<strong>全部または一部を行わないことができる</strong></td></tr><tr><td>121条</td><td><strong>保険料の滞納</strong>（任意継続被保険者等）</td><td>保険給付の<strong>全部または一部の支給を一時差し止めることができる</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>故意は絶対的</strong>（行わない）、<strong>故意の犯罪行為も絶対的</strong>。<strong>闘争・泥酔・不行跡は裁量的</strong>。この区別が問われます。
+★<strong>自殺未遂</strong>による傷病は、<strong>精神疾患等に起因する場合は「故意」に当たらない</strong>として給付対象になります。</p></blockquote>
+<h3>法人の役員に係る保険給付の特例（53条の2）</h3>
+<p>被保険者またはその被扶養者が<strong>法人の役員</strong>であるときは、その<strong>法人の役員としての業務</strong>に起因する疾病・負傷等については、<strong>保険給付を行いません</strong>。</p>
+<p><strong>ただし、被保険者の数が5人未満</strong>である適用事業所に使用される法人の役員としての業務であって、<strong>一般の従業員が従事する業務と同一</strong>であると認められるものについては、<strong>保険給付が行われます</strong>。</p>
+<blockquote><p>★「法人の役員」には、<strong>相談役・顧問その他名称を問わず、取締役等と同等以上の支配力を有すると認められる者</strong>を含みます。
+★<strong>5人未満</strong>という規模と「一般従業員と同一の業務」の2つが例外の要件です。</p></blockquote>
+<h3>指定訪問看護の事業の運営に関する基準（92条）</h3>
+<p>指定訪問看護事業者は、訪問看護事業所ごとに、厚生労働省令で定める基準に従い<strong>厚生労働省令で定める員数の看護師その他の従業者</strong>を有しなければなりません。事業の運営に関する基準は<strong>厚生労働大臣</strong>が定め、<strong>指定訪問看護の取扱いに関する部分</strong>を定めようとするときは<strong>中央社会保険医療協議会に諮問</strong>します。</p>
+<h3>徴収に関する通則（183条）</h3>
+<blockquote><p>保険料等は、この法律に別段の規定があるものを除き、<strong>国税徴収の例</strong>により徴収する。</p></blockquote>
+<p>徴収の優先順位は<strong>国税および地方税に次ぐ</strong>ものとされています（182条）。</p>
+<h3>基金等への事務の委託（205条の4）</h3>
+<p>保険者は、<strong>保険給付の支給に関する事務</strong>等を、<strong>社会保険診療報酬支払基金</strong>または<strong>国民健康保険団体連合会</strong>に委託することができます。</p>
+<blockquote><p>★審査・支払を行う機関に、給付事務そのものを委託できるという規定です。</p></blockquote>
+<h3>日雇特例被保険者（3条2項・123条〜）</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>対象</td><td><strong>臨時に使用される者で日々雇い入れられる者</strong>など、健保の適用除外に当たるが<strong>日雇特例被保険者手帳</strong>の交付を受けた者</td></tr><tr><td>保険者</td><td><strong>全国健康保険協会</strong></td></tr><tr><td>保険料</td><td><strong>健康保険印紙</strong>を手帳に貼付して納付（労使折半）</td></tr><tr><td>給付</td><td>療養の給付（<strong>初めて療養を受ける月の前2か月に通算26日分</strong>または<strong>前6か月に通算78日分</strong>の保険料納付が必要）</td></tr><tr><td>給付期間</td><td>同一の疾病について<strong>1年</strong>（<strong>厚生労働大臣が指定する疾病は5年</strong>）</td></tr></tbody></table>
+<p><strong>日雇拠出金</strong>（173条・174条）：厚生労働大臣は、日雇特例被保険者に係る健康保険事業に要する費用に充てるため、<strong>日雇関係組合</strong>（日雇特例被保険者を使用する事業主が設立する健康保険組合）から<strong>日雇拠出金</strong>を徴収します。当該年度の額は<strong>概算日雇拠出金</strong>の額とし、後に<strong>確定日雇拠出金</strong>で精算します。</p>
+<blockquote><p>★「概算・確定」で精算する仕組みは労働保険料と同じ考え方です。</p></blockquote>
+<h3>健康保険組合（8条〜)</h3>
+<table class="big"><thead><tr><th>種類</th><th>内容</th></tr></thead><tbody><tr><td><strong>単一組合</strong></td><td>1つの適用事業所（常時<strong>700人以上</strong>）</td></tr><tr><td><strong>総合組合</strong></td><td>2以上の適用事業所（合算して常時<strong>3,000人以上</strong>）</td></tr><tr><td><strong>地域型健康保険組合</strong></td><td>同一都道府県内の複数の健康保険組合が<strong>合併</strong>して設立するもの（<strong>厚生労働大臣の認可</strong>）</td></tr></tbody></table>
+<p><strong>調整保険料率</strong>：健康保険組合連合会が行う<strong>交付金交付事業</strong>の財源として、一般保険料率のうち<strong>調整保険料率</strong>に応ずる部分を拠出します。</p>
+<blockquote><p>★組合の設立には、被保険者となるべき者の<strong>2分の1以上の同意</strong>と<strong>厚生労働大臣の認可</strong>が必要です。</p></blockquote>
+<h3>そのほかの用語</h3>
+<table><thead><tr><th>用語</th><th>内容</th></tr></thead><tbody><tr><td><strong>高齢受給者証</strong></td><td><strong>70歳以上75歳未満</strong>の被保険者・被扶養者に交付され、<strong>負担割合</strong>を示す</td></tr><tr><td><strong>後発医薬品</strong>（ジェネリック）</td><td>先発医薬品と有効成分が同一のもの。<strong>長期収載品</strong>（後発品のある先発医薬品）を希望した場合の差額は<strong>選定療養</strong>として自己負担（令和6年10月〜）</td></tr><tr><td><strong>匿名診療等関連情報</strong>（150条の2〜）</td><td>レセプト等を匿名化した情報。<strong>厚生労働大臣</strong>が利用者に提供できる</td></tr><tr><td><strong>保険医等</strong></td><td><strong>保険医・保険薬剤師</strong>。厚生労働大臣の<strong>登録</strong>を受ける</td></tr><tr><td><strong>社会保障審議会</strong></td><td>保険料率の変更、療養の給付の範囲など、重要事項について<strong>諮問</strong>を受ける</td></tr></tbody></table>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">64</span>健康保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>厚年・国年と並べて見る</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 70 ／ 健保</div><h1>保険者と費用負担</h1><div class="desc">協会けんぽと健保組合。給付費への国庫補助は協会けんぽだけ</div></div><h3>2つの保険者（4条）</h3>
+<table class="big"><thead><tr><th></th><th>全国健康保険協会（協会けんぽ）</th><th>健康保険組合</th></tr></thead><tbody><tr><td>対象</td><td>健康保険組合の<strong>組合員でない</strong>被保険者</td><td>組合員である被保険者</td></tr><tr><td>性格</td><td><strong>法人</strong>（政府ではない）</td><td><strong>法人</strong>（公法人）</td></tr><tr><td>意思決定</td><td><strong>運営委員会</strong>（事業主・被保険者・学識経験者 各<strong>3人以内</strong>）</td><td><strong>組合会</strong></td></tr><tr><td>執行</td><td><strong>理事長</strong>（厚生労働大臣が任命）</td><td><strong>理事長</strong>（<strong>理事</strong>が互選）</td></tr><tr><td>支部</td><td><strong>都道府県ごと</strong>に支部。<strong>評議会</strong>を置く（事業主・被保険者・学識経験者 各<strong>同数</strong>）</td><td>—</td></tr></tbody></table>
+<blockquote><p>★協会は<strong>政府管掌健康保険</strong>を引き継いだ法人で、<strong>政府そのものではありません</strong>。
+★<strong>保険料率の決定</strong>は協会（支部ごとの都道府県単位保険料率）が行い、<strong>厚生労働大臣の認可</strong>を受けます。</p></blockquote>
+<h3>健康保険組合の設立（8条〜）</h3>
+<table class="big"><thead><tr><th>種類</th><th>要件</th></tr></thead><tbody><tr><td><strong>単一組合</strong></td><td>1つの適用事業所で常時<strong>700人以上</strong></td></tr><tr><td><strong>総合組合</strong></td><td>2以上の適用事業所で合算して常時<strong>3,000人以上</strong></td></tr></tbody></table>
+<p>設立には、被保険者の<strong>2分の1以上の同意</strong>を得て規約を作り、<strong>厚生労働大臣の認可</strong>を受けます。2以上の適用事業所で設立する場合、同意は<strong>各適用事業所ごと</strong>に得なければなりません。</p>
+<table class="big"><thead><tr><th>手続</th><th>同意</th></tr></thead><tbody><tr><td><strong>設立</strong></td><td>被保険者の<strong>2分の1以上</strong></td></tr><tr><td><strong>強制設立</strong>（12条）</td><td>厚生労働大臣が設立を<strong>命ずる</strong>ことができる</td></tr><tr><td><strong>解散</strong>（26条）</td><td>組合会議員の<strong>4分の3以上</strong>の多数による議決、または事業の継続不能、厚生労働大臣の<strong>解散命令</strong></td></tr><tr><td><strong>合併・分割</strong></td><td>組合会議員の<strong>4分の3以上</strong>の議決＋厚生労働大臣の認可</td></tr></tbody></table>
+<blockquote><p>★設立は<strong>2分の1</strong>、解散・合併は<strong>4分の3</strong>。任意適用事業所（加入2分の1・取消4分の3）と同じ形です。</p></blockquote>
+<h3>組合会（18条〜）</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>議員</td><td><strong>事業主が選定した議員</strong>と<strong>被保険者が互選した議員</strong>が<strong>同数</strong></td></tr><tr><td>理事</td><td>議員が互選（事業主選定議員・被保険者互選議員から<strong>同数</strong>ずつ）</td></tr><tr><td><strong>理事長</strong></td><td><strong>事業主選定議員である理事</strong>のうちから互選</td></tr><tr><td>監事</td><td>議員のうちから、事業主選定議員・被保険者互選議員それぞれ<strong>1人ずつ</strong></td></tr></tbody></table>
+<blockquote><p>★理事長は<strong>事業主側の理事</strong>から選ばれます。「被保険者側から選ぶ」は誤りです。
+★<strong>監事は理事・組合の職員と兼ねることができません</strong>。</p></blockquote>
+<h3>組合独自のしくみ</h3>
+<table class="big"><thead><tr><th>制度</th><th>内容</th></tr></thead><tbody><tr><td><strong>付加給付</strong>（53条）</td><td>法定給付に上乗せして規約で定める給付。<strong>協会けんぽにはない</strong></td></tr><tr><td><strong>保険料率</strong>（160条13項）</td><td><strong>1000分の30〜1000分の130</strong>の範囲で組合が決定</td></tr><tr><td><strong>事業主負担割合</strong>（161条）</td><td>規約で<strong>2分の1を超えて</strong>事業主負担とすることができる</td></tr><tr><td><strong>調整保険料率</strong></td><td>健康保険組合連合会の<strong>交付金交付事業</strong>の財源</td></tr></tbody></table>
+<h3>費用の負担（151条〜155条の2）</h3>
+<table><thead><tr><th>区分</th><th>負担</th></tr></thead><tbody><tr><td><strong>事務費</strong>（153条・154条）</td><td><strong>国庫が負担</strong>（毎年度、予算の範囲内）</td></tr><tr><td><strong>給付費等</strong>（153条）</td><td>協会けんぽについて、国庫が<strong>給付費等の1000分の164</strong>を補助（当分の間。本則は1000分の130〜200の範囲で政令)</td></tr><tr><td><strong>健康保険組合</strong></td><td>給付費への国庫補助は<strong>予算の範囲内</strong>で、事務費のみが原則</td></tr></tbody></table>
+<blockquote><p>★<strong>事務費は健保組合にも国庫負担</strong>があります。<strong>給付費への補助は協会けんぽだけ</strong>です。ここが最頻出です。</p></blockquote>
+<h3>保険料（156条〜)</h3>
+<pre><code>保険料額 ＝（標準報酬月額 ＋ 標準賞与額）×（一般保険料率 ＋ 介護保険料率）
+一般保険料率 ＝ 基本保険料率 ＋ 特定保険料率</code></pre>
+<table><thead><tr><th>率</th><th>何に充てるか</th></tr></thead><tbody><tr><td><strong>基本保険料率</strong></td><td>保険給付・保健事業など</td></tr><tr><td><strong>特定保険料率</strong></td><td><strong>前期高齢者納付金等・後期高齢者支援金等・介護納付金</strong>など</td></tr></tbody></table>
+<blockquote><p>★協会けんぽの一般保険料率は<strong>都道府県単位</strong>（支部ごと）です。全国一律ではありません。
+★<strong>介護保険料率は全国一律</strong>です。</p></blockquote>
+<h3>日雇特例被保険者の費用</h3>
+<p><strong>日雇拠出金</strong>（173条）を<strong>日雇関係組合</strong>から徴収します。当該年度の<strong>概算日雇拠出金</strong>を徴収し、後に<strong>確定日雇拠出金</strong>で精算します。</p>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">64</span>健康保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>厚年・国年と並べて見る</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 71 ／ 健保</div><h1>不服申立て・時効・雑則</h1><div class="desc">健保は給付も保険料も2年。給付は2審・保険料は1審</div></div><h3>不服申立て（189条・190条）</h3>
+<table class="big"><thead><tr><th>対象となる処分</th><th>手続</th></tr></thead><tbody><tr><td><strong>被保険者の資格</strong>、<strong>標準報酬</strong>、<strong>保険給付</strong>に関する処分</td><td><strong>社会保険審査官</strong>に審査請求 → <strong>社会保険審査会</strong>に再審査請求（<strong>2審制</strong>）</td></tr><tr><td><strong>保険料</strong>その他この法律の規定による<strong>徴収金</strong>に関する処分</td><td><strong>社会保険審査会</strong>に審査請求（<strong>1審制</strong>）</td></tr></tbody></table>
+<table class="big"><thead><tr><th>期間</th><th></th></tr></thead><tbody><tr><td>審査請求</td><td>処分があったことを<strong>知った日の翌日</strong>から起算して<strong>3か月以内</strong></td></tr><tr><td>みなし棄却</td><td>審査請求をした日から<strong>2か月</strong>以内に決定がないとき</td></tr><tr><td>再審査請求</td><td>決定書の謄本の送付を受けた日の翌日から起算して<strong>2か月以内</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>給付は2審・保険料は1審</strong>。厚年・国年と同じ形ですが、<strong>国民年金法では保険料も社会保険審査官（2審制）</strong>である点だけが違います。
+★<strong>処分の取消しの訴え</strong>は、<strong>審査請求に対する裁決を経た後</strong>でなければ提起できません（審査請求前置）。
+★<strong>日雇特例被保険者の資格</strong>に関する処分も同じ扱いです。</p></blockquote>
+<h3>時効（193条）</h3>
+<table class="big"><thead><tr><th>対象</th><th>時効</th></tr></thead><tbody><tr><td><strong>保険料</strong>その他この法律の規定による徴収金を徴収し、または還付を受ける権利</td><td><strong>2年</strong></td></tr><tr><td><strong>保険給付</strong>を受ける権利</td><td><strong>2年</strong></td></tr></tbody></table>
+<blockquote><p>★健保は<strong>給付も保険料も2年</strong>です。<strong>厚年・国年は給付5年・保険料2年</strong>なので、ここが横断で問われます。</p></blockquote>
+<p><strong>起算日</strong>の例。</p>
+<table class="big"><thead><tr><th>給付</th><th>起算日</th></tr></thead><tbody><tr><td>療養費</td><td>療養に要した費用を支払った日の翌日</td></tr><tr><td>傷病手当金・出産手当金</td><td>労務不能であった日ごとにその翌日</td></tr><tr><td>出産育児一時金</td><td>出産日の翌日</td></tr><tr><td>埋葬料</td><td>死亡した日の翌日</td></tr><tr><td>埋葬費</td><td>埋葬を行った日の翌日</td></tr><tr><td>高額療養費</td><td>診療月の翌月1日（自己負担額を支払った日の翌日）</td></tr></tbody></table>
+<p><strong>保険料等の徴収金についての督促は、時効の更新の効力</strong>を生じます（193条3項）。</p>
+<h3>受給権の保護と公課（61条・62条）</h3>
+<table class="big"><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td><strong>61条</strong></td><td>保険給付を受ける権利は、<strong>譲り渡し、担保に供し、または差し押さえることができない</strong></td></tr><tr><td><strong>62条</strong></td><td><strong>租税その他の公課</strong>は、保険給付として支給を受けた金品を標準として課することができない</td></tr></tbody></table>
+<blockquote><p>★<strong>出産育児一時金・埋葬料</strong>も非課税です。傷病手当金・出産手当金も非課税です。</p></blockquote>
+<h3>届出と書類の保存</h3>
+<table class="big"><thead><tr><th>届出</th><th>期限</th></tr></thead><tbody><tr><td>被保険者資格取得届・喪失届</td><td><strong>5日以内</strong></td></tr><tr><td>報酬月額算定基礎届</td><td><strong>7月10日</strong>まで</td></tr><tr><td>報酬月額変更届</td><td>速やかに</td></tr><tr><td>賞与支払届</td><td><strong>5日以内</strong></td></tr><tr><td>被扶養者（異動）届</td><td><strong>5日以内</strong></td></tr><tr><td>事業所関係変更（訂正）届</td><td><strong>5日以内</strong></td></tr><tr><td><strong>任意継続被保険者の申出</strong></td><td>資格喪失日から<strong>20日以内</strong></td></tr></tbody></table>
+<p>事業主は、<strong>健康保険に関する書類</strong>を<strong>その完結の日から2年間</strong>保存しなければなりません（則34条）。</p>
+<blockquote><p>★労基法は5年（当分の間3年）、徴収法は3年、健保は<strong>2年</strong>。混同しやすいところです。</p></blockquote>
+<h3>罰則と検査</h3>
+<table><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td>198条</td><td>厚生労働大臣は、<strong>事業主に報告を命じ</strong>、<strong>当該職員に事業所へ立ち入り検査</strong>をさせることができる</td></tr><tr><td>199条</td><td>被保険者・被保険者であった者・被扶養者に対する<strong>文書の提出等の命令</strong></td></tr><tr><td>200条</td><td>保険給付を受ける者に対する<strong>診断命令</strong>（保険者は、必要があると認めるときは、医師の診断を受けさせることができる）</td></tr><tr><td>207条〜</td><td>報告をせず虚偽の報告をした事業主等への罰則（<strong>6か月以下の拘禁刑または50万円以下の罰金</strong>）</td></tr></tbody></table>
+<blockquote><p>★立入検査の権限は<strong>犯罪捜査のために認められたものと解してはならない</strong>とされています。</p></blockquote>
+<h3>二以上の事業所に使用される場合</h3>
+<p>被保険者が同時に2以上の適用事業所に使用される場合、<strong>被保険者は保険者を選択</strong>し、<strong>10日以内</strong>に届け出ます。報酬月額は<strong>各事業所の報酬月額を合算</strong>して標準報酬月額を決め、保険料は<strong>各事業所の報酬月額の比</strong>であん分します。</p>
+<blockquote><p>★<strong>選択するのは被保険者</strong>です。事業主が決めるものではありません。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">64</span>健康保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>厚年・国年と並べて見る</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div></div>

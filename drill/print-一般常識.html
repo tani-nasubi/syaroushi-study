@@ -1,0 +1,768 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>社労士2026 学習資料｜一般常識</title>
+<style>
+@page { size: A4 portrait; margin: 16mm 14mm 18mm; }
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+body{margin:0; color:#111; background:#fff;
+  font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
+  font-size:9.6pt; line-height:1.72; text-align:justify;
+  font-feature-settings:"palt" 1;}
+.wrap{max-width:182mm; margin:0 auto; padding:10mm 6mm}
+/* ── 巻頭 ── */
+.cover{text-align:center; padding:40mm 0 0}
+.cover h1{font-size:22pt; letter-spacing:.06em; margin:0 0 6mm}
+.cover .sub{font-size:10pt; color:#555; line-height:2}
+.howto{margin:16mm auto 0; max-width:130mm; text-align:left;
+  border:1pt solid #bbb; padding:6mm 7mm; font-size:9pt; line-height:1.8}
+.howto b{font-size:9.6pt}
+/* ── 目次 ── */
+.toc h2{font-size:13pt; margin:0 0 4mm; padding-bottom:2mm; border-bottom:1.4pt solid #111}
+.toc .grp{margin:5mm 0 2mm; font-weight:700; font-size:10.5pt;
+  border-left:3pt solid #111; padding-left:3mm}
+.toc ol{list-style:none; margin:0; padding:0; columns:2; column-gap:10mm}
+.toc li{break-inside:avoid; font-size:9pt; line-height:1.85;
+  display:flex; gap:2mm; align-items:baseline}
+.toc .no{display:inline-block; min-width:9mm; font-weight:700; font-variant-numeric:tabular-nums}
+.toc .dots{flex:1; border-bottom:.4pt dotted #999; transform:translateY(-2px)}
+/* ── 各資料 ── */
+.doc{break-before:page; page-break-before:always}
+.doc:first-of-type{break-before:auto; page-break-before:auto}
+.doc > .head{border-bottom:1.6pt solid #111; padding-bottom:2.5mm; margin:0 0 5mm}
+.doc > .head .no{font-size:8.5pt; letter-spacing:.14em; color:#666}
+.doc > .head h1{font-size:16pt; margin:1mm 0 0; letter-spacing:-.01em}
+.doc > .head .desc{font-size:8.5pt; color:#555; margin:1.5mm 0 0}
+h2{font-size:12pt; margin:7mm 0 2.5mm; padding:1mm 0 1mm 3mm;
+  border-left:3.5pt solid #111; break-after:avoid; page-break-after:avoid}
+h3{font-size:10.6pt; margin:5mm 0 2mm; padding-bottom:.8mm;
+  border-bottom:.6pt solid #ccc; break-after:avoid; page-break-after:avoid}
+h4{font-size:9.8pt; margin:4mm 0 1.5mm; break-after:avoid; page-break-after:avoid}
+p{margin:0 0 2.4mm}
+ul,ol{margin:0 0 2.8mm; padding-left:6mm}
+li{margin:0 0 .8mm}
+ul.chk{list-style:none; padding-left:0}
+ul.chk li::before{content:"☐"; margin-right:2mm; font-size:11pt; line-height:1}
+strong{font-weight:700}
+code{font-family:"SFMono-Regular",Consolas,"Noto Sans Mono",monospace;
+  font-size:8.6pt; background:#f2f2f2; padding:.2mm 1mm; border-radius:1mm}
+pre{background:#f6f6f6; border:.5pt solid #ddd; padding:3mm 4mm; margin:0 0 3mm;
+  break-inside:avoid; page-break-inside:avoid; overflow:visible}
+pre code{background:none; padding:0; font-size:8.6pt; line-height:1.6; white-space:pre-wrap}
+blockquote{margin:0 0 3mm; padding:2mm 3mm; background:#f7f7f7;
+  border-left:2.5pt solid #888; break-inside:avoid; page-break-inside:avoid}
+blockquote p:last-child{margin-bottom:0}
+hr{border:0; border-top:.6pt solid #ddd; margin:5mm 0}
+table{border-collapse:collapse; width:100%; margin:0 0 3.5mm; font-size:8.6pt;
+  break-inside:avoid; page-break-inside:avoid}
+th,td{border:.5pt solid #999; padding:1.4mm 2mm; text-align:left; vertical-align:top;
+  line-height:1.55}
+th{background:#ececec; font-weight:700; white-space:nowrap}
+thead{display:table-header-group}
+/* 大きい表は途中で切れてよい。切れないと1ページに収まらず消える */
+table.big{break-inside:auto; page-break-inside:auto}
+table.big tr{break-inside:avoid; page-break-inside:avoid}
+/* ── 参照（紙ではリンクを押せないので番号で引く）── */
+.ref{white-space:nowrap; font-weight:600}
+.ref .n{font-size:8pt; border:.6pt solid #666; border-radius:1mm;
+  padding:0 1mm; margin-right:.8mm; font-variant-numeric:tabular-nums}
+.ref .sec{font-weight:400; color:#444}
+/* ── 画面で見るときだけの操作 ── */
+.bar{position:sticky; top:0; background:#fff; border-bottom:1pt solid #ddd;
+  padding:8px 12px; display:flex; gap:10px; align-items:center; font-size:13px; z-index:9}
+.bar a{color:#1a4fd6}
+.bar button{font:inherit; padding:5px 12px; border:1px solid #999; background:#fff;
+  border-radius:5px; cursor:pointer}
+@media print{ .bar{display:none} .wrap{padding:0} }
+</style>
+<div class="bar">
+  <button onclick="print()">印刷する</button>
+  <span>A4縦・11資料。ブラウザの印刷から「背景のグラフィック」を入にすると表の罫線がきれいに出ます。</span>
+</div>
+<div class="wrap"><div class="cover"><h1>社労士2026 学習資料｜一般常識</h1><div class="sub">全体版の資料 53〜63　（本文中の参照番号は全体版と共通です）</div>
+<div class="howto">
+<b>紙で読むときの約束ごと</b>
+<p style="margin:2mm 0 0">本文中の <span class="ref"><span class="n">23</span>平均賃金</span>
+のような表示は、ほかの資料への参照です。頭の番号が資料の通し番号なので、
+目次か各ページ右上の番号から引いてください。</p>
+<p style="margin:2mm 0 0"><span class="ref"><span class="n">5</span>労働基準法
+<span class="sec">「4. 労働時間・休憩・休日」</span></span> のように節名が付いているものは、
+その資料の中の該当する節を指します。</p>
+<p style="margin:2mm 0 0">□ は手で塗るためのものです。</p>
+</div>
+</div><div class="doc toc"><h2>目次</h2><div class="grp">一般常識</div><ol><li><span class="no">53</span><span>労働一般常識</span><span class="dots"></span></li><li><span class="no">54</span><span>労働契約法</span><span class="dots"></span></li><li><span class="no">55</span><span>労働組合法</span><span class="dots"></span></li><li><span class="no">56</span><span>派遣法とパート・有期法</span><span class="dots"></span></li><li><span class="no">57</span><span>均等法と育介法</span><span class="dots"></span></li><li><span class="no">58</span><span>高年齢者と障害者雇用</span><span class="dots"></span></li><li><span class="no">59</span><span>社会保険一般常識</span><span class="dots"></span></li><li><span class="no">60</span><span>社会保険労務士法</span><span class="dots"></span></li><li><span class="no">61</span><span>国民健康保険と高齢者医療</span><span class="dots"></span></li><li><span class="no">62</span><span>介護保険法</span><span class="dots"></span></li><li><span class="no">63</span><span>企業年金と社会保険審査</span><span class="dots"></span></li></ol></div><div class="doc"><div class="head"><div class="no">資料 53 ／ 一般常識</div><h1>労働一般常識</h1><div class="desc">選択式の最難関。条文がある法律で3点を取る</div></div><table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>択一</td><td>5問（社一5問と合わせて10問）</td></tr><tr><td>選択</td><td>5点</td></tr><tr><td>特徴</td><td><strong>選択式で最も基準点割れを起こす科目</strong>（第57回も労一は2点補正）。範囲が無限に広いので、<strong>条文がある法律で確実に3点を取る</strong>方針に絞る</td></tr></tbody></table>
+<hr>
+<h2>出題傾向（過去9年・第49〜57回の実データ）</h2>
+<h3>択一の設問形式</h3>
+<table class="big"><thead><tr><th>形式</th><th>問数</th><th>割合</th></tr></thead><tbody><tr><td>誤りを選ぶ</td><td>43</td><td>48%</td></tr><tr><td>正しいものを選ぶ</td><td>38</td><td>42%</td></tr><tr><td>組合せ問題</td><td>7</td><td>8%</td></tr><tr><td>その他</td><td>1</td><td>1%</td></tr><tr><td>個数問題</td><td>1</td><td>1%</td></tr></tbody></table>
+<p><strong>一般常識枠 計90問</strong>のうち、<strong>個数問題1問・組合せ問題7問（合わせて9%）</strong>。組合せのほうが多い科目です。組合せは<strong>2肢の正誤が分かれば98.5%で正解が決まる</strong>ので、時間はかかりません。飛ばす候補は個数問題だけです。（→ <span class="ref"><span class="n">97</span>個数・組合せ問題<span class="sec">（全体版）</span></span>）</p>
+<h3>設問形式の推移（作問方針の変化）</h3>
+<table class="big"><thead><tr><th>年度</th><th>個数・組合せ</th><th>誤りを選ぶ</th><th>正しいものを選ぶ</th><th>肢の平均字数</th><th>判例に言及</th></tr></thead><tbody><tr><td>令和7</td><td>2</td><td>2</td><td>6</td><td>91</td><td>1</td></tr><tr><td>令和6</td><td>2</td><td>4</td><td>4</td><td>97</td><td>0</td></tr><tr><td>令和5</td><td>0</td><td>5</td><td>5</td><td>118</td><td>1</td></tr><tr><td>令和4</td><td>0</td><td>7</td><td>3</td><td>106</td><td>0</td></tr><tr><td>令和3</td><td>1</td><td>4</td><td>5</td><td>108</td><td>1</td></tr><tr><td>令和2</td><td>1</td><td>5</td><td>4</td><td>106</td><td>1</td></tr><tr><td>令和元</td><td>0</td><td>6</td><td>3</td><td>99</td><td>1</td></tr><tr><td>平成30</td><td>1</td><td>4</td><td>5</td><td>96</td><td>1</td></tr><tr><td>平成29</td><td>1</td><td>6</td><td>3</td><td>93</td><td>1</td></tr></tbody></table>
+<ul><li>9年を通じて設問形式に大きな変化はありません。過去問の解き方がそのまま通用します。</li></ul>
+<h3>基準点補正の履歴（この科目が救済された年）</h3>
+<p><strong>選択式</strong>　令和7年度 <strong>2点</strong>に引下げ／令和6年度 <strong>2点</strong>に引下げ／令和3年度 <strong>1点</strong>に引下げ／令和2年度 <strong>2点</strong>に引下げ</p>
+<blockquote><p>選択式は9年で<strong>4回</strong>引下げられています。難問が出れば救済される可能性はありますが、<strong>救済を前提にした学習計画は組めません</strong>。3点は自力で取る前提で。</p></blockquote>
+<h3>頻出条文（択一で9年間に参照された回数）</h3>
+<p><strong>上位12条で択一35回分</strong>。回数が多い条ほど、条文そのものを読んでおく価値があります。「詳しく読む」は、その条をいちばん詳しく扱っている別ページです。</p>
+<table class="big"><thead><tr><th>条文</th><th>何を定めているか</th><th>回数</th><th>出題された年度</th><th>詳しく読む</th></tr></thead><tbody><tr><td><strong>労働契約法10条</strong></td><td>主要条文</td><td>5</td><td>令和6・令和3・令和元・平成30</td><td><span class="ref"><span class="n">54</span>労働契約法</span></td></tr><tr><td><strong>労働契約法18条</strong></td><td>有期労働契約の期間の定めのない労働契約への転換</td><td>4</td><td>令和7・令和6・令和3・平成30</td><td><span class="ref"><span class="n">54</span>労働契約法</span></td></tr><tr><td><strong>社会保険労務士法25条</strong></td><td>懲戒の種類</td><td>4</td><td>令和4・令和2・令和元</td><td><span class="ref"><span class="n">60</span>社会保険労務士法</span></td></tr><tr><td><strong>社会保険労務士法2条</strong></td><td>社会保険労務士の業務</td><td>4</td><td>令和7・令和6・令和5</td><td><span class="ref"><span class="n">60</span>社会保険労務士法</span></td></tr><tr><td><strong>社会保険労務士法2条の2</strong></td><td>—</td><td>3</td><td>令和5・令和2・平成30</td><td><span class="ref"><span class="n">60</span>社会保険労務士法</span></td></tr><tr><td><strong>労働契約法7条</strong></td><td>労働契約の成立</td><td>3</td><td>令和6・令和3・令和元</td><td><span class="ref"><span class="n">54</span>労働契約法</span></td></tr><tr><td><strong>労働基準法89条</strong></td><td>作成及び届出の義務</td><td>3</td><td>令和6・令和元</td><td><span class="ref"><span class="n">2</span>労働基準法<span class="sec">（全体版）</span></span></td></tr><tr><td><strong>労働契約法4条</strong></td><td>労働契約の内容の理解の促進</td><td>2</td><td>令和7・令和元</td><td><span class="ref"><span class="n">54</span>労働契約法</span></td></tr><tr><td><strong>労働契約法17条</strong></td><td>契約期間中の解雇等</td><td>2</td><td>令和6・令和元</td><td><span class="ref"><span class="n">54</span>労働契約法</span></td></tr><tr><td><strong>社会保険労務士法25条の2</strong></td><td>不正行為の指示等を行つた場合の懲戒</td><td>2</td><td>令和7・令和元</td><td><span class="ref"><span class="n">60</span>社会保険労務士法</span></td></tr><tr><td><strong>介護保険法7条</strong></td><td>定義</td><td>2</td><td>令和4・令和3</td><td><span class="ref"><span class="n">62</span>介護保険法</span></td></tr><tr><td><strong>労働契約法2条</strong></td><td>定義</td><td>1</td><td>平成29</td><td><span class="ref"><span class="n">54</span>労働契約法</span></td></tr></tbody></table>
+<h3>選択式が9年間で問うたこと（労一）</h3>
+<p><strong>45空欄</strong>の内訳は <strong>用語28</strong>（62%）、<strong>数字14</strong>（31%）、<strong>判示・条文の言い回し3</strong>（7%）。空欄は5つあり、<strong>3つ取れれば基準点</strong>です。長い判示は先頭だけを載せています。全文は <span class="ref"><span class="n">93</span>条文素読<span class="sec">（全体版）</span></span> にあります。</p>
+<table class="big"><thead><tr><th>年度</th><th>空欄</th><th>正答となった語</th><th>その年の根拠条文</th></tr></thead><tbody><tr><td>令和7</td><td>A</td><td>医療、福祉</td><td></td></tr><tr><td></td><td>B</td><td>農業、林業</td><td></td></tr><tr><td></td><td>C</td><td>業務上必要かつ相当な範囲を超えたもの</td><td></td></tr><tr><td></td><td>D</td><td>施設管理</td><td></td></tr><tr><td></td><td>E</td><td>組合の弱体化を図ろうとしたもの</td><td></td></tr><tr><td>令和6</td><td>A</td><td>拘束時間、休息期間</td><td></td></tr><tr><td></td><td>B</td><td>45．8％</td><td></td></tr><tr><td></td><td>C</td><td>規範</td><td></td></tr><tr><td></td><td>D</td><td>著しく不合理である</td><td></td></tr><tr><td></td><td>E</td><td>1年</td><td></td></tr><tr><td>令和5</td><td>A</td><td>本件採用内定通知のほかには労働契約締結のための特…</td><td>労働者派遣法35条の3</td></tr><tr><td></td><td>B</td><td>知ることができず、また知ることが期待できないよう…</td><td></td></tr><tr><td></td><td>C</td><td>3</td><td></td></tr><tr><td></td><td>D</td><td>労働基準法</td><td></td></tr><tr><td></td><td>E</td><td>都道府県労働局長</td><td></td></tr><tr><td>令和4</td><td>A</td><td>2．3</td><td></td></tr><tr><td></td><td>B</td><td>100人超</td><td></td></tr><tr><td></td><td>C</td><td>ジョブコーチ</td><td></td></tr><tr><td></td><td>D</td><td>継続が期待されていた</td><td></td></tr><tr><td></td><td>E</td><td>従前の労働契約が更新された</td><td></td></tr><tr><td>令和3</td><td>A</td><td>35歳以上55歳未満</td><td></td></tr><tr><td></td><td>B</td><td>65歳超雇用推進助成金</td><td></td></tr><tr><td></td><td>C</td><td>（公財）産業雇用安定センター</td><td></td></tr><tr><td></td><td>D</td><td>特定求職者雇用開発助成金</td><td></td></tr><tr><td></td><td>E</td><td>40歳以上</td><td></td></tr><tr><td>令和2</td><td>A</td><td>雇用動向調査</td><td></td></tr><tr><td></td><td>B</td><td>就労条件総合調査</td><td></td></tr><tr><td></td><td>C</td><td>雇用均等基本調査</td><td></td></tr><tr><td></td><td>D</td><td>労働力調査</td><td></td></tr><tr><td></td><td>E</td><td>就業構造基本調査</td><td></td></tr><tr><td>令和元</td><td>A</td><td>技能士</td><td></td></tr><tr><td></td><td>B</td><td>35</td><td></td></tr><tr><td></td><td>C</td><td>えるぼし</td><td></td></tr><tr><td></td><td>D</td><td>すべての年齢階級で上昇</td><td></td></tr><tr><td></td><td>E</td><td>2</td><td></td></tr><tr><td>平成30</td><td>A</td><td>1．26</td><td></td></tr><tr><td></td><td>B</td><td>東京都</td><td></td></tr><tr><td></td><td>C</td><td>次世代育成支援対策推進法</td><td></td></tr><tr><td></td><td>D</td><td>101人</td><td></td></tr><tr><td></td><td>E</td><td>生産年齢人口</td><td></td></tr><tr><td>平成29</td><td>A</td><td>約7割</td><td></td></tr><tr><td></td><td>B</td><td>指導する人材が不足している</td><td></td></tr><tr><td></td><td>C</td><td>約8割</td><td></td></tr><tr><td></td><td>D</td><td>すべて</td><td></td></tr><tr><td></td><td>E</td><td>ベトナム</td><td></td></tr></tbody></table>
+<blockquote><p>この節は <code>kakomon/gen_trend.py</code> が過去問データから自動生成しています。</p></blockquote>
+<h2>深掘り（別ページ）</h2>
+<p>条文の趣旨・要件の切り分け・誤り肢の作られ方を論点ごとにまとめた別ページです。</p>
+<table class="big"><thead><tr><th>論点</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">54</span>労働契約法</span></td></tr><tr><td><span class="ref"><span class="n">55</span>労働組合法</span></td></tr><tr><td><span class="ref"><span class="n">56</span>派遣法とパート・有期法</span></td></tr><tr><td><span class="ref"><span class="n">57</span>均等法と育介法</span></td></tr><tr><td><span class="ref"><span class="n">58</span>高年齢者と障害者雇用</span></td></tr></tbody></table>
+<h2>対策方針（ここが一番大事）</h2>
+<pre><code>条文がある法律 … 労働契約法・パート有期法・派遣法・育介法・均等法・
+                 労働組合法・最低賃金法・労働時間等設定改善法 など
+                 → ここは完璧に。選択式の3点はここから取る
+
+白書・統計   … 労働経済白書・厚生労働白書・各種調査
+                 → 「順位と傾向」だけ。細かい実数は捨てる</code></pre>
+<p>深追いは非効率。<strong>条文8割・統計2割</strong>の配分で十分です。</p>
+<hr>
+<h2>1. 労働契約法</h2>
+<p>罰則も行政取締規定も<strong>ない</strong>（民事的な裁判規範）。これが労基法との決定的な違い。</p>
+<h3>5つの基本原則（3条）</h3>
+<p>① <strong>労使対等</strong>の原則
+② <strong>均衡考慮</strong>の原則
+③ <strong>仕事と生活の調和</strong>への配慮の原則
+④ <strong>信義誠実</strong>の原則
+⑤ <strong>権利濫用の禁止</strong>の原則</p>
+<h3>主要条文</h3>
+<table class="big"><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td>6条</td><td>労働契約は、労働者が使用者に使用されて労働し、使用者がこれに対して賃金を支払うことについて、労働者及び使用者が<strong>合意</strong>することによって成立する</td></tr><tr><td>7条</td><td>合理的な労働条件が定められている就業規則を<strong>周知</strong>させていた場合、労働契約の内容はその就業規則で定める労働条件による</td></tr><tr><td>9条</td><td>労働者と合意することなく、就業規則の変更により労働者の不利益に労働条件を変更することはできない</td></tr><tr><td><strong>10条</strong></td><td>ただし、変更後の就業規則を<strong>周知</strong>させ、かつ変更が<strong>合理的</strong>なものであるときは、労働条件は変更後の就業規則による</td></tr><tr><td>12条</td><td>就業規則で定める基準に達しない労働契約は、その部分について<strong>無効</strong>（就業規則の基準による）</td></tr><tr><td><strong>16条</strong></td><td><strong>解雇</strong>は、客観的に合理的な理由を欠き、社会通念上相当であると認められない場合は、その権利を濫用したものとして<strong>無効</strong>とする</td></tr><tr><td><strong>17条1項</strong></td><td>使用者は、有期労働契約について、<strong>やむを得ない事由</strong>がある場合でなければ、契約期間が満了するまでの間において労働者を解雇することができない</td></tr><tr><td>17条2項</td><td>必要以上に短い期間を定めることにより、契約を反復して更新することのないよう配慮しなければならない</td></tr><tr><td><strong>18条</strong></td><td><strong>無期転換ルール</strong>（下記）</td></tr><tr><td><strong>19条</strong></td><td><strong>雇止め法理</strong>（下記）</td></tr><tr><td>20条</td><td>（旧・期間の定めによる不合理な労働条件の禁止 → パート有期法8条へ移設）</td></tr></tbody></table>
+<blockquote><p><strong>17条1項の「やむを得ない事由」は、16条の解雇より厳格な要件</strong>。ここは頻出。</p></blockquote>
+<h3>10条の合理性の判断要素</h3>
+<p>① 労働者の受ける不利益の程度
+② 労働条件の変更の必要性
+③ 変更後の就業規則の内容の相当性
+④ <strong>労働組合等との交渉の状況</strong>
+⑤ その他の就業規則の変更に係る事情</p>
+<h3>無期転換ルール（18条）</h3>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>要件</td><td>同一の使用者との間の2以上の有期労働契約の通算契約期間が<strong>5年を超える</strong></td></tr><tr><td>効果</td><td>労働者の申込みにより、使用者は<strong>承諾したものとみなされる</strong>（拒否できない）</td></tr><tr><td>労働条件</td><td><strong>別段の定め</strong>がある部分を除き、従前と同一（＝無期になるだけで正社員化ではない）</td></tr><tr><td><strong>クーリング</strong></td><td>契約がない期間が<strong>6か月以上</strong>あると通算リセット（直前の契約期間が1年未満の場合はその<strong>2分の1以上</strong>）</td></tr><tr><td>特例</td><td><strong>有期雇用特別措置法</strong>により、高度専門的知識等を有する有期雇用労働者は<strong>10年</strong>、定年後継続雇用の高齢者は申込権が発生しない（<strong>都道府県労働局長の認定</strong>が必要）</td></tr></tbody></table>
+<blockquote><p>令和6年4月から、無期転換申込権が発生する更新時に、使用者は<strong>無期転換申込機会</strong>と<strong>無期転換後の労働条件</strong>を明示しなければならない（労基則5条）。</p></blockquote>
+<h3>雇止め法理（19条）</h3>
+<p>適用される2類型：
+① <strong>実質無期型</strong>：反復更新により、雇止めが無期労働契約の解雇と社会通念上同視できる場合（東芝柳町工場事件）
+② <strong>期待保護型</strong>：契約期間の満了時に更新されるものと期待することについて<strong>合理的な理由がある</strong>場合（日立メディコ事件）</p>
+<p>労働者が更新の申込みをし、使用者の拒絶が客観的に合理的な理由を欠き社会通念上相当でないときは、<strong>従前と同一の労働条件で承諾したものとみなす</strong>。</p>
+<hr>
+<h2>2. 短時間労働者及び有期雇用労働者の雇用管理の改善等に関する法律（パート有期法）</h2>
+<h3>均衡と均等 ★超頻出</h3>
+<table class="big"><thead><tr><th>条</th><th>名称</th><th>内容</th></tr></thead><tbody><tr><td><strong>8条</strong></td><td><strong>均衡待遇</strong></td><td>職務の内容、職務の内容及び配置の変更の範囲、その他の事情のうち、待遇の性質・目的に照らして適切と認められるものを考慮して、<strong>不合理と認められる相違を設けてはならない</strong></td></tr><tr><td><strong>9条</strong></td><td><strong>均等待遇</strong></td><td>職務の内容と変更の範囲が通常の労働者と<strong>同一</strong>の短時間・有期雇用労働者については、<strong>差別的取扱いをしてはならない</strong></td></tr></tbody></table>
+<blockquote><p><strong>均衡＝違いは許されるが不合理はダメ／均等＝違い自体が許されない</strong>。</p></blockquote>
+<h3>明示（6条）</h3>
+<p>労基法15条の明示事項に加え、次の4つを<strong>文書等で明示</strong>（<strong>特定事項</strong>）：
+<strong>① 昇給の有無 ② 退職手当の有無 ③ 賞与の有無 ④ 相談窓口</strong></p>
+<h3>説明義務（14条）</h3>
+<table class="big"><thead><tr><th>時期</th><th>内容</th></tr></thead><tbody><tr><td><strong>雇入れ時</strong></td><td>実施する雇用管理の改善等の措置の内容（求めがなくても）</td></tr><tr><td><strong>求めがあったとき</strong></td><td>通常の労働者との<strong>待遇の相違の内容及び理由</strong>。説明を求めたことを理由とする<strong>不利益取扱いは禁止</strong></td></tr></tbody></table>
+<hr>
+<h2>3. 労働者派遣法</h2>
+<h3>適用除外業務（4条）— <strong>「港・建・警・医」＋士業</strong></h3>
+<p>① 港湾運送業務
+② 建設業務
+③ 警備業務
+④ 病院等における医療関係業務（紹介予定派遣、産前産後・育児介護休業の代替、へき地等は可）
+⑤ 弁護士・社会保険労務士等の<strong>士業</strong>の一部</p>
+<blockquote><p>⚠️令和8年度改正で<strong>オンライン診療を受ける施設</strong>が対象に追加（要確認）。</p></blockquote>
+<h3>期間制限 ★超頻出</h3>
+<table class="big"><thead><tr><th>単位</th><th>期間</th><th>延長</th></tr></thead><tbody><tr><td><strong>事業所単位</strong></td><td>3年</td><td>過半数労働組合等からの<strong>意見聴取</strong>により<strong>3年ずつ延長可</strong></td></tr><tr><td><strong>個人単位</strong>（同一の組織単位＝課等）</td><td>3年</td><td><strong>延長不可</strong></td></tr></tbody></table>
+<p><strong>期間制限の対象外</strong>
+① 派遣元で<strong>無期雇用</strong>されている派遣労働者
+② <strong>60歳以上</strong>の者
+③ 有期プロジェクト業務
+④ 日数限定業務（1か月の勤務日数が通常の労働者の半分以下かつ<strong>10日以下</strong>）
+⑤ 産前産後休業・育児休業・介護休業の<strong>代替要員</strong></p>
+<h3>待遇決定の2方式</h3>
+<table class="big"><thead><tr><th>方式</th><th>内容</th></tr></thead><tbody><tr><td><strong>派遣先均等・均衡方式</strong>（30条の3）</td><td>派遣先の通常の労働者との均等・均衡待遇</td></tr><tr><td><strong>労使協定方式</strong>（30条の4）</td><td>過半数労働組合等との労使協定により、同種業務の一般労働者の平均的な賃金額（<strong>局長通達</strong>で毎年公表）以上とする</td></tr></tbody></table>
+<blockquote><p><strong>労使協定方式でも例外</strong>：<strong>教育訓練（40条2項）</strong>と<strong>福利厚生施設（給食施設・休憩室・更衣室）</strong>は派遣先の労働者と同様の取扱いが必要。</p></blockquote>
+<h3>日雇派遣の原則禁止</h3>
+<p>30日以内の日雇派遣は原則禁止。例外：① 政令で定める業務 ② <strong>60歳以上</strong> ③ <strong>昼間学生</strong> ④ 副業として従事（生業収入<strong>500万円以上</strong>）⑤ 主たる生計者でない者（世帯収入<strong>500万円以上</strong>）</p>
+<hr>
+<h2>4. 育児・介護休業法</h2>
+<h3>休業の比較</h3>
+<table class="big"><thead><tr><th>休業</th><th>期間</th><th>分割</th></tr></thead><tbody><tr><td><strong>育児休業</strong></td><td>原則子が1歳（保育所に入れない等で最長<strong>2歳</strong>）まで</td><td><strong>2回</strong>まで</td></tr><tr><td><strong>出生時育児休業</strong>（産後パパ育休）</td><td>出生後<strong>8週間以内</strong>に<strong>4週間（28日）</strong>まで</td><td><strong>2回</strong>まで</td></tr><tr><td><strong>介護休業</strong></td><td>対象家族1人につき通算<strong>93日</strong></td><td><strong>3回</strong>まで</td></tr></tbody></table>
+<p><strong>対象家族</strong>：配偶者（事実婚含む）、父母、子、配偶者の父母、祖父母、兄弟姉妹、孫</p>
+<h3>休暇</h3>
+<table class="big"><thead><tr><th>休暇</th><th>日数</th><th>対象</th></tr></thead><tbody><tr><td><strong>子の看護等休暇</strong> ★令和7年4月改正</td><td>子1人=年5日、2人以上=年10日（時間単位可）</td><td><strong>小学校第3学年修了</strong>まで</td></tr><tr><td>介護休暇</td><td>対象家族1人=年5日、2人以上=年10日</td><td>—</td></tr></tbody></table>
+<p><strong>子の看護等休暇の改正（令和7年4月1日）</strong></p>
+<ul><li>名称変更（子の看護休暇 → <strong>子の看護等休暇</strong>）</li><li>対象を小学校就学前 → <strong>小学校第3学年修了</strong>まで拡大</li><li>取得事由に<strong>感染症に伴う学級閉鎖等</strong>、<strong>入園（学）式・卒園（業）式</strong>を追加</li><li>労使協定による除外から「継続雇用期間<strong>6か月未満</strong>」を撤廃（除外できるのは週所定労働日数2日以下の者）</li></ul>
+<h3>その他の措置</h3>
+<table class="big"><thead><tr><th>措置</th><th>対象</th></tr></thead><tbody><tr><td>所定外労働の制限（<strong>残業免除</strong>）</td><td>3歳未満 → ★<strong>小学校就学の始期</strong>まで（令和7年4月）</td></tr><tr><td>時間外労働の制限（月24時間・年150時間）</td><td>小学校就学前</td></tr><tr><td>深夜業の制限</td><td>小学校就学前</td></tr><tr><td>所定労働時間の短縮（<strong>短時間勤務</strong>）</td><td>3歳未満</td></tr></tbody></table>
+<blockquote><p><strong>★混同注意</strong>：子の看護等休暇は<strong>小3修了</strong>、残業免除は<strong>小学校就学前</strong>。範囲が異なる。</p></blockquote>
+<h3>柔軟な働き方を実現するための措置（23条の3）★令和7年10月1日</h3>
+<p><strong>3歳以上小学校就学の始期に達するまで</strong>の子を養育する労働者について、事業主は次の5つのうち<strong>2以上</strong>を措置し、労働者はその中から<strong>1つ</strong>を選択して利用する。</p>
+<p>① 始業時刻等の変更
+② テレワーク等
+③ 保育施設の設置運営等
+④ <strong>養育両立支援休暇</strong>
+⑤ 短時間勤務</p>
+<p>措置を講ずるに当たっては過半数労働組合等の<strong>意見聴取</strong>が必要。あわせて<strong>3歳になるまでの適切な時期</strong>に個別の<strong>意向聴取・配慮</strong>が義務化された。</p>
+<h3>介護（令和7年4月1日）</h3>
+<ul><li>介護に直面した労働者への<strong>個別周知・意向確認</strong>を義務化</li><li><strong>40歳到達時等</strong>に介護休業制度等の<strong>情報提供</strong>を義務化</li></ul>
+<hr>
+<h2>5. 男女雇用機会均等法</h2>
+<table class="big"><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td>5条</td><td>募集・採用における性別を理由とする差別の禁止</td></tr><tr><td>6条</td><td>配置・昇進・降格・教育訓練・福利厚生・職種変更・退職勧奨・定年・解雇・労働契約の更新における差別の禁止</td></tr><tr><td><strong>7条</strong></td><td><strong>間接差別</strong>の禁止（身長体重体力要件、転勤要件、昇進における転勤経験要件）</td></tr><tr><td>9条</td><td><strong>婚姻・妊娠・出産等を理由とする不利益取扱いの禁止</strong>。妊娠中・産後1年以内の解雇は<strong>無効</strong>（事業主が妊娠等を理由とする解雇でないことを証明したときを除く）</td></tr><tr><td>11条</td><td><strong>セクシュアルハラスメント</strong>の措置義務</td></tr><tr><td>11条の3</td><td>妊娠・出産等に関するハラスメントの措置義務</td></tr><tr><td>12条・13条</td><td><strong>母性健康管理</strong>（保健指導・健康診査を受けるための時間の確保、指導事項を守るための措置）</td></tr></tbody></table>
+<hr>
+<h2>6. 女性活躍推進法 ★令和8年4月1日改正</h2>
+<table class="big"><thead><tr><th>規模</th><th>義務</th></tr></thead><tbody><tr><td><strong>101人以上</strong></td><td>一般事業主行動計画の<strong>策定・届出・公表</strong>、<strong>情報公表</strong>（<strong>女性管理職比率</strong>・男女の賃金の差異を含む）</td></tr><tr><td>100人以下</td><td>努力義務</td></tr></tbody></table>
+<ul><li>男女賃金差異の公表義務が <strong>301人以上 → 101人以上</strong> に拡大</li><li><strong>女性管理職比率</strong>が公表項目に追加</li><li>法律の有効期限を<strong>10年延長</strong></li><li>女性の健康支援の取組を評価する認定（<strong>えるぼしプラス</strong>）を新設 ⚠️名称要確認</li></ul>
+<h3>認定制度の横断</h3>
+<table class="big"><thead><tr><th>認定</th><th>根拠法</th></tr></thead><tbody><tr><td><strong>えるぼし／プラチナえるぼし</strong></td><td>女性活躍推進法</td></tr><tr><td><strong>くるみん／プラチナくるみん／トライくるみん</strong></td><td>次世代育成支援対策推進法</td></tr><tr><td><strong>ユースエール</strong></td><td>若者雇用促進法</td></tr><tr><td>安全衛生優良企業（ホワイトマーク）</td><td>安衛法関連</td></tr></tbody></table>
+<hr>
+<h2>7. 労働施策総合推進法</h2>
+<table class="big"><thead><tr><th>内容</th><th>状況</th></tr></thead><tbody><tr><td><strong>パワーハラスメント</strong>の措置義務（30条の2）</td><td>全事業主に適用済み</td></tr><tr><td><strong>治療と仕事の両立支援</strong> ★令和8年4月1日</td><td>ガイドライン → <strong>指針</strong>に格上げ、事業主の<strong>努力義務</strong>を明記</td></tr><tr><td><strong>カスタマーハラスメント</strong>対策の義務化</td><td>★<strong>令和8年10月1日施行＝令和8年度試験では未施行</strong></td></tr><tr><td>求職者等に対するセクハラ対策</td><td>同上（令和8年10月1日）</td></tr></tbody></table>
+<h3>ハラスメント措置義務の根拠法（横断）</h3>
+<table class="big"><thead><tr><th>ハラスメント</th><th>根拠法</th></tr></thead><tbody><tr><td>セクハラ／妊娠出産等</td><td>男女雇用機会均等法 11条・11条の3</td></tr><tr><td>育児休業等</td><td>育児・介護休業法 25条</td></tr><tr><td>パワハラ</td><td>労働施策総合推進法 30条の2</td></tr><tr><td><strong>カスハラ</strong>（令和8年10月〜）</td><td>労働施策総合推進法</td></tr></tbody></table>
+<hr>
+<h2>8. 労働組合法</h2>
+<h3>不当労働行為（7条）</h3>
+<table class="big"><thead><tr><th>号</th><th>類型</th></tr></thead><tbody><tr><td>1号</td><td><strong>不利益取扱い</strong>（組合員であること等を理由とする解雇その他の不利益取扱い）、<strong>黄犬契約</strong></td></tr><tr><td>2号</td><td><strong>団体交渉の拒否</strong>（正当な理由のない団交拒否）</td></tr><tr><td>3号</td><td><strong>支配介入・経費援助</strong></td></tr><tr><td>4号</td><td><strong>報復的不利益取扱い</strong>（労働委員会への申立て等を理由とする不利益取扱い）</td></tr></tbody></table>
+<p><strong>経費援助の例外</strong>：① 労働時間中の協議・交渉に賃金を支給 ② 厚生資金・福利基金への寄附 ③ <strong>最小限の広さの事務所</strong>の供与</p>
+<h3>労働協約</h3>
+<ul><li><strong>書面</strong>に作成し、両当事者が<strong>署名又は記名押印</strong>することによって効力を生ずる（14条）</li><li>有効期間は<strong>3年</strong>を超えることができない（期間を定めない場合は90日前の予告で解約可）</li><li><strong>一般的拘束力</strong>：一の工場事業場の同種の労働者の<strong>4分の3以上</strong>に適用されるに至ったときは、他の同種の労働者にも適用（17条）</li><li>地域的の一般的拘束力：労働委員会の決議＋厚生労働大臣又は都道府県知事の決定（18条）</li></ul>
+<h3>労働委員会</h3>
+<p>公益委員・労働者委員・使用者委員の<strong>三者構成・同数</strong>。中央労働委員会と都道府県労働委員会。</p>
+<hr>
+<h2>9. 最低賃金法</h2>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td><strong>地域別最低賃金</strong></td><td>すべての労働者に適用（産業・職種を問わない）</td></tr><tr><td><strong>特定最低賃金</strong></td><td>産業別。地域別を<strong>上回る額</strong>でなければならない</td></tr><tr><td><strong>減額特例</strong></td><td>精神・身体の障害により著しく労働能力が低い者等について、<strong>都道府県労働局長の許可</strong></td></tr><tr><td><strong>派遣労働者</strong></td><td><strong>派遣先</strong>の地域別最低賃金が適用される</td></tr><tr><td>効力</td><td>最低賃金額に達しない部分は<strong>無効</strong>となり、最低賃金額と同様の定めをしたものとみなす</td></tr></tbody></table>
+<p><strong>最低賃金額に算入しない賃金</strong>
+精皆勤手当、通勤手当、家族手当、臨時に支払われる賃金、1か月を超える期間ごとに支払われる賃金、時間外・休日・深夜の割増賃金</p>
+<h3>令和7年度の数値</h3>
+<ul><li>全国加重平均 <strong>1,121円</strong>（前年1,055円、<strong>＋66円</strong>）</li><li>引上げ額66円は昭和53年度の目安制度開始以降で<strong>最高額</strong></li><li><strong>全都道府県で1,000円を突破</strong></li><li>令和8年度の改定（10月頃）は試験後なので、試験対象は令和7年度</li></ul>
+<hr>
+<h2>10. その他の労働法規</h2>
+<table class="big"><thead><tr><th>法律</th><th>押さえどころ</th></tr></thead><tbody><tr><td><strong>高年齢者雇用安定法</strong></td><td>65歳までの<strong>雇用確保措置</strong>（定年引上げ・継続雇用制度・定年廃止）は<strong>義務</strong>／70歳までの<strong>就業確保措置</strong>は<strong>努力義務</strong></td></tr><tr><td><strong>障害者雇用促進法</strong></td><td>法定雇用率（民間企業 ⚠️近年2.5％→2.7％へ段階的引上げ）。除外率制度、障害者雇用納付金・調整金</td></tr><tr><td><strong>職業安定法</strong></td><td>求人等に関する情報の的確な表示、募集時の労働条件明示</td></tr><tr><td><strong>労働時間等設定改善法</strong></td><td><strong>勤務間インターバル</strong>は努力義務。労働時間等設定改善委員会</td></tr><tr><td><strong>次世代育成支援対策推進法</strong></td><td>101人以上に一般事業主行動計画の策定・届出義務。<strong>くるみん</strong>認定</td></tr><tr><td><strong>若者雇用促進法</strong></td><td>職場情報の提供、<strong>ユースエール</strong>認定、青少年雇用情報の提供</td></tr><tr><td><strong>フリーランス・事業者間取引適正化法</strong>（令和6年11月施行）</td><td>取引条件の明示、報酬の<strong>60日以内</strong>支払、ハラスメント相談体制の整備</td></tr><tr><td><strong>労働審判法</strong></td><td><strong>原則3回以内</strong>の期日で審理。労働審判官1人＋労働審判員2人</td></tr><tr><td><strong>個別労働関係紛争解決促進法</strong></td><td>都道府県労働局長の助言・指導、紛争調整委員会の<strong>あっせん</strong></td></tr></tbody></table>
+<hr>
+<h2>11. 労働経済（統計）— 順位と傾向だけ</h2>
+<table><thead><tr><th>統計</th><th>押さえどころ</th></tr></thead><tbody><tr><td>労働力調査</td><td>労働力人口、就業者数、完全失業率、労働力率。<strong>女性のM字カーブは解消傾向</strong></td></tr><tr><td>毎月勤労統計</td><td>現金給与総額、<strong>実質賃金</strong>、労働時間、常用雇用指数</td></tr><tr><td>賃金構造基本統計</td><td>男女間賃金格差、年齢階級別賃金カーブ、企業規模別</td></tr><tr><td>就労条件総合調査</td><td>年次有給休暇の<strong>取得率</strong>、所定労働時間、退職給付制度</td></tr><tr><td>能力開発基本調査</td><td>教育訓練費、自己啓発の実施状況、OFF-JT</td></tr><tr><td>労働組合基礎調査</td><td><strong>推定組織率</strong>（低下傾向・17％前後）、パート組合員は増加</td></tr></tbody></table>
+<blockquote><p>白書は「増加傾向か減少傾向か」「何が一番多いか」を押さえれば十分。細かい実数の暗記は費用対効果が悪い。</p></blockquote>
+<hr>
+<h2>直前チェック（労一）</h2>
+<ul class="chk"><li>労働契約法に<strong>罰則はない</strong></li><li>16条は「<strong>無効</strong>」、17条1項は「<strong>やむを得ない事由</strong>」</li><li>無期転換は通算<strong>5年超</strong>・<strong>承諾したものとみなす</strong>・<strong>別段の定め</strong></li><li>クーリングは<strong>6か月</strong>（直前の契約が1年未満ならその2分の1）</li><li>パート有期法：8条<strong>均衡</strong>／9条<strong>均等</strong>、明示の特定事項4つ</li><li>派遣の期間制限：事業所単位は<strong>意見聴取で延長可</strong>／個人単位は<strong>延長不可</strong></li><li>労使協定方式でも<strong>教育訓練と福利厚生施設</strong>は派遣先基準</li><li>育休2回／産後パパ育休4週2回／介護93日3回</li><li>看護等休暇=<strong>小3修了</strong>、残業免除=<strong>小学校就学前</strong></li><li>柔軟な働き方：事業主<strong>2以上</strong>措置・労働者<strong>1つ</strong>選択</li><li>女性活躍推進法<strong>101人以上</strong>に女性管理職比率・男女賃金差異の公表義務（令和8年4月）</li><li>カスハラ義務化は<strong>令和8年10月1日＝未施行</strong></li><li>不当労働行為の4類型／経費援助の例外3つ</li><li>労働協約の一般的拘束力は<strong>4分の3以上</strong></li><li>最低賃金 全国加重平均<strong>1,121円</strong>（＋66円）</li></ul>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">1</span>法改正まとめ<span class="sec">（全体版）</span></span></td><td>この科目の令和8年度改正を施行日で確認</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>時効・届出期限・遺族の範囲などを他科目と並べて比較</td></tr><tr><td><span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span></td><td><code>⚠️要確認</code> を付けた年度依存の数値を照合</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 54 ／ 一般常識</div><h1>労働契約法</h1><div class="desc">10条の合理性5要素。無期転換は5年超、雇止め法理は申込みが必要</div></div><p><strong>9年で7回以上</strong>出題される労一の最重要法令です。<strong>罰則も行政監督もない民事的ルール</strong>であることが出発点です。</p>
+<h3>基本原則（3条）</h3>
+<table class="big"><thead><tr><th>項</th><th>原則</th></tr></thead><tbody><tr><td>1項</td><td><strong>労使対等</strong>の立場における<strong>合意</strong>に基づいて締結・変更すべき</td></tr><tr><td>2項</td><td><strong>就業の実態に応じて均衡</strong>を考慮しつつ締結・変更すべき</td></tr><tr><td>3項</td><td><strong>仕事と生活の調和</strong>にも配慮しつつ締結・変更すべき</td></tr><tr><td>4項</td><td>労働者・使用者は、労働契約を遵守するとともに、<strong>信義に従い誠実に権利を行使し義務を履行</strong>しなければならない</td></tr><tr><td>5項</td><td>労働者・使用者は、労働契約に基づく<strong>権利の行使に当たっては、それを濫用することがあってはならない</strong></td></tr></tbody></table>
+<blockquote><p>★1〜3項は「<strong>すべきものとする</strong>」（努力を促す規定）、4〜5項は「<strong>しなければならない／あってはならない</strong>」。語尾の違いがそのまま問われます。</p></blockquote>
+<h3>労働契約の成立（6条・7条）</h3>
+<table class="big"><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td><strong>6条</strong></td><td>労働契約は、労働者が使用者に<strong>使用されて労働し</strong>、使用者がこれに対して<strong>賃金を支払う</strong>ことについて、<strong>労働者及び使用者が合意することによって成立</strong>する</td></tr><tr><td><strong>7条</strong></td><td>労働者及び使用者が労働契約を締結する場合において、使用者が<strong>合理的な労働条件</strong>が定められている<strong>就業規則</strong>を労働者に<strong>周知</strong>させていた場合には、労働契約の内容は、<strong>その就業規則で定める労働条件による</strong></td></tr></tbody></table>
+<p>7条ただし書：労働契約において、労働者及び使用者が<strong>就業規則の内容と異なる労働条件を合意していた部分</strong>については、<strong>12条に該当する場合を除き</strong>、その合意による。</p>
+<blockquote><p>★<strong>書面は不要</strong>です（6条）。労基法15条の労働条件明示義務とは別の話です。
+★7条の効力は「<strong>合理的</strong>」かつ「<strong>周知</strong>」の両方が必要です。</p></blockquote>
+<h3>就業規則による労働条件の変更（8条〜10条）</h3>
+<table class="big"><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td><strong>8条</strong></td><td>労働者及び使用者は、その<strong>合意</strong>により、労働契約の内容である労働条件を変更することができる</td></tr><tr><td><strong>9条</strong></td><td>使用者は、労働者と合意することなく、<strong>就業規則を変更することにより</strong>、労働者の<strong>不利益に</strong>労働契約の内容である労働条件を<strong>変更することはできない</strong>（10条の場合を除く）</td></tr><tr><td><strong>10条</strong></td><td>使用者が就業規則の変更により労働条件を変更する場合において、変更後の就業規則を<strong>周知</strong>させ、かつ、就業規則の変更が<strong>合理的</strong>なものであるときは、労働契約の内容は、<strong>変更後の就業規則に定めるところによる</strong></td></tr></tbody></table>
+<p><strong>10条の「合理性」の判断要素</strong>（条文に列挙されています）。</p>
+<ol><li>労働者の受ける<strong>不利益の程度</strong></li><li>労働条件の<strong>変更の必要性</strong></li><li>変更後の就業規則の<strong>内容の相当性</strong></li><li><strong>労働組合等との交渉の状況</strong></li><li>その他の就業規則の変更に係る事情</li></ol>
+<blockquote><p>★この5要素は<strong>選択式の空欄</strong>になりやすいところです。順番も含めて覚えます。
+★10条ただし書：<strong>労働契約において、就業規則の変更によっては変更されない</strong>こととした部分については、12条の場合を除き、変更されません。</p></blockquote>
+<h3>就業規則の最低基準効（12条）</h3>
+<blockquote><p>就業規則で定める基準に達しない労働条件を定める労働契約は、<strong>その部分については、無効</strong>とする。この場合において、無効となった部分は、就業規則で定める<strong>基準による</strong>。</p></blockquote>
+<blockquote><p>★労基法93条と同じ構造です（労基法13条の「法律の基準」の就業規則版）。</p></blockquote>
+<h3>出向・懲戒・解雇（14条〜16条）</h3>
+<table class="big"><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td><strong>14条</strong>（出向）</td><td>使用者が労働者に出向を命ずることができる場合において、当該命令が、その必要性、対象労働者の選定に係る事情その他の事情に照らして、その<strong>権利を濫用したものと認められる場合には、当該命令は無効</strong></td></tr><tr><td><strong>15条</strong>（懲戒）</td><td>使用者が労働者を懲戒することができる場合において、当該懲戒が、労働者の行為の性質及び態様その他の事情に照らして、<strong>客観的に合理的な理由を欠き、社会通念上相当であると認められない場合は、その権利を濫用したものとして、当該懲戒は無効</strong></td></tr><tr><td><strong>16条</strong>（解雇）</td><td>解雇は、<strong>客観的に合理的な理由を欠き、社会通念上相当であると認められない場合</strong>は、その権利を濫用したものとして、<strong>無効</strong></td></tr></tbody></table>
+<blockquote><p>★14条は「<strong>権利を濫用したものと認められる場合</strong>」、15条・16条は「<strong>客観的に合理的な理由を欠き、社会通念上相当であると認められない場合</strong>」。表現の違いが問われます。
+★16条は<strong>旧労基法18条の2</strong>が移されたものです。</p></blockquote>
+<h3>有期労働契約（17条〜20条）</h3>
+<table class="big"><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td><strong>17条1項</strong></td><td>使用者は、期間の定めのある労働契約について、<strong>やむを得ない事由がある場合でなければ</strong>、その契約期間が満了するまでの間において、労働者を解雇することができない</td></tr><tr><td><strong>17条2項</strong></td><td>使用者は、有期労働契約について、その労働契約により労働者を使用する<strong>目的に照らして、必要以上に短い期間を定めることにより、その労働契約を反復して更新することのないよう配慮</strong>しなければならない</td></tr><tr><td><strong>18条</strong></td><td><strong>無期転換ルール</strong>（下記）</td></tr><tr><td><strong>19条</strong></td><td><strong>雇止め法理</strong>（下記）</td></tr></tbody></table>
+<blockquote><p>★17条1項の「やむを得ない事由」は、労基法の解雇（客観的合理性＋社会通念上の相当性）よりも<strong>厳格</strong>とされています。</p></blockquote>
+<h3>無期転換ルール（18条）</h3>
+<p>同一の使用者との間で締結された<strong>2以上の有期労働契約</strong>の<strong>通算契約期間が5年</strong>を超える労働者が、<strong>現に締結している有期労働契約の契約期間が満了する日までの間に</strong>、無期労働契約の締結の<strong>申込み</strong>をしたときは、使用者は<strong>その申込みを承諾したものとみなす</strong>。</p>
+<table class="big"><thead><tr><th>ポイント</th><th></th></tr></thead><tbody><tr><td>転換の時期</td><td><strong>申込み時の有期契約が満了する日の翌日</strong>から無期労働契約が成立</td></tr><tr><td>労働条件</td><td>別段の定めがない限り<strong>従前と同一</strong>（無期になるだけで、正社員になるわけではない）</td></tr><tr><td><strong>クーリング</strong></td><td>契約がない期間が<strong>6か月以上</strong>（直前の通算期間が1年未満の場合はその2分の1以上）あると、それ以前の期間は通算されない</td></tr><tr><td>特例</td><td><strong>有期雇用特別措置法</strong>により、高度専門的知識等を有する者（<strong>上限10年</strong>）と<strong>定年後継続雇用</strong>の高齢者は、無期転換申込権が発生しない</td></tr></tbody></table>
+<blockquote><p>★<strong>5年を超える</strong>（5年ちょうどでは足りません）。
+★令和6年4月から、<strong>無期転換申込権が発生する契約更新のタイミングごとに、その旨を書面で明示</strong>することが労基法上の義務になりました。</p></blockquote>
+<h3>雇止め法理（19条）</h3>
+<p>次のいずれかに該当し、労働者が<strong>契約期間の満了までの間に更新の申込みをした場合</strong>（または<strong>満了後遅滞なく締結の申込みをした場合</strong>）に、使用者が申込みを拒絶することが<strong>客観的に合理的な理由を欠き、社会通念上相当であると認められない</strong>ときは、使用者は<strong>従前と同一の労働条件で申込みを承諾したものとみなす</strong>。</p>
+<table><thead><tr><th>号</th><th>類型</th><th>判例</th></tr></thead><tbody><tr><td>1号</td><td>反復更新により、<strong>実質的に無期労働契約と同視できる</strong>もの</td><td><strong>東芝柳町工場事件</strong></td></tr><tr><td>2号</td><td>契約期間の満了時に更新されるものと<strong>期待することについて合理的な理由がある</strong>もの</td><td><strong>日立メディコ事件</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>申込みは必要</strong>です。黙っていれば自動的に更新されるわけではありません。
+★平成24年改正で<strong>判例法理が条文化</strong>されたものです。</p></blockquote>
+<h3>20条の削除</h3>
+<p>旧20条（期間の定めがあることによる<strong>不合理な労働条件の禁止</strong>）は、平成30年改正により<strong>パートタイム・有期雇用労働法8条に移されました</strong>（令和2年4月施行）。</p>
+<blockquote><p>★「労働契約法20条により不合理な相違が禁止される」は<strong>現在では誤り</strong>です。根拠条文はパート・有期法8条です。</p></blockquote>
+<h3>就業規則の変更に係る手続（11条）</h3>
+<blockquote><p>就業規則の変更の手続に関しては、<strong>労働基準法第89条及び第90条</strong>の定めるところによる。</p></blockquote>
+<p>労働契約法は民事的な効力（7条・10条・12条）を定めるだけで、<strong>作成・届出・意見聴取の手続は労基法</strong>に委ねられています。</p>
+<blockquote><p>★労働契約法には<strong>罰則も行政監督もありません</strong>。届出義務違反を問えるのは労基法だけです。</p></blockquote>
+<h3>適用除外（21条・22条）</h3>
+<table><thead><tr><th>対象</th><th>扱い</th></tr></thead><tbody><tr><td><strong>国家公務員・地方公務員</strong></td><td>適用しない</td></tr><tr><td><strong>使用者が同居の親族のみを使用する場合</strong>の労働者</td><td>適用しない</td></tr><tr><td><strong>船員</strong></td><td>12条・18条〜20条などの一部規定を除き適用（船員法との調整あり）</td></tr></tbody></table>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">53</span>労働一般常識</span></td><td>条文と統計の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">98</span>白書・統計<span class="sec">（全体版）</span></span></td><td>労働経済の数字</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 55 ／ 一般常識</div><h1>労働組合法</h1><div class="desc">不当労働行為4類型と労働協約3年。緊急調整は内閣総理大臣</div></div><h3>労働組合の要件（2条）</h3>
+<blockquote><p>労働者が<strong>主体</strong>となって<strong>自主的</strong>に労働条件の維持改善その他経済的地位の向上を図ることを<strong>主たる目的</strong>として組織する団体またはその連合団体。</p></blockquote>
+<p><strong>労働組合と認められないもの</strong>（2条ただし書）。</p>
+<table class="big"><thead><tr><th>号</th><th>内容</th></tr></thead><tbody><tr><td>1号</td><td><strong>役員、雇入解雇昇進異動に関して直接の権限を持つ監督的地位にある労働者</strong>、使用者の労働関係についての計画と方針に関する機密の事項に接し職務上の義務と責任が組合員としての誠意と責任に直接抵触する監督的地位にある労働者<strong>その他使用者の利益を代表する者</strong>の参加を許すもの</td></tr><tr><td>2号</td><td>団体の運営のための<strong>経費の支出につき使用者の経理上の援助</strong>を受けるもの</td></tr><tr><td>3号</td><td><strong>共済事業その他福利事業のみ</strong>を目的とするもの</td></tr><tr><td>4号</td><td>主として<strong>政治運動または社会運動</strong>を目的とするもの</td></tr></tbody></table>
+<p><strong>2号の例外</strong>（経理上の援助に当たらないもの）。</p>
+<ol><li>労働者が<strong>労働時間中に時間または賃金を失うことなく使用者と協議し、または交渉すること</strong>を使用者が許すこと</li><li>厚生資金または経済上の不幸もしくは災厄を防止し、もしくは救済するための支出に実際に用いられる<strong>福利その他の基金に対する使用者の寄附</strong></li><li><strong>最小限の広さの事務所</strong>の供与</li></ol>
+<blockquote><p>★<strong>組合事務所の供与は「最小限の広さ」なら援助に当たりません</strong>。自動車や光熱費の供与は該当します。</p></blockquote>
+<h3>資格審査（5条）</h3>
+<p>労働組合は、<strong>労働委員会に証拠を提出して2条および2項の規定に適合することを立証</strong>しなければ、労組法に規定する<strong>手続に参与する資格を有せず、救済を受けることができません</strong>。</p>
+<p>規約に記載しなければならない事項（5条2項）の主なもの。</p>
+<ol><li>単一組織の場合、<strong>すべての組合員が均等の取扱いを受ける</strong>こと</li><li><strong>人種、宗教、性別、門地または身分</strong>によって組合員たる資格を奪われないこと</li><li>役員は<strong>組合員の直接無記名投票</strong>により選挙されること</li><li><strong>同盟罷業（ストライキ）</strong>は、組合員の<strong>直接無記名投票の過半数</strong>による決定を経なければ開始しないこと</li><li>規約の改正は、組合員の<strong>直接無記名投票による過半数の支持</strong>を得なければならないこと</li><li>毎年少なくとも1回<strong>会計報告</strong>が組合員に公表されること（<strong>職業的に資格がある会計監査人</strong>による<strong>正確であることの証明書</strong>とともに）</li></ol>
+<blockquote><p>★<strong>ストライキは直接無記名投票の過半数</strong>。これは頻出です。</p></blockquote>
+<h3>不当労働行為（7条）</h3>
+<table class="big"><thead><tr><th>号</th><th>類型</th></tr></thead><tbody><tr><td><strong>1号</strong></td><td><strong>不利益取扱い</strong>（組合員であること、組合に加入・結成しようとしたこと、正当な行為をしたことを理由とする解雇その他の不利益な取扱い）、および<strong>黄犬契約</strong>（組合に加入しないこと・脱退することを雇用条件とすること）</td></tr><tr><td><strong>2号</strong></td><td><strong>団体交渉の拒否</strong>（使用者が雇用する労働者の代表者と団体交渉をすることを<strong>正当な理由がなくて拒む</strong>こと）</td></tr><tr><td><strong>3号</strong></td><td><strong>支配介入</strong>（労働組合の結成・運営を支配し、またはこれに介入すること）および<strong>経費援助</strong></td></tr><tr><td><strong>4号</strong></td><td><strong>報復的不利益取扱い</strong>（労働委員会に対する申立て、再審査の申立て、証拠の提示・発言を理由とする解雇その他の不利益な取扱い）</td></tr></tbody></table>
+<p><strong>ユニオン・ショップ協定</strong>：1号ただし書により、労働者が<strong>その工場事業場に雇用される労働者の過半数を代表する労働組合</strong>の組合員であることを雇用条件とする労働協約の締結は、不当労働行為になりません。</p>
+<blockquote><p>★ユニオン・ショップが有効なのは<strong>過半数組合</strong>の場合だけです。
+★<strong>他の組合に加入している者・新たな組合を結成した者</strong>に対するユニオン・ショップ協定に基づく解雇は<strong>無効</strong>です（三井倉庫港運事件）。</p></blockquote>
+<h3>労働協約（14条〜18条）</h3>
+<table class="big"><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td><strong>14条</strong></td><td>労働協約は、<strong>書面に作成</strong>し、<strong>両当事者が署名し、または記名押印</strong>することによって効力を生ずる</td></tr><tr><td><strong>15条</strong></td><td><strong>有効期間は3年を超えることができない</strong>。3年を超える定めをしたものは<strong>3年</strong>の定めをしたものとみなす。期間の定めがないものは、<strong>署名し、または記名押印した文書</strong>により<strong>少なくとも90日前</strong>に予告して解約できる</td></tr><tr><td><strong>16条</strong>（規範的効力）</td><td>労働協約に定める<strong>労働条件その他の労働者の待遇に関する基準</strong>に違反する労働契約の部分は<strong>無効</strong>。無効となった部分は<strong>基準の定めるところによる</strong>。労働契約に定がない部分についても<strong>同様</strong></td></tr><tr><td><strong>17条</strong>（一般的拘束力）</td><td>一の工場事業場に常時使用される<strong>同種の労働者の4分の3以上</strong>の数の労働者が一の労働協約の適用を受けるに至ったときは、当該工場事業場に使用される<strong>他の同種の労働者</strong>に関しても当該労働協約が適用される</td></tr><tr><td><strong>18条</strong>（地域的の一般的拘束力）</td><td>一の地域において従業する<strong>同種の労働者の大部分</strong>が一の労働協約の適用を受けるに至ったときは、<strong>労働委員会の決議</strong>により、<strong>厚生労働大臣または都道府県知事</strong>が、他の同種の労働者・使用者にも適用する旨の<strong>決定</strong>をすることができる</td></tr></tbody></table>
+<blockquote><p>★<strong>3年</strong>が上限、期間の定めがないときは<strong>90日前</strong>の予告。数字が問われます。
+★17条は<strong>事業場単位で4分の3以上</strong>。18条は<strong>地域単位で大部分</strong>＋<strong>労働委員会の決議</strong>＋<strong>大臣または知事の決定</strong>。</p></blockquote>
+<h3>労働委員会（19条〜27条の26）</h3>
+<table class="big"><thead><tr><th>種類</th><th>構成</th></tr></thead><tbody><tr><td><strong>中央労働委員会</strong></td><td><strong>使用者委員・労働者委員・公益委員 各15人</strong></td></tr><tr><td><strong>都道府県労働委員会</strong></td><td>各13人・11人・9人・7人・5人（政令で定める）</td></tr></tbody></table>
+<p>不当労働行為の<strong>審査</strong>は<strong>公益委員のみ</strong>で行います（使用者委員・労働者委員は<strong>参与</strong>できます）。</p>
+<table class="big"><thead><tr><th>手続</th><th></th></tr></thead><tbody><tr><td><strong>申立て期間</strong></td><td>行為の日（継続する行為は終了した日）から<strong>1年以内</strong></td></tr><tr><td><strong>救済命令</strong></td><td>労働委員会が発する。<strong>確定判決によって支持された救済命令に違反</strong>した者には<strong>罰則</strong>（1年以下の拘禁刑もしくは100万円以下の罰金またはその併科）</td></tr><tr><td><strong>緊急命令</strong></td><td>使用者が命令の取消しの訴えを提起した場合、<strong>受訴裁判所</strong>は労働委員会の申立てにより、判決確定に至るまで<strong>命令の全部または一部に従うべき旨を命ずる</strong>ことができる</td></tr></tbody></table>
+<hr>
+<h2>労働関係調整法</h2>
+<h3>3つの調整（斡旋・調停・仲裁）</h3>
+<table><thead><tr><th></th><th>斡旋</th><th>調停</th><th>仲裁</th></tr></thead><tbody><tr><td>担当</td><td><strong>斡旋員</strong>（斡旋員候補者の中から労働委員会の会長が指名）</td><td><strong>調停委員会</strong>（使用者・労働者・公益を代表する調停委員）</td><td><strong>仲裁委員会</strong>（<strong>公益を代表する仲裁委員のみ</strong>3人）</td></tr><tr><td>開始</td><td>関係当事者の<strong>双方または一方</strong>の申請、労働委員会の<strong>職権</strong></td><td>双方の申請、<strong>労働協約の定め</strong>に基づく一方の申請、<strong>厚生労働大臣または知事の請求</strong>（公益事業）、労働委員会の職権（公益事業）</td><td><strong>双方</strong>の申請、<strong>労働協約の定め</strong>に基づく一方の申請</td></tr><tr><td>効力</td><td>拘束力なし</td><td><strong>調停案の受諾は任意</strong></td><td><strong>仲裁裁定は労働協約と同一の効力</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>仲裁委員会は公益委員だけ</strong>で構成されます。<strong>仲裁裁定だけが拘束力を持ちます</strong>。</p></blockquote>
+<h3>緊急調整（35条の2）</h3>
+<p><strong>内閣総理大臣</strong>は、事件が<strong>公益事業</strong>に関するものであるため、またはその規模が大きいため、もしくは特別の性質の事業に関するものであるために、争議行為により<strong>国民経済の運行を著しく阻害し、または国民の日常生活を著しく危くするおそれ</strong>が現実にあるときは、<strong>中央労働委員会の意見を聴いて</strong>、緊急調整の決定をすることができます。</p>
+<table><thead><tr><th>効果</th><th>公表の日から<strong>50日間</strong>は<strong>争議行為が禁止</strong>される</th></tr></thead><tbody></tbody></table>
+<blockquote><p>★決定するのは<strong>内閣総理大臣</strong>（厚生労働大臣ではありません）。<strong>中央労働委員会の意見を聴く</strong>のであって、決議ではありません。</p></blockquote>
+<h3>争議行為の予告（37条）</h3>
+<p><strong>公益事業</strong>に関する事件については、争議行為をしようとする日の<strong>少なくとも10日前</strong>までに、<strong>労働委員会および厚生労働大臣または都道府県知事</strong>に<strong>通知</strong>しなければなりません。</p>
+<p><strong>公益事業</strong>とは、<strong>運輸事業、郵便・信書便・電気通信の事業、水道・電気・ガス供給の事業、医療・公衆衛生の事業</strong>であって、公衆の日常生活に欠くことのできないものをいいます。</p>
+<blockquote><p>★<strong>10日前</strong>の予告。予告なしの争議行為には罰金があります。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">53</span>労働一般常識</span></td><td>条文と統計の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">98</span>白書・統計<span class="sec">（全体版）</span></span></td><td>労働経済の数字</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 56 ／ 一般常識</div><h1>派遣法とパート・有期法</h1><div class="desc">3年の期間制限と労働契約申込みみなし。8条は均衡で9条は均等</div></div><h2>労働者派遣法</h2>
+<h3>定義（2条）</h3>
+<blockquote><p><strong>労働者派遣</strong>とは、自己の雇用する労働者を、当該雇用関係の下に、かつ、<strong>他人の指揮命令</strong>を受けて、当該他人のために労働に従事させることをいい、<strong>当該他人に対し当該労働者を当該他人に雇用させることを約してするものを含まない</strong>。</p></blockquote>
+<blockquote><p>★最後の一文により、<strong>在籍出向は労働者派遣に当たりません</strong>（出向先とも雇用関係があるため）。</p></blockquote>
+<h3>適用除外業務（4条）</h3>
+<table class="big"><thead><tr><th>業務</th></tr></thead><tbody><tr><td><strong>港湾運送</strong>業務</td></tr><tr><td><strong>建設</strong>業務</td></tr><tr><td><strong>警備</strong>業務</td></tr><tr><td><strong>医療関係</strong>業務（病院等における医師・看護師等。<strong>紹介予定派遣、産休・育休の代替、へき地</strong>等は例外）</td></tr></tbody></table>
+<blockquote><p>★<strong>士業</strong>（弁護士・社労士等）は法令上の適用除外ではなく、<strong>業として行う場合に業務の性質上馴染まない</strong>という整理です。</p></blockquote>
+<h3>期間制限（35条の2・35条の3・40条の2）</h3>
+<table class="big"><thead><tr><th>区分</th><th>制限</th></tr></thead><tbody><tr><td><strong>事業所単位</strong></td><td>同一の事業所に対し<strong>3年</strong>が限度。延長するには<strong>過半数労働組合等からの意見聴取</strong>が必要（<strong>3年ごと</strong>、<strong>1回につき3年</strong>を限度に延長可）</td></tr><tr><td><strong>個人単位</strong></td><td>同一の派遣労働者を同一の<strong>組織単位</strong>（課など）に<strong>3年</strong>を超えて派遣してはならない</td></tr></tbody></table>
+<p><strong>期間制限の対象外</strong></p>
+<ol><li><strong>無期雇用</strong>の派遣労働者</li><li><strong>60歳以上</strong>の派遣労働者</li><li><strong>有期プロジェクト</strong>業務（終期が明確なもの）</li><li><strong>日数限定</strong>業務（1か月の勤務日数が通常の労働者の<strong>半分以下</strong>かつ<strong>10日以下</strong>）</li><li><strong>産前産後休業・育児休業・介護休業</strong>等の代替要員</li></ol>
+<blockquote><p>★<strong>無期雇用と60歳以上</strong>は覚えやすい2つです。
+★意見聴取は<strong>義務</strong>ですが、<strong>同意までは不要</strong>です。異議があれば<strong>対応方針等を説明</strong>しなければなりません。</p></blockquote>
+<h3>労働契約申込みみなし制度（40条の6）</h3>
+<p>派遣先が次の<strong>違法派遣</strong>を受け入れた場合、その時点で、派遣先が派遣労働者に対し、<strong>その労働条件と同一の労働条件を内容とする労働契約の申込みをしたものとみなされます</strong>。</p>
+<ol><li><strong>適用除外業務</strong>に従事させた</li><li><strong>無許可</strong>の事業主から派遣を受け入れた</li><li><strong>事業所単位・個人単位の期間制限</strong>に違反した</li><li><strong>偽装請負</strong>等（労働者派遣法等の適用を免れる目的で、請負等の名目で契約を締結した）</li></ol>
+<blockquote><p>★派遣先が<strong>違法であることを知らず、かつ知らなかったことにつき過失がなかった</strong>ときは適用されません。
+★みなされた申込みは<strong>1年間</strong>撤回できず、派遣労働者が承諾すれば労働契約が成立します。</p></blockquote>
+<h3>同一労働同一賃金（30条の3・30条の4）</h3>
+<p>派遣元事業主は、次の<strong>いずれか</strong>の方式により、派遣労働者の待遇を確保しなければなりません。</p>
+<table class="big"><thead><tr><th>方式</th><th>内容</th></tr></thead><tbody><tr><td><strong>派遣先均等・均衡方式</strong>（30条の3）</td><td>派遣先の通常の労働者との間で、<strong>不合理な待遇の相違</strong>を設けてはならない（均衡待遇）、<strong>職務の内容・配置の変更範囲が同一</strong>なら差別的取扱いをしてはならない（均等待遇）</td></tr><tr><td><strong>労使協定方式</strong>（30条の4）</td><td>派遣元で<strong>過半数労働組合等と労使協定</strong>を締結し、<strong>同種の業務に従事する一般労働者の平均的な賃金額</strong>と同等以上の賃金等を定める</td></tr></tbody></table>
+<blockquote><p>★どちらを選ぶかは<strong>派遣元</strong>が決めます。労使協定方式では、協定を<strong>書面で締結</strong>し、<strong>周知</strong>が必要です。</p></blockquote>
+<h3>許可・届出</h3>
+<p>労働者派遣事業は、<strong>すべて許可制</strong>（厚生労働大臣の許可）です。平成27年改正で<strong>特定労働者派遣事業（届出制）は廃止</strong>されました。</p>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>許可の有効期間</td><td><strong>3年</strong>（更新後は<strong>5年</strong>）</td></tr><tr><td>欠格事由</td><td>禁錮以上の刑、労働関係法令違反等</td></tr><tr><td><strong>日雇派遣の原則禁止</strong>（35条の4）</td><td>例外：<strong>政令で定める業務</strong>、<strong>60歳以上</strong>、<strong>昼間学生</strong>、<strong>副業</strong>（生業収入500万円以上）、<strong>主たる生計者でない</strong>（世帯収入500万円以上）</td></tr><tr><td><strong>離職後1年以内</strong>の派遣の禁止（35条の5・40条の9）</td><td><strong>60歳以上の定年退職者を除く</strong></td></tr><tr><td><strong>グループ企業内派遣</strong>（23条の2）</td><td>関係派遣先への派遣割合を<strong>8割以下</strong>にしなければならない</td></tr></tbody></table>
+<hr>
+<h2>パートタイム・有期雇用労働法</h2>
+<h3>均衡待遇（8条）と均等待遇（9条）</h3>
+<table><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td><strong>8条</strong>（不合理な待遇の禁止・<strong>均衡</strong>）</td><td>基本給、賞与その他の待遇のそれぞれについて、<strong>①職務の内容 ②職務の内容・配置の変更の範囲 ③その他の事情</strong>のうち、当該待遇の性質・目的に照らして適切と認められるものを考慮して、<strong>不合理と認められる相違を設けてはならない</strong></td></tr><tr><td><strong>9条</strong>（差別的取扱いの禁止・<strong>均等</strong>）</td><td><strong>職務の内容</strong>が同一であり、かつ、当該事業主との雇用関係が終了するまでの全期間において<strong>職務の内容および配置の変更の範囲</strong>が同一であると見込まれる短時間・有期雇用労働者については、<strong>短時間・有期雇用労働者であることを理由として</strong>、待遇について<strong>差別的取扱いをしてはならない</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>8条は「不合理な相違」を禁止（バランス）、9条は「差別的取扱い」を禁止（同一）</strong>。9条は<strong>①②が同一</strong>であることが要件です（③その他の事情は見ません）。</p></blockquote>
+<h3>待遇に関する説明義務（14条）</h3>
+<table><thead><tr><th>場面</th><th>説明する内容</th></tr></thead><tbody><tr><td><strong>雇入れ時</strong></td><td>講ずる措置の内容（8条〜13条）</td></tr><tr><td><strong>求めがあったとき</strong></td><td><strong>通常の労働者との間の待遇の相違の内容および理由</strong>、待遇の決定に当たって考慮した事項</td></tr></tbody></table>
+<p>説明を求めたことを理由とする<strong>不利益取扱いは禁止</strong>されます。</p>
+<h3>労働条件の文書交付（6条）</h3>
+<p>労基法15条の明示事項に加え、<strong>特定事項</strong>（<strong>昇給の有無、退職手当の有無、賞与の有無、相談窓口</strong>）を<strong>文書の交付等</strong>により明示しなければなりません。</p>
+<blockquote><p>★<strong>4つの特定事項</strong>。「通勤手当の有無」は含まれません。</p></blockquote>
+<h3>紛争解決（22条〜27条）</h3>
+<p><strong>都道府県労働局長による助言・指導・勧告</strong>、<strong>紛争調整委員会による調停</strong>の対象です。</p>
+<blockquote><p>★<strong>均衡待遇（8条）も調停の対象</strong>です（平成30年改正で追加）。</p></blockquote>
+<h3>求職者等の個人情報の取扱い（職業安定法5条の5）</h3>
+<p>公共職業安定所、特定地方公共団体、<strong>職業紹介事業者</strong>、<strong>求人者</strong>、労働者の募集を行う者・募集受託者、<strong>特定募集情報等提供事業者</strong>、労働者供給事業者・労働者供給を受けようとする者は、その業務に関し、求職者等の個人情報を収集・保管・使用するにあたっては、<strong>業務の目的の達成に必要な範囲内</strong>で収集し、その目的の範囲内で保管・使用しなければなりません。</p>
+<p><strong>本人の同意がある場合その他正当な事由がある場合</strong>はこの限りではありません。また、求職者等の個人情報を<strong>適正に管理するために必要な措置</strong>を講じなければなりません。</p>
+<blockquote><p>★令和4年改正で<strong>特定募集情報等提供事業者</strong>（求人メディア等）が明記されました。
+★収集してはならない個人情報の例：<strong>人種・民族・社会的身分・門地・本籍・出生地</strong>、<strong>思想・信条</strong>、<strong>労働組合への加入状況</strong>。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">53</span>労働一般常識</span></td><td>条文と統計の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">98</span>白書・統計<span class="sec">（全体版）</span></span></td><td>労働経済の数字</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 57 ／ 一般常識</div><h1>均等法と育介法</h1><div class="desc">賃金は労基法4条で均等法6条には入らない。間接差別は3つだけ</div></div><h2>男女雇用機会均等法</h2>
+<h3>差別の禁止（5条・6条）</h3>
+<table class="big"><thead><tr><th>条</th><th>場面</th></tr></thead><tbody><tr><td><strong>5条</strong></td><td><strong>募集・採用</strong>について、性別にかかわりなく<strong>均等な機会</strong>を与えなければならない</td></tr><tr><td><strong>6条</strong></td><td><strong>配置</strong>（業務の配分および権限の付与を含む）、<strong>昇進、降格、教育訓練</strong>、<strong>福利厚生</strong>（住宅資金の貸付け等）、<strong>職種・雇用形態の変更</strong>、<strong>退職の勧奨、定年、解雇、労働契約の更新</strong>について、性別を理由として<strong>差別的取扱いをしてはならない</strong></td></tr></tbody></table>
+<blockquote><p>★5条は「<strong>均等な機会</strong>」、6条は「<strong>差別的取扱いの禁止</strong>」。表現が違います。
+★<strong>賃金</strong>は均等法ではなく<strong>労基法4条</strong>で規制されます。均等法6条に賃金は含まれません。ここが最頻出です。</p></blockquote>
+<h3>間接差別（7条）</h3>
+<p><strong>性別以外の事由</strong>を要件とする措置であって、<strong>実質的に性別を理由とする差別となるおそれがある</strong>ものとして厚生労働省令で定めるものは、<strong>合理的な理由がある場合でなければ</strong>講じてはなりません。</p>
+<table class="big"><thead><tr><th>省令で定める3つ</th></tr></thead><tbody><tr><td>① <strong>労働者の募集・採用</strong>に当たって、労働者の<strong>身長、体重または体力</strong>を要件とするもの</td></tr><tr><td>② <strong>労働者の募集・採用、昇進、職種の変更</strong>に当たって、<strong>転居を伴う転勤</strong>に応じることができることを要件とするもの</td></tr><tr><td>③ <strong>労働者の昇進</strong>に当たって、<strong>転勤の経験</strong>があることを要件とするもの</td></tr></tbody></table>
+<blockquote><p>★<strong>3つだけ</strong>が省令で定められています。「募集・採用における転勤要件」は①ではなく②に含まれます。</p></blockquote>
+<h3>ポジティブ・アクション（8条）</h3>
+<p><strong>女性労働者に関して行う措置</strong>で、<strong>男女間の格差を解消することを目的</strong>とするものは、5条〜7条の規定にかかわらず<strong>違法とならない</strong>。</p>
+<blockquote><p>★<strong>女性を有利に扱う措置だけ</strong>が許されます。男性を有利に扱う措置は許されません。</p></blockquote>
+<h3>婚姻・妊娠・出産等を理由とする不利益取扱いの禁止（9条）</h3>
+<table class="big"><thead><tr><th>項</th><th>内容</th></tr></thead><tbody><tr><td>1項</td><td><strong>女性労働者が婚姻し、妊娠し、または出産したことを退職理由として予定する定め</strong>をしてはならない</td></tr><tr><td>2項</td><td><strong>婚姻したこと</strong>を理由として<strong>解雇</strong>してはならない</td></tr><tr><td>3項</td><td><strong>妊娠、出産、産前産後休業、その他厚生労働省令で定める事由</strong>を理由として、<strong>解雇その他不利益な取扱い</strong>をしてはならない</td></tr><tr><td>4項</td><td><strong>妊娠中の女性労働者および出産後1年を経過しない女性労働者</strong>に対してなされた<strong>解雇は無効</strong>。ただし、事業主が<strong>妊娠等を理由とする解雇でないことを証明</strong>したときはこの限りでない</td></tr></tbody></table>
+<blockquote><p>★4項の<strong>立証責任は事業主</strong>にあります。ここが最頻出です。</p></blockquote>
+<h3>ハラスメント対策（11条・11条の3）</h3>
+<table class="big"><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td><strong>11条</strong></td><td><strong>セクシュアルハラスメント</strong>（職場において行われる性的な言動に対する対応により労働条件につき不利益を受け、または就業環境が害されること）について、<strong>雇用管理上必要な措置</strong>を講じなければならない</td></tr><tr><td><strong>11条の2</strong></td><td>セクハラに関する<strong>国・事業主・労働者の責務</strong></td></tr><tr><td><strong>11条の3</strong></td><td><strong>妊娠・出産等に関するハラスメント</strong>（マタニティハラスメント）について雇用管理上必要な措置</td></tr></tbody></table>
+<blockquote><p>★<strong>措置義務は事業主の義務</strong>（努力義務ではありません）。<strong>すべての事業主</strong>が対象で、規模による例外はありません。
+★相談したこと等を理由とする<strong>不利益取扱いは禁止</strong>されています（11条2項）。</p></blockquote>
+<h3>母性健康管理（12条・13条）</h3>
+<table class="big"><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td><strong>12条</strong></td><td>女性労働者が<strong>保健指導または健康診査</strong>を受けるために<strong>必要な時間を確保</strong>しなければならない</td></tr><tr><td><strong>13条</strong></td><td>保健指導・健康診査に基づく<strong>指導事項を守ることができるようにするため、勤務時間の変更、勤務の軽減等</strong>必要な措置を講じなければならない</td></tr></tbody></table>
+<blockquote><p>★いずれも<strong>義務</strong>です。<strong>妊娠中および出産後1年</strong>が対象です。</p></blockquote>
+<h3>紛争の解決</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>都道府県労働局長</strong>の助言・指導・勧告（17条）</td><td></td></tr><tr><td><strong>紛争調整委員会</strong>による<strong>調停</strong>（18条）＝<strong>機会均等調停会議</strong></td><td></td></tr><tr><td><strong>勧告に従わない場合の公表</strong>（30条）</td><td>5条〜7条、9条、11条、11条の3、12条、13条の規定に違反している事業主に対し、<strong>厚生労働大臣</strong>が勧告し従わないときは<strong>その旨を公表</strong>できる</td></tr><tr><td><strong>報告徴収に応じない場合</strong></td><td><strong>20万円以下の過料</strong></td></tr></tbody></table>
+<hr>
+<h2>育児・介護休業法</h2>
+<h3>育児休業（5条〜9条の7）</h3>
+<table class="big"><thead><tr><th>種類</th><th>内容</th></tr></thead><tbody><tr><td><strong>育児休業</strong></td><td><strong>1歳</strong>に満たない子を養育するため。<strong>2回</strong>まで分割可</td></tr><tr><td><strong>パパ・ママ育休プラス</strong></td><td>父母ともに取得する場合、<strong>1歳2か月</strong>まで（1人あたりの上限は1年）</td></tr><tr><td><strong>延長</strong></td><td>保育所に入れない等の場合、<strong>1歳6か月</strong>まで、さらに<strong>2歳</strong>まで</td></tr><tr><td><strong>出生時育児休業</strong>（産後パパ育休）</td><td>子の出生後<strong>8週間以内</strong>に<strong>4週間（28日）</strong>まで。<strong>2回</strong>まで分割可。<strong>労使協定があれば休業中の就業も可能</strong></td></tr></tbody></table>
+<table class="big"><thead><tr><th>対象外にできる者（<strong>労使協定</strong>による）</th><th>① 引き続き雇用された期間が<strong>1年未満</strong> ② 申出の日から<strong>1年以内</strong>（1歳6か月・2歳までの休業は<strong>6か月以内</strong>）に雇用関係が終了することが明らかな者 ③ <strong>1週間の所定労働日数が2日以下</strong></th></tr></thead><tbody></tbody></table>
+<p><strong>有期雇用労働者</strong>は、<strong>子が1歳6か月に達する日までに労働契約が満了することが明らかでない</strong>ことが要件です（令和4年4月から「1年以上の雇用期間」の要件は撤廃）。</p>
+<blockquote><p>★申出は原則として<strong>1か月前</strong>まで（出生時育児休業は<strong>2週間前</strong>まで）。</p></blockquote>
+<h3>介護休業（11条〜16条）</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>対象家族</td><td><strong>配偶者（事実婚を含む）、父母、子、配偶者の父母、祖父母、兄弟姉妹、孫</strong></td></tr><tr><td>状態</td><td><strong>2週間以上</strong>にわたり常時介護を必要とする状態（<strong>要介護状態</strong>）</td></tr><tr><td>期間</td><td>対象家族<strong>1人につき通算93日</strong>、<strong>3回</strong>まで分割可</td></tr><tr><td>申出</td><td><strong>2週間前</strong>まで</td></tr></tbody></table>
+<h3>その他の制度</h3>
+<table><thead><tr><th>制度</th><th>内容</th></tr></thead><tbody><tr><td><strong>子の看護等休暇</strong>（16条の2）</td><td><strong>小学校3年生修了</strong>まで（令和7年4月〜、従来は小学校就学前）の子1人につき年<strong>5日</strong>（2人以上は<strong>10日</strong>）。<strong>時間単位</strong>で取得可。<strong>感染症による学級閉鎖・入園式等</strong>にも使える</td></tr><tr><td><strong>介護休暇</strong>（16条の5）</td><td>対象家族1人につき年<strong>5日</strong>（2人以上は<strong>10日</strong>）。時間単位で取得可</td></tr><tr><td><strong>所定外労働の制限</strong>（16条の8）</td><td><strong>3歳</strong>未満の子を養育する労働者、要介護状態の家族を介護する労働者の請求により残業免除</td></tr><tr><td><strong>時間外労働の制限</strong>（17条・18条）</td><td>小学校就学前の子・要介護家族。<strong>1か月24時間、1年150時間</strong>を超える時間外労働の制限</td></tr><tr><td><strong>深夜業の制限</strong>（19条・20条）</td><td>同上。午後10時〜午前5時</td></tr><tr><td><strong>所定労働時間の短縮</strong>（23条）</td><td><strong>3歳未満</strong>の子（<strong>義務</strong>）。3歳以上小学校就学前は<strong>努力義務</strong>（令和7年10月から<strong>始業時刻の変更等を含む2以上の措置</strong>を講ずる義務に）</td></tr></tbody></table>
+<blockquote><p>★令和7年4月から、<strong>子の看護休暇が「子の看護等休暇」に改称され、対象が小学校3年生修了まで</strong>に拡大されました。
+★令和7年4月から、<strong>3歳未満の子を養育する労働者にテレワークを選択できるようにすることが努力義務</strong>になりました。</p></blockquote>
+<h3>不利益取扱いの禁止（10条等）</h3>
+<p>育児休業・介護休業等の申出をし、または取得したことを理由とする<strong>解雇その他不利益な取扱いは禁止</strong>されています。</p>
+<h3>育児休業取得状況の公表（22条の2）</h3>
+<p>常時雇用する労働者が<strong>300人を超える</strong>事業主は、<strong>育児休業の取得の状況</strong>を<strong>年1回</strong>公表しなければなりません（令和7年4月から1,000人超→300人超に拡大）。</p>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">53</span>労働一般常識</span></td><td>条文と統計の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">98</span>白書・統計<span class="sec">（全体版）</span></span></td><td>労働経済の数字</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 58 ／ 一般常識</div><h1>高年齢者と障害者雇用</h1><div class="desc">65歳まで義務・70歳まで努力義務。重度はダブルカウント</div></div><h2>高年齢者等の雇用の安定等に関する法律</h2>
+<h3>定年（8条）</h3>
+<blockquote><p>事業主がその雇用する労働者の定年の定めをする場合には、当該定年は、<strong>60歳を下回ることができない</strong>。</p></blockquote>
+<p><strong>例外</strong>：<strong>高年齢者が従事することが困難であると認められる業務</strong>として厚生労働省令で定める業務（<strong>坑内作業の業務</strong>）に従事している労働者。</p>
+<blockquote><p>★例外は<strong>坑内作業</strong>だけです。</p></blockquote>
+<h3>高年齢者雇用確保措置（9条）＝ 65歳まで（<strong>義務</strong>）</h3>
+<p><strong>65歳未満の定年</strong>を定めている事業主は、次のいずれかの措置を講じなければなりません。</p>
+<ol><li><strong>定年の引上げ</strong></li><li><strong>継続雇用制度</strong>の導入</li><li><strong>定年の定めの廃止</strong></li></ol>
+<p><strong>継続雇用制度</strong>は、原則として<strong>希望者全員</strong>を対象とします。継続雇用先には、<strong>特殊関係事業主</strong>（子法人等、親法人等、関連法人等、親法人等の子法人等）を含めることができます（<strong>契約が必要</strong>）。</p>
+<blockquote><p>★平成25年改正前の<strong>労使協定による基準</strong>は、経過措置により<strong>令和7年3月31日で終了</strong>しました。現在は<strong>希望者全員が65歳まで</strong>です。</p></blockquote>
+<h3>高年齢者就業確保措置（10条の2）＝ 70歳まで（<strong>努力義務</strong>）</h3>
+<p><strong>65歳以上70歳未満の定年</strong>を定めている事業主等は、次のいずれかの措置を講ずるよう<strong>努めなければなりません</strong>。</p>
+<table class="big"><thead><tr><th>雇用による措置</th><th>① 70歳までの<strong>定年引上げ</strong> ② <strong>定年廃止</strong> ③ 70歳までの<strong>継続雇用制度</strong>（特殊関係事業主に加え、<strong>他の事業主</strong>によるものを含む）</th></tr></thead><tbody><tr><td><strong>創業支援等措置</strong></td><td>④ 70歳まで継続的に<strong>業務委託契約</strong>を締結する制度 ⑤ 70歳まで継続的に、<strong>事業主が実施する社会貢献事業</strong>、または<strong>事業主が委託・出資等する団体が行う社会貢献事業</strong>に従事できる制度</td></tr></tbody></table>
+<p><strong>創業支援等措置</strong>（④⑤）を講ずるには、<strong>過半数労働組合等の同意</strong>を得た<strong>計画</strong>を作成し、<strong>周知</strong>することが必要です。</p>
+<blockquote><p>★65歳までは<strong>義務</strong>、70歳までは<strong>努力義務</strong>。この違いが最頻出です。
+★創業支援等措置は<strong>雇用ではない</strong>ため、<strong>労働関係法令が適用されません</strong>。だからこそ<strong>過半数代表の同意</strong>が必要とされています。</p></blockquote>
+<h3>高年法のその他の義務</h3>
+<table class="big"><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td><strong>16条</strong></td><td><strong>解雇等</strong>により離職する45歳以上65歳未満の高年齢者等が<strong>希望</strong>するときは、<strong>求職活動支援書</strong>を作成・交付しなければならない</td></tr><tr><td><strong>17条</strong></td><td><strong>再就職援助措置</strong>（努力義務）</td></tr><tr><td><strong>多数離職の届出</strong>（16条）</td><td><strong>1か月以内に5人以上</strong>の高年齢者等が解雇等により離職する場合、<strong>公共職業安定所長</strong>に届け出なければならない</td></tr></tbody></table>
+<hr>
+<h2>障害者の雇用の促進等に関する法律</h2>
+<h3>法定雇用率（43条）</h3>
+<table class="big"><thead><tr><th>区分</th><th>令和8年度の率</th></tr></thead><tbody><tr><td><strong>民間企業</strong></td><td><strong>2.7%</strong>（令和8年7月から。令和6年4月〜2.5%）</td></tr><tr><td><strong>国・地方公共団体等</strong></td><td><strong>3.0%</strong>（令和8年7月から）</td></tr><tr><td><strong>都道府県等の教育委員会</strong></td><td><strong>2.9%</strong>（令和8年7月から）</td></tr></tbody></table>
+<blockquote><p>★法定雇用率は<strong>少なくとも5年ごと</strong>に、労働者の総数に対する対象障害者である労働者の総数の割合の推移を考慮して<strong>政令で定める</strong>とされています。
+★令和6年4月に2.3%→2.5%、令和8年7月に2.7%へ段階的に引き上げられます。最新の率は <span class="ref"><span class="n">1</span>法改正まとめ<span class="sec">（全体版）</span></span> を確認してください。</p></blockquote>
+<h3>障害者の数え方</h3>
+<table class="big"><thead><tr><th>区分</th><th>週30時間以上</th><th>週20時間以上30時間未満</th><th><strong>週10時間以上20時間未満</strong></th></tr></thead><tbody><tr><td><strong>身体障害者</strong></td><td>1</td><td><strong>0.5</strong></td><td>—</td></tr><tr><td><strong>重度身体障害者</strong></td><td><strong>2</strong></td><td>1</td><td><strong>0.5</strong></td></tr><tr><td><strong>知的障害者</strong></td><td>1</td><td><strong>0.5</strong></td><td>—</td></tr><tr><td><strong>重度知的障害者</strong></td><td><strong>2</strong></td><td>1</td><td><strong>0.5</strong></td></tr><tr><td><strong>精神障害者</strong></td><td>1</td><td><strong>0.5</strong>（当分の間<strong>1</strong>）</td><td><strong>0.5</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>重度は2倍（ダブルカウント）</strong>、<strong>短時間は0.5</strong>。令和6年4月から<strong>週10時間以上20時間未満の重度身体・重度知的・精神障害者を0.5</strong>として算入できるようになりました。
+★精神障害者の短時間労働者は、当分の間<strong>1</strong>としてカウントされます（一定の要件あり）。</p></blockquote>
+<h3>障害者雇用納付金制度（53条〜）</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>納付金</strong></td><td>法定雇用率未達成の事業主（<strong>常時雇用労働者100人超</strong>）から、不足1人あたり<strong>月額50,000円</strong>を徴収</td></tr><tr><td><strong>調整金</strong></td><td>法定雇用率を超えて雇用する事業主（100人超）に、超過1人あたり<strong>月額29,000円</strong>を支給（<strong>支給対象人数が10人を超える部分は23,000円</strong>、令和6年4月〜）</td></tr><tr><td><strong>報奨金</strong></td><td>100人以下の事業主で一定数を超えて雇用する場合、超過1人あたり<strong>月額21,000円</strong>（<strong>35人を超える部分は16,000円</strong>、令和6年4月〜）</td></tr></tbody></table>
+<blockquote><p>★納付金は<strong>100人超</strong>の事業主から徴収します。<strong>100人以下は徴収されません</strong>（報奨金の対象）。
+★納付金を納付しても<strong>雇用義務を免れるわけではありません</strong>。</p></blockquote>
+<h3>障害者雇用促進法のその他の義務</h3>
+<table class="big"><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td><strong>34条・35条</strong></td><td><strong>募集・採用</strong>および<strong>待遇</strong>について、障害者でない者と<strong>均等な機会</strong>を与えなければならない（<strong>差別の禁止</strong>）</td></tr><tr><td><strong>36条の2・36条の3</strong></td><td><strong>合理的配慮の提供義務</strong>（過重な負担となる場合を除く）</td></tr><tr><td><strong>36条の4</strong></td><td>合理的配慮に関する<strong>相談体制の整備</strong>、障害者からの<strong>苦情の自主的解決</strong>（努力義務）</td></tr><tr><td><strong>43条7項</strong></td><td>毎年<strong>6月1日</strong>現在の障害者の雇用状況を<strong>公共職業安定所長</strong>に報告（<strong>障害者雇用状況報告</strong>）</td></tr><tr><td><strong>障害者雇用推進者</strong>（78条）</td><td>選任するよう<strong>努めなければならない</strong></td></tr><tr><td><strong>障害者職業生活相談員</strong>（79条）</td><td>障害者を<strong>5人以上</strong>雇用する事業所で<strong>選任しなければならない</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>推進者は努力義務、相談員（5人以上）は義務</strong>。この対比が問われます。</p></blockquote>
+<h3>外国人雇用と技能実習</h3>
+<table class="big"><thead><tr><th>制度</th><th>根拠</th></tr></thead><tbody><tr><td><strong>外国人雇用状況の届出</strong>（労働施策総合推進法28条）</td><td>外国人労働者の<strong>雇入れ・離職</strong>の際に、氏名・在留資格・在留期間等を<strong>公共職業安定所長に届け出る</strong>（<strong>義務</strong>、届出を怠ると30万円以下の過料）</td></tr><tr><td><strong>技能実習</strong>（技能実習法）</td><td>技能等の<strong>開発途上地域等への移転</strong>が目的。<strong>技能実習1号〜3号</strong>。<strong>外国人技能実習機構</strong>が実習実施者・監理団体を監督</td></tr><tr><td><strong>特定技能</strong>（入管法）</td><td>人手不足分野での<strong>就労</strong>が目的。技能実習とは目的が違う</td></tr></tbody></table>
+<blockquote><p>★<strong>技能実習生にも労働基準法・最低賃金法・労災保険法が適用されます</strong>。「実習だから労働者ではない」は誤りです。
+★令和6年に技能実習制度を<strong>育成就労制度</strong>に改める法律が成立しました（施行は令和9年までの政令で定める日）。</p></blockquote>
+<h3>仕事と生活の両立支援</h3>
+<table><thead><tr><th>制度</th><th>内容</th></tr></thead><tbody><tr><td><strong>不妊治療</strong>と仕事の両立</td><td>「<strong>くるみんプラス</strong>」認定。<strong>特別休暇制度</strong>（不妊治療のための休暇）の導入が評価される</td></tr><tr><td><strong>次世代育成支援対策推進法</strong></td><td><strong>常時101人以上</strong>の事業主は<strong>一般事業主行動計画</strong>の策定・届出・公表・周知が義務。認定は<strong>くるみん・プラチナくるみん・トライくるみん</strong></td></tr><tr><td><strong>女性活躍推進法</strong></td><td><strong>常時101人以上</strong>で行動計画の策定等が義務。<strong>常時301人以上</strong>は<strong>男女の賃金の差異</strong>の公表が必要。認定は<strong>えるぼし・プラチナえるぼし</strong></td></tr></tbody></table>
+<blockquote><p>★次世代法・女活法とも<strong>101人以上が義務</strong>、<strong>100人以下は努力義務</strong>です。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">53</span>労働一般常識</span></td><td>条文と統計の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">98</span>白書・統計<span class="sec">（全体版）</span></span></td><td>労働経済の数字</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 59 ／ 一般常識</div><h1>社会保険一般常識</h1><div class="desc">労一と並ぶ基準点割れの常連</div></div><table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>択一</td><td>5問（労一5問と合わせて10問）</td></tr><tr><td>選択</td><td>5点</td></tr><tr><td>特徴</td><td>労一と同じく<strong>基準点割れの常連</strong>（第57回も社一は2点補正）。条文がある法律（介護保険法・国保法・高齢者医療確保法・社労士法・確定拠出年金法）で確実に取る</td></tr></tbody></table>
+<hr>
+<h2>出題傾向（過去9年・第49〜57回の実データ）</h2>
+<h3>択一の設問形式</h3>
+<table class="big"><thead><tr><th>形式</th><th>問数</th><th>割合</th></tr></thead><tbody><tr><td>誤りを選ぶ</td><td>43</td><td>48%</td></tr><tr><td>正しいものを選ぶ</td><td>38</td><td>42%</td></tr><tr><td>組合せ問題</td><td>7</td><td>8%</td></tr><tr><td>その他</td><td>1</td><td>1%</td></tr><tr><td>個数問題</td><td>1</td><td>1%</td></tr></tbody></table>
+<p><strong>一般常識枠 計90問</strong>のうち、<strong>個数問題1問・組合せ問題7問（合わせて9%）</strong>。組合せのほうが多い科目です。組合せは<strong>2肢の正誤が分かれば98.5%で正解が決まる</strong>ので、時間はかかりません。飛ばす候補は個数問題だけです。（→ <span class="ref"><span class="n">97</span>個数・組合せ問題<span class="sec">（全体版）</span></span>）</p>
+<h3>設問形式の推移（作問方針の変化）</h3>
+<table class="big"><thead><tr><th>年度</th><th>個数・組合せ</th><th>誤りを選ぶ</th><th>正しいものを選ぶ</th><th>肢の平均字数</th><th>判例に言及</th></tr></thead><tbody><tr><td>令和7</td><td>2</td><td>2</td><td>6</td><td>91</td><td>1</td></tr><tr><td>令和6</td><td>2</td><td>4</td><td>4</td><td>97</td><td>0</td></tr><tr><td>令和5</td><td>0</td><td>5</td><td>5</td><td>118</td><td>1</td></tr><tr><td>令和4</td><td>0</td><td>7</td><td>3</td><td>106</td><td>0</td></tr><tr><td>令和3</td><td>1</td><td>4</td><td>5</td><td>108</td><td>1</td></tr><tr><td>令和2</td><td>1</td><td>5</td><td>4</td><td>106</td><td>1</td></tr><tr><td>令和元</td><td>0</td><td>6</td><td>3</td><td>99</td><td>1</td></tr><tr><td>平成30</td><td>1</td><td>4</td><td>5</td><td>96</td><td>1</td></tr><tr><td>平成29</td><td>1</td><td>6</td><td>3</td><td>93</td><td>1</td></tr></tbody></table>
+<ul><li>9年を通じて設問形式に大きな変化はありません。過去問の解き方がそのまま通用します。</li></ul>
+<h3>基準点補正の履歴（この科目が救済された年）</h3>
+<p><strong>選択式</strong>　令和7年度 <strong>2点</strong>に引下げ／令和2年度 <strong>2点</strong>に引下げ／令和元年度 <strong>2点</strong>に引下げ／平成30年度 <strong>2点</strong>に引下げ</p>
+<blockquote><p>選択式は9年で<strong>4回</strong>引下げられています。難問が出れば救済される可能性はありますが、<strong>救済を前提にした学習計画は組めません</strong>。3点は自力で取る前提で。</p></blockquote>
+<h3>頻出条文（択一で9年間に参照された回数）</h3>
+<p><strong>上位12条で択一35回分</strong>。回数が多い条ほど、条文そのものを読んでおく価値があります。「詳しく読む」は、その条をいちばん詳しく扱っている別ページです。</p>
+<table class="big"><thead><tr><th>条文</th><th>何を定めているか</th><th>回数</th><th>出題された年度</th><th>詳しく読む</th></tr></thead><tbody><tr><td><strong>労働契約法10条</strong></td><td>—</td><td>5</td><td>令和6・令和3・令和元・平成30</td><td><span class="ref"><span class="n">54</span>労働契約法</span></td></tr><tr><td><strong>労働契約法18条</strong></td><td>有期労働契約の期間の定めのない労働契約への転換</td><td>4</td><td>令和7・令和6・令和3・平成30</td><td><span class="ref"><span class="n">54</span>労働契約法</span></td></tr><tr><td><strong>社会保険労務士法25条</strong></td><td>懲戒の種類</td><td>4</td><td>令和4・令和2・令和元</td><td><span class="ref"><span class="n">60</span>社会保険労務士法</span></td></tr><tr><td><strong>社会保険労務士法2条</strong></td><td>社会保険労務士の業務</td><td>4</td><td>令和7・令和6・令和5</td><td><span class="ref"><span class="n">60</span>社会保険労務士法</span></td></tr><tr><td><strong>社会保険労務士法2条の2</strong></td><td>—</td><td>3</td><td>令和5・令和2・平成30</td><td><span class="ref"><span class="n">60</span>社会保険労務士法</span></td></tr><tr><td><strong>労働契約法7条</strong></td><td>労働契約の成立</td><td>3</td><td>令和6・令和3・令和元</td><td><span class="ref"><span class="n">54</span>労働契約法</span></td></tr><tr><td><strong>労働基準法89条</strong></td><td>作成及び届出の義務</td><td>3</td><td>令和6・令和元</td><td><span class="ref"><span class="n">2</span>労働基準法<span class="sec">（全体版）</span></span></td></tr><tr><td><strong>労働契約法4条</strong></td><td>労働契約の内容の理解の促進</td><td>2</td><td>令和7・令和元</td><td><span class="ref"><span class="n">54</span>労働契約法</span></td></tr><tr><td><strong>労働契約法17条</strong></td><td>契約期間中の解雇等</td><td>2</td><td>令和6・令和元</td><td><span class="ref"><span class="n">54</span>労働契約法</span></td></tr><tr><td><strong>社会保険労務士法25条の2</strong></td><td>不正行為の指示等を行つた場合の懲戒</td><td>2</td><td>令和7・令和元</td><td><span class="ref"><span class="n">60</span>社会保険労務士法</span></td></tr><tr><td><strong>介護保険法7条</strong></td><td>定義</td><td>2</td><td>令和4・令和3</td><td><span class="ref"><span class="n">62</span>介護保険法</span></td></tr><tr><td><strong>労働契約法2条</strong></td><td>定義</td><td>1</td><td>平成29</td><td><span class="ref"><span class="n">54</span>労働契約法</span></td></tr></tbody></table>
+<h3>選択式が9年間で問うたこと（社一）</h3>
+<p><strong>45空欄</strong>の内訳は <strong>数字22</strong>（49%）、<strong>用語20</strong>（44%）、<strong>判示・条文の言い回し3</strong>（7%）。空欄は5つあり、<strong>3つ取れれば基準点</strong>です。長い判示は先頭だけを載せています。全文は <span class="ref"><span class="n">93</span>条文素読<span class="sec">（全体版）</span></span> にあります。</p>
+<table class="big"><thead><tr><th>年度</th><th>空欄</th><th>正答となった語</th><th>その年の根拠条文</th></tr></thead><tbody><tr><td>令和7</td><td>A</td><td>83．1</td><td>介護保険法2条</td></tr><tr><td></td><td>B</td><td>地方公共団体</td><td></td></tr><tr><td></td><td>C</td><td>医療との連携</td><td></td></tr><tr><td></td><td>D</td><td>責任準備金の額</td><td></td></tr><tr><td></td><td>E</td><td>資産所得倍増プラン</td><td></td></tr><tr><td>令和6</td><td>A</td><td>100％</td><td>国民健康保険法1条</td></tr><tr><td></td><td>B</td><td>18．9</td><td></td></tr><tr><td></td><td>C</td><td>社会保障及び国民保健の向上</td><td></td></tr><tr><td></td><td>D</td><td>共同連帯</td><td></td></tr><tr><td></td><td>E</td><td>費用負担</td><td></td></tr><tr><td>令和5</td><td>A</td><td>3年</td><td></td></tr><tr><td></td><td>B</td><td>40歳</td><td></td></tr><tr><td></td><td>C</td><td>財政の均衡を保つこと</td><td></td></tr><tr><td></td><td>D</td><td>10，000円</td><td></td></tr><tr><td></td><td>E</td><td>5．5</td><td></td></tr><tr><td>令和4</td><td>A</td><td>61．0</td><td></td></tr><tr><td></td><td>B</td><td>配偶者</td><td></td></tr><tr><td></td><td>C</td><td>15歳に達する日以後の最初の3月31日までの間に…</td><td></td></tr><tr><td></td><td>D</td><td>身体上又は精神上の障害</td><td></td></tr><tr><td></td><td>E</td><td>6 か月</td><td></td></tr><tr><td>令和3</td><td>A</td><td>国民健康保険事業費納付金の納付</td><td></td></tr><tr><td></td><td>B</td><td>国民健康保険事業に要する費用</td><td></td></tr><tr><td></td><td>C</td><td>被扶養者</td><td></td></tr><tr><td></td><td>D</td><td>15日</td><td></td></tr><tr><td></td><td>E</td><td>3年</td><td></td></tr><tr><td>令和2</td><td>A</td><td>120 兆</td><td>介護保険法103条／介護保険法67条／国民健康保険法13条</td></tr><tr><td></td><td>B</td><td>年金</td><td></td></tr><tr><td></td><td>C</td><td>1年6 か月</td><td></td></tr><tr><td></td><td>D</td><td>1 又は2以上の市町村</td><td></td></tr><tr><td></td><td>E</td><td>48，000</td><td></td></tr><tr><td>令和元</td><td>A</td><td>その資格を喪失した後3 か月以内</td><td>介護保険法115条の46／国民健康保険法4条／確定拠出年金法37条</td></tr><tr><td></td><td>B</td><td>50，000円</td><td></td></tr><tr><td></td><td>C</td><td>その保健医療の向上及び福祉の増進</td><td></td></tr><tr><td></td><td>D</td><td>安定的な財政運営</td><td></td></tr><tr><td></td><td>E</td><td>障害認定日から70歳に達する日の前日</td><td></td></tr><tr><td>平成30</td><td>A</td><td>3年</td><td>介護保険法129条</td></tr><tr><td></td><td>B</td><td>35，000円</td><td></td></tr><tr><td></td><td>C</td><td>脱退一時金</td><td></td></tr><tr><td></td><td>D</td><td>60歳以上65歳以下</td><td></td></tr><tr><td></td><td>E</td><td>50歳未満</td><td></td></tr><tr><td>平成29</td><td>A</td><td>社会保障及び国民保健の向上</td><td>介護保険法4条／国民健康保険法1条</td></tr><tr><td></td><td>B</td><td>被保険者の疾病、負傷、出産又は死亡</td><td></td></tr><tr><td></td><td>C</td><td>常に健康の保持増進に努める</td><td></td></tr><tr><td></td><td>D</td><td>住所地の市町村長（特別区の区長を含む。）</td><td></td></tr><tr><td></td><td>E</td><td>2月、6月及び10月の3 期</td><td></td></tr></tbody></table>
+<blockquote><p>この節は <code>kakomon/gen_trend.py</code> が過去問データから自動生成しています。</p></blockquote>
+<h2>深掘り（別ページ）</h2>
+<p>条文の趣旨・要件の切り分け・誤り肢の作られ方を論点ごとにまとめた別ページです。</p>
+<table class="big"><thead><tr><th>論点</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">60</span>社会保険労務士法</span></td></tr><tr><td><span class="ref"><span class="n">61</span>国民健康保険と高齢者医療</span></td></tr><tr><td><span class="ref"><span class="n">62</span>介護保険法</span></td></tr><tr><td><span class="ref"><span class="n">63</span>企業年金と社会保険審査</span></td></tr></tbody></table>
+<h2>1. 社会保険労務士法</h2>
+<h3>業務（2条）</h3>
+<table class="big"><thead><tr><th>号</th><th>内容</th><th>独占業務</th></tr></thead><tbody><tr><td><strong>1号</strong></td><td>労働社会保険諸法令に基づく<strong>申請書等の作成</strong>、行政機関等への<strong>提出手続の代行</strong>、<strong>事務代理</strong></td><td><strong>○</strong></td></tr><tr><td><strong>2号</strong></td><td><strong>帳簿書類の作成</strong>（就業規則、労働者名簿、賃金台帳等）</td><td><strong>○</strong></td></tr><tr><td><strong>3号</strong></td><td>労務管理その他の労働・社会保険に関する事項についての<strong>相談・指導</strong></td><td><strong>×</strong></td></tr></tbody></table>
+<blockquote><p><strong>★引っかけ</strong>：3号業務（コンサルティング）は<strong>独占業務ではない</strong>。誰でもできる。
+禁止されるのは「<strong>他人の求めに応じ報酬を得て、業として</strong>」行うこと。報酬を得ないなら可。</p></blockquote>
+<h3>特定社会保険労務士</h3>
+<p>紛争解決手続代理業務（あっせん、調停、仲裁等）を行える。
+<strong>紛争の目的の価額が120万円を超える</strong>事件は<strong>弁護士との共同受任</strong>が必要。</p>
+<h3>登録・法人・懲戒</h3>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td><strong>登録</strong></td><td><strong>全国社会保険労務士会連合会</strong>に備える名簿に登録。登録すると当然に<strong>都道府県社労士会の会員</strong></td></tr><tr><td>社会保険労務士法人</td><td>社員は社労士に限る。社員は<strong>競業避止義務</strong>、法人の債務について<strong>連帯無限責任</strong></td></tr><tr><td><strong>懲戒</strong></td><td><strong>厚生労働大臣</strong>が行う。① <strong>戒告</strong> ② <strong>1年以内の業務の停止</strong> ③ <strong>失格処分</strong></td></tr><tr><td>義務</td><td>信用失墜行為の禁止、<strong>秘密を守る義務</strong>（社労士でなくなった後も）、名義貸しの禁止、帳簿の備付け（<strong>2年間保存</strong>）</td></tr></tbody></table>
+<blockquote><p>⚠️令和8年度向けに社労士法の改正が見込まれる論点あり（社員1人での法人設立要件等）。最新教材で確認すること。</p></blockquote>
+<hr>
+<h2>2. 医療保険制度の全体像</h2>
+<table class="big"><thead><tr><th>制度</th><th>保険者</th><th>対象</th></tr></thead><tbody><tr><td>健康保険（協会けんぽ）</td><td>全国健康保険協会</td><td>健保組合の組合員でない被保険者</td></tr><tr><td>健康保険（組合）</td><td>健康保険組合</td><td>組合の被保険者</td></tr><tr><td><strong>国民健康保険</strong></td><td><strong>都道府県＋市町村</strong>、国民健康保険組合</td><td>上記等に該当しない者</td></tr><tr><td><strong>後期高齢者医療</strong></td><td><strong>後期高齢者医療広域連合</strong></td><td>75歳以上等</td></tr><tr><td>各種共済</td><td>共済組合</td><td>公務員等</td></tr><tr><td>船員保険</td><td>全国健康保険協会</td><td>船員</td></tr></tbody></table>
+<h3>国民健康保険法</h3>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>保険者</td><td><strong>都道府県が市町村とともに</strong>行う（平成30年4月〜）＋ 国民健康保険組合</td></tr><tr><td><strong>都道府県の役割</strong></td><td>財政運営の<strong>責任主体</strong>、国保運営方針の策定、市町村ごとの<strong>国民健康保険事業費納付金</strong>の決定、<strong>標準保険料率</strong>の算定</td></tr><tr><td><strong>市町村の役割</strong></td><td>資格管理、保険給付、<strong>保険料の賦課・徴収</strong>、保健事業</td></tr><tr><td>被保険者</td><td>都道府県の区域内に住所を有する者。<strong>健保の被保険者・被扶養者、後期高齢者医療の被保険者、生活保護受給者等は適用除外</strong></td></tr><tr><td>給付</td><td>療養の給付、高額療養費、出産育児一時金、葬祭費 等（<strong>傷病手当金・出産手当金は任意給付</strong>）</td></tr><tr><td>不服申立て</td><td><strong>国民健康保険審査会</strong>（都道府県・一審制）</td></tr></tbody></table>
+<h3>高齢者医療確保法</h3>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td><strong>後期高齢者医療</strong></td><td>保険者＝<strong>後期高齢者医療広域連合</strong>（都道府県単位で全市町村が加入）</td></tr><tr><td>被保険者</td><td><strong>75歳以上</strong>の者、及び<strong>65歳以上75歳未満</strong>で一定の障害の状態にある旨の<strong>広域連合の認定</strong>を受けた者</td></tr><tr><td>広域連合の役割</td><td>保険料率の決定、資格管理、<strong>保険給付</strong></td></tr><tr><td>市町村の役割</td><td><strong>保険料の徴収</strong>、申請・届出の受付</td></tr><tr><td>一部負担金</td><td>原則<strong>1割</strong>、一定以上所得者<strong>2割</strong>、現役並み所得者<strong>3割</strong></td></tr><tr><td><strong>前期高齢者（65〜74歳）</strong></td><td>独立した制度ではなく、各保険者間の<strong>財政調整</strong>の仕組み</td></tr><tr><td>特定健康診査・特定保健指導</td><td><strong>40歳以上75歳未満</strong>の加入者に対し、保険者が実施</td></tr></tbody></table>
+<blockquote><p><strong>★引っかけ</strong>：後期高齢者は<strong>独立した制度</strong>／前期高齢者は<strong>財政調整のみ</strong>。</p></blockquote>
+<hr>
+<h2>3. 介護保険法</h2>
+<h3>保険者・被保険者</h3>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td><strong>保険者</strong></td><td><strong>市町村及び特別区</strong></td></tr><tr><td><strong>第1号被保険者</strong></td><td><strong>65歳以上</strong>。原因を問わず給付。保険料は<strong>年金からの特別徴収</strong>が原則（年額<strong>18万円以上</strong>）</td></tr><tr><td><strong>第2号被保険者</strong></td><td><strong>40歳以上65歳未満</strong>の<strong>医療保険加入者</strong>。<strong>特定疾病</strong>（末期がん、関節リウマチ等<strong>16種</strong>）が原因の場合に限り給付。保険料は<strong>医療保険者が医療保険料と一体で徴収</strong></td></tr></tbody></table>
+<blockquote><p><strong>★引っかけ</strong>：第2号は「<strong>医療保険加入者</strong>」が要件。生活保護受給者（国保未加入）は第2号被保険者にならない。</p></blockquote>
+<h3>要介護認定</h3>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>申請</td><td>市町村に申請。<strong>指定居宅介護支援事業者等が代行可</strong></td></tr><tr><td>判定</td><td>認定調査＋主治医意見書 → <strong>介護認定審査会</strong>（市町村に設置）の審査判定</td></tr><tr><td>期間</td><td>申請から原則<strong>30日以内</strong>に認定</td></tr><tr><td>効力</td><td><strong>申請時にさかのぼる</strong></td></tr><tr><td>有効期間</td><td>新規原則<strong>6か月</strong>、更新原則<strong>12か月</strong></td></tr><tr><td>区分</td><td>要支援1・2／要介護1〜5</td></tr></tbody></table>
+<h3>給付</h3>
+<table class="big"><thead><tr><th>対象</th><th>給付</th></tr></thead><tbody><tr><td>要介護者</td><td><strong>介護給付</strong></td></tr><tr><td>要支援者</td><td><strong>予防給付</strong></td></tr><tr><td>それ以外</td><td>介護予防・日常生活支援総合事業</td></tr></tbody></table>
+<ul><li>利用者負担：原則<strong>1割</strong>（一定以上所得者2割、特に高い所得者3割）</li><li><strong>高額介護サービス費</strong>、高額医療合算介護サービス費、特定入所者介護サービス費（補足給付）</li></ul>
+<h3>地域支援事業（115条の45）★頻出</h3>
+<table class="big"><thead><tr><th>事業</th><th>内容</th></tr></thead><tbody><tr><td>① <strong>介護予防・日常生活支援総合事業</strong></td><td>介護予防・生活支援サービス事業、一般介護予防事業</td></tr><tr><td>② <strong>包括的支援事業</strong></td><td>地域包括支援センターの運営（総合相談支援、権利擁護、包括的・継続的ケアマネジメント支援、第1号介護予防支援事業）、在宅医療・介護連携推進事業、生活支援体制整備事業、認知症総合支援事業、地域ケア会議推進事業</td></tr><tr><td>③ <strong>任意事業</strong></td><td>介護給付等費用適正化事業、家族介護支援事業 等</td></tr></tbody></table>
+<blockquote><p>⚠️令和8年度改正で包括的支援事業に<strong>被保険者情報の共有・活用促進事業</strong>が追加（要確認）。</p></blockquote>
+<h3>財源構成</h3>
+<p>公費<strong>50％</strong>（国25％・都道府県12.5％・市町村12.5％）＋保険料50％</p>
+<h3>不服申立て</h3>
+<p><strong>介護保険審査会</strong>（都道府県に設置・<strong>一審制</strong>）</p>
+<hr>
+<h2>4. 年金関連（社一で問われるもの）</h2>
+<h3>確定拠出年金法</h3>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>企業型年金</td><td>事業主が実施。加入者は厚生年金被保険者で<strong>70歳未満</strong></td></tr><tr><td>個人型年金（iDeCo）</td><td>国民年金基金連合会が実施。<strong>65歳未満</strong>（国民年金被保険者であること）</td></tr><tr><td>給付</td><td>老齢給付金（原則<strong>60歳</strong>から。通算加入者等期間が10年未満なら段階的に繰下げ）、障害給付金、死亡一時金、脱退一時金</td></tr><tr><td>運用</td><td>加入者自身が指図。<strong>運用リスクは加入者が負う</strong></td></tr></tbody></table>
+<p><strong>拠出限度額（月額）</strong> ⚠️要確認</p>
+<table class="big"><thead><tr><th>区分</th><th>限度額</th></tr></thead><tbody><tr><td>企業型DC（他制度なし）</td><td>55,000円</td></tr><tr><td>企業型DC（DB等あり）</td><td>27,500円</td></tr><tr><td>iDeCo（第1号被保険者）</td><td>68,000円（国民年金基金・付加保険料と合算）</td></tr><tr><td>iDeCo（第3号被保険者）</td><td>23,000円</td></tr></tbody></table>
+<h3>確定給付企業年金法</h3>
+<p>事業主が給付を約束。<strong>規約型</strong>（信託会社等と契約）と<strong>基金型</strong>（企業年金基金を設立）。<strong>給付減額には厳格な要件</strong>。</p>
+<h3>国民年金基金</h3>
+<p>第1号被保険者の上乗せ年金。<strong>地域型</strong>（都道府県単位 → 令和元年に全国国民年金基金へ統合）と<strong>職能型</strong>。
+加入は<strong>任意だが、加入したら任意脱退できない</strong>。付加保険料を納付する者は加入できない。</p>
+<hr>
+<h2>5. 児童手当・子ども子育て</h2>
+<h3>児童手当（令和6年10月拡充）</h3>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td><strong>所得制限</strong></td><td><strong>撤廃</strong></td></tr><tr><td>支給対象</td><td><strong>高校生年代</strong>（18歳到達後最初の3月31日）まで</td></tr><tr><td>額</td><td>3歳未満 月15,000円／3歳〜高校生年代 月10,000円／<strong>第3子以降 月30,000円</strong></td></tr><tr><td>支給回数</td><td>年3回 → <strong>年6回（偶数月）</strong></td></tr></tbody></table>
+<h3>子ども・子育て支援金 ★令和8年4月1日</h3>
+<ul><li>子ども・子育て支援法に基づく新たな拠出金</li><li><strong>医療保険者が医療保険料と一体で徴収</strong></li><li>協会けんぽの支援金率は全国一律 <strong>1000分の2.3</strong> ⚠️</li><li>健保・国保・後期高齢者医療の各制度に上乗せ、被保険者と事業主で折半</li></ul>
+<hr>
+<h2>6. 社会保険審査（不服申立て）の横断 ★頻出</h2>
+<table class="big"><thead><tr><th>制度</th><th>第一審</th><th>第二審</th></tr></thead><tbody><tr><td><strong>健保・厚年・国年・船員保険</strong></td><td><strong>社会保険審査官</strong>（地方厚生局）</td><td><strong>社会保険審査会</strong></td></tr><tr><td><strong>労災・雇用</strong></td><td>労災保険審査官／雇用保険審査官（都道府県労働局）</td><td><strong>労働保険審査会</strong></td></tr><tr><td><strong>介護保険</strong></td><td><strong>介護保険審査会</strong>（都道府県）</td><td>— （一審制）</td></tr><tr><td><strong>国保・後期高齢者医療</strong></td><td><strong>国民健康保険審査会</strong>（都道府県）</td><td>— （一審制）</td></tr><tr><td>徴収法（保険料）</td><td>行政不服審査法による</td><td>—</td></tr></tbody></table>
+<h3>期限と前置</h3>
+<ul><li>審査請求：処分を知った日の翌日から<strong>3か月以内</strong></li><li>再審査請求：決定書の謄本が送付された日の翌日から<strong>2か月以内</strong></li><li>審査請求から<strong>3か月</strong>経過しても決定がないときは棄却とみなして再審査請求可</li><li>処分取消しの訴えは<strong>審査請求の決定を経た後</strong>（審査請求前置）</li><li>★<strong>被保険者資格・標準報酬・保険料に関する処分</strong>は、審査請求の決定後に<strong>再審査請求を経ずに訴訟提起できる</strong></li></ul>
+<hr>
+<h2>7. 社会保障統計 — 順位と傾向だけ</h2>
+<table class="big"><thead><tr><th>統計</th><th>押さえどころ</th></tr></thead><tbody><tr><td><strong>国民医療費</strong></td><td>財源：<strong>保険料 ＞ 公費 ＞ 患者負担</strong>。診療種類別は<strong>医科診療医療費が最大</strong>。年齢階級別は<strong>65歳以上が6割超</strong>。対GDP比は上昇傾向</td></tr><tr><td><strong>社会保障給付費</strong></td><td>部門別：<strong>年金 ＞ 医療 ＞ 福祉その他</strong>（福祉その他が医療に接近）。機能別：<strong>高齢 ＞ 保健医療 ＞ 家族</strong></td></tr><tr><td>介護保険事業状況報告</td><td>要介護（要支援）認定者数は増加。<strong>要介護1・2が多い</strong>。第1号被保険者数も増加</td></tr><tr><td>医療施設調査</td><td>一般診療所数 ＞ 歯科診療所数 ＞ 病院数。病院数は<strong>減少傾向</strong></td></tr><tr><td>人口動態統計</td><td>出生数の減少、合計特殊出生率の低下、死亡数の増加（自然減）</td></tr></tbody></table>
+<blockquote><p>「何が一番大きいか」「増えているか減っているか」を問われることが多い。実数の暗記は不要。</p></blockquote>
+<hr>
+<h2>8. その他の法律</h2>
+<table class="big"><thead><tr><th>法律</th><th>押さえどころ</th></tr></thead><tbody><tr><td><strong>社会保険審査官及び社会保険審査会法</strong></td><td>審査官は厚生労働大臣が任命し地方厚生局に置く。審査会は委員長＋委員5人（<strong>両議院の同意</strong>を得て厚生労働大臣が任命）</td></tr><tr><td><strong>船員保険法</strong></td><td>保険者は<strong>全国健康保険協会</strong>。職務外の疾病等に関する給付＋独自給付（行方不明手当金等）</td></tr><tr><td><strong>高齢者医療確保法</strong></td><td>前記</td></tr><tr><td>児童手当法</td><td>前記</td></tr><tr><td><strong>確定給付企業年金法・確定拠出年金法</strong></td><td>前記</td></tr><tr><td>社会保険労務士法</td><td>前記</td></tr><tr><td><strong>介護保険法</strong></td><td>前記</td></tr></tbody></table>
+<hr>
+<h3>保険料の徴収方法（特別徴収と普通徴収）</h3>
+<p>介護保険・後期高齢者医療は、<strong>年金からの天引き（特別徴収）</strong>が原則です。</p>
+<table><thead><tr><th>区分</th><th>要件</th></tr></thead><tbody><tr><td><strong>特別徴収</strong>（年金天引き）</td><td><strong>老齢等年金給付</strong>の額が<strong>年額18万円以上</strong></td></tr><tr><td><strong>普通徴収</strong>（納付書・口座振替）</td><td>年額18万円未満のとき／<strong>保険料と介護保険料の合算額が年金額の2分の1を超える</strong>とき</td></tr></tbody></table>
+<ul><li><strong>老齢等年金給付</strong>には、老齢（退職）年金だけでなく<strong>遺族年金・障害年金も含まれます</strong></li><li>徴収するのは<strong>市町村</strong>（後期高齢者医療は市町村が徴収し、<strong>広域連合に納付</strong>する）</li><li>年金保険者が天引きして市町村に納入する仕組みです</li></ul>
+<blockquote><p>★令和5年度の択一（一般常識 問10）で、この「老齢等年金給付」「2分の1」が問われました。
+<strong>「年額18万円以上」と「2分の1を超えない」の2つ</strong>がそろって特別徴収です。片方だけの記述は誤りです。</p></blockquote>
+<hr>
+<h2>直前チェック（社一）</h2>
+<ul class="chk"><li>社労士の<strong>3号業務は独占業務ではない</strong>／登録は<strong>連合会</strong>／懲戒は<strong>厚生労働大臣</strong></li><li>特定社労士の単独受任は<strong>120万円</strong>まで</li><li>国保は<strong>都道府県＋市町村</strong>。保険料の賦課徴収は<strong>市町村</strong></li><li>後期高齢者医療の保険者は<strong>広域連合</strong>。保険料徴収は<strong>市町村</strong></li><li>前期高齢者は<strong>財政調整のみ</strong>（独立制度ではない）</li><li>介護保険の保険者は<strong>市町村・特別区</strong></li><li>第2号被保険者は<strong>医療保険加入者</strong>であることが要件／<strong>特定疾病</strong>が原因の場合のみ給付</li><li>要介護認定は<strong>30日以内</strong>、効力は<strong>申請時にさかのぼる</strong></li><li>地域支援事業の<strong>3区分</strong></li><li>不服申立て：介護は<strong>介護保険審査会</strong>（一審制）、健保等は<strong>社会保険審査官</strong></li><li>資格・標準報酬・保険料の処分は<strong>再審査請求を経ずに訴訟可</strong></li><li>iDeCoは<strong>65歳未満</strong>、企業型DCは<strong>70歳未満</strong></li><li>児童手当は<strong>所得制限撤廃・高校生年代まで・第3子3万円・年6回</strong></li><li>子ども・子育て支援金は<strong>令和8年4月</strong>から医療保険料と一体徴収</li><li>統計は「順位と傾向」だけ</li></ul>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">1</span>法改正まとめ<span class="sec">（全体版）</span></span></td><td>この科目の令和8年度改正を施行日で確認</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>時効・届出期限・遺族の範囲などを他科目と並べて比較</td></tr><tr><td><span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span></td><td><code>⚠️要確認</code> を付けた年度依存の数値を照合</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 60 ／ 一般常識</div><h1>社会保険労務士法</h1><div class="desc">3号業務は独占ではない。補佐人は全社労士、ADRは120万円</div></div><p><strong>9年で毎年出題</strong>される社一の最頻出法令です。</p>
+<h3>目的（1条）</h3>
+<blockquote><p>この法律は、社会保険労務士の制度を定めて、その業務の適正を図り、もつて<strong>労働及び社会保険に関する法令の円滑な実施</strong>に寄与するとともに、<strong>事業の健全な発達と労働者等の福祉の向上</strong>に資することを目的とする。</p></blockquote>
+<h3>職責（1条の2）</h3>
+<blockquote><p>社会保険労務士は、<strong>常に品位を保持</strong>し、<strong>業務に関する法令及び実務に精通</strong>して、<strong>公正な立場</strong>で、誠実にその業務を行わなければならない。</p></blockquote>
+<blockquote><p>★「品位・法令実務の精通・公正な立場」の3つ。選択式で狙われます。</p></blockquote>
+<h3>業務（2条）</h3>
+<table class="big"><thead><tr><th>区分</th><th>内容</th><th>独占性</th></tr></thead><tbody><tr><td><strong>1号業務</strong>（申請書等の作成・提出代行・事務代理）</td><td>労働社会保険諸法令に基づく申請書等の作成、行政機関等への<strong>提出代行</strong>、<strong>事務代理</strong></td><td><strong>独占業務</strong></td></tr><tr><td><strong>2号業務</strong>（帳簿書類の作成）</td><td>労働社会保険諸法令に基づく<strong>帳簿書類</strong>（就業規則、労働者名簿、賃金台帳等）の作成</td><td><strong>独占業務</strong></td></tr><tr><td><strong>3号業務</strong>（コンサルティング）</td><td>事業における<strong>労務管理その他の労働に関する事項および労働社会保険諸法令に基づく社会保険に関する事項について相談に応じ、または指導</strong>すること</td><td><strong>独占ではない</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>3号業務は独占業務ではありません</strong>。社労士でなくても行えます。ここが最頻出です。</p></blockquote>
+<h3>紛争解決手続代理業務（2条1項1号の4〜1号の6）</h3>
+<p><strong>特定社会保険労務士</strong>（<strong>紛争解決手続代理業務試験</strong>に合格し、その旨の<strong>付記</strong>を受けた者）だけが行えます。</p>
+<table class="big"><thead><tr><th>手続</th><th>上限</th></tr></thead><tbody><tr><td><strong>個別労働関係紛争解決促進法</strong>に基づく<strong>あっせん</strong></td><td>—</td></tr><tr><td><strong>均等法・育介法・パート有期法・労働施策総合推進法</strong>に基づく<strong>調停</strong></td><td>—</td></tr><tr><td><strong>都道府県労働委員会</strong>が行うあっせん</td><td>—</td></tr><tr><td><strong>民間紛争解決手続</strong>（ADR、厚生労働大臣が指定するもの）</td><td>紛争の目的の価額が<strong>120万円</strong>を超える場合は<strong>弁護士との共同受任</strong>が必要</td></tr></tbody></table>
+<blockquote><p>★<strong>120万円</strong>が境目です。「60万円」（司法書士の簡裁代理）と混同しないようにします。</p></blockquote>
+<h3>補佐人（2条の2）</h3>
+<p>社会保険労務士は、事業における労務管理その他の労働に関する事項および労働社会保険諸法令に基づく社会保険に関する事項について、<strong>裁判所において、補佐人として、弁護士である訴訟代理人とともに出頭し、陳述</strong>をすることができます。</p>
+<blockquote><p>★平成27年改正。<strong>特定社労士でなくてもよく、すべての社労士</strong>が行えます。ここが頻出です。
+★<strong>弁護士である訴訟代理人とともに</strong>出頭することが必要です。単独では出頭できません。
+★補佐人の陳述は、<strong>当事者または訴訟代理人が自ら陳述したものとみなされます</strong>（当事者等が直ちに取り消し、または更正したときを除く）。</p></blockquote>
+<h3>登録（14条の2〜）</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>登録機関</td><td><strong>全国社会保険労務士会連合会</strong></td></tr><tr><td>要件</td><td>社会保険労務士となる資格を有し、<strong>2年以上の実務経験</strong>（または<strong>事務指定講習</strong>の修了）</td></tr><tr><td>入会</td><td>登録を受けた者は、<strong>社会保険労務士会の会員</strong>となる（当然入会）</td></tr><tr><td>登録の<strong>拒否</strong></td><td>一定の事由に該当するとき。拒否するときは<strong>資格審査会の議決</strong>に基づく</td></tr></tbody></table>
+<p><strong>欠格事由</strong>（5条）の主なもの：未成年者、心身の故障により業務を適正に行うことができない者、破産手続開始の決定を受けて復権を得ない者、<strong>禁錮以上の刑</strong>に処せられ執行を終わってから<strong>3年</strong>を経過しない者、<strong>失格処分</strong>を受けて<strong>3年</strong>を経過しない者など。</p>
+<h3>業務の制限と義務</h3>
+<table class="big"><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td><strong>15条</strong></td><td>社会保険労務士でない者は、<strong>他人の求めに応じ報酬を得て</strong>、1号業務・2号業務を<strong>業として行ってはならない</strong>（<strong>非社会保険労務士との提携の禁止</strong>は23条の2）</td></tr><tr><td><strong>16条</strong></td><td><strong>信用失墜行為の禁止</strong></td></tr><tr><td><strong>19条</strong></td><td><strong>帳簿の備付け</strong>（事件の名称、依頼者の氏名等を記載し、<strong>閉鎖後2年間</strong>保存）</td></tr><tr><td><strong>20条</strong></td><td><strong>依頼に応ずる義務</strong>（正当な理由がある場合を除き、依頼を拒んではならない）</td></tr><tr><td><strong>21条</strong></td><td><strong>秘密を守る義務</strong>（<strong>社会保険労務士でなくなった後も同様</strong>）</td></tr><tr><td><strong>22条</strong></td><td><strong>業務を行い得ない事件</strong>（<strong>特定社労士</strong>が紛争解決手続代理業務で相手方の依頼を受けていた事件など）</td></tr><tr><td><strong>23条</strong></td><td><strong>非社会保険労務士との提携の禁止</strong></td></tr></tbody></table>
+<blockquote><p>★21条の守秘義務違反は<strong>1年以下の拘禁刑または100万円以下の罰金</strong>（<strong>親告罪</strong>）。
+★15条違反（非社労士の業務）は<strong>1年以下の拘禁刑または100万円以下の罰金</strong>。</p></blockquote>
+<h3>社会保険労務士法人（25条の6〜）</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>設立</td><td><strong>社員は社会保険労務士</strong>でなければならない。<strong>社員1人でも設立可</strong>（平成28年〜）</td></tr><tr><td>業務</td><td>1号〜3号業務、および<strong>労働社会保険諸法令に基づく事務の代理</strong>等。<strong>紛争解決手続代理業務</strong>は<strong>特定社労士である社員</strong>がいる場合に限り行える</td></tr><tr><td><strong>責任</strong></td><td>社員は、社会保険労務士法人の債務について<strong>連帯して弁済する責任</strong>を負う（無限連帯責任）</td></tr><tr><td>定款・登記</td><td>主たる事務所の所在地で<strong>設立の登記</strong>をすることによって成立</td></tr></tbody></table>
+<h3>懲戒（25条〜25条の3）</h3>
+<table><thead><tr><th>種類</th><th>内容</th></tr></thead><tbody><tr><td><strong>戒告</strong></td><td></td></tr><tr><td><strong>1年以内の業務の停止</strong></td><td></td></tr><tr><td><strong>失格処分</strong></td><td>社会保険労務士の<strong>資格を失わせる</strong></td></tr></tbody></table>
+<p>処分するのは<strong>厚生労働大臣</strong>です。</p>
+<table><thead><tr><th>事由</th><th>処分</th></tr></thead><tbody><tr><td><strong>不正行為の指示等</strong>（25条）</td><td>故意に真正の事実に反して申請書等を作成したとき等 → <strong>失格処分または1年以内の業務停止</strong>。<strong>相当の注意を怠った</strong>ときは<strong>戒告または1年以内の業務停止</strong></td></tr><tr><td><strong>一般的な義務違反</strong>（25条の2）</td><td>この法律・命令に違反したとき → <strong>戒告、1年以内の業務停止、失格処分</strong></td></tr></tbody></table>
+<blockquote><p>★懲戒処分をするときは、<strong>あらかじめ、その社会保険労務士に通知し、聴聞</strong>を行わなければなりません。
+★<strong>何人も</strong>、社会保険労務士に懲戒事由があると思料するときは、<strong>厚生労働大臣に対しその事実を報告し、適当な措置をとるべきことを求めることができます</strong>（25条の3の2）。</p></blockquote>
+<h3>紛争解決手続代理業務試験（13条の3）</h3>
+<p><strong>社会保険労務士</strong>（登録を受けている者）が受験でき、合格すると<strong>全国社会保険労務士会連合会</strong>が<strong>社会保険労務士名簿に付記</strong>します。</p>
+<h3>名簿（14条の3）</h3>
+<blockquote><p>社会保険労務士名簿は、<strong>連合会に備える</strong>。社会保険労務士名簿の<strong>登録は、連合会が行う</strong>。</p></blockquote>
+<blockquote><p>★備えるのも登録するのも<strong>全国社会保険労務士会連合会</strong>です。「厚生労働省に備える」は誤りです。</p></blockquote>
+<h3>社会保険労務士法人の業務の範囲（25条の9）</h3>
+<p>社会保険労務士法人は、<strong>2条1項1号から1号の3まで、2号および3号</strong>の業務を行うほか、<strong>定款で定めるところにより</strong>次の業務を行うことができます。</p>
+<ol><li><strong>2条に規定する業務に準ずるもの</strong>として厚生労働省令で定める業務の全部または一部</li><li><strong>紛争解決手続代理業務</strong></li></ol>
+<blockquote><p>★<strong>紛争解決手続代理業務は、社員のうちに特定社会保険労務士がある法人に限り</strong>行うことができます（25条の9第2項）。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">59</span>社会保険一般常識</span></td><td>条文と統計の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>医療・年金の横断</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 61 ／ 一般常識</div><h1>国民健康保険と高齢者医療</h1><div class="desc">国保に被扶養者はない。保険料率は広域連合、徴収は市町村</div></div><h2>国民健康保険法</h2>
+<h3>保険者（3条）</h3>
+<table class="big"><thead><tr><th>保険者</th><th>内容</th></tr></thead><tbody><tr><td><strong>都道府県</strong>（当該都道府県内の市町村とともに）</td><td><strong>財政運営の責任主体</strong>（平成30年4月〜）。<strong>国保事業費納付金</strong>の決定、<strong>標準保険料率</strong>の算定</td></tr><tr><td><strong>市町村</strong>（特別区を含む）</td><td><strong>資格管理、保険給付、保険料の賦課徴収、保健事業</strong></td></tr><tr><td><strong>国民健康保険組合</strong></td><td>同種の事業・業務に従事する者で<strong>300人以上</strong>により組織。<strong>都道府県知事の認可</strong></td></tr></tbody></table>
+<blockquote><p>★平成30年4月から<strong>都道府県が財政運営の責任主体</strong>になりました。市町村がなくなったわけではありません。</p></blockquote>
+<h3>被保険者（5条・6条）</h3>
+<p><strong>都道府県の区域内に住所を有する者</strong>は、当該都道府県が当該市町村とともに行う国民健康保険の被保険者とします。</p>
+<p><strong>適用除外</strong>（6条）の主なもの。</p>
+<table class="big"><thead><tr><th>号</th><th>除外</th></tr></thead><tbody><tr><td>1号</td><td><strong>健康保険</strong>の被保険者（日雇特例被保険者を除く）</td></tr><tr><td>2号</td><td><strong>船員保険</strong>の被保険者</td></tr><tr><td>3〜5号</td><td><strong>国家公務員共済・地方公務員共済・私学共済</strong>の組合員・加入者</td></tr><tr><td>6〜8号</td><td>上記の<strong>被扶養者</strong></td></tr><tr><td>9号</td><td><strong>後期高齢者医療</strong>の被保険者</td></tr><tr><td>10号</td><td><strong>生活保護</strong>を受けている世帯に属する者</td></tr><tr><td>11号</td><td><strong>国民健康保険組合</strong>の被保険者</td></tr></tbody></table>
+<blockquote><p>★<strong>被扶養者という概念がありません</strong>。世帯の全員がそれぞれ被保険者になります。ここが健保との最大の違いです。</p></blockquote>
+<h3>保険料（保険税）</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>賦課</td><td><strong>世帯主</strong>に対して賦課（<strong>擬制世帯主</strong>：世帯主が被保険者でなくても賦課される）</td></tr><tr><td>構成</td><td><strong>基礎賦課額</strong>（医療分）＋<strong>後期高齢者支援金等賦課額</strong>＋<strong>介護納付金賦課額</strong>（40〜64歳）</td></tr><tr><td>算定方式</td><td><strong>所得割・資産割・被保険者均等割・世帯別平等割</strong>の組合せ（4方式・3方式・2方式）</td></tr><tr><td>徴収</td><td><strong>普通徴収</strong>（納付書等）と<strong>特別徴収</strong>（<strong>年金からの天引き</strong>。年額18万円以上の年金受給者等）</td></tr></tbody></table>
+<h3>給付</h3>
+<table class="big"><thead><tr><th>給付</th><th>内容</th></tr></thead><tbody><tr><td><strong>療養の給付</strong>（36条）</td><td>健保と同じ。一部負担金は<strong>義務教育就学前2割／就学後70歳未満3割／70歳以上75歳未満2割（現役並み3割）</strong></td></tr><tr><td><strong>入院時食事療養費・入院時生活療養費・保険外併用療養費・療養費・訪問看護療養費・特別療養費・移送費</strong></td><td>健保と同じ枠組み</td></tr><tr><td><strong>高額療養費・高額介護合算療養費</strong></td><td>健保と同じ</td></tr><tr><td><strong>出産育児一時金</strong>（58条）</td><td><strong>条例・規約</strong>で定める（<strong>任意給付</strong>だが実際にはほぼ全市町村が実施）</td></tr><tr><td><strong>葬祭費・葬祭の給付</strong></td><td><strong>条例・規約</strong>で定める（<strong>任意給付</strong>）</td></tr><tr><td><strong>傷病手当金・出産手当金</strong></td><td><strong>任意給付</strong>（条例・規約で定めることができる。<strong>実施している保険者はほとんどない</strong>）</td></tr></tbody></table>
+<blockquote><p>★<strong>傷病手当金・出産手当金は任意給付</strong>です。「国保には傷病手当金がない」は正確には誤りで、「<strong>任意給付であり、通常は行われていない</strong>」が正解です。</p></blockquote>
+<h3>資格証明書・短期被保険者証（9条）</h3>
+<p>保険料を<strong>1年以上</strong>滞納している世帯主に対しては、<strong>被保険者証の返還を求め、被保険者資格証明書を交付</strong>します（特別の事情がある場合を除く）。資格証明書の場合、いったん<strong>医療費の全額</strong>を支払い、後で<strong>特別療養費</strong>として払戻しを受けます。</p>
+<blockquote><p>★令和6年12月のマイナ保険証への移行に伴い、資格確認書の運用に変更があります。</p></blockquote>
+<hr>
+<h2>高齢者の医療の確保に関する法律</h2>
+<h3>目的（1条）</h3>
+<blockquote><p><strong>国民の共同連帯</strong>の理念等に基づき、<strong>前期高齢者に係る保険者間の費用負担の調整</strong>、<strong>後期高齢者に対する適切な医療の給付</strong>等を行うために必要な制度を設け、もつて国民保健の向上及び高齢者の福祉の増進を図る。</p></blockquote>
+<h3>特定健康診査・特定保健指導（18条〜）</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>実施主体</td><td><strong>保険者</strong>（健保組合、協会けんぽ、国保、共済等）</td></tr><tr><td>対象</td><td><strong>40歳以上75歳未満</strong>の加入者</td></tr><tr><td>内容</td><td><strong>メタボリックシンドローム</strong>に着目した健康診査と保健指導</td></tr><tr><td>特定保健指導の区分</td><td><strong>動機付け支援</strong>／<strong>積極的支援</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>40歳以上75歳未満</strong>。特定健診の実施主体は<strong>保険者</strong>であり、事業者（安衛法の健康診断）とは別です。</p></blockquote>
+<h3>後期高齢者医療制度（47条〜）</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>運営主体</strong></td><td><strong>後期高齢者医療広域連合</strong>（都道府県の区域ごとに<strong>すべての市町村</strong>が加入して設ける）</td></tr><tr><td><strong>被保険者</strong>（50条）</td><td>① 広域連合の区域内に住所を有する<strong>75歳以上</strong>の者&lt;br&gt;② <strong>65歳以上75歳未満</strong>で、<strong>一定の障害の状態</strong>にあり広域連合の<strong>認定</strong>を受けた者</td></tr><tr><td><strong>適用除外</strong></td><td><strong>生活保護</strong>を受けている世帯に属する者等</td></tr></tbody></table>
+<blockquote><p>★<strong>75歳になると自動的に</strong>（届出不要で）後期高齢者医療の被保険者になり、それまでの医療保険の資格を失います。
+★65〜74歳の障害認定は<strong>本人の申請と広域連合の認定</strong>が必要で、<strong>いつでも撤回できます</strong>。</p></blockquote>
+<h3>事務の分担</h3>
+<table class="big"><thead><tr><th>広域連合</th><th>市町村</th></tr></thead><tbody><tr><td><strong>保険料率の決定、資格の管理、医療給付、財政運営</strong></td><td><strong>保険料の徴収、被保険者証の引渡し、各種申請の受付</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>保険料の徴収は市町村</strong>、<strong>保険料率の決定は広域連合</strong>。ここが最頻出です。</p></blockquote>
+<h3>保険料</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>賦課</td><td><strong>被保険者本人</strong>に賦課（世帯主ではない）</td></tr><tr><td>構成</td><td><strong>均等割額 ＋ 所得割額</strong></td></tr><tr><td>保険料率</td><td><strong>広域連合の条例</strong>で定め、<strong>2年</strong>を通じ財政の均衡を保つことができるものでなければならない。<strong>広域連合の区域内で均一</strong>であることが原則</td></tr><tr><td>徴収</td><td><strong>特別徴収</strong>（年額18万円以上の年金からの天引き）が原則。<strong>普通徴収</strong>の場合、<strong>世帯主および配偶者が連帯納付義務</strong>を負う</td></tr></tbody></table>
+<blockquote><p>★保険料率は<strong>2年ごと</strong>に見直されます。</p></blockquote>
+<h3>一部負担金（67条）</h3>
+<table class="big"><thead><tr><th>区分</th><th>割合</th></tr></thead><tbody><tr><td>一般</td><td><strong>1割</strong></td></tr><tr><td><strong>一定以上の所得</strong>がある者</td><td><strong>2割</strong>（令和4年10月〜）</td></tr><tr><td><strong>現役並み所得者</strong></td><td><strong>3割</strong></td></tr></tbody></table>
+<h3>財源</h3>
+<table><thead><tr><th>財源</th><th>割合</th></tr></thead><tbody><tr><td><strong>公費</strong></td><td><strong>約5割</strong>（国：都道府県：市町村＝<strong>4：1：1</strong>）</td></tr><tr><td><strong>後期高齢者支援金</strong>（現役世代の保険料）</td><td><strong>約4割</strong></td></tr><tr><td><strong>後期高齢者の保険料</strong></td><td><strong>約1割</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>5：4：1</strong>。この比率が問われます。</p></blockquote>
+<h3>前期高齢者財政調整（32条〜）</h3>
+<p><strong>65歳以上75歳未満</strong>の前期高齢者について、<strong>各保険者の加入率の差による負担の不均衡</strong>を調整します。<strong>制度間の財政調整</strong>であり、独立した医療制度ではありません。</p>
+<blockquote><p>★前期高齢者は<strong>それまでの医療保険に加入したまま</strong>です。「前期高齢者医療制度」という独立の制度はありません。ここが最頻出です。</p></blockquote>
+<h3>移送費（国保法54条の4）</h3>
+<p>被保険者が療養の給付（保険外併用療養費・特別療養費に係る療養を含む）を受けるため<strong>病院・診療所に移送</strong>されたときは、<strong>世帯主または組合員に対し</strong>、移送費を支給します。</p>
+<blockquote><p>★<strong>市町村・組合が必要であると認める場合に限り</strong>支給されます。健保の移送費と同じ枠組みです。
+★国保では、給付は<strong>被保険者ではなく世帯主・組合員に対して</strong>支給される形をとります。</p></blockquote>
+<h3>普通徴収に係る保険料の納期（高齢者医療確保法109条）</h3>
+<blockquote><p>普通徴収の方法によつて徴収する保険料の<strong>納期は、市町村の条例</strong>で定める。</p></blockquote>
+<blockquote><p>★保険料<strong>率</strong>は<strong>広域連合の条例</strong>、普通徴収の<strong>納期</strong>は<strong>市町村の条例</strong>。決める主体が違います。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">59</span>社会保険一般常識</span></td><td>条文と統計の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>医療・年金の横断</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 62 ／ 一般常識</div><h1>介護保険法</h1><div class="desc">認定審査会は市町村、審査会は都道府県。要支援に施設サービスはない</div></div><h3>保険者（3条）</h3>
+<p><strong>市町村および特別区</strong>が保険者です。</p>
+<table class="big"><thead><tr><th>支える主体</th><th>役割</th></tr></thead><tbody><tr><td><strong>国</strong></td><td>基本指針の策定、<strong>調整交付金</strong>の交付</td></tr><tr><td><strong>都道府県</strong></td><td><strong>財政安定化基金</strong>の設置、事業者の指定（居宅サービス・施設）、介護保険審査会の設置</td></tr><tr><td><strong>医療保険者</strong></td><td><strong>介護給付費・地域支援事業支援納付金</strong>の納付</td></tr><tr><td><strong>社会保険診療報酬支払基金</strong></td><td>納付金の徴収と<strong>交付金</strong>の交付</td></tr></tbody></table>
+<blockquote><p>★<strong>介護保険審査会は都道府県</strong>に置かれます。保険者は市町村ですが、審査会は都道府県です。</p></blockquote>
+<h3>被保険者（9条）</h3>
+<table class="big"><thead><tr><th>区分</th><th>要件</th><th>保険料</th></tr></thead><tbody><tr><td><strong>第1号被保険者</strong></td><td>市町村の区域内に住所を有する<strong>65歳以上</strong>の者</td><td><strong>市町村が徴収</strong>（年額18万円以上の年金からの<strong>特別徴収</strong>が原則）</td></tr><tr><td><strong>第2号被保険者</strong></td><td>市町村の区域内に住所を有する<strong>40歳以上65歳未満</strong>の<strong>医療保険加入者</strong></td><td><strong>医療保険者が医療保険料と一体で徴収</strong></td></tr></tbody></table>
+<blockquote><p>★第2号被保険者は<strong>医療保険に加入していること</strong>が要件です。生活保護受給者（国保に加入していない者）は第2号被保険者になりません。</p></blockquote>
+<h3>受給要件</h3>
+<table class="big"><thead><tr><th>区分</th><th>給付が受けられる場合</th></tr></thead><tbody><tr><td><strong>第1号</strong></td><td><strong>原因を問わず</strong>、要介護・要支援状態にあること</td></tr><tr><td><strong>第2号</strong></td><td><strong>加齢に伴って生ずる心身の変化に起因する疾病</strong>（<strong>特定疾病</strong>、<strong>16種類</strong>）によること</td></tr></tbody></table>
+<p><strong>特定疾病</strong>の例：がん（末期）、関節リウマチ、筋萎縮性側索硬化症、後縦靱帯骨化症、骨折を伴う骨粗鬆症、初老期における認知症、パーキンソン病関連疾患、脊髄小脳変性症、脊柱管狭窄症、早老症、多系統萎縮症、糖尿病性神経障害・腎症・網膜症、<strong>脳血管疾患</strong>、閉塞性動脈硬化症、慢性閉塞性肺疾患、両側の膝関節または股関節に著しい変形を伴う変形性関節症。</p>
+<blockquote><p>★<strong>交通事故による障害は第2号被保険者では給付対象になりません</strong>（加齢に起因しないため）。</p></blockquote>
+<h3>要介護認定（27条〜）</h3>
+<pre><code>市町村に申請
+　↓
+認定調査（市町村の職員等）＋ 主治医意見書
+　↓
+コンピュータによる一次判定
+　↓
+介護認定審査会（市町村に設置）による二次判定
+　↓
+市町村が認定（申請日から30日以内）→ 申請日にさかのぼって効力</code></pre>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>区分</td><td><strong>要支援1・2</strong>、<strong>要介護1〜5</strong></td></tr><tr><td><strong>有効期間</strong></td><td>新規は原則<strong>6か月</strong>（12か月まで延長可）、更新は原則<strong>12か月</strong>（<strong>48か月</strong>まで延長可、令和6年4月〜）</td></tr><tr><td><strong>認定の効力</strong></td><td><strong>申請のあった日にさかのぼって</strong>生ずる</td></tr></tbody></table>
+<blockquote><p>★<strong>申請日にさかのぼる</strong>ので、認定前でも暫定ケアプランでサービスを利用できます。
+★<strong>介護認定審査会は市町村</strong>、<strong>介護保険審査会は都道府県</strong>。名前が似ているので注意します。</p></blockquote>
+<h3>給付の種類</h3>
+<table class="big"><thead><tr><th>区分</th><th>内容</th></tr></thead><tbody><tr><td><strong>介護給付</strong>（要介護者）</td><td>居宅介護サービス費、地域密着型介護サービス費、施設介護サービス費、居宅介護福祉用具購入費、居宅介護住宅改修費、居宅介護サービス計画費、高額介護サービス費、特定入所者介護サービス費 など</td></tr><tr><td><strong>予防給付</strong>（要支援者）</td><td>介護予防サービス費、地域密着型介護予防サービス費 など（<strong>施設サービスはない</strong>）</td></tr><tr><td><strong>市町村特別給付</strong></td><td>市町村が<strong>条例</strong>で定める独自の給付（配食サービス等）。財源は<strong>第1号保険料</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>要支援者は施設サービスを利用できません</strong>。ここが最頻出です。</p></blockquote>
+<h3>施設サービス</h3>
+<table class="big"><thead><tr><th>施設</th><th>特徴</th></tr></thead><tbody><tr><td><strong>介護老人福祉施設</strong>（特別養護老人ホーム）</td><td>原則<strong>要介護3以上</strong></td></tr><tr><td><strong>介護老人保健施設</strong></td><td>在宅復帰を目指すリハビリ中心</td></tr><tr><td><strong>介護医療院</strong></td><td>長期療養＋生活施設（介護療養型医療施設は令和6年3月末で廃止）</td></tr></tbody></table>
+<h3>利用者負担</h3>
+<table class="big"><thead><tr><th>区分</th><th>割合</th></tr></thead><tbody><tr><td>一般</td><td><strong>1割</strong></td></tr><tr><td>一定以上の所得</td><td><strong>2割</strong></td></tr><tr><td>特に所得の高い者</td><td><strong>3割</strong></td></tr></tbody></table>
+<p><strong>高額介護サービス費</strong>：1か月の利用者負担が上限を超えたとき支給されます。</p>
+<h3>財源（121条〜）</h3>
+<table class="big"><thead><tr><th>財源</th><th>割合</th></tr></thead><tbody><tr><td><strong>公費</strong></td><td><strong>50%</strong>（<strong>居宅給付費</strong>：国25%・都道府県12.5%・市町村12.5%／<strong>施設等給付費</strong>：国20%・都道府県17.5%・市町村12.5%）</td></tr><tr><td><strong>第1号保険料</strong></td><td><strong>23%</strong>（令和6〜8年度）</td></tr><tr><td><strong>第2号保険料</strong></td><td><strong>27%</strong>（令和6〜8年度）</td></tr></tbody></table>
+<blockquote><p>★国の25%のうち<strong>5%は調整交付金</strong>です（市町村間の格差調整）。
+★<strong>施設等給付費では都道府県の割合が17.5%に上がる</strong>（国が20%に下がる）。ここが問われます。</p></blockquote>
+<h3>地域支援事業（115条の45）</h3>
+<table><thead><tr><th>事業</th><th>内容</th></tr></thead><tbody><tr><td><strong>介護予防・日常生活支援総合事業</strong></td><td>訪問型・通所型サービス、一般介護予防事業</td></tr><tr><td><strong>包括的支援事業</strong></td><td><strong>地域包括支援センター</strong>の運営（総合相談支援、権利擁護、包括的・継続的ケアマネジメント、<strong>介護予防ケアマネジメント</strong>）、在宅医療・介護連携推進、生活支援体制整備、<strong>認知症総合支援</strong>、地域ケア会議推進</td></tr><tr><td><strong>任意事業</strong></td><td>介護給付等費用適正化、家族介護支援 など</td></tr></tbody></table>
+<h3>事業者の指定</h3>
+<table><thead><tr><th>種類</th><th>指定権者</th></tr></thead><tbody><tr><td><strong>居宅サービス事業者、介護予防サービス事業者、介護保険施設</strong></td><td><strong>都道府県知事</strong></td></tr><tr><td><strong>地域密着型サービス事業者、地域密着型介護予防サービス事業者、居宅介護支援事業者、介護予防支援事業者</strong></td><td><strong>市町村長</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>地域密着型と居宅介護支援（ケアプラン）は市町村長</strong>。それ以外は都道府県知事です。</p></blockquote>
+<h3>不服申立て（183条）</h3>
+<p><strong>保険給付に関する処分</strong>、<strong>保険料その他の徴収金に関する処分</strong>に不服がある者は、<strong>介護保険審査会</strong>（<strong>都道府県</strong>に設置）に審査請求できます。</p>
+<p>介護保険審査会の委員：<strong>市町村代表</strong>3人、<strong>被保険者代表</strong>3人、<strong>公益代表</strong>3人以上。</p>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">59</span>社会保険一般常識</span></td><td>条文と統計の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>医療・年金の横断</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 63 ／ 一般常識</div><h1>企業年金と社会保険審査</h1><div class="desc">規約型は承認・基金型は認可。給付は2審、保険料は1審</div></div><h2>確定給付企業年金法</h2>
+<h3>2つの形態（3条）</h3>
+<table class="big"><thead><tr><th>形態</th><th>内容</th></tr></thead><tbody><tr><td><strong>規約型</strong></td><td>事業主が<strong>労使合意</strong>に基づく<strong>規約</strong>を定め、<strong>厚生労働大臣の承認</strong>を受け、<strong>信託会社・生命保険会社等</strong>と契約して外部で積み立てる</td></tr><tr><td><strong>基金型</strong></td><td><strong>企業年金基金</strong>という<strong>法人</strong>を設立し（<strong>厚生労働大臣の認可</strong>）、基金が年金資産を管理・運用する</td></tr></tbody></table>
+<blockquote><p>★規約型は<strong>承認</strong>、基金型は<strong>認可</strong>。用語が違います。
+★基金の設立には、<strong>加入者となるべき被用者年金被保険者の2分の1以上の同意</strong>（労働組合があればその同意）が必要です。</p></blockquote>
+<h3>加入者（25条）</h3>
+<p><strong>実施事業所に使用される厚生年金保険の被保険者</strong>が加入者となります。規約で<strong>一定の資格</strong>（職種、勤続期間、年齢、希望する者）を定めることができます。</p>
+<h3>給付（29条）</h3>
+<table class="big"><thead><tr><th>給付</th><th>支給要件</th></tr></thead><tbody><tr><td><strong>老齢給付金</strong></td><td><strong>60歳以上70歳以下</strong>の規約で定める年齢に達したとき、または<strong>50歳以上</strong>で規約で定める年齢に達した日以後に退職したとき</td></tr><tr><td><strong>脱退一時金</strong></td><td>加入者期間が<strong>3年以上</strong>の者が退職したとき（<strong>3年を超える期間を要件とすることはできない</strong>）</td></tr><tr><td><strong>障害給付金</strong>（任意）</td><td>規約で定めることができる</td></tr><tr><td><strong>遺族給付金</strong>（任意）</td><td>規約で定めることができる</td></tr></tbody></table>
+<blockquote><p>★老齢給付金・脱退一時金は<strong>必ず定める</strong>、障害給付金・遺族給付金は<strong>任意</strong>です。
+★<strong>脱退一時金の要件を3年を超える加入者期間とすることはできません</strong>。頻出です。</p></blockquote>
+<h3>掛金（55条）</h3>
+<p><strong>事業主が拠出</strong>します。規約で定めるところにより、<strong>加入者が掛金の一部を負担</strong>することができます（<strong>本人の同意</strong>が必要）。加入者の負担は<strong>掛金の2分の1</strong>が上限です。</p>
+<h3>リスク分担型企業年金</h3>
+<p>事業主が<strong>リスク対応掛金</strong>を拠出し、財政状況の変動を<strong>事業主と加入者で分担</strong>する仕組みです（平成29年〜）。</p>
+<hr>
+<h2>確定拠出年金法</h2>
+<h3>2つの形態</h3>
+<table class="big"><thead><tr><th>形態</th><th>実施主体</th><th>加入対象</th></tr></thead><tbody><tr><td><strong>企業型年金</strong></td><td><strong>事業主</strong>（労使合意による規約、<strong>厚生労働大臣の承認</strong>）</td><td>厚生年金保険の被保険者（<strong>70歳未満</strong>）</td></tr><tr><td><strong>個人型年金</strong>（iDeCo）</td><td><strong>国民年金基金連合会</strong></td><td><strong>国民年金の被保険者</strong>（第1号・第2号・第3号）、<strong>任意加入被保険者</strong>（65歳未満）</td></tr></tbody></table>
+<h3>拠出限度額（令和8年時点の枠組み）</h3>
+<table class="big"><thead><tr><th>区分</th><th>限度額（月額）</th></tr></thead><tbody><tr><td>企業型（他制度なし）</td><td><strong>55,000円</strong></td></tr><tr><td>企業型（確定給付企業年金等あり）</td><td>55,000円 − 他制度掛金相当額</td></tr><tr><td>個人型・<strong>第1号</strong>被保険者</td><td><strong>68,000円</strong>（国民年金基金・付加保険料と<strong>合算</strong>）</td></tr><tr><td>個人型・<strong>第2号</strong>（企業年金なし）</td><td><strong>23,000円</strong></td></tr><tr><td>個人型・<strong>第3号</strong>被保険者</td><td><strong>23,000円</strong></td></tr></tbody></table>
+<blockquote><p>★令和6年12月から、企業型・個人型の限度額の算定方法が<strong>他制度掛金相当額を差し引く方式</strong>に統一されました。最新の額は <span class="ref"><span class="n">59</span>社会保険一般常識</span> を確認してください。</p></blockquote>
+<h3>給付（28条）</h3>
+<table class="big"><thead><tr><th>給付</th><th>内容</th></tr></thead><tbody><tr><td><strong>老齢給付金</strong></td><td><strong>60歳</strong>（通算加入者等期間10年以上）から。10年に満たない場合は期間に応じて<strong>61〜65歳</strong>に繰下げ。請求は<strong>75歳</strong>までに</td></tr><tr><td><strong>障害給付金</strong></td><td><strong>障害認定日</strong>から<strong>70歳</strong>に達する日の前日までの間に請求</td></tr><tr><td><strong>死亡一時金</strong></td><td>遺族に支給。順位は配偶者→子・父母・孫・祖父母・兄弟姉妹（生計維持）→その他</td></tr><tr><td><strong>脱退一時金</strong></td><td>厳しい要件（<strong>個人別管理資産が一定額以下</strong>等）を満たす場合に限る</td></tr></tbody></table>
+<blockquote><p>★老齢給付金は<strong>60歳前には受けられません</strong>。「いつでも引き出せる」は誤りです。</p></blockquote>
+<h3>運用（23条・25条）</h3>
+<p>運営管理機関は、<strong>3以上</strong>（簡易企業型年金は2以上）の<strong>運用の方法</strong>を選定し提示しなければなりません（うち1つ以上は<strong>元本確保型</strong>である必要は令和2年に撤廃）。</p>
+<p>加入者は<strong>少なくとも3か月に1回</strong>、運用の方法を<strong>変更できる</strong>機会が与えられなければなりません。</p>
+<p><strong>指定運用方法</strong>：加入者が運用の指図を行わない場合にあらかじめ定めた方法で運用されます。</p>
+<hr>
+<h2>船員保険法</h2>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>保険者</strong></td><td><strong>全国健康保険協会</strong></td></tr><tr><td><strong>被保険者</strong></td><td><strong>船員法1条に規定する船員</strong>として船舶所有者に使用される者</td></tr><tr><td><strong>給付</strong></td><td><strong>職務外</strong>の事由による<strong>疾病・負傷・出産・死亡</strong>（＝健康保険相当）＋ <strong>独自給付</strong>（行方不明手当金、休業手当金の上乗せ等）</td></tr><tr><td><strong>職務上の災害</strong></td><td><strong>労災保険</strong>（平成22年1月から労災保険に統合）</td></tr></tbody></table>
+<p><strong>独自給付</strong>の例。</p>
+<table class="big"><thead><tr><th>給付</th><th>内容</th></tr></thead><tbody><tr><td><strong>行方不明手当金</strong></td><td>被保険者が職務上<strong>行方不明</strong>となったとき、<strong>被扶養者</strong>に対し<strong>1か月以上</strong>行方不明である場合に、<strong>最大3か月</strong>を限度に支給</td></tr><tr><td><strong>傷病手当金</strong></td><td>支給期間は<strong>3年</strong>（健保は1年6か月）。<strong>下船後3か月以内</strong>の療養は職務外でも対象</td></tr><tr><td><strong>葬祭料</strong></td><td>標準報酬月額の<strong>2か月分</strong>（最低5万円）</td></tr></tbody></table>
+<blockquote><p>★行方不明手当金は<strong>船員保険独自</strong>の給付です。</p></blockquote>
+<hr>
+<h2>社会保険審査官及び社会保険審査会法</h2>
+<h3>2審制と1審制</h3>
+<table class="big"><thead><tr><th>対象</th><th>手続</th></tr></thead><tbody><tr><td><strong>健保・厚年・国年の給付、被保険者資格、標準報酬</strong>に関する処分</td><td><strong>社会保険審査官</strong>（地方厚生局に置かれる）に審査請求 → <strong>社会保険審査会</strong>（厚生労働省に置かれる）に再審査請求（<strong>2審制</strong>）</td></tr><tr><td><strong>保険料その他の徴収金</strong>に関する処分</td><td><strong>社会保険審査会</strong>に直接審査請求（<strong>1審制</strong>）</td></tr></tbody></table>
+<blockquote><p>★<strong>給付は2審、保険料は1審</strong>。この対比が最頻出です。</p></blockquote>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>審査請求の期間</td><td>処分があったことを<strong>知った日の翌日</strong>から起算して<strong>3か月以内</strong></td></tr><tr><td>みなし棄却</td><td>審査請求をした日から<strong>2か月</strong>以内に決定がないときは、<strong>棄却したものとみなす</strong>ことができる</td></tr><tr><td>再審査請求の期間</td><td>決定書の謄本が送付された日の翌日から起算して<strong>2か月以内</strong></td></tr><tr><td>社会保険審査会の構成</td><td><strong>委員長1人</strong>および<strong>委員5人</strong>。両議院の同意を得て<strong>厚生労働大臣</strong>が任命。任期<strong>3年</strong></td></tr><tr><td>公開</td><td><strong>審理は公開</strong>（当事者の申立てがあったときは公開しないことができる）</td></tr></tbody></table>
+<blockquote><p>★健保・厚年・国年の<strong>みなし棄却は2か月</strong>、労災・雇用（労働保険審査官）は<strong>3か月</strong>。ここが横断で問われます。</p></blockquote>
+<h3>実施事業所の増減（確定給付企業年金法78条）</h3>
+<p>事業主等が実施事業所を<strong>増加させ、または減少させよう</strong>とするときは、その増減に係る<strong>厚生年金適用事業所の事業主の全部の同意</strong>および<strong>労働組合等の同意</strong>を得なければなりません。</p>
+<p><strong>基金</strong>が実施事業所を減少させるときは、減少後も<strong>加入者の数が政令で定める数以上</strong>であるか、そうなることが見込まれなければなりません。</p>
+<blockquote><p>★<strong>事業主の「全部」の同意</strong>が必要です。過半数ではありません。</p></blockquote>
+<h3>確定拠出年金の関係者と規約</h3>
+<table class="big"><thead><tr><th>用語</th><th>内容</th></tr></thead><tbody><tr><td><strong>企業型年金規約</strong></td><td>事業主が<strong>労使合意</strong>により作成し、<strong>厚生労働大臣の承認</strong>を受ける</td></tr><tr><td><strong>個人型年金規約</strong></td><td><strong>国民年金基金連合会</strong>が作成し、<strong>厚生労働大臣の承認</strong>を受ける</td></tr><tr><td><strong>確定拠出年金運営管理機関</strong></td><td><strong>記録関連業務</strong>（加入者の記録管理、給付の裁定）と<strong>運用関連業務</strong>（運用商品の選定・提示、情報提供）を行う。<strong>厚生労働大臣および内閣総理大臣の登録</strong>が必要</td></tr><tr><td><strong>資産管理機関</strong></td><td>企業型年金の資産を事業主の財産と<strong>分別して管理</strong>する（信託会社・生命保険会社等）</td></tr><tr><td><strong>企業型年金加入者掛金</strong>（マッチング拠出）</td><td>加入者本人が拠出する掛金。<strong>事業主掛金の額を超えず</strong>、かつ<strong>事業主掛金との合計が拠出限度額以内</strong></td></tr><tr><td><strong>個人型年金加入者掛金</strong></td><td>iDeCoの加入者本人の掛金。<strong>月額5,000円以上</strong>、1,000円単位</td></tr><tr><td><strong>個人型年金加入者期間</strong></td><td>老齢給付金の受給開始年齢を決める<strong>通算加入者等期間</strong>の一部</td></tr></tbody></table>
+<blockquote><p>★<strong>マッチング拠出は事業主掛金を超えられません</strong>。ここが最頻出です。
+★運営管理機関の登録は<strong>厚生労働大臣と内閣総理大臣の共同</strong>です。片方だけとする肢は誤りです。</p></blockquote>
+<h3>介護保険のそのほかの用語</h3>
+<table class="big"><thead><tr><th>用語</th><th>内容</th></tr></thead><tbody><tr><td><strong>要介護状態区分</strong></td><td>要支援1・2／要介護1〜5</td></tr><tr><td><strong>要介護更新認定</strong></td><td>有効期間満了前に申請。<strong>有効期間満了日の60日前</strong>から申請できる</td></tr><tr><td><strong>基準費用額</strong></td><td>施設サービスの<strong>食費・居住費</strong>について、平均的な費用として国が定める額。<strong>補足給付</strong>（特定入所者介護サービス費）の計算に使う</td></tr><tr><td><strong>利用者負担額</strong></td><td>1割〜3割</td></tr></tbody></table>
+<h3>私立学校教職員共済</h3>
+<p><strong>日本私立学校振興・共済事業団</strong>が運営し、平成27年10月から<strong>第4号厚生年金被保険者</strong>となりました。<strong>短期給付</strong>（医療）は健康保険に相当する給付を行います。</p>
+<h3>社会保障審議会</h3>
+<p>厚生労働省に置かれ、<strong>社会保障制度</strong>に関する重要事項を調査審議します。年金部会・医療保険部会・介護保険部会などが置かれ、<strong>保険料率や給付の見直し</strong>はここで議論されます。</p>
+<h3>船員保険の保険料率</h3>
+<pre><code>保険料額 ＝（標準報酬月額 ＋ 標準賞与額）×（疾病保険料率 ＋ 災害保健福祉保険料率）</code></pre>
+<table><thead><tr><th>保険料率</th><th>内容</th><th>負担</th></tr></thead><tbody><tr><td><strong>疾病保険料率</strong></td><td>職務外の疾病等に係る給付（＝健康保険相当）に充てる</td><td><strong>労使折半</strong>（船舶所有者と被保険者）</td></tr><tr><td><strong>災害保健福祉保険料率</strong></td><td><strong>独自給付</strong>（行方不明手当金、休業手当金の上乗せ等）および保健福祉事業に充てる</td><td><strong>船舶所有者が全額負担</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>災害保健福祉保険料率の分は船舶所有者が全額負担</strong>します。雇用保険の二事業分と同じ考え方です。
+★船員保険の<strong>標準報酬月額</strong>は健康保険と同じ<strong>50等級</strong>です。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">59</span>社会保険一般常識</span></td><td>条文と統計の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>医療・年金の横断</td></tr><tr><td><span class="ref"><span class="n">95</span>引っかけの型<span class="sec">（全体版）</span></span></td><td>誤り肢の作られ方</td></tr></tbody></table></div></div>

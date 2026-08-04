@@ -26,6 +26,7 @@
 | `gen_notes.py` | `drill/data/notes.js` | `notes/*.md` をアプリに埋め込む |
 | `gen_anaume2.py` | `drill/data/anaume2.js` | 条文穴埋め（速答）約3,900問 |
 | `gen_ref.py` | `drill/data/ref.js` | 条文・論点 → 読むべき資料の対応表 |
+| `gen_print.py` | `drill/print*.html` | 紙で読むための印刷版（リンクを資料番号に置き換える） |
 | `gen_sw.py` | `drill/sw.js` | 配信ファイルの内容からキャッシュ版数を決める |
 
 **`notes/` のうち 95・96・97・A0・A1 と、各科目ノートの `<!-- TREND -->` 節は自動生成。**

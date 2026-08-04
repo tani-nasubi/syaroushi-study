@@ -1,0 +1,941 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>社労士2026 学習資料｜年金</title>
+<style>
+@page { size: A4 portrait; margin: 16mm 14mm 18mm; }
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+body{margin:0; color:#111; background:#fff;
+  font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
+  font-size:9.6pt; line-height:1.72; text-align:justify;
+  font-feature-settings:"palt" 1;}
+.wrap{max-width:182mm; margin:0 auto; padding:10mm 6mm}
+/* ── 巻頭 ── */
+.cover{text-align:center; padding:40mm 0 0}
+.cover h1{font-size:22pt; letter-spacing:.06em; margin:0 0 6mm}
+.cover .sub{font-size:10pt; color:#555; line-height:2}
+.howto{margin:16mm auto 0; max-width:130mm; text-align:left;
+  border:1pt solid #bbb; padding:6mm 7mm; font-size:9pt; line-height:1.8}
+.howto b{font-size:9.6pt}
+/* ── 目次 ── */
+.toc h2{font-size:13pt; margin:0 0 4mm; padding-bottom:2mm; border-bottom:1.4pt solid #111}
+.toc .grp{margin:5mm 0 2mm; font-weight:700; font-size:10.5pt;
+  border-left:3pt solid #111; padding-left:3mm}
+.toc ol{list-style:none; margin:0; padding:0; columns:2; column-gap:10mm}
+.toc li{break-inside:avoid; font-size:9pt; line-height:1.85;
+  display:flex; gap:2mm; align-items:baseline}
+.toc .no{display:inline-block; min-width:9mm; font-weight:700; font-variant-numeric:tabular-nums}
+.toc .dots{flex:1; border-bottom:.4pt dotted #999; transform:translateY(-2px)}
+/* ── 各資料 ── */
+.doc{break-before:page; page-break-before:always}
+.doc:first-of-type{break-before:auto; page-break-before:auto}
+.doc > .head{border-bottom:1.6pt solid #111; padding-bottom:2.5mm; margin:0 0 5mm}
+.doc > .head .no{font-size:8.5pt; letter-spacing:.14em; color:#666}
+.doc > .head h1{font-size:16pt; margin:1mm 0 0; letter-spacing:-.01em}
+.doc > .head .desc{font-size:8.5pt; color:#555; margin:1.5mm 0 0}
+h2{font-size:12pt; margin:7mm 0 2.5mm; padding:1mm 0 1mm 3mm;
+  border-left:3.5pt solid #111; break-after:avoid; page-break-after:avoid}
+h3{font-size:10.6pt; margin:5mm 0 2mm; padding-bottom:.8mm;
+  border-bottom:.6pt solid #ccc; break-after:avoid; page-break-after:avoid}
+h4{font-size:9.8pt; margin:4mm 0 1.5mm; break-after:avoid; page-break-after:avoid}
+p{margin:0 0 2.4mm}
+ul,ol{margin:0 0 2.8mm; padding-left:6mm}
+li{margin:0 0 .8mm}
+ul.chk{list-style:none; padding-left:0}
+ul.chk li::before{content:"☐"; margin-right:2mm; font-size:11pt; line-height:1}
+strong{font-weight:700}
+code{font-family:"SFMono-Regular",Consolas,"Noto Sans Mono",monospace;
+  font-size:8.6pt; background:#f2f2f2; padding:.2mm 1mm; border-radius:1mm}
+pre{background:#f6f6f6; border:.5pt solid #ddd; padding:3mm 4mm; margin:0 0 3mm;
+  break-inside:avoid; page-break-inside:avoid; overflow:visible}
+pre code{background:none; padding:0; font-size:8.6pt; line-height:1.6; white-space:pre-wrap}
+blockquote{margin:0 0 3mm; padding:2mm 3mm; background:#f7f7f7;
+  border-left:2.5pt solid #888; break-inside:avoid; page-break-inside:avoid}
+blockquote p:last-child{margin-bottom:0}
+hr{border:0; border-top:.6pt solid #ddd; margin:5mm 0}
+table{border-collapse:collapse; width:100%; margin:0 0 3.5mm; font-size:8.6pt;
+  break-inside:avoid; page-break-inside:avoid}
+th,td{border:.5pt solid #999; padding:1.4mm 2mm; text-align:left; vertical-align:top;
+  line-height:1.55}
+th{background:#ececec; font-weight:700; white-space:nowrap}
+thead{display:table-header-group}
+/* 大きい表は途中で切れてよい。切れないと1ページに収まらず消える */
+table.big{break-inside:auto; page-break-inside:auto}
+table.big tr{break-inside:avoid; page-break-inside:avoid}
+/* ── 参照（紙ではリンクを押せないので番号で引く）── */
+.ref{white-space:nowrap; font-weight:600}
+.ref .n{font-size:8pt; border:.6pt solid #666; border-radius:1mm;
+  padding:0 1mm; margin-right:.8mm; font-variant-numeric:tabular-nums}
+.ref .sec{font-weight:400; color:#444}
+/* ── 画面で見るときだけの操作 ── */
+.bar{position:sticky; top:0; background:#fff; border-bottom:1pt solid #ddd;
+  padding:8px 12px; display:flex; gap:10px; align-items:center; font-size:13px; z-index:9}
+.bar a{color:#1a4fd6}
+.bar button{font:inherit; padding:5px 12px; border:1px solid #999; background:#fff;
+  border-radius:5px; cursor:pointer}
+@media print{ .bar{display:none} .wrap{padding:0} }
+</style>
+<div class="bar">
+  <button onclick="print()">印刷する</button>
+  <span>A4縦・16資料。ブラウザの印刷から「背景のグラフィック」を入にすると表の罫線がきれいに出ます。</span>
+</div>
+<div class="wrap"><div class="cover"><h1>社労士2026 学習資料｜年金</h1><div class="sub">全体版の資料 72〜87　（本文中の参照番号は全体版と共通です）</div>
+<div class="howto">
+<b>紙で読むときの約束ごと</b>
+<p style="margin:2mm 0 0">本文中の <span class="ref"><span class="n">23</span>平均賃金</span>
+のような表示は、ほかの資料への参照です。頭の番号が資料の通し番号なので、
+目次か各ページ右上の番号から引いてください。</p>
+<p style="margin:2mm 0 0"><span class="ref"><span class="n">5</span>労働基準法
+<span class="sec">「4. 労働時間・休憩・休日」</span></span> のように節名が付いているものは、
+その資料の中の該当する節を指します。</p>
+<p style="margin:2mm 0 0">□ は手で塗るためのものです。</p>
+</div>
+</div><div class="doc toc"><h2>目次</h2><div class="grp">年金</div><ol><li><span class="no">72</span><span>国民年金法</span><span class="dots"></span></li><li><span class="no">73</span><span>被保険者と資格得喪</span><span class="dots"></span></li><li><span class="no">74</span><span>保険料と免除</span><span class="dots"></span></li><li><span class="no">75</span><span>老齢基礎年金</span><span class="dots"></span></li><li><span class="no">76</span><span>障害基礎年金</span><span class="dots"></span></li><li><span class="no">77</span><span>遺族基礎年金と独自給付</span><span class="dots"></span></li><li><span class="no">78</span><span>年金額の改定とマクロ経済スライド</span><span class="dots"></span></li><li><span class="no">79</span><span>届出・時効・不服申立て（国年）</span><span class="dots"></span></li><li><span class="no">80</span><span>厚生年金保険法</span><span class="dots"></span></li><li><span class="no">81</span><span>適用事業所と被保険者</span><span class="dots"></span></li><li><span class="no">82</span><span>標準報酬と保険料</span><span class="dots"></span></li><li><span class="no">83</span><span>老齢厚生年金</span><span class="dots"></span></li><li><span class="no">84</span><span>在職老齢年金と支給停止</span><span class="dots"></span></li><li><span class="no">85</span><span>障害厚生年金と遺族厚生年金</span><span class="dots"></span></li><li><span class="no">86</span><span>離婚時分割と脱退一時金</span><span class="dots"></span></li><li><span class="no">87</span><span>給付の通則と受給権の保護</span><span class="dots"></span></li></ol></div><div class="doc"><div class="head"><div class="no">資料 72 ／ 年金</div><h1>国民年金法</h1><div class="desc">択一10問。令和8年度の年金額改定が最重要</div></div><table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>択一</td><td><strong>10問</strong></td></tr><tr><td>選択</td><td>5点</td></tr><tr><td>特徴</td><td>令和8年度は<strong>年金額改定（＋1.9％）</strong>が最重要。厚年と一体で理解すること</td></tr></tbody></table>
+<hr>
+<h2>出題傾向（過去9年・第49〜57回の実データ）</h2>
+<h3>択一の設問形式</h3>
+<table class="big"><thead><tr><th>形式</th><th>問数</th><th>割合</th></tr></thead><tbody><tr><td>正しいものを選ぶ</td><td>42</td><td>47%</td></tr><tr><td>誤りを選ぶ</td><td>32</td><td>36%</td></tr><tr><td>組合せ問題</td><td>12</td><td>13%</td></tr><tr><td>個数問題</td><td>4</td><td>4%</td></tr></tbody></table>
+<p><strong>国年枠 計90問</strong>のうち、<strong>個数問題4問・組合せ問題12問（合わせて18%）</strong>。組合せのほうが多い科目です。組合せは<strong>2肢の正誤が分かれば98.5%で正解が決まる</strong>ので、時間はかかりません。飛ばす候補は個数問題だけです。（→ <span class="ref"><span class="n">97</span>個数・組合せ問題<span class="sec">（全体版）</span></span>）</p>
+<h3>設問形式の推移（作問方針の変化）</h3>
+<table class="big"><thead><tr><th>年度</th><th>個数・組合せ</th><th>誤りを選ぶ</th><th>正しいものを選ぶ</th><th>肢の平均字数</th><th>判例に言及</th></tr></thead><tbody><tr><td>令和7</td><td>4</td><td>2</td><td>4</td><td>79</td><td>0</td></tr><tr><td>令和6</td><td>3</td><td>2</td><td>5</td><td>86</td><td>0</td></tr><tr><td>令和5</td><td>1</td><td>3</td><td>6</td><td>117</td><td>0</td></tr><tr><td>令和4</td><td>1</td><td>3</td><td>6</td><td>108</td><td>0</td></tr><tr><td>令和3</td><td>1</td><td>5</td><td>4</td><td>122</td><td>0</td></tr><tr><td>令和2</td><td>3</td><td>2</td><td>5</td><td>84</td><td>0</td></tr><tr><td>令和元</td><td>1</td><td>4</td><td>5</td><td>115</td><td>0</td></tr><tr><td>平成30</td><td>1</td><td>5</td><td>4</td><td>109</td><td>0</td></tr><tr><td>平成29</td><td>1</td><td>6</td><td>3</td><td>92</td><td>0</td></tr></tbody></table>
+<ul><li><strong>個数・組合せ問題が増えています</strong>（前期 平均1.4問 → 直近4年 平均2.2問）。全肢の判断が必要なので、1問あたりの時間が伸びます</li><li><strong>「正しいものを選べ」が増えています</strong>（4.2問 → 5.2問）。誤りを探すより、<strong>正しい形を知っているか</strong>が問われる方向です</li><li>肢が短くなっています（平均104字 → 98字）</li></ul>
+<h3>基準点補正の履歴（この科目が救済された年）</h3>
+<p><strong>選択式</strong>　令和3年度 <strong>2点</strong>に引下げ／平成30年度 <strong>2点</strong>に引下げ</p>
+<blockquote><p>選択式の引下げは9年で2回。<strong>例外的</strong>です。基準点は自力で超える前提で臨んでください。</p></blockquote>
+<h3>頻出条文（択一で9年間に参照された回数）</h3>
+<p><strong>上位12条で択一28回分</strong>。回数が多い条ほど、条文そのものを読んでおく価値があります。「詳しく読む」は、その条をいちばん詳しく扱っている別ページです。</p>
+<table class="big"><thead><tr><th>条文</th><th>何を定めているか</th><th>回数</th><th>出題された年度</th><th>詳しく読む</th></tr></thead><tbody><tr><td><strong>第30条の4</strong></td><td>障害基礎年金</td><td>4</td><td>令和7・令和6・令和4</td><td><span class="ref"><span class="n">76</span>障害基礎年金</span></td></tr><tr><td><strong>第30条の3</strong></td><td>障害基礎年金</td><td>3</td><td>令和6・令和2・平成29</td><td><span class="ref"><span class="n">76</span>障害基礎年金</span></td></tr><tr><td><strong>第21条の2</strong></td><td>過誤払による返還金債権への充当</td><td>3</td><td>令和5・平成29</td><td><span class="ref"><span class="n">77</span>遺族基礎年金と独自給付</span></td></tr><tr><td><strong>第88条の2</strong></td><td>産前産後期間の免除</td><td>3</td><td>令和6</td><td><span class="ref"><span class="n">74</span>保険料と免除</span></td></tr><tr><td><strong>第89条</strong></td><td>法定免除</td><td>2</td><td>令和3・平成29</td><td><span class="ref"><span class="n">74</span>保険料と免除</span></td></tr><tr><td><strong>第107条</strong></td><td>受給権者に関する調査</td><td>2</td><td>令和4・令和元</td><td>—</td></tr><tr><td><strong>第30条</strong></td><td>支給要件</td><td>2</td><td>令和3・令和元</td><td><span class="ref"><span class="n">76</span>障害基礎年金</span></td></tr><tr><td><strong>第1条</strong></td><td>国民年金制度の目的</td><td>2</td><td>令和7・令和2</td><td>本体の<span class="ref"><span class="n">72</span>国民年金法<span class="sec">「目的（1条）」</span></span></td></tr><tr><td><strong>第20条</strong></td><td>併給の調整</td><td>2</td><td>令和6・令和3</td><td>本体の<span class="ref"><span class="n">72</span>国民年金法<span class="sec">「7. 通則」</span></span></td></tr><tr><td><strong>第30条の2</strong></td><td>障害基礎年金</td><td>2</td><td>令和4・令和3</td><td><span class="ref"><span class="n">76</span>障害基礎年金</span></td></tr><tr><td><strong>第87条</strong></td><td>保険料</td><td>2</td><td>令和6・令和5</td><td><span class="ref"><span class="n">74</span>保険料と免除</span></td></tr><tr><td><strong>第14条</strong></td><td>国民年金原簿</td><td>1</td><td>平成30</td><td><span class="ref"><span class="n">74</span>保険料と免除</span></td></tr></tbody></table>
+<h3>選択式が9年間で問うたこと（国年）</h3>
+<p><strong>45空欄</strong>の内訳は <strong>用語27</strong>（60%）、<strong>数字11</strong>（24%）、<strong>判示・条文の言い回し7</strong>（16%）。空欄は5つあり、<strong>3つ取れれば基準点</strong>です。長い判示は先頭だけを載せています。全文は <span class="ref"><span class="n">93</span>条文素読<span class="sec">（全体版）</span></span> にあります。</p>
+<table class="big"><thead><tr><th>年度</th><th>空欄</th><th>正答となった語</th><th>その年の根拠条文</th></tr></thead><tbody><tr><td>令和7</td><td>A</td><td>平成16年</td><td>国民年金法87条</td></tr><tr><td></td><td>B</td><td>16，900円</td><td></td></tr><tr><td></td><td>C</td><td>産前産後期間の保険料免除制度</td><td></td></tr><tr><td></td><td>D</td><td>128</td><td></td></tr><tr><td></td><td>E</td><td>38</td><td></td></tr><tr><td>令和6</td><td>A</td><td>市町村（特別区を含む。）</td><td>国民年金法37条の2／国民年金法52条の2</td></tr><tr><td></td><td>B</td><td>適正かつ確実に実施する</td><td></td></tr><tr><td></td><td>C</td><td>納付受託者</td><td></td></tr><tr><td></td><td>D</td><td>婚姻をしていない</td><td></td></tr><tr><td></td><td>E</td><td>配偶者、子、父母、孫、祖父母又は兄弟姉妹</td><td></td></tr><tr><td>令和5</td><td>A</td><td>教育及び広報</td><td>国民年金法2条／国民年金法74条／国民年金法7条</td></tr><tr><td></td><td>B</td><td>相談その他の援助</td><td></td></tr><tr><td></td><td>C</td><td>利便の向上</td><td></td></tr><tr><td></td><td>D</td><td>必要な給付</td><td></td></tr><tr><td></td><td>E</td><td>国籍</td><td></td></tr><tr><td>令和4</td><td>A</td><td>その障害の状態に該当しない間</td><td>国民年金法128条／国民年金法14条の5／国民年金法27条</td></tr><tr><td></td><td>B</td><td>4分の3</td><td></td></tr><tr><td></td><td>C</td><td>福祉を増進する</td><td></td></tr><tr><td></td><td>D</td><td>理解を増進させ、及びその信頼を向上させる</td><td></td></tr><tr><td></td><td>E</td><td>分かりやすい形で通知</td><td></td></tr><tr><td>令和3</td><td>A</td><td>給付の支給に支障が生じない</td><td>国民年金法16条の2／国民年金法25条／国民年金法4条の3</td></tr><tr><td></td><td>B</td><td>調整</td><td></td></tr><tr><td></td><td>C</td><td>開始年度</td><td></td></tr><tr><td></td><td>D</td><td>給付として支給を受けた金銭を標準</td><td></td></tr><tr><td></td><td>E</td><td>老齢基礎年金及び付加年金</td><td></td></tr><tr><td>令和2</td><td>A</td><td>国民の生活水準</td><td>国民年金法37条／国民年金法4条／国民年金法94条の2</td></tr><tr><td></td><td>B</td><td>改定</td><td></td></tr><tr><td></td><td>C</td><td>60歳以上65歳未満</td><td></td></tr><tr><td></td><td>D</td><td>当該被保険者期間の3分の2</td><td></td></tr><tr><td></td><td>E</td><td>実施機関たる共済組合等</td><td></td></tr><tr><td>令和元</td><td>A</td><td>将来の給付の貴重な財源</td><td>国民年金法75条／国民年金法92条の2／国民年金法97条</td></tr><tr><td></td><td>B</td><td>国民年金事業の運営の安定</td><td></td></tr><tr><td></td><td>C</td><td>保険料の徴収上有利</td><td></td></tr><tr><td></td><td>D</td><td>納期限の翌日から徴収金完納又は財産差押の日の前日</td><td></td></tr><tr><td></td><td>E</td><td>納期限の翌日から3月</td><td></td></tr><tr><td>平成30</td><td>A</td><td>毎月</td><td>国民年金法109条の2／国民年金法18条</td></tr><tr><td></td><td>B</td><td>老齢基礎年金の受給権者に対し、当該受給権者に係る…</td><td></td></tr><tr><td></td><td>C</td><td>納付猶予</td><td></td></tr><tr><td></td><td>D</td><td>1000分の7</td><td></td></tr><tr><td></td><td>E</td><td>取得した日の属する月から当該年金の支給の繰下げの…</td><td></td></tr><tr><td>平成29</td><td>A</td><td>118 万円</td><td>国民年金法107条／国民年金法49条／国民年金法90条の2</td></tr><tr><td></td><td>B</td><td>38 万円</td><td></td></tr><tr><td></td><td>C</td><td>障害基礎年金の受給権者であったことがあるとき、又…</td><td></td></tr><tr><td></td><td>D</td><td>妻が60歳に達した日の属する月の翌月</td><td></td></tr><tr><td></td><td>E</td><td>身分関係、障害の状態</td><td></td></tr></tbody></table>
+<blockquote><p>この節は <code>kakomon/gen_trend.py</code> が過去問データから自動生成しています。</p></blockquote>
+<h2>深掘り（別ページ）</h2>
+<p>条文の趣旨・要件の切り分け・誤り肢の作られ方を論点ごとにまとめた別ページです。</p>
+<table class="big"><thead><tr><th>論点</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">73</span>被保険者と資格得喪</span></td></tr><tr><td><span class="ref"><span class="n">74</span>保険料と免除</span></td></tr><tr><td><span class="ref"><span class="n">75</span>老齢基礎年金</span></td></tr><tr><td><span class="ref"><span class="n">76</span>障害基礎年金</span></td></tr><tr><td><span class="ref"><span class="n">77</span>遺族基礎年金と独自給付</span></td></tr><tr><td><span class="ref"><span class="n">78</span>年金額の改定とマクロ経済スライド</span></td></tr><tr><td><span class="ref"><span class="n">79</span>届出・時効・不服申立て（国年）</span></td></tr></tbody></table>
+<h2>1. 目的・被保険者</h2>
+<h3>目的（1条）</h3>
+<blockquote><p>国民年金制度は、日本国憲法第25条第2項に規定する<strong>理念</strong>に基き、<strong>老齢、障害又は死亡</strong>によつて国民生活の安定がそこなわれることを国民の<strong>共同連帯</strong>によつて防止し、もつて健全な国民生活の維持及び向上に寄与することを目的とする。</p></blockquote>
+<h3>被保険者の種別 ★最頻出</h3>
+<table class="big"><thead><tr><th>種別</th><th>対象</th><th>年齢</th><th>国内居住</th></tr></thead><tbody><tr><td><strong>第1号</strong></td><td>第2号・第3号のいずれにも該当しない者</td><td><strong>20歳以上60歳未満</strong></td><td><strong>必要</strong></td></tr><tr><td><strong>第2号</strong></td><td>厚生年金保険の被保険者</td><td><strong>年齢要件なし</strong> ※</td><td>不要</td></tr><tr><td><strong>第3号</strong></td><td>第2号の<strong>被扶養配偶者</strong></td><td><strong>20歳以上60歳未満</strong></td><td>原則必要</td></tr></tbody></table>
+<p>※ ただし<strong>65歳以上</strong>で老齢又は退職を支給事由とする年金給付の受給権を有する者は第2号被保険者としない。</p>
+<blockquote><p><strong>★最重要の引っかけ</strong>：第2号だけ年齢の上限・下限がない。<strong>20歳未満で就職した者も第2号被保険者</strong>。
+第1号には<strong>国籍要件はなく国内居住要件がある</strong>。</p></blockquote>
+<h3>任意加入被保険者</h3>
+<table class="big"><thead><tr><th>区分</th><th>対象</th></tr></thead><tbody><tr><td>任意加入（附則5条）</td><td>① 国内居住の<strong>60歳以上65歳未満</strong> ② <strong>日本国籍</strong>を有する海外居住の<strong>20歳以上65歳未満</strong> ③ 国内居住の20歳以上60歳未満で厚生年金等の老齢給付の受給権者</td></tr><tr><td><strong>特例任意加入</strong>（平6附則11条等）</td><td><strong>昭和40年4月1日以前生まれ</strong>で、<strong>65歳以上70歳未満</strong>、かつ<strong>受給資格期間を満たしていない</strong>者に限る</td></tr></tbody></table>
+<ul><li>任意加入被保険者には<strong>保険料免除の規定が適用されない</strong>（産前産後期間の免除を除く）</li><li><strong>付加保険料は納付できる</strong></li><li>特例任意加入は「受給資格期間を満たすため」のもので、<strong>年金額を増やす目的では使えない</strong></li></ul>
+<h3>資格の取得・喪失</h3>
+<ul><li>第1号は<strong>20歳に達した日</strong>又は住所を有するに至った日に取得</li><li>第2号・第3号は該当した<strong>その日</strong>に取得</li><li><strong>60歳に達した日</strong>（誕生日の前日）に喪失（第2号を除く）</li><li>届出：種別変更等は<strong>14日以内</strong>（第3号は配偶者の事業主を経由）</li></ul>
+<hr>
+<h2>2. 保険料</h2>
+<h3>額（87条）</h3>
+<pre><code>保険料額 ＝ 法定額 17,000円 × 保険料改定率</code></pre>
+<ul><li>令和8年度は月額 <strong>17,920円</strong> ⚠️要確認</li><li>保険料改定率は<strong>名目賃金変動率</strong>を用いて毎年度改定</li><li>令和元年度から、産前産後期間の免除の財源として<strong>100円</strong>が上乗せ（法定額が17,000円）</li></ul>
+<h3>付加保険料（87条の2）</h3>
+<ul><li>月額 <strong>400円</strong></li><li>納付できるのは<strong>第1号被保険者</strong>と<strong>任意加入被保険者</strong></li><li><strong>保険料免除者・国民年金基金の加入員は納付できない</strong></li><li>付加年金＝<strong>200円 × 付加保険料納付済月数</strong> → <strong>2年で元が取れる</strong></li></ul>
+<h3>前納・追納</h3>
+<table class="big"><thead><tr><th>制度</th><th>内容</th></tr></thead><tbody><tr><td><strong>前納</strong></td><td>6か月・1年・2年前納。<strong>割引</strong>あり</td></tr><tr><td><strong>追納</strong></td><td>厚生労働大臣の<strong>承認</strong>を受けて、承認月前<strong>10年以内</strong>の免除期間等について納付。<strong>3年度目以降は加算額</strong>が付く</td></tr><tr><td>追納の順序</td><td>原則として<strong>先に経過した月</strong>から。学生納付特例・納付猶予を優先</td></tr></tbody></table>
+<h3>免除</h3>
+<table class="big"><thead><tr><th>種類</th><th>対象</th><th>所得を見る範囲</th></tr></thead><tbody><tr><td><strong>法定免除</strong>（89条）</td><td>① 障害基礎年金又は被用者年金の障害年金（<strong>1級・2級</strong>）の受給権者 ② 生活保護法の<strong>生活扶助</strong>を受ける者 ③ 国立ハンセン病療養所等の入所者</td><td>—</td></tr><tr><td><strong>申請免除</strong>（90条）</td><td>全額／4分の3／半額／4分の1の<strong>4段階</strong></td><td><strong>本人・世帯主・配偶者の全員</strong></td></tr><tr><td><strong>学生納付特例</strong>（90条の3）</td><td>学生</td><td><strong>本人のみ</strong></td></tr><tr><td><strong>納付猶予</strong>（平16附則19条）</td><td><strong>50歳未満</strong></td><td><strong>本人及び配偶者</strong>（世帯主は問わない）</td></tr><tr><td><strong>産前産後期間の免除</strong>（88条の2）</td><td>出産予定月の<strong>前月から4か月間</strong>（多胎は<strong>3か月前から6か月間</strong>）</td><td>—</td></tr></tbody></table>
+<blockquote><p><strong>★超頻出</strong>：誰の所得を見るかの違い。申請免除＝<strong>全員</strong>／納付猶予＝<strong>本人・配偶者</strong>／学生納付特例＝<strong>本人のみ</strong>。</p></blockquote>
+<h3>年金額への反映割合（平成21年4月以後）</h3>
+<table class="big"><thead><tr><th>区分</th><th>反映</th></tr></thead><tbody><tr><td>保険料納付済期間</td><td><strong>1</strong></td></tr><tr><td><strong>産前産後期間の免除</strong></td><td><strong>1（納付済期間として扱う）</strong></td></tr><tr><td>全額免除</td><td><strong>2分の1</strong></td></tr><tr><td>4分の3免除（4分の1納付）</td><td><strong>8分の5</strong></td></tr><tr><td>半額免除</td><td><strong>8分の6（4分の3）</strong></td></tr><tr><td>4分の1免除（4分の3納付）</td><td><strong>8分の7</strong></td></tr><tr><td>学生納付特例・納付猶予</td><td><strong>0</strong>（<strong>受給資格期間には算入</strong>）</td></tr></tbody></table>
+<blockquote><p>平成21年3月以前は国庫負担が3分の1だったため、全額免除は<strong>3分の1</strong>。
+<strong>産前産後免除だけは納付済期間として満額に反映される</strong>点が最大の引っかけ。</p></blockquote>
+<hr>
+<h2>3. 老齢基礎年金</h2>
+<h3>受給資格期間（26条）</h3>
+<p><strong>保険料納付済期間＋保険料免除期間＋合算対象期間 ≧ 10年</strong>（平成29年8月から25年→10年）</p>
+<p><strong>合算対象期間（カラ期間）の例</strong></p>
+<ul><li>昭和61年3月以前の被用者年金加入者の配偶者で任意加入しなかった期間</li><li><strong>20歳前・60歳以後</strong>の第2号被保険者期間</li><li>日本国籍を有する者の海外居住期間</li><li>学生で任意加入しなかった期間（平成3年3月以前）</li></ul>
+<blockquote><p>カラ期間は<strong>受給資格期間には算入されるが年金額には反映されない</strong>。</p></blockquote>
+<h3>年金額（27条）</h3>
+<pre><code>年金額 ＝ 満額 × （保険料納付済月数 ＋ 免除月数 × 反映割合）÷ 480</code></pre>
+<table class="big"><thead><tr><th>項目</th><th>令和8年度</th></tr></thead><tbody><tr><td><strong>満額</strong>（昭和31年4月2日以後生まれ）</td><td>月額 <strong>70,608円</strong>（年額 <strong>847,300円</strong>）</td></tr><tr><td>満額（昭和31年4月1日<strong>以前</strong>生まれ）</td><td>月額 <strong>70,408円</strong>／年額 <strong>844,900円</strong>（月200円低い）</td></tr><tr><td>改定率</td><td>前年度比 <strong>＋1.9％</strong></td></tr><tr><td>加入可能月数</td><td><strong>480月</strong></td></tr></tbody></table>
+<h3>改定のルール ★選択式頻出</h3>
+<table class="big"><thead><tr><th>対象</th><th>基準</th></tr></thead><tbody><tr><td>新規裁定者（<strong>68歳到達年度前</strong>）</td><td><strong>名目手取り賃金変動率</strong></td></tr><tr><td>既裁定者（<strong>68歳到達年度以後</strong>）</td><td><strong>物価変動率</strong></td></tr><tr><td>ただし「<strong>物価 ＞ 賃金</strong>」のとき</td><td>既裁定者も<strong>名目手取り賃金変動率</strong>（賃金を上回る改定はしない）</td></tr></tbody></table>
+<p><strong>令和8年度</strong>：物価＋3.2％ ＞ 賃金＋2.1％ → 全員が賃金基準。マクロ経済スライド調整（基礎▲0.2％）を適用して <strong>＋1.9％</strong>。</p>
+<p><strong>マクロ経済スライド</strong>：公的年金被保険者数の変動率と平均余命の伸びを勘案した<strong>スライド調整率</strong>を差し引く。名目額は下げない（<strong>名目下限</strong>）。調整しきれない分は<strong>キャリーオーバー</strong>して翌年度以降に繰り越す。</p>
+<h3>繰上げ・繰下げ</h3>
+<table class="big"><thead><tr><th>制度</th><th>率</th><th>上限</th><th>特徴</th></tr></thead><tbody><tr><td><strong>繰上げ</strong></td><td>1月あたり<strong>0.4％</strong>減（昭和37年4月1日以前生まれは0.5％）</td><td>60歳〜64歳（最大60月＝<strong>24％減</strong>）</td><td><strong>老齢厚生年金と同時</strong>に請求。一生減額。障害基礎年金の請求不可、寡婦年金なし</td></tr><tr><td><strong>繰下げ</strong></td><td>1月あたり<strong>0.7％</strong>増</td><td>66歳〜<strong>75歳</strong>（最大120月＝<strong>84％増</strong>）</td><td>老齢厚生年金と<strong>別々</strong>に申出可。<strong>加給年金額・振替加算は増額されない</strong></td></tr></tbody></table>
+<blockquote><p><strong>★最重要</strong>：繰上げは<strong>同時</strong>、繰下げは<strong>別々</strong>。この非対称。
+70歳到達後に繰下げの申出をせず本来の年金を請求する場合、<strong>5年前時点で繰下げ申出があったものとみなす</strong>特例（令和5年4月〜）。</p></blockquote>
+<h3>振替加算</h3>
+<p>配偶者が65歳に達して自身の老齢基礎年金を受けるようになると、厚年の加給年金額が打ち切られ、代わりに配偶者の老齢基礎年金に<strong>振替加算</strong>が加算される。対象は<strong>大正15年4月2日〜昭和41年4月1日生まれ</strong>に限る。</p>
+<hr>
+<h2>4. 障害基礎年金</h2>
+<h3>支給要件（30条）</h3>
+<p>① <strong>初診日</strong>において被保険者、又は被保険者であった者で<strong>60歳以上65歳未満</strong>の国内居住者
+② <strong>障害認定日</strong>（初診日から<strong>1年6か月</strong>経過日、又はその前に治った日）に<strong>1級・2級</strong>の障害の状態
+③ <strong>保険料納付要件</strong></p>
+<h3>保険料納付要件 ★頻出</h3>
+<blockquote><p><strong>初診日の前日</strong>において、初診日の属する月の<strong>前々月</strong>までの被保険者期間のうち、保険料納付済期間と保険料免除期間とを合算した期間が<strong>3分の2以上</strong>であること。</p></blockquote>
+<p><strong>特例</strong>：<strong>令和8年3月31日</strong>までに初診日がある場合、初診日の前日において<strong>前々月までの1年間</strong>に保険料の未納がなければよい（<strong>65歳未満</strong>に限る）⚠️期限は延長されることが多いので要確認。</p>
+<blockquote><p><strong>★引っかけ</strong>：「<strong>初診日の前日</strong>において」「<strong>前々月</strong>まで」— 初診日以後に慌てて納付しても認められない。</p></blockquote>
+<h3>額（33条）</h3>
+<table class="big"><thead><tr><th>等級</th><th>額</th></tr></thead><tbody><tr><td><strong>1級</strong></td><td>満額の<strong>100分の125</strong></td></tr><tr><td><strong>2級</strong></td><td>満額と同額</td></tr></tbody></table>
+<p><strong>子の加算（33条の2）</strong>：生計を維持する子（18歳到達年度末まで、又は20歳未満で1級・2級の障害）があるとき</p>
+<ul><li>第1子・第2子：各 <strong>243,800円</strong>（法定額224,700円 × 改定率）</li><li>第3子以降：各 <strong>81,300円</strong>（法定額74,900円 × 改定率）</li></ul>
+<h3>20歳前傷病による障害基礎年金（30条の4）</h3>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>保険料納付要件</td><td><strong>不要</strong></td></tr><tr><td>支給開始</td><td>20歳に達した日、又は障害認定日のいずれか遅い日</td></tr><tr><td><strong>所得制限</strong></td><td>あり（全額国庫負担のため）。<strong>半額停止＝3,761,000円超／全額停止＝4,794,000円超</strong>。扶養親族1人につき38万円加算。停止期間は<strong>10月〜翌年9月</strong></td></tr><tr><td>その他の支給停止</td><td>日本国内に住所を有しないとき、<strong>拘禁</strong>されているとき、労災の年金給付を受けるとき等</td></tr></tbody></table>
+<h3>その他の請求パターン</h3>
+<table class="big"><thead><tr><th>名称</th><th>内容</th></tr></thead><tbody><tr><td><strong>事後重症</strong>（30条の2）</td><td>障害認定日に該当しなくても、<strong>65歳に達する日の前日まで</strong>に該当すれば請求できる。<strong>請求月の翌月から</strong>支給</td></tr><tr><td><strong>基準障害</strong>（30条の3）</td><td>前後の障害を併合して初めて2級以上に該当する場合</td></tr><tr><td>併合認定（31条）</td><td>新たな障害基礎年金の受給権が発生した場合、前後を併合</td></tr><tr><td>額の改定請求（34条）</td><td>原則として受給権取得日又は診査を受けた日から<strong>1年</strong>経過後</td></tr></tbody></table>
+<hr>
+<h2>5. 遺族基礎年金</h2>
+<h3>遺族の範囲（37条の2）★超重要</h3>
+<p><strong>「子のある配偶者」又は「子」のみ</strong>（父母・孫・祖父母・兄弟姉妹は受けられない ＝ 厚年との最大の違い）</p>
+<ul><li>平成26年4月から<strong>父子家庭</strong>にも支給（従前は「子のある妻」）</li><li><strong>子の要件</strong>：18歳到達年度末まで、又は20歳未満で1級・2級の障害。かつ<strong>婚姻していない</strong>こと</li></ul>
+<h3>支給要件（37条）</h3>
+<p>① 被保険者が死亡
+② 被保険者であった者で60歳以上65歳未満の国内居住者が死亡
+③ <strong>老齢基礎年金の受給権者</strong>が死亡
+④ 老齢基礎年金の<strong>受給資格期間を満たした者</strong>が死亡
+※ ①②は保険料納付要件あり（障害基礎年金と同じ）</p>
+<h3>失権</h3>
+<p>配偶者は、子が全員18歳到達年度末に達したとき等に失権。</p>
+<hr>
+<h2>6. 第1号被保険者の独自給付</h2>
+<table class="big"><thead><tr><th>給付</th><th>要件</th><th>額</th></tr></thead><tbody><tr><td><strong>付加年金</strong></td><td>付加保険料を納付</td><td><strong>200円 × 納付月数</strong></td></tr><tr><td><strong>寡婦年金</strong></td><td>夫の第1号被保険者としての納付済期間＋免除期間が<strong>10年以上</strong>、婚姻期間<strong>10年以上</strong>継続</td><td>夫の第1号期間に係る老齢基礎年金額の<strong>4分の3</strong>。<strong>60歳から65歳になるまで</strong></td></tr><tr><td><strong>死亡一時金</strong></td><td>第1号としての納付済期間等が<strong>36か月（3年）以上</strong>、老齢・障害基礎年金のいずれも受けずに死亡、遺族基礎年金を受けられる者がいない</td><td>納付月数に応じた定額（付加保険料3年以上なら8,500円加算）</td></tr></tbody></table>
+<ul><li>死亡一時金の遺族の範囲：配偶者・子・父母・孫・祖父母・<strong>兄弟姉妹</strong>（生計同一）</li><li><strong>寡婦年金と死亡一時金の両方の要件を満たす場合はいずれかを選択</strong></li></ul>
+<hr>
+<h2>7. 通則</h2>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td><strong>併給調整</strong>（20条）</td><td>一人一年金の原則。65歳以上は ①老基＋老厚 ②<strong>老基＋遺厚</strong> ③<strong>障基＋老厚</strong> ④<strong>障基＋遺厚</strong> が併給可</td></tr><tr><td><strong>時効</strong></td><td>年金給付を受ける権利は<strong>5年</strong>／保険料は<strong>2年</strong></td></tr><tr><td>支給期間</td><td>支給すべき事由が生じた月の<strong>翌月</strong>から、消滅した月まで。<strong>偶数月に前2か月分</strong>を支払う</td></tr><tr><td>未支給年金（19条）</td><td>配偶者・子・父母・孫・祖父母・兄弟姉妹<strong>その他三親等内の親族</strong>（生計同一）が<strong>自己の名で</strong>請求</td></tr><tr><td>端数処理</td><td>年金額に<strong>1円未満</strong>の端数があるときは四捨五入。各支払期月の額に1円未満の端数があるときは切捨て</td></tr><tr><td>不服申立て</td><td><strong>社会保険審査官 → 社会保険審査会</strong></td></tr><tr><td>国庫負担</td><td>基礎年金給付費の<strong>2分の1</strong>（平成21年4月〜）</td></tr></tbody></table>
+<h3>給付制限</h3>
+<table class="big"><thead><tr><th>事由</th><th>効果</th></tr></thead><tbody><tr><td><strong>故意</strong>に障害等を生じさせた</td><td>障害基礎年金を支給しない</td></tr><tr><td><strong>故意の犯罪行為・重大な過失</strong>、正当な理由なく療養の指示に従わない</td><td>全部又は一部を行わないことができる</td></tr><tr><td>被保険者・受給権者を<strong>故意に死亡させた者</strong></td><td>遺族基礎年金・死亡一時金を支給しない</td></tr></tbody></table>
+<hr>
+<h2>8. 選択式で狙われる条文</h2>
+<p><strong>26条（老齢基礎年金の支給要件）</strong></p>
+<blockquote><p>老齢基礎年金は、保険料納付済期間又は保険料免除期間（…）を有する者が<strong>65歳</strong>に達したときに、その者に支給する。ただし、その者の保険料納付済期間と保険料免除期間とを合算した期間が<strong>10年</strong>に満たないときは、この限りでない。</p></blockquote>
+<p><strong>30条（障害基礎年金の保険料納付要件）</strong></p>
+<blockquote><p>ただし、当該<strong>初診日の前日</strong>において、当該初診日の属する月の<strong>前々月</strong>までに被保険者期間があり、かつ、当該被保険者期間に係る保険料納付済期間と保険料免除期間とを合算した期間が当該被保険者期間の<strong>3分の2</strong>に満たないときは、この限りでない。</p></blockquote>
+<hr>
+<h2>直前チェック（国年）</h2>
+<ul class="chk"><li><strong>第2号だけ年齢要件なし</strong>（20歳未満で就職しても第2号）</li><li>第1号は<strong>国籍要件なし・国内居住要件あり</strong></li><li>任意加入被保険者に<strong>免除の規定は適用されない</strong></li><li>保険料は<strong>法定額17,000円 × 改定率</strong>、付加保険料<strong>400円</strong>・付加年金<strong>200円×月数</strong></li><li>所得を見る範囲：申請免除<strong>全員</strong>／納付猶予<strong>本人・配偶者</strong>／学生特例<strong>本人のみ</strong></li><li>反映割合：全額免除<strong>1/2</strong>、学生特例・納付猶予<strong>0</strong>、<strong>産前産後は納付済扱い</strong></li><li>追納は<strong>10年以内</strong></li><li>受給資格期間<strong>10年</strong>、加入可能月数<strong>480月</strong></li><li>満額 月<strong>70,608円</strong>、改定率<strong>＋1.9％</strong></li><li>改定ルール：新規=賃金／既裁定=物価／物価＞賃金なら<strong>賃金</strong></li><li>繰上げ<strong>0.4％・同時</strong>／繰下げ<strong>0.7％・別々・75歳</strong></li><li>納付要件は「<strong>初診日の前日</strong>」「<strong>前々月</strong>まで」「<strong>3分の2</strong>」</li><li>20歳前傷病は<strong>納付要件不要・所得制限あり</strong></li><li>遺族基礎年金は<strong>子のある配偶者・子のみ</strong></li><li>寡婦年金<strong>10年・10年・4分の3・60〜65歳</strong>／死亡一時金<strong>36か月</strong></li><li>時効は<strong>給付5年・保険料2年</strong></li></ul>
+<hr>
+<h2>補遺｜過去問で問われているのに落としやすい論点</h2>
+<h3>年金生活者支援給付金</h3>
+<p>年金生活者支援給付金法（消費税財源）による給付。<strong>国民年金法の給付ではない</strong>点が引っかけ。</p>
+<table><thead><tr><th>種類</th><th>対象</th></tr></thead><tbody><tr><td>老齢年金生活者支援給付金</td><td>65歳以上の老齢基礎年金受給者で、前年の公的年金等収入金額＋所得が一定以下</td></tr><tr><td>障害年金生活者支援給付金</td><td>障害基礎年金の受給者（1級・2級で額が異なる）</td></tr><tr><td>遺族年金生活者支援給付金</td><td>遺族基礎年金の受給者</td></tr></tbody></table>
+<h3>脱退一時金（附則9条の3の2）</h3>
+<p><strong>日本国籍を有しない者</strong>で、第1号被保険者としての保険料納付済期間等が<strong>6か月以上</strong>あり、老齢基礎年金の受給資格期間を満たしていない者。
+日本国内に住所を有しなくなった日から<strong>2年以内</strong>に請求。支給額の上限は<strong>60月分</strong>。</p>
+<h3>日本年金機構への事務委任（109条の4〜）</h3>
+<p>厚生労働大臣の権限に係る事務は、政令で定めるものを除き<strong>日本年金機構</strong>に行わせる。
+機構が行う<strong>滞納処分</strong>には厚生労働大臣の<strong>認可</strong>が必要。<strong>納付受託者</strong>（コンビニ等）への納付委託の仕組みもここ。</p>
+<h3>届出と情報提供</h3>
+<ul><li><strong>第3号被保険者の届出</strong>は、原則として<strong>配偶者の事業主を経由</strong>して行う</li><li>厚生労働大臣は、<strong>毎年度</strong>、被保険者に対し年金保険料の納付実績・見込額等を<strong>通知</strong>（ねんきん定期便、14条の5）</li><li>国民年金原簿の<strong>訂正請求</strong>（14条の2）</li></ul>
+<blockquote><p>年度依存の数値は <span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span> で照合すること。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">1</span>法改正まとめ<span class="sec">（全体版）</span></span></td><td>この科目の令和8年度改正を施行日で確認</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>時効・届出期限・遺族の範囲などを他科目と並べて比較</td></tr><tr><td><span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span></td><td><code>⚠️要確認</code> を付けた年度依存の数値を照合</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 73 ／ 年金</div><h1>被保険者と資格得喪</h1><div class="desc">第2号だけ年齢制限がない。第1号は市町村長、第3号は事業主経由</div></div><h3>3種類の被保険者（7条）</h3>
+<table class="big"><thead><tr><th>種別</th><th>要件</th><th>年齢</th></tr></thead><tbody><tr><td><strong>第1号</strong></td><td>日本国内に<strong>住所</strong>を有する20歳以上60歳未満の者で、第2号・第3号でない者</td><td><strong>20歳以上60歳未満</strong></td></tr><tr><td><strong>第2号</strong></td><td><strong>厚生年金保険の被保険者</strong></td><td><strong>年齢制限なし</strong>（ただし65歳以上で老齢年金の受給権を有する者は除く）</td></tr><tr><td><strong>第3号</strong></td><td>第2号被保険者の<strong>配偶者</strong>であって主として第2号被保険者の<strong>収入により生計を維持</strong>する者（<strong>被扶養配偶者</strong>）</td><td><strong>20歳以上60歳未満</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>第2号だけ年齢制限がありません</strong>。20歳未満で就職しても第2号被保険者です。
+★第2号のうち<strong>65歳以上で老齢厚生年金等の受給権を有する者</strong>は、国年の第2号被保険者になりません（厚年の被保険者ではあります）。
+★第3号の<strong>国内居住要件</strong>は令和2年4月から追加されました（例外は健保の被扶養者と同じ）。</p></blockquote>
+<h3>任意加入被保険者（附則5条）</h3>
+<table class="big"><thead><tr><th>対象</th><th>年齢</th></tr></thead><tbody><tr><td>① 日本国内に住所を有する<strong>20歳以上60歳未満</strong>の者で、<strong>被用者年金の老齢給付等</strong>を受けられる者</td><td>20〜60歳未満</td></tr><tr><td>② 日本国内に住所を有する<strong>60歳以上65歳未満</strong>の者</td><td>60〜65歳未満</td></tr><tr><td>③ 日本国籍を有し、<strong>外国に居住</strong>する20歳以上65歳未満の者</td><td>20〜65歳未満</td></tr></tbody></table>
+<p><strong>特例任意加入被保険者</strong>（平成6年・16年改正法附則）：<strong>昭和40年4月1日以前生まれ</strong>で、<strong>65歳以上70歳未満</strong>の者。<strong>老齢基礎年金の受給権を有しない</strong>場合に限られ、<strong>受給資格期間を満たした時点で資格を喪失</strong>します。</p>
+<blockquote><p>★特例任意加入は<strong>受給資格期間を満たすため</strong>だけの制度で、<strong>年金額を増やすためには使えません</strong>。</p></blockquote>
+<h3>資格取得・喪失の時期（8条・9条）</h3>
+<table class="big"><thead><tr><th>種別</th><th>取得</th></tr></thead><tbody><tr><td>第1号</td><td>20歳に達した日、日本国内に住所を有するに至った日、第2号・第3号でなくなった日</td></tr><tr><td>第2号</td><td>厚生年金保険の被保険者となった日</td></tr><tr><td>第3号</td><td>第2号被保険者の被扶養配偶者となった日、20歳に達した日</td></tr></tbody></table>
+<table class="big"><thead><tr><th>喪失事由</th><th>喪失日</th></tr></thead><tbody><tr><td><strong>死亡</strong></td><td><strong>翌日</strong></td></tr><tr><td><strong>60歳</strong>に達したとき（第1号・第3号）</td><td><strong>その日</strong>（60歳の誕生日の<strong>前日</strong>）</td></tr><tr><td>日本国内に住所を有しなくなったとき（第1号）</td><td><strong>翌日</strong>（ただしその日にさらに第2号・第3号になったときは<strong>その日</strong>）</td></tr><tr><td>第2号・第3号に該当したとき（第1号）</td><td><strong>その日</strong></td></tr><tr><td>厚生年金保険の被保険者資格を喪失したとき（第2号）</td><td><strong>その日</strong></td></tr></tbody></table>
+<blockquote><p>★「<strong>年齢到達はその日</strong>」「<strong>死亡・住所喪失は翌日</strong>」が基本形です。
+★年齢の到達は<strong>誕生日の前日</strong>です（年齢計算に関する法律）。4月1日生まれは3月31日に60歳に達します。</p></blockquote>
+<h3>届出（12条・105条）</h3>
+<table class="big"><thead><tr><th>届出</th><th>期限</th><th>提出先</th></tr></thead><tbody><tr><td><strong>第1号</strong>被保険者の資格取得・喪失・種別変更</td><td><strong>14日以内</strong></td><td><strong>市町村長</strong>（特別区長を含む）</td></tr><tr><td><strong>第3号</strong>被保険者の資格取得・喪失・種別変更</td><td><strong>14日以内</strong></td><td><strong>事業主を経由して厚生労働大臣</strong>（＝日本年金機構）</td></tr><tr><td>死亡の届出（戸籍法の届出義務者）</td><td><strong>10日以内</strong></td><td>市町村長</td></tr></tbody></table>
+<blockquote><p>★第1号は<strong>市町村長</strong>、第3号は<strong>事業主経由</strong>。ここが混同されます。
+★第3号被保険者の<strong>届出の特例</strong>：届出が遅れた場合、<strong>2年より前の期間</strong>も、やむを得ない事由があると認められれば<strong>保険料納付済期間</strong>に算入されます（<strong>時効の特例</strong>）。</p></blockquote>
+<h3>種別の変更</h3>
+<table><thead><tr><th>変更</th><th>例</th></tr></thead><tbody><tr><td>第1号 → 第2号</td><td>自営業者が就職</td></tr><tr><td>第2号 → 第1号</td><td>会社員が退職して自営業に</td></tr><tr><td>第2号 → 第3号</td><td>会社員が退職して配偶者の扶養に入る</td></tr><tr><td>第3号 → 第1号</td><td>配偶者が退職・死亡、または本人の収入が増えた</td></tr></tbody></table>
+<blockquote><p>★<strong>同月内に種別が変更</strong>された場合、その月は<strong>変更後の種別</strong>の被保険者期間として扱います（11条の2）。
+★同一月に<strong>資格取得と喪失</strong>があった場合、その月は<strong>1か月として算入</strong>されます（ただし同月中にさらに他の年金の被保険者となったときを除く）。</p></blockquote>
+<h3>被保険者期間の計算（11条）</h3>
+<p>被保険者期間は<strong>月を単位</strong>とし、資格を取得した日の属する<strong>月</strong>から、資格を喪失した日の属する月の<strong>前月</strong>までを算入します。</p>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">72</span>国民年金法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">80</span>厚生年金保険法</span></td><td>2階部分と並べて見る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険との横断</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 74 ／ 年金</div><h1>保険料と免除</h1><div class="desc">追納は10年、前納は2年。産前産後免除だけ満額反映</div></div><h3>保険料（87条）</h3>
+<p><strong>第1号被保険者</strong>だけが納付します（第2号・第3号は<strong>個別に納める必要がありません</strong>）。</p>
+<pre><code>保険料月額 ＝ 保険料の基準額（17,000円※平成16年度価格）× 保険料改定率</code></pre>
+<p><strong>保険料改定率</strong>は、名目賃金変動率に応じて毎年度改定されます。</p>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>納期限</td><td><strong>翌月末日</strong></td></tr><tr><td>納付義務者</td><td><strong>被保険者本人</strong>。<strong>世帯主</strong>および<strong>配偶者</strong>は<strong>連帯して</strong>納付義務を負う（88条2項・3項）</td></tr><tr><td>時効</td><td><strong>2年</strong>（102条4項）</td></tr></tbody></table>
+<blockquote><p>★第2号・第3号の分は、厚生年金保険から<strong>基礎年金拠出金</strong>としてまとめて拠出されます。第3号被保険者は保険料を払わずに納付済期間になります。</p></blockquote>
+<h3>前納と追納</h3>
+<table class="big"><thead><tr><th></th><th>前納（93条）</th><th>追納（94条）</th></tr></thead><tbody><tr><td>内容</td><td><strong>将来</strong>の期間の保険料を先に納める</td><td><strong>免除等を受けた期間</strong>の保険料を後から納める</td></tr><tr><td>割引・加算</td><td><strong>政令で定める額を控除</strong>（割引）</td><td><strong>3年度目以降</strong>は加算額が上乗せ</td></tr><tr><td>期間</td><td>最大<strong>2年分</strong></td><td>承認の日の属する月<strong>前10年以内</strong></td></tr><tr><td>承認</td><td>不要</td><td><strong>厚生労働大臣の承認</strong>が必要</td></tr></tbody></table>
+<blockquote><p>★追納は<strong>10年以内</strong>。「2年以内」は保険料の時効と混同したものです。
+★追納した期間は<strong>保険料納付済期間</strong>になります（免除の種類にかかわらず）。
+★追納は<strong>先に経過した期間から</strong>行います（古いものから）。</p></blockquote>
+<h3>法定免除（89条）</h3>
+<p>次に該当すると、<strong>届出により</strong>（該当した日の属する月の前月から）保険料が<strong>免除されます</strong>。</p>
+<ol><li><strong>障害基礎年金</strong>または<strong>障害厚生年金（1級・2級）</strong>等の受給権者であるとき</li><li><strong>生活保護法の生活扶助</strong>その他厚生労働省令で定める扶助を受けるとき</li><li><strong>国立ハンセン病療養所等</strong>に入所しているとき</li></ol>
+<blockquote><p>★<strong>申請ではなく法定</strong>です。要件に該当すれば当然に免除されます（届出は確認のため）。
+★平成26年4月から、法定免除に該当する期間についても、<strong>本人が申し出れば保険料を納付できます</strong>。
+★障害基礎年金の受給権者でも、<strong>3級の障害厚生年金のみ</strong>の受給権者は法定免除になりません。</p></blockquote>
+<h3>申請免除（90条・90条の2）</h3>
+<p><strong>本人・配偶者・世帯主</strong>の<strong>前年所得</strong>が一定以下である場合などに、<strong>申請</strong>して<strong>厚生労働大臣の承認</strong>を受けます。</p>
+<table class="big"><thead><tr><th>種類</th><th>所得基準（4人世帯の目安）</th></tr></thead><tbody><tr><td><strong>全額免除</strong></td><td>（扶養親族等の数＋1）×35万円＋32万円</td></tr><tr><td><strong>4分の3免除</strong></td><td>88万円＋扶養親族等控除額等</td></tr><tr><td><strong>半額免除</strong></td><td>128万円＋同上</td></tr><tr><td><strong>4分の1免除</strong></td><td>168万円＋同上</td></tr></tbody></table>
+<blockquote><p>★<strong>本人・配偶者・世帯主の3者すべて</strong>が基準以下である必要があります。1人でも超えると免除されません。
+★所得基準以外に、<strong>失業・事業の廃止・天災</strong>等による免除もあります（所得を問わない）。
+★申請免除は<strong>過去2年1か月前</strong>までさかのぼって申請できます。</p></blockquote>
+<h3>学生納付特例（90条の3）・納付猶予（附則）</h3>
+<table class="big"><thead><tr><th></th><th>学生納付特例</th><th>納付猶予</th></tr></thead><tbody><tr><td>対象</td><td><strong>大学・専門学校等の学生</strong>（夜間・通信を含む）</td><td><strong>50歳未満</strong>の者</td></tr><tr><td>所得を見る者</td><td><strong>本人のみ</strong></td><td><strong>本人と配偶者</strong>（世帯主は見ない）</td></tr><tr><td>老齢基礎年金</td><td><strong>受給資格期間に算入／年金額に反映されない</strong></td><td>同左</td></tr><tr><td>障害・遺族基礎年金</td><td><strong>保険料納付済期間と同様に扱われる</strong></td><td>同左</td></tr></tbody></table>
+<blockquote><p>★<strong>世帯主（親）の所得を見ない</strong>のが学生納付特例の最大の特徴です。
+★納付猶予は令和12年6月までの時限措置です。</p></blockquote>
+<h3>産前産後期間の免除（88条の2）</h3>
+<p><strong>第1号被保険者</strong>が出産した場合、<strong>出産予定月の前月から4か月間</strong>（多胎妊娠は<strong>出産予定月の3か月前から6か月間</strong>）の保険料が免除されます。</p>
+<blockquote><p>★この期間は<strong>保険料納付済期間として年金額に反映されます</strong>（他の免除と違い、満額扱い）。ここが最頻出です。
+★届出は<strong>出産予定日の6か月前</strong>から可能です。</p></blockquote>
+<h3>年金額への反映</h3>
+<table class="big"><thead><tr><th>期間</th><th>老齢基礎年金への反映</th></tr></thead><tbody><tr><td><strong>保険料納付済期間</strong></td><td><strong>1</strong></td></tr><tr><td><strong>産前産後免除期間</strong></td><td><strong>1</strong>（全額反映）</td></tr><tr><td><strong>全額免除</strong></td><td><strong>2分の1</strong>（平成21年3月以前は3分の1）</td></tr><tr><td><strong>4分の3免除</strong>（4分の1納付）</td><td><strong>8分の5</strong>（同 2分の1）</td></tr><tr><td><strong>半額免除</strong>（半額納付）</td><td><strong>4分の3</strong>（同 3分の2）</td></tr><tr><td><strong>4分の1免除</strong>（4分の3納付）</td><td><strong>8分の7</strong>（同 6分の5）</td></tr><tr><td><strong>学生納付特例・納付猶予</strong></td><td><strong>反映されない</strong>（受給資格期間には算入）</td></tr><tr><td><strong>合算対象期間</strong>（カラ期間）</td><td><strong>反映されない</strong>（受給資格期間には算入）</td></tr></tbody></table>
+<blockquote><p>★分母は<strong>国庫負担2分の1</strong>の反映です。平成21年4月から国庫負担が3分の1→2分の1になったため、それ以前と分数が変わります。
+★一部免除は、<strong>残りの保険料を納付しなければ「未納」扱い</strong>になります。免除されただけでは反映されません。</p></blockquote>
+<h3>督促・延滞金（96条・97条）</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>督促</td><td>厚生労働大臣は、<strong>期限を指定して督促</strong>できる。督促状の指定期限は発する日から<strong>10日以上</strong>経過した日</td></tr><tr><td>滞納処分</td><td>督促を受けた者が指定期限までに納付しないときは、<strong>国税滞納処分の例</strong>による（厚生労働大臣は<strong>財務大臣に委任</strong>できる）</td></tr><tr><td>延滞金</td><td>年<strong>14.6%</strong>（納期限の翌日から<strong>3か月</strong>を経過する日までは年<strong>7.3%</strong>）</td></tr></tbody></table>
+<blockquote><p>★国年の延滞金は<strong>3か月</strong>、健保・厚年・徴収法は<strong>2か月</strong>。ここが違います。</p></blockquote>
+<h3>原簿・訂正請求・番号（14条・14条の2）</h3>
+<p>厚生労働大臣は<strong>国民年金原簿</strong>を備え、氏名・資格の取得喪失・<strong>種別の変更</strong>・<strong>保険料の納付状況</strong>・<strong>基礎年金番号</strong>その他を記録します。</p>
+<p>被保険者・被保険者であった者は、<strong>特定国民年金原簿記録</strong>が事実でない、または記録がないと思料するときは、<strong>厚生労働大臣に訂正の請求</strong>ができます（14条の2）。</p>
+<blockquote><p>★<strong>時効消滅不整合期間</strong>（第3号被保険者の記録不整合により時効で保険料を納められなくなった期間）には、<strong>特定期間該当届</strong>と<strong>特定保険料の納付</strong>の特例があります。</p></blockquote>
+<h3>納付の受託（92条の3〜92条の5）</h3>
+<p>次の者が、被保険者の<strong>委託</strong>を受けて保険料の納付事務を行えます。</p>
+<ol><li><strong>国民年金基金</strong>または<strong>国民年金基金連合会</strong>（加入員に限る）</li><li>納付事務を適正かつ確実に実施できると認められ、政令で定める要件に該当する者として<strong>厚生労働大臣が指定</strong>するもの（コンビニ等の<strong>納付受託者</strong>）</li></ol>
+<p><strong>保険料納付確認団体</strong>（109条の3）は、被保険者の委託により<strong>納付状況を確認</strong>し、<strong>納付を勧奨</strong>する団体で、<strong>厚生労働大臣が指定</strong>します。</p>
+<blockquote><p>★<strong>収納職員</strong>（市町村の職員等）が保険料を収納する場合もあります。</p></blockquote>
+<h3>国民年金基金（115条〜）</h3>
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>種類</td><td><strong>地域型</strong>（都道府県ごと→現在は<strong>全国国民年金基金</strong>）と<strong>職能型</strong>（同種の事業・業務に従事する者）</td></tr><tr><td>加入できる者</td><td><strong>第1号被保険者</strong>および<strong>任意加入被保険者</strong>（<strong>保険料免除者・滞納者は加入できない</strong>）</td></tr><tr><td>加入</td><td><strong>口数制</strong>。1口目は<strong>終身年金</strong>でなければならない</td></tr><tr><td>脱退</td><td><strong>任意に脱退できない</strong>（第1号被保険者でなくなった等の場合に資格喪失）</td></tr><tr><td><strong>代議員会</strong></td><td>基金の議決機関</td></tr><tr><td>掛金の上限</td><td>月額<strong>68,000円</strong>（<strong>付加保険料・iDeCo</strong>と合算）</td></tr></tbody></table>
+<blockquote><p>★国民年金基金の加入員は<strong>付加保険料を納付できません</strong>（基金の1口目に付加年金相当分が含まれるため）。
+★<strong>年金積立金管理運用独立行政法人（GPIF）</strong>が年金積立金の管理運用を行います（厚年法79条の2〜、国年法76条）。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">72</span>国民年金法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">80</span>厚生年金保険法</span></td><td>2階部分と並べて見る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険との横断</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 75 ／ 年金</div><h1>老齢基礎年金</h1><div class="desc">繰上げは同時・繰下げは別々。振替加算は昭和41年4月2日以後にない</div></div><h3>受給要件（26条）</h3>
+<p><strong>保険料納付済期間＋保険料免除期間＋合算対象期間</strong>が<strong>10年以上</strong>あり、<strong>65歳</strong>に達したとき。</p>
+<blockquote><p>★平成29年8月から<strong>25年→10年</strong>に短縮されました。
+★<strong>合算対象期間（カラ期間）だけでは10年になりません</strong>——というのは誤りで、合算対象期間も<strong>受給資格期間に算入されます</strong>。ただし<strong>年金額には反映されません</strong>。</p></blockquote>
+<h3>年金額（27条）</h3>
+<pre><code>　　　　　　　　　　保険料納付済月数 ＋ 免除月数×反映率
+年金額 ＝ 満額 × ─────────────────────────────
+　　　　　　　　　　　　　480（40年×12）</code></pre>
+<p>満額は<strong>780,900円 × 改定率</strong>（令和8年度の額は <span class="ref"><span class="n">72</span>国民年金法</span> の一覧を見てください）。</p>
+<table class="big"><thead><tr><th>分母</th><th>480月（<strong>20歳以上60歳未満</strong>の40年）</th></tr></thead><tbody><tr><td>20歳前・60歳以後の<strong>第2号</strong>被保険者期間</td><td><strong>老齢基礎年金には反映されない</strong>（厚生年金の<strong>経過的加算</strong>で調整される）</td></tr></tbody></table>
+<blockquote><p>★分母は<strong>常に480</strong>です。加入可能年数が480月に満たない世代（昭和16年4月1日以前生まれ）には経過措置があります。</p></blockquote>
+<h3>繰上げ支給（附則9条の2）</h3>
+<p><strong>60歳以上65歳未満</strong>の間に請求できます。</p>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>減額率</td><td><strong>1月あたり0.4%</strong>（昭和37年4月1日以前生まれは<strong>0.5%</strong>）</td></tr><tr><td>最大</td><td>60歳0か月で請求＝<strong>24%減</strong>（60月×0.4%）</td></tr><tr><td>減額</td><td><strong>一生続く</strong>（65歳になっても戻らない）</td></tr></tbody></table>
+<p><strong>繰上げの効果（不利益）</strong>。</p>
+<ol><li><strong>障害基礎年金</strong>を請求できなくなる（事後重症等による請求ができない）</li><li><strong>寡婦年金</strong>が受けられなくなる（既に受給中なら失権）</li><li><strong>任意加入</strong>できなくなる</li><li><strong>遺族厚生年金</strong>との併給ができない（65歳までは選択）</li><li>老齢厚生年金も<strong>同時に繰り上げ</strong>なければならない</li></ol>
+<blockquote><p>★2は「寡婦年金の受給権が消滅する」。1は「事後重症による障害基礎年金は請求できない」。この2つが最頻出です。</p></blockquote>
+<h3>繰下げ支給（28条）</h3>
+<p><strong>66歳に達した日以後</strong>に申し出ます。</p>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>増額率</td><td><strong>1月あたり0.7%</strong></td></tr><tr><td>上限</td><td><strong>75歳</strong>（昭和27年4月2日以後生まれ）＝120月×0.7%＝<strong>84%増</strong></td></tr><tr><td>要件</td><td>65歳に達したときに<strong>老齢基礎年金の受給権を有していた</strong>こと、かつ<strong>66歳に達する前に請求していない</strong>こと</td></tr></tbody></table>
+<blockquote><p>★<strong>66歳になる前に請求すると繰下げできません</strong>。「65歳から66歳の間は繰下げ待機期間」です。
+★65歳に達した日から<strong>66歳に達した日までの間</strong>に、<strong>他の年金給付</strong>（障害・遺族）の受給権者となったときは繰下げできません。
+★<strong>繰下げ待機中に死亡</strong>した場合、遺族は<strong>未支給年金</strong>として65歳からの分を受け取れます（増額はされません）。
+★令和5年4月から、<strong>70歳以後に請求</strong>する場合、請求の<strong>5年前</strong>に繰下げ申出があったものとみなす「<strong>特例的な繰下げみなし増額制度</strong>」があります。</p></blockquote>
+<h3>老齢基礎年金と老齢厚生年金の繰上げ・繰下げ</h3>
+<table class="big"><thead><tr><th></th><th>繰上げ</th><th>繰下げ</th></tr></thead><tbody><tr><td>基礎と厚生</td><td><strong>同時</strong>でなければならない</td><td><strong>別々</strong>にできる</td></tr></tbody></table>
+<blockquote><p>★繰上げは同時、繰下げは別々。この非対称が問われます。</p></blockquote>
+<h3>振替加算（昭和60年改正法附則14条）</h3>
+<p><strong>老齢厚生年金の加給年金額</strong>の対象となっていた配偶者が<strong>65歳</strong>に達すると、加給年金額が打ち切られ、代わりにその配偶者の<strong>老齢基礎年金に振替加算</strong>が行われます。</p>
+<table class="big"><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>生年月日</td><td><strong>大正15年4月2日から昭和41年4月1日まで</strong>に生まれた者</td></tr><tr><td>加算額</td><td>生年月日により逓減（<strong>昭和41年4月2日以後生まれには振替加算がない</strong>）</td></tr><tr><td>状況</td><td>加給年金額の対象となっていたこと</td></tr></tbody></table>
+<blockquote><p>★<strong>昭和41年4月2日以後生まれには振替加算がありません</strong>（新法で20歳から国民年金に加入できる世代のため）。
+★振替加算は、老齢基礎年金を<strong>繰り上げても65歳になるまで支給されません</strong>。逆に<strong>繰り下げると振替加算も繰り下がりますが、増額はされません</strong>。</p></blockquote>
+<h3>支給の繰上げ・繰下げと他の給付</h3>
+<table><thead><tr><th>制度</th><th>繰上げ</th><th>繰下げ</th></tr></thead><tbody><tr><td>付加年金</td><td><strong>同時に繰上げ</strong>（同率で減額）</td><td><strong>同時に繰下げ</strong>（同率で増額）</td></tr><tr><td>振替加算</td><td>繰り上がらない（65歳から）</td><td>繰り下がる（<strong>増額なし</strong>）</td></tr></tbody></table>
+<h3>支払期月（18条）</h3>
+<p>年金給付は、<strong>毎年2月・4月・6月・8月・10月・12月</strong>の<strong>6期</strong>に、それぞれの<strong>前月までの分</strong>を支払います。</p>
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>支給開始</td><td>受給権が発生した日の属する月の<strong>翌月</strong>から</td></tr><tr><td>支給終了</td><td>権利が消滅した日の属する月<strong>まで</strong></td></tr><tr><td>支給停止</td><td>停止事由が生じた日の属する月の<strong>翌月</strong>から、消滅した日の属する月<strong>まで</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>翌月から、その月まで</strong>。この非対称が問われます。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">72</span>国民年金法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">80</span>厚生年金保険法</span></td><td>2階部分と並べて見る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険との横断</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 76 ／ 年金</div><h1>障害基礎年金</h1><div class="desc">初診日の前日で納付要件を見る。20歳前傷病だけ所得制限がある</div></div><h3>3つの請求のかたち</h3>
+<table class="big"><thead><tr><th>種類</th><th>条</th><th>内容</th></tr></thead><tbody><tr><td><strong>障害認定日</strong>による請求</td><td>30条</td><td>障害認定日に<strong>1級・2級</strong>の障害の状態にあること</td></tr><tr><td><strong>事後重症</strong>による請求</td><td>30条の2</td><td>障害認定日に該当しなかったが、その後<strong>65歳に達する日の前日</strong>までに該当したとき。<strong>請求した日</strong>に受給権が発生</td></tr><tr><td><strong>基準障害</strong>（初めて2級）</td><td>30条の3</td><td>基準傷病以外の障害と<strong>併合して初めて2級以上</strong>になったとき</td></tr><tr><td><strong>20歳前傷病</strong>による障害基礎年金</td><td>30条の4</td><td><strong>初診日が20歳前</strong>（国民年金の被保険者でない期間）にある場合</td></tr></tbody></table>
+<h3>障害認定日（30条1項）</h3>
+<p><strong>初診日から起算して1年6か月</strong>を経過した日、またはその期間内に<strong>治った日</strong>（症状が固定し治療の効果が期待できない状態に至った日を含む）。</p>
+<p><strong>特例</strong>（1年6か月を待たない）。</p>
+<table class="big"><thead><tr><th>事由</th><th>認定日</th></tr></thead><tbody><tr><td><strong>人工透析</strong>を行っている</td><td>透析開始から<strong>3か月</strong>を経過した日</td></tr><tr><td><strong>人工骨頭・人工関節</strong>の挿入置換</td><td><strong>挿入置換した日</strong></td></tr><tr><td><strong>心臓ペースメーカー・ICD・人工弁</strong>の装着</td><td><strong>装着した日</strong></td></tr><tr><td><strong>人工肛門・新膀胱</strong>の造設</td><td>造設した日から<strong>6か月</strong>を経過した日</td></tr><tr><td><strong>切断・離断</strong>による肢体の障害</td><td><strong>切断・離断した日</strong></td></tr><tr><td><strong>喉頭全摘出</strong></td><td><strong>摘出した日</strong></td></tr><tr><td><strong>在宅酸素療法</strong>を開始</td><td><strong>開始した日</strong></td></tr><tr><td><strong>遷延性植物状態</strong></td><td>その状態に至った日から<strong>3か月</strong>を経過した日</td></tr></tbody></table>
+<h3>保険料納付要件（30条1項但書）</h3>
+<p><strong>初診日の前日</strong>において、初診日の属する月の<strong>前々月</strong>までに、</p>
+<ul><li><strong>保険料納付済期間＋保険料免除期間</strong>が、被保険者期間の<strong>3分の2以上</strong>あること</li></ul>
+<p><strong>特例</strong>（令和8年3月31日までに初診日がある場合）：初診日の属する月の前々月までの<strong>直近1年間</strong>に保険料の未納がないこと（<strong>65歳未満</strong>であること）。</p>
+<blockquote><p>★<strong>「初診日の前日において」</strong>という表現が重要です。初診日以後に慌てて納付しても納付要件を満たしません。
+★<strong>20歳前傷病</strong>による障害基礎年金には<strong>保険料納付要件がありません</strong>。</p></blockquote>
+<h3>年金額（33条）</h3>
+<table class="big"><thead><tr><th>等級</th><th>額</th></tr></thead><tbody><tr><td><strong>1級</strong></td><td>2級の額 × <strong>1.25</strong></td></tr><tr><td><strong>2級</strong></td><td><strong>老齢基礎年金の満額</strong>と同額</td></tr></tbody></table>
+<p><strong>子の加算額</strong>（33条の2）：<strong>18歳到達年度の末日までの子</strong>、または<strong>20歳未満で障害等級1級・2級</strong>の子がいるとき。</p>
+<table class="big"><thead><tr><th>子</th><th>加算額</th></tr></thead><tbody><tr><td><strong>1人目・2人目</strong></td><td>各<strong>224,700円 × 改定率</strong></td></tr><tr><td><strong>3人目以降</strong></td><td>各<strong>74,900円 × 改定率</strong></td></tr></tbody></table>
+<blockquote><p>★障害基礎年金の子の加算は、<strong>受給権発生後に生まれた子</strong>についても加算されます（平成23年4月から）。遺族基礎年金の「死亡当時」とは違います。</p></blockquote>
+<h3>20歳前傷病による障害基礎年金（30条の4）</h3>
+<p><strong>初診日が20歳前</strong>（国民年金の被保険者でない期間）にある場合、<strong>20歳に達した日</strong>（障害認定日が20歳到達後ならその日）に受給権が発生します。</p>
+<p><strong>保険料を納めていないため、次の支給停止があります</strong>（36条の3・36条の4）。</p>
+<table class="big"><thead><tr><th>事由</th><th>停止</th></tr></thead><tbody><tr><td><strong>所得</strong>が政令で定める額を超えるとき</td><td><strong>10月から翌年9月</strong>まで、全部または2分の1を停止</td></tr><tr><td><strong>恩給法等による給付</strong>を受けるとき</td><td>停止</td></tr><tr><td><strong>日本国内に住所を有しない</strong>とき</td><td>停止</td></tr><tr><td><strong>刑事施設・労役場等に拘禁</strong>されているとき</td><td>停止</td></tr><tr><td><strong>少年院等に収容</strong>されているとき</td><td>停止</td></tr></tbody></table>
+<blockquote><p>★<strong>所得制限があるのは20歳前傷病による障害基礎年金だけ</strong>です。通常の障害基礎年金には所得制限がありません。
+★<strong>国内居住要件</strong>があるのも20歳前傷病だけです。</p></blockquote>
+<h3>併合・改定・失権</h3>
+<table class="big"><thead><tr><th>事由</th><th>効果</th></tr></thead><tbody><tr><td><strong>併合認定</strong>（31条）</td><td>2以上の障害基礎年金の受給権が発生したとき、<strong>前後の障害を併合</strong>した障害の程度による新たな受給権が発生し、<strong>従前の受給権は消滅</strong></td></tr><tr><td><strong>額の改定</strong>（34条）</td><td>厚生労働大臣は<strong>職権</strong>で改定できる。受給権者は<strong>改定請求</strong>ができる（<strong>受給権取得日または診査を受けた日から1年</strong>を経過した後。ただし障害の程度が<strong>明らかに増進</strong>した場合は1年待たずに請求可）</td></tr><tr><td><strong>支給停止</strong>（36条）</td><td><strong>障害の程度が3級以下</strong>になったとき（<strong>65歳に達した日以後、かつ3年経過</strong>で失権）</td></tr><tr><td><strong>失権</strong>（35条）</td><td><strong>死亡</strong>したとき、<strong>併合認定</strong>により新たな受給権を取得したとき、<strong>障害等級に該当しなくなって3年</strong>を経過し、かつ<strong>65歳</strong>に達したとき</td></tr></tbody></table>
+<blockquote><p>★3級に下がっても<strong>すぐには失権しません</strong>。「<strong>65歳到達</strong>」と「<strong>該当しなくなって3年経過</strong>」の<strong>両方</strong>を満たしたときに失権します。</p></blockquote>
+<h3>特別障害給付金</h3>
+<p><strong>国民年金に任意加入していなかった</strong>ために障害基礎年金を受けられない者への福祉的措置です。</p>
+<table><thead><tr><th>対象</th><th>① 平成3年3月以前の<strong>学生</strong>、② 昭和61年3月以前の<strong>被用者年金加入者の配偶者</strong></th></tr></thead><tbody><tr><td>額</td><td>1級 <strong>月額2級の1.25倍</strong>、2級 障害基礎年金2級の<strong>約2分の1</strong>（令和8年度の額は告示による）</td></tr><tr><td>財源</td><td><strong>全額国庫負担</strong>（年金ではなく給付金）</td></tr></tbody></table>
+<blockquote><p>★所得制限があります。<strong>障害基礎年金とは別制度</strong>です。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">72</span>国民年金法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">80</span>厚生年金保険法</span></td><td>2階部分と並べて見る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険との横断</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 77 ／ 年金</div><h1>遺族基礎年金と独自給付</h1><div class="desc">子のない配偶者には出ない。遺族は25年、老齢は10年</div></div><h3>遺族基礎年金の受給権者（37条の2）</h3>
+<p><strong>被保険者等の死亡当時、その者によって生計を維持していた</strong>次の者。</p>
+<table class="big"><thead><tr><th>順位</th><th>遺族</th><th>要件</th></tr></thead><tbody><tr><td>①</td><td><strong>配偶者</strong></td><td><strong>子と生計を同じくする</strong>こと</td></tr><tr><td>②</td><td><strong>子</strong></td><td><strong>18歳到達年度の末日</strong>までの間にあるか、<strong>20歳未満で障害等級1級・2級</strong>であって、かつ<strong>現に婚姻していない</strong>こと</td></tr></tbody></table>
+<blockquote><p>★<strong>子のない配偶者には支給されません</strong>。ここが遺族厚生年金との最大の違いです。
+★平成26年4月から、<strong>父子家庭</strong>（夫）にも支給されるようになりました。それ以前は「妻」限定でした。</p></blockquote>
+<h3>死亡者の要件（37条）</h3>
+<table class="big"><thead><tr><th>号</th><th>要件</th></tr></thead><tbody><tr><td>1号</td><td><strong>被保険者</strong>が死亡したとき</td></tr><tr><td>2号</td><td>被保険者であった者であって、<strong>日本国内に住所</strong>を有し、かつ<strong>60歳以上65歳未満</strong>の者が死亡したとき</td></tr><tr><td>3号</td><td><strong>老齢基礎年金の受給権者</strong>（保険料納付済期間＋免除期間が<strong>25年以上</strong>の者に限る）が死亡したとき</td></tr><tr><td>4号</td><td>保険料納付済期間＋免除期間が<strong>25年以上</strong>である者が死亡したとき</td></tr></tbody></table>
+<p><strong>保険料納付要件</strong>（1号・2号のみ）：死亡日の<strong>前日</strong>において、死亡日の属する月の<strong>前々月</strong>までに、保険料納付済期間＋免除期間が被保険者期間の<strong>3分の2以上</strong>（または令和8年3月31日までは直近1年間に未納なし）。</p>
+<blockquote><p>★3号・4号は<strong>25年</strong>が必要です。老齢基礎年金の受給資格期間が10年に短縮されても、<strong>遺族基礎年金・寡婦年金の要件は25年のまま</strong>です。ここが最頻出です。</p></blockquote>
+<h3>年金額（38条・39条）</h3>
+<pre><code>遺族基礎年金 ＝ 老齢基礎年金の満額 ＋ 子の加算額</code></pre>
+<table class="big"><thead><tr><th>受給者</th><th>加算</th></tr></thead><tbody><tr><td><strong>配偶者</strong>が受給</td><td>子1人目・2人目は各<strong>224,700円×改定率</strong>、3人目以降は各<strong>74,900円×改定率</strong></td></tr><tr><td><strong>子</strong>が受給（配偶者がいない）</td><td><strong>2人目</strong>から加算（1人目は本体に含まれる）。総額を<strong>子の数で割った額</strong>が各人に支給される</td></tr></tbody></table>
+<h3>失権（40条）</h3>
+<table class="big"><thead><tr><th>受給者</th><th>失権事由</th></tr></thead><tbody><tr><td><strong>配偶者</strong></td><td>死亡、<strong>婚姻</strong>（事実婚を含む）、<strong>直系血族・直系姻族以外の者の養子</strong>となったとき、<strong>すべての子</strong>が加算対象でなくなったとき</td></tr><tr><td><strong>子</strong></td><td>死亡、婚姻、直系血族・直系姻族以外の者の養子となったとき、<strong>離縁</strong>により死亡した者の子でなくなったとき、<strong>18歳到達年度末</strong>に達したとき（障害状態にあるときを除く）、障害状態に該当しなくなったとき（18歳年度末を過ぎているとき）、<strong>20歳</strong>に達したとき</td></tr></tbody></table>
+<blockquote><p>★<strong>配偶者は、子が失権すると自分も失権</strong>します（子と生計を同じくすることが要件のため）。</p></blockquote>
+<h3>寡婦年金（49条）</h3>
+<table class="big"><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>死亡した夫</td><td><strong>第1号被保険者</strong>としての保険料納付済期間＋免除期間が<strong>10年以上</strong>あること（平成29年8月から25年→10年）、かつ<strong>老齢基礎年金・障害基礎年金を受けたことがない</strong>こと</td></tr><tr><td>妻</td><td>夫の死亡当時<strong>生計を維持</strong>され、<strong>婚姻期間が10年以上</strong>継続していること</td></tr><tr><td>支給期間</td><td>妻が<strong>60歳から65歳</strong>に達するまで</td></tr><tr><td>額</td><td>夫の第1号被保険者期間だけで計算した<strong>老齢基礎年金額の4分の3</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>夫が老齢基礎年金・障害基礎年金を受けたことがある</strong>と支給されません。
+★<strong>婚姻期間10年以上</strong>（事実婚を含む）が必要です。
+★妻が<strong>繰上げ支給の老齢基礎年金</strong>を受けているときは支給されません。</p></blockquote>
+<h3>死亡一時金（52条の2）</h3>
+<table class="big"><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>死亡者</td><td><strong>第1号被保険者</strong>としての保険料納付済期間（一部免除期間は月数を換算）が<strong>36月以上</strong>ある者が、<strong>老齢基礎年金・障害基礎年金を受けないまま死亡</strong>したこと</td></tr><tr><td>遺族</td><td><strong>生計を同じくしていた</strong>配偶者・子・父母・孫・祖父母・兄弟姉妹（この順位）</td></tr><tr><td>額</td><td>納付月数に応じ<strong>120,000円〜320,000円</strong>。付加保険料を<strong>36月以上</strong>納付していれば<strong>8,500円</strong>加算</td></tr><tr><td>時効</td><td><strong>2年</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>遺族基礎年金を受けられるときは支給されません</strong>（ただし、その年金が全額支給停止のときは支給される）。
+★<strong>寡婦年金と死亡一時金の両方の要件を満たすときは、いずれかを選択</strong>します。
+★死亡一時金の遺族の範囲は<strong>生計同一</strong>が基準で、<strong>生計維持ではありません</strong>。</p></blockquote>
+<h3>付加年金（43条〜48条）</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>対象</td><td><strong>第1号被保険者</strong>および<strong>任意加入被保険者</strong>（<strong>65歳以上の特例任意加入者を除く</strong>）</td></tr><tr><td>付加保険料</td><td><strong>月額400円</strong></td></tr><tr><td>年金額</td><td><strong>200円 × 付加保険料納付月数</strong></td></tr><tr><td>併給</td><td><strong>老齢基礎年金と併せて</strong>支給される（老齢基礎年金が支給停止のときは付加年金も停止）</td></tr></tbody></table>
+<blockquote><p>★<strong>2年で元が取れる</strong>しくみです（400円×n を納め、毎年200円×n を受ける）。
+★<strong>国民年金基金の加入員</strong>は付加保険料を納付できません（基金に付加年金相当分が含まれるため）。
+★付加年金には<strong>物価スライドがありません</strong>（改定率が乗じられない）。</p></blockquote>
+<h3>短期在留外国人の脱退一時金（附則9条の3の2）</h3>
+<table><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>対象</td><td><strong>日本国籍を有しない</strong>者で、<strong>第1号被保険者</strong>としての保険料納付済期間等の月数が<strong>6か月以上</strong>あり、<strong>老齢基礎年金の受給資格期間を満たしていない</strong>者</td></tr><tr><td>請求</td><td>日本国内に住所を有しなくなった日から<strong>2年以内</strong></td></tr><tr><td>額</td><td>保険料納付済期間の月数に応じ、<strong>最終月の属する年度の保険料額</strong>を基礎に算定（上限<strong>60月</strong>＝5年）</td></tr></tbody></table>
+<blockquote><p>★上限が<strong>36月→60月</strong>に拡大されたのは令和3年4月からです。</p></blockquote>
+<h3>過誤払による返還金債権への充当（21条の2）</h3>
+<p>年金給付の受給権者が<strong>死亡</strong>したため受給権が消滅したにもかかわらず、<strong>死亡日の属する月の翌月以降の分</strong>として過誤払が行われた場合、<strong>返還金債権に係る債務の弁済をすべき者に支払うべき年金給付</strong>があるときは、その<strong>支払金の金額を返還金債権の金額に充当</strong>することができます。</p>
+<blockquote><p>★死亡届が遅れて年金が振り込まれてしまった場合の精算規定です。労災法12条の2、厚年法も同じ仕組みを持ちます。</p></blockquote>
+<h3>納付受託者（92条の3〜92条の5）</h3>
+<p><strong>コンビニエンスストア等</strong>が保険料の納付を受託する仕組みです。納付受託者は<strong>帳簿を備え付け</strong>、納付事務に関する事項を記載・保存しなければなりません。厚生労働大臣は<strong>報告</strong>を求め、<strong>立入検査</strong>をさせることができます。</p>
+<p>立入検査の職員は<strong>身分を示す証明書を携帯</strong>し、請求があるときは提示しなければならず、この権限は<strong>犯罪捜査のために認められたものと解釈してはならない</strong>とされています。</p>
+<blockquote><p>★納付受託者が保険料を<strong>受託した日</strong>に、保険料は<strong>納付されたものとみなされます</strong>（92条の4）。</p></blockquote>
+<h3>戸籍事項の無料証明（104条）</h3>
+<p><strong>市町村長</strong>（指定都市では区長・総合区長）は、厚生労働大臣または被保険者・被保険者であった者・受給権者に対して、<strong>条例の定めるところにより</strong>、被保険者等の<strong>戸籍に関し無料で証明</strong>を行うことができます。</p>
+<h3>不服申立て（101条）</h3>
+<table><thead><tr><th>対象</th><th>手続</th></tr></thead><tbody><tr><td><strong>被保険者の資格に関する処分、給付に関する処分、保険料その他の徴収金に関する処分</strong></td><td><strong>社会保険審査官</strong>に審査請求 → <strong>社会保険審査会</strong>に再審査請求</td></tr></tbody></table>
+<blockquote><p>★国民年金法では、<strong>保険料に関する処分も社会保険審査官への審査請求（2審制）</strong>です。厚生年金保険法では<strong>保険料関係は社会保険審査会への直接審査請求（1審制）</strong>であり、<strong>ここが違います</strong>。
+★審査請求をした日から<strong>2か月以内</strong>に決定がないときは、<strong>棄却されたものとみなす</strong>ことができます（101条2項）。
+★<strong>14条の4</strong>（被保険者記録の訂正請求に対する決定）については、この不服申立ての対象外です。</p></blockquote>
+<h3>国民年金基金の合併・分割（137条の3〜）</h3>
+<p>基金は、<strong>厚生労働大臣の認可</strong>を受けて、他の基金と<strong>吸収合併</strong>をすることができます。ただし、<strong>地域型基金と職能型基金</strong>との吸収合併は、<strong>地区が全国である地域型基金が吸収合併存続基金となる場合</strong>を除き、することができません。</p>
+<p>合併をする基金は、<strong>吸収合併契約</strong>を締結しなければなりません。</p>
+<blockquote><p>★平成31年4月に<strong>全国国民年金基金</strong>が設立され、地域型基金の多くが合併しました。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">72</span>国民年金法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">80</span>厚生年金保険法</span></td><td>2階部分と並べて見る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険との横断</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 78 ／ 年金</div><h1>年金額の改定とマクロ経済スライド</h1><div class="desc">新規裁定は賃金・既裁定は物価。調整率の0.997と名目下限</div></div><p><strong>国民年金と厚生年金に共通</strong>の仕組みです。国年27条の2〜27条の5、厚年43条の2〜43条の5が同じ構造で書かれています。</p>
+<h3>平成16年改正の枠組み</h3>
+<table class="big"><thead><tr><th>従来</th><th>平成16年改正後</th></tr></thead><tbody><tr><td><strong>給付水準</strong>を先に決め、必要な保険料を集める（給付水準固定方式）</td><td><strong>保険料水準</strong>を先に固定し、その範囲で給付を調整する（<strong>保険料水準固定方式</strong>）</td></tr></tbody></table>
+<table class="big"><thead><tr><th>固定された保険料</th><th></th></tr></thead><tbody><tr><td>国民年金</td><td><strong>17,000円</strong>（平成16年度価格）× 保険料改定率</td></tr><tr><td>厚生年金</td><td><strong>1000分の183.00</strong>（平成29年9月に到達して固定）</td></tr></tbody></table>
+<p><strong>国庫負担は2分の1</strong>（平成21年度〜）です。</p>
+<h3>改定率（国年27条の2）</h3>
+<blockquote><p><strong>平成16年度における改定率は、1とする。</strong></p></blockquote>
+<p>改定率は毎年度、次を基準に改定され、その年度の<strong>4月以降</strong>の年金に適用されます。</p>
+<table class="big"><thead><tr><th>用語</th><th>意味</th></tr></thead><tbody><tr><td><strong>物価変動率</strong></td><td>前々年の全国消費者物価指数に対する<strong>前年</strong>の物価指数の比率</td></tr><tr><td><strong>名目手取り賃金変動率</strong></td><td>物価変動率 ×（<strong>2〜4年度前の実質賃金変動率の3年平均</strong>）×（<strong>可処分所得割合変化率</strong>）</td></tr></tbody></table>
+<table class="big"><thead><tr><th>受給権者</th><th>用いる指標（27条の2・27条の3）</th></tr></thead><tbody><tr><td><strong>新規裁定者</strong>（67歳到達年度前）</td><td><strong>名目手取り賃金変動率</strong></td></tr><tr><td><strong>既裁定者</strong>（68歳到達年度以後＝基準年度以後）</td><td><strong>物価変動率</strong>（物価変動率が名目手取り賃金変動率を<strong>上回るとき</strong>は名目手取り賃金変動率）</td></tr></tbody></table>
+<blockquote><p>★<strong>新規裁定者は賃金、既裁定者は物価</strong>。境目は「<strong>65歳に達した日の属する年度の初日の属する年の3年後</strong>」＝実質<strong>68歳</strong>です。
+★既裁定者は、物価が賃金を上回るとき<strong>低いほう（賃金）</strong>に合わせられます。「高いほうを採る」は誤りです。</p></blockquote>
+<h3>マクロ経済スライド（国年27条の4・27条の5）</h3>
+<p><strong>調整期間</strong>の間、改定率の上昇を<strong>調整率</strong>の分だけ抑えます。</p>
+<pre><code>調整率 ＝ 公的年金被保険者総数の変動率（3年平均） × 0.997</code></pre>
+<table class="big"><thead><tr><th>要素</th><th>中身</th></tr></thead><tbody><tr><td>第1号</td><td>5年前年度の<strong>公的年金被保険者総数</strong>に対する前々年度の総数の比率の<strong>3乗根</strong></td></tr><tr><td>第2号</td><td><strong>0.997</strong>（<strong>平均余命の伸び</strong>を反映した一定率）</td></tr></tbody></table>
+<blockquote><p>★<strong>0.997</strong>は条文に直接書かれた数字です。選択式で狙われます。
+★「公的年金の被保険者」とは、<strong>国民年金法または厚生年金保険法の被保険者</strong>をいいます。</p></blockquote>
+<h3>3つの場面（名目下限）</h3>
+<table class="big"><thead><tr><th>状況</th><th>扱い</th></tr></thead><tbody><tr><td>① 賃金・物価の伸びが<strong>調整率より大きい</strong></td><td><strong>フルにスライド調整</strong>する</td></tr><tr><td>② 賃金・物価の伸びが<strong>調整率より小さい</strong>（ただしプラス）</td><td>調整は<strong>前年度の年金額を下回らない範囲</strong>にとどめる（<strong>名目額は下げない</strong>）</td></tr><tr><td>③ 名目手取り賃金変動率が<strong>1を下回る</strong>（マイナス）</td><td><strong>マクロ経済スライドを行わず</strong>、名目手取り賃金変動率のみで改定する</td></tr></tbody></table>
+<blockquote><p>★<strong>名目下限</strong>が守られるため、マクロ経済スライドで<strong>前年度より名目額が下がることはありません</strong>。</p></blockquote>
+<h3>キャリーオーバー（特別調整率／平成30年4月〜）</h3>
+<p>②③で<strong>調整しきれなかった分</strong>は、翌年度以降に繰り越され（<strong>未調整分</strong>）、賃金・物価の伸びが大きい年度にまとめて調整されます。</p>
+<p>条文上は「<strong>当該年度の前年度の特別調整率</strong>」を乗じる形で表現されています（27条の4第1項）。</p>
+<blockquote><p>★キャリーオーバーがあっても、<strong>その年度の名目額が前年度を下回ることはありません</strong>。</p></blockquote>
+<h3>調整期間（国年16条の2）</h3>
+<blockquote><p>政府は、<strong>財政均衡期間</strong>の終了時に<strong>給付の支給に支障が生じない</strong>と見込まれるまでの間、<strong>年金たる給付の額を調整する</strong>ものとし、その<strong>開始年度を定める</strong>。</p></blockquote>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>調整期間の<strong>開始</strong></td><td>政令で定める（<strong>平成17年度</strong>から開始）</td></tr><tr><td>調整期間の<strong>終了</strong></td><td><strong>財政の現況及び見通し</strong>を作成するときに、終了年度の見通しを示す</td></tr></tbody></table>
+<h3>財政の現況及び見通し（財政検証／国年4条の3）</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>作成</td><td>政府が<strong>少なくとも5年ごと</strong></td></tr><tr><td>財政均衡期間</td><td>作成される年以降<strong>おおむね100年間</strong></td></tr><tr><td>公表</td><td>作成したときは<strong>遅滞なく公表</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>5年ごと</strong>・<strong>おおむね100年</strong>。直近は令和6年（2024年）の財政検証です。</p></blockquote>
+<h3>年金積立金の運用</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>運用主体</td><td><strong>年金積立金管理運用独立行政法人（GPIF）</strong></td></tr><tr><td>基本方針</td><td><strong>専ら被保険者の利益のために、長期的な観点から、安全かつ効率的に</strong>行う</td></tr><tr><td>厚生労働大臣</td><td><strong>積立金基本指針</strong>を定める</td></tr></tbody></table>
+<blockquote><p>★積立金は<strong>年金給付の財源の一部</strong>であって、給付の大部分は<strong>その時々の保険料と国庫負担</strong>でまかなわれます（<strong>賦課方式</strong>が基本）。</p></blockquote>
+<h3>端数処理</h3>
+<table><thead><tr><th>対象</th><th>処理</th></tr></thead><tbody><tr><td>年金額</td><td><strong>1円未満</strong>を四捨五入</td></tr><tr><td>各支払期月の額</td><td><strong>1円未満</strong>を切り捨て、切り捨てた額の合計を<strong>翌年2月</strong>の支払期月に加算</td></tr><tr><td>改定率・再評価率</td><td>小数点以下<strong>1位未満</strong>を四捨五入（政令の定めによる）</td></tr></tbody></table>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">72</span>国民年金法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">80</span>厚生年金保険法</span></td><td>2階部分と並べて見る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険との横断</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 79 ／ 年金</div><h1>届出・時効・不服申立て（国年）</h1><div class="desc">国年だけ保険料も社会保険審査官。死亡一時金だけ時効2年</div></div><h3>届出（12条・105条）</h3>
+<table class="big"><thead><tr><th>届出</th><th>誰が</th><th>いつ</th><th>どこへ</th></tr></thead><tbody><tr><td><strong>第1号被保険者</strong>の資格取得・喪失・種別変更・氏名住所変更</td><td>本人</td><td><strong>14日以内</strong></td><td><strong>市町村長</strong></td></tr><tr><td><strong>第3号被保険者</strong>の資格取得・喪失・種別変更</td><td>本人（<strong>事業主を経由</strong>）</td><td><strong>14日以内</strong></td><td><strong>厚生労働大臣</strong></td></tr><tr><td>受給権者の<strong>氏名・住所変更</strong>、<strong>死亡</strong></td><td>本人・戸籍法の届出義務者</td><td>14日以内（死亡は<strong>10日以内</strong>）</td><td>厚生労働大臣</td></tr><tr><td><strong>付加保険料</strong>の納付の申出</td><td>本人</td><td>—</td><td>市町村長</td></tr></tbody></table>
+<blockquote><p>★<strong>第1号は市町村長、第3号は事業主経由で厚生労働大臣</strong>。ここが最頻出です。
+★<strong>住民基本台帳ネットワーク</strong>により機構が住所・生存を確認できる者は、住所変更届・現況届が<strong>原則不要</strong>です。</p></blockquote>
+<h3>第3号被保険者の届出の特例</h3>
+<p>届出が遅れると、原則として<strong>届出をした日の属する月前2年間</strong>の分しか保険料納付済期間になりません。ただし、</p>
+<table class="big"><thead><tr><th>特例</th><th>内容</th></tr></thead><tbody><tr><td><strong>やむを得ない事由</strong>があると認められるとき</td><td><strong>2年より前</strong>の期間も届出により<strong>保険料納付済期間</strong>に算入される</td></tr><tr><td><strong>時効消滅不整合期間</strong>（平成25年7月〜）</td><td>第2号被保険者の資格喪失により第3号でなくなったのに届出がなかった期間。<strong>特定期間該当届</strong>を出すと<strong>合算対象期間</strong>になり、<strong>特定保険料</strong>（<strong>10年以内</strong>）を納付すれば納付済期間になる</td></tr></tbody></table>
+<blockquote><p>★不整合期間は放置すると<strong>カラ期間</strong>にしかなりません。追納で年金額に反映させられます。</p></blockquote>
+<h3>時効（102条）</h3>
+<table class="big"><thead><tr><th>対象</th><th>時効</th></tr></thead><tbody><tr><td><strong>年金給付を受ける権利</strong>（基本権＝<strong>裁定</strong>を受ける権利）</td><td><strong>5年</strong></td></tr><tr><td><strong>年金給付の支給を受ける権利</strong>（支分権＝各支払期月の分）</td><td><strong>5年</strong></td></tr><tr><td><strong>死亡一時金</strong>を受ける権利</td><td><strong>2年</strong></td></tr><tr><td><strong>保険料</strong>その他の徴収金を徴収し、または還付を受ける権利</td><td><strong>2年</strong></td></tr><tr><td><strong>脱退一時金</strong></td><td>日本国内に住所を有しなくなった日から<strong>2年</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>給付は5年・保険料は2年</strong>。ただし<strong>死亡一時金だけ2年</strong>です。ここが引っかけになります。
+★<strong>年金時効特例法</strong>により、記録訂正によって増える分は<strong>5年より前の分も支給</strong>されます。</p></blockquote>
+<h3>不服申立て（101条）</h3>
+<pre><code>被保険者の資格に関する処分／給付に関する処分／保険料その他の徴収金に関する処分
+　↓ 処分があったことを知った日の翌日から3か月以内
+社会保険審査官（地方厚生局）に審査請求
+　↓ 審査請求をした日から2か月以内に決定がないときは棄却とみなせる
+　↓ 決定書の謄本の送付を受けた日の翌日から2か月以内
+社会保険審査会（厚生労働省）に再審査請求</code></pre>
+<blockquote><p>★<strong>国民年金法では保険料に関する処分も社会保険審査官（2審制）</strong>です。<strong>厚生年金保険法・健康保険法では保険料は社会保険審査会に直接（1審制）</strong>。この非対称が最頻出です。
+★<strong>14条の4</strong>（被保険者記録の訂正請求に対する決定）はこの不服申立ての対象外です（行政不服審査法による）。
+★<strong>共済組合等が行った障害基礎年金に係る障害の程度の診査に関する処分</strong>も対象外です。</p></blockquote>
+<h3>受給権の保護と公課（24条・25条）</h3>
+<table class="big"><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td><strong>24条</strong></td><td>給付を受ける権利は、<strong>譲り渡し、担保に供し、または差し押さえることができない</strong>。ただし<strong>年金給付を受ける権利を国税滞納処分により差し押さえる場合</strong>は除く</td></tr><tr><td><strong>25条</strong></td><td><strong>租税その他の公課</strong>は、給付として支給を受けた金銭を標準として課することができない。ただし<strong>老齢基礎年金・付加年金</strong>については、この限りでない</td></tr></tbody></table>
+<blockquote><p>★<strong>老齢基礎年金と付加年金は課税対象</strong>です。<strong>障害基礎年金・遺族基礎年金は非課税</strong>。この区別が問われます。</p></blockquote>
+<h3>不正利得の徴収と受給権者の申告</h3>
+<table class="big"><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td><strong>23条</strong></td><td>偽りその他不正の手段により給付を受けた者があるときは、<strong>受給額に相当する金額の全部または一部を徴収</strong>することができる</td></tr><tr><td><strong>105条4項</strong></td><td>受給権者は、厚生労働省令の定めるところにより、<strong>厚生労働大臣に必要な事項を届け出、書類等を提出</strong>しなければならない</td></tr><tr><td><strong>107条</strong></td><td>厚生労働大臣は、受給権者に対し、<strong>受給権の消滅・支給停止の事由の有無に関し、書類等の提出を命じ、職員に質問させる</strong>ことができる</td></tr><tr><td><strong>108条</strong></td><td>厚生労働大臣は、<strong>市町村長・共済組合等</strong>に必要な書類の閲覧・資料の提供を求めることができる</td></tr></tbody></table>
+<blockquote><p>★正当な理由なく107条の命令に従わないときは、<strong>給付の支払を一時差し止める</strong>ことができます（73条）。</p></blockquote>
+<h3>保険料の免除・猶予の期間と届出</h3>
+<table><thead><tr><th>手続</th><th>期限</th></tr></thead><tbody><tr><td><strong>法定免除</strong></td><td>該当するに至ったときに<strong>14日以内</strong>に届出（免除自体は届出によらず当然）</td></tr><tr><td><strong>申請免除・納付猶予・学生納付特例</strong></td><td>過去分は<strong>2年1か月前</strong>まで申請できる</td></tr><tr><td><strong>追納</strong></td><td>承認の日の属する月<strong>前10年以内</strong>の期間について</td></tr><tr><td><strong>前納</strong></td><td>最大<strong>2年分</strong>。当年度分・翌年度分の<strong>4月末</strong>または<strong>9月末</strong>が期限</td></tr></tbody></table>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">72</span>国民年金法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">80</span>厚生年金保険法</span></td><td>2階部分と並べて見る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険との横断</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 80 ／ 年金</div><h1>厚生年金保険法</h1><div class="desc">択一10問。在職老齢年金65万円が最重要改正</div></div><table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>択一</td><td><strong>10問</strong></td></tr><tr><td>選択</td><td>5点</td></tr><tr><td>特徴</td><td>令和8年度の最重要改正「<strong>在職老齢年金の支給停止調整額65万円</strong>」を含む科目。国年と一体で理解する</td></tr></tbody></table>
+<hr>
+<h2>出題傾向（過去9年・第49〜57回の実データ）</h2>
+<h3>択一の設問形式</h3>
+<table class="big"><thead><tr><th>形式</th><th>問数</th><th>割合</th></tr></thead><tbody><tr><td>正しいものを選ぶ</td><td>38</td><td>42%</td></tr><tr><td>誤りを選ぶ</td><td>31</td><td>34%</td></tr><tr><td>組合せ問題</td><td>17</td><td>19%</td></tr><tr><td>個数問題</td><td>4</td><td>4%</td></tr></tbody></table>
+<p><strong>厚年枠 計90問</strong>のうち、<strong>個数問題4問・組合せ問題17問（合わせて23%）</strong>。組合せのほうが多い科目です。組合せは<strong>2肢の正誤が分かれば98.5%で正解が決まる</strong>ので、時間はかかりません。飛ばす候補は個数問題だけです。（→ <span class="ref"><span class="n">97</span>個数・組合せ問題<span class="sec">（全体版）</span></span>）</p>
+<h3>設問形式の推移（作問方針の変化）</h3>
+<table class="big"><thead><tr><th>年度</th><th>個数・組合せ</th><th>誤りを選ぶ</th><th>正しいものを選ぶ</th><th>肢の平均字数</th><th>判例に言及</th></tr></thead><tbody><tr><td>令和7</td><td>2</td><td>3</td><td>5</td><td>98</td><td>0</td></tr><tr><td>令和6</td><td>3</td><td>3</td><td>4</td><td>85</td><td>0</td></tr><tr><td>令和5</td><td>2</td><td>2</td><td>6</td><td>102</td><td>0</td></tr><tr><td>令和4</td><td>2</td><td>3</td><td>5</td><td>86</td><td>0</td></tr><tr><td>令和3</td><td>2</td><td>3</td><td>5</td><td>123</td><td>0</td></tr><tr><td>令和2</td><td>3</td><td>4</td><td>3</td><td>88</td><td>0</td></tr><tr><td>令和元</td><td>2</td><td>4</td><td>4</td><td>106</td><td>0</td></tr><tr><td>平成30</td><td>3</td><td>4</td><td>3</td><td>93</td><td>0</td></tr><tr><td>平成29</td><td>2</td><td>5</td><td>3</td><td>109</td><td>0</td></tr></tbody></table>
+<ul><li><strong>「正しいものを選べ」が増えています</strong>（3.6問 → 5.0問）。誤りを探すより、<strong>正しい形を知っているか</strong>が問われる方向です</li><li>肢が短くなっています（平均104字 → 93字）</li></ul>
+<h3>基準点補正の履歴（この科目が救済された年）</h3>
+<p><strong>選択式</strong>　過去9年で<strong>一度も引下げなし</strong></p>
+<p><strong>択一式</strong>　平成29年度 <strong>3点</strong>に引下げ</p>
+<blockquote><p><strong>選択式は一度も救済されていません。</strong> ここで3点を割ると、他がどれだけ良くてもその時点で不合格です。<strong>取りこぼせない科目</strong>です。択一も引下げは1回だけです。</p></blockquote>
+<h3>頻出条文（択一で9年間に参照された回数）</h3>
+<p><strong>上位12条で択一48回分</strong>。回数が多い条ほど、条文そのものを読んでおく価値があります。「詳しく読む」は、その条をいちばん詳しく扱っている別ページです。</p>
+<table class="big"><thead><tr><th>条文</th><th>何を定めているか</th><th>回数</th><th>出題された年度</th><th>詳しく読む</th></tr></thead><tbody><tr><td><strong>第12条</strong></td><td>適用除外</td><td>11</td><td>令和6・令和5・令和4・令和2・令和元・平成30・平成29</td><td><span class="ref"><span class="n">81</span>適用事業所と被保険者</span></td></tr><tr><td><strong>第27条</strong></td><td>届出</td><td>6</td><td>令和7・令和5・令和2・令和元・平成29</td><td><span class="ref"><span class="n">81</span>適用事業所と被保険者</span></td></tr><tr><td><strong>第78条の14</strong></td><td>特定被保険者及び被扶養配偶者についての標準報酬の特例</td><td>5</td><td>令和3・令和元・平成30・平成29</td><td>本体の<span class="ref"><span class="n">80</span>厚生年金保険法<span class="sec">「6. 離婚時の年金分割（離婚分割）★令和8年4月1日改正」</span></span></td></tr><tr><td><strong>第78条の2</strong></td><td>離婚等をした場合における標準報酬の改定の特例</td><td>4</td><td>令和7・令和3・平成29</td><td><span class="ref"><span class="n">86</span>離婚時分割と脱退一時金</span></td></tr><tr><td><strong>第58条</strong></td><td>受給権者</td><td>4</td><td>令和3・平成30</td><td><span class="ref"><span class="n">85</span>障害厚生年金と遺族厚生年金</span></td></tr><tr><td><strong>第48条</strong></td><td>障害厚生年金の併給の調整</td><td>4</td><td>令和5・令和3</td><td><span class="ref"><span class="n">85</span>障害厚生年金と遺族厚生年金</span></td></tr><tr><td><strong>第47条の3</strong></td><td>事後重症（47条の2）・基準障害</td><td>3</td><td>令和7・令和3・平成29</td><td><span class="ref"><span class="n">85</span>障害厚生年金と遺族厚生年金</span></td></tr><tr><td><strong>第26条</strong></td><td>決定・改定</td><td>3</td><td>令和7・令和5・平成30</td><td><span class="ref"><span class="n">82</span>標準報酬と保険料</span></td></tr><tr><td><strong>第50条</strong></td><td>障害厚生年金の額</td><td>2</td><td>令和5・平成29</td><td><span class="ref"><span class="n">85</span>障害厚生年金と遺族厚生年金</span></td></tr><tr><td><strong>第28条</strong></td><td>記録</td><td>2</td><td>令和6・平成30</td><td><span class="ref"><span class="n">81</span>適用事業所と被保険者</span></td></tr><tr><td><strong>第86条</strong></td><td>保険料等の督促及び滞納処分</td><td>2</td><td>令和元・平成30</td><td><span class="ref"><span class="n">82</span>標準報酬と保険料</span></td></tr><tr><td><strong>第44条</strong></td><td>加給年金額</td><td>2</td><td>令和7・平成30</td><td><span class="ref"><span class="n">83</span>老齢厚生年金</span></td></tr></tbody></table>
+<h3>選択式が9年間で問うたこと（厚年）</h3>
+<p><strong>45空欄</strong>の内訳は <strong>数字20</strong>（44%）、<strong>用語20</strong>（44%）、<strong>判示・条文の言い回し5</strong>（11%）。空欄は5つあり、<strong>3つ取れれば基準点</strong>です。長い判示は先頭だけを載せています。全文は <span class="ref"><span class="n">93</span>条文素読<span class="sec">（全体版）</span></span> にあります。</p>
+<table class="big"><thead><tr><th>年度</th><th>空欄</th><th>正答となった語</th><th>その年の根拠条文</th></tr></thead><tbody><tr><td>令和7</td><td>A</td><td>17日</td><td>厚生年金保険法21条／厚生年金保険法43条の4</td></tr><tr><td></td><td>B</td><td>11日</td><td></td></tr><tr><td></td><td>C</td><td>名目手取り賃金変動率</td><td></td></tr><tr><td></td><td>D</td><td>令和4年2月</td><td></td></tr><tr><td></td><td>E</td><td>障害厚生年金のみである</td><td></td></tr><tr><td>令和6</td><td>A</td><td>費用</td><td>厚生年金保険法58条／厚生年金保険法80条</td></tr><tr><td></td><td>B</td><td>150 万円</td><td></td></tr><tr><td></td><td>C</td><td>脱退一時金</td><td></td></tr><tr><td></td><td>D</td><td>当該初診日から起算して5年</td><td></td></tr><tr><td></td><td>E</td><td>乙のみが行うことができる</td><td></td></tr><tr><td>令和5</td><td>A</td><td>地方厚生局長</td><td>厚生年金保険法100条の9／厚生年金保険法67条</td></tr><tr><td></td><td>B</td><td>地方厚生支局長</td><td></td></tr><tr><td></td><td>C</td><td>障害基礎年金、遺族基礎年金、遺族厚生年金</td><td></td></tr><tr><td></td><td>D</td><td>0．2％の引下げ</td><td></td></tr><tr><td></td><td>E</td><td>1年</td><td></td></tr><tr><td>令和4</td><td>A</td><td>開始した日の属する月</td><td>厚生年金保険法47条の2／厚生年金保険法81条の2</td></tr><tr><td></td><td>B</td><td>終了する日の翌日が属する月の前月</td><td></td></tr><tr><td></td><td>C</td><td>Ｗ</td><td></td></tr><tr><td></td><td>D</td><td>月額2 万円</td><td></td></tr><tr><td></td><td>E</td><td>65歳に達する日の前日</td><td></td></tr><tr><td>令和3</td><td>A</td><td>3 か月を超える期間ごとに</td><td>厚生年金保険法84条の3／厚生年金保険法8条の2</td></tr><tr><td></td><td>B</td><td>厚生年金保険給付費等</td><td></td></tr><tr><td></td><td>C</td><td>交付金として交付</td><td></td></tr><tr><td></td><td>D</td><td>船舶</td><td></td></tr><tr><td></td><td>E</td><td>厚生労働大臣の承認を受けて</td><td></td></tr><tr><td>令和2</td><td>A</td><td>国民の理解</td><td>厚生年金保険法31条の2／厚生年金保険法44条の3／厚生年金保険法78条の2</td></tr><tr><td></td><td>B</td><td>受給権を取得した日から起算して1年を経過した日</td><td></td></tr><tr><td></td><td>C</td><td>老齢基礎年金及び付加年金並びに障害基礎年金</td><td></td></tr><tr><td></td><td>D</td><td>按分割合</td><td></td></tr><tr><td></td><td>E</td><td>2年</td><td></td></tr><tr><td>令和元</td><td>A</td><td>発する日から起算して10日</td><td>厚生年金保険法79条の2</td></tr><tr><td></td><td>B</td><td>24 か月分以上及び5 千万円以上</td><td></td></tr><tr><td></td><td>C</td><td>保険給付の額</td><td></td></tr><tr><td></td><td>D</td><td>3月から翌年2月</td><td></td></tr><tr><td></td><td>E</td><td>当該2月の支払期月</td><td></td></tr><tr><td>平成30</td><td>A</td><td>納入の告知又は納付の日の翌日から6 か月</td><td>厚生年金保険法26条／厚生年金保険法43条／厚生年金保険法79条の2</td></tr><tr><td></td><td>B</td><td>被保険者から徴収された保険料</td><td></td></tr><tr><td></td><td>C</td><td>専ら厚生年金保険の被保険者</td><td></td></tr><tr><td></td><td>D</td><td>至った日の翌日の属する月の前月</td><td></td></tr><tr><td></td><td>E</td><td>1年以内</td><td></td></tr><tr><td>平成29</td><td>A</td><td>基礎年金拠出金の額の2分の1</td><td>厚生年金保険法78条の14／厚生年金保険法78条の2／厚生年金保険法80条</td></tr><tr><td></td><td>B</td><td>4分の3</td><td></td></tr><tr><td></td><td>C</td><td>平成20年4月1日</td><td></td></tr><tr><td></td><td>D</td><td>の翌日から起算して1 か月</td><td></td></tr><tr><td></td><td>E</td><td>第2号改定者の対象期間標準報酬総額の割合を超え2…</td><td></td></tr></tbody></table>
+<blockquote><p>この節は <code>kakomon/gen_trend.py</code> が過去問データから自動生成しています。</p></blockquote>
+<h2>深掘り（別ページ）</h2>
+<p>条文の趣旨・要件の切り分け・誤り肢の作られ方を論点ごとにまとめた別ページです。</p>
+<table class="big"><thead><tr><th>論点</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">81</span>適用事業所と被保険者</span></td></tr><tr><td><span class="ref"><span class="n">82</span>標準報酬と保険料</span></td></tr><tr><td><span class="ref"><span class="n">83</span>老齢厚生年金</span></td></tr><tr><td><span class="ref"><span class="n">84</span>在職老齢年金と支給停止</span></td></tr><tr><td><span class="ref"><span class="n">85</span>障害厚生年金と遺族厚生年金</span></td></tr><tr><td><span class="ref"><span class="n">86</span>離婚時分割と脱退一時金</span></td></tr><tr><td><span class="ref"><span class="n">78</span>年金額の改定とマクロ経済スライド</span></td></tr><tr><td><span class="ref"><span class="n">87</span>給付の通則と受給権の保護</span></td></tr></tbody></table>
+<h2>目的条文</h2>
+<p><strong>1条</strong></p>
+<blockquote><p>この法律は、労働者の<strong>老齢、障害又は死亡</strong>について保険給付を行い、労働者及びその遺族の<strong>生活の安定と福祉の向上</strong>に寄与することを目的とする。</p></blockquote>
+<p><strong>2条（管掌）</strong></p>
+<blockquote><p>厚生年金保険は、<strong>政府</strong>が、管掌する。</p></blockquote>
+<p><strong>2条の2（年金額の改定）</strong></p>
+<blockquote><p>この法律による年金たる保険給付の額は、<strong>国民の生活水準</strong>、賃金その他の諸事情に著しい変動が生じた場合には、変動後の諸事情に応ずるため、<strong>速やかに改定の措置</strong>が講ぜられなければならない。</p></blockquote>
+<blockquote><p>国年法1条は「日本国憲法第25条第2項に規定する<strong>理念</strong>に基き」「<strong>共同連帯</strong>」で始まる点と対比。
+厚年は「労働者の」老齢・障害・死亡、国年は「国民」の老齢・障害・死亡。</p></blockquote>
+<hr>
+<h2>1. 適用</h2>
+<h3>適用事業所</h3>
+<table class="big"><thead><tr><th>区分</th><th>内容</th></tr></thead><tbody><tr><td>強制適用</td><td><strong>法人</strong>の事業所（役員1人でも、業種・人数を問わず）／<strong>個人</strong>で常時<strong>5人以上</strong>の法定17業種</td></tr><tr><td><strong>非適用業種</strong>（個人・5人以上でも任意）</td><td>農林水産業、<strong>宗教業</strong>、その他のサービス業（旅館、飲食店、理美容業等）</td></tr><tr><td>任意適用</td><td>従業員の<strong>2分の1以上</strong>の同意＋厚生労働大臣の<strong>認可</strong>。<strong>脱退は4分の3以上</strong>の同意</td></tr></tbody></table>
+<blockquote><p>令和4年10月から<strong>士業</strong>は適用業種に追加。</p></blockquote>
+<h3>被保険者</h3>
+<table class="big"><thead><tr><th>種類</th><th>内容</th></tr></thead><tbody><tr><td>当然被保険者</td><td>適用事業所に使用される<strong>70歳未満</strong>の者</td></tr><tr><td><strong>高齢任意加入被保険者</strong></td><td>70歳以上で老齢給付の<strong>受給資格期間を満たしていない</strong>者。適用事業所では<strong>事業主の同意があれば労使折半・なければ全額本人負担</strong>。適用事業所以外では事業主の<strong>同意＋厚生労働大臣の認可</strong>が必要</td></tr><tr><td>任意単独被保険者</td><td>適用事業所以外の事業所に使用される70歳未満の者。事業主の<strong>同意＋厚生労働大臣の認可</strong></td></tr><tr><td>第4種被保険者</td><td>経過措置</td></tr></tbody></table>
+<h3>被保険者の種別（実施機関）</h3>
+<table class="big"><thead><tr><th>種別</th><th>対象</th><th>実施機関</th></tr></thead><tbody><tr><td><strong>第1号厚生年金被保険者</strong></td><td>民間被用者</td><td>厚生労働大臣（日本年金機構）</td></tr><tr><td>第2号</td><td>国家公務員</td><td>国家公務員共済組合</td></tr><tr><td>第3号</td><td>地方公務員</td><td>地方公務員共済組合</td></tr><tr><td>第4号</td><td>私学教職員</td><td>日本私立学校振興・共済事業団</td></tr></tbody></table>
+<h3>短時間労働者（12条）</h3>
+<p><strong>特定適用事業所</strong>（被保険者数が常時<strong>51人以上</strong>）に使用される短時間労働者は次のすべてで被保険者。
+① 週の所定労働時間<strong>20時間以上</strong> ② 報酬月額<strong>88,000円以上</strong> ③ <strong>2か月を超える</strong>雇用の見込み ④ <strong>学生でない</strong></p>
+<blockquote><p>⚠️★企業規模要件の撤廃は<strong>令和9年10月から段階的</strong>（36〜50人→令和9年10月、21〜35人→令和11年10月、11〜20人→令和14年10月、10人以下→令和17年10月）。賃金要件の撤廃も含め<strong>令和8年度試験では未施行</strong>。</p></blockquote>
+<h3>届出</h3>
+<p>資格取得届・喪失届とも<strong>5日以内</strong>（船員は10日以内）。</p>
+<hr>
+<h2>2. 標準報酬・保険料</h2>
+<table class="big"><thead><tr><th>項目</th><th>厚年</th><th>（参考）健保</th></tr></thead><tbody><tr><td>等級数</td><td><strong>32等級</strong> ⚠️</td><td>50等級</td></tr><tr><td>下限</td><td>第1級 <strong>88,000円</strong></td><td>第1級 58,000円</td></tr><tr><td>上限</td><td>第32級 <strong>650,000円</strong></td><td>第50級 1,390,000円</td></tr><tr><td><strong>標準賞与額の上限</strong></td><td><strong>1か月 150万円</strong></td><td>年度累計 573万円</td></tr></tbody></table>
+<blockquote><p>⚠️★上限を<strong>75万円</strong>に引き上げる改正は<strong>令和9年9月から段階的</strong>＝令和8年度試験では未施行。</p></blockquote>
+<h3>決定・改定</h3>
+<p>健保と同じ（定時決定は<strong>4〜6月の平均・9月から翌年8月</strong>、随時改定は<strong>固定的賃金の変動＋2等級＋17日</strong>、育休終了時改定は<strong>1等級</strong>）。</p>
+<h3>保険料</h3>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td><strong>保険料率</strong></td><td>全国一律 <strong>1000分の183.00</strong>（平成29年9月から固定）。本人負担 91.50/1000</td></tr><tr><td>負担</td><td><strong>労使折半</strong></td></tr><tr><td>納期限</td><td>翌月<strong>末日</strong></td></tr><tr><td><strong>免除</strong></td><td>産前産後休業期間・育児休業等期間（<strong>労使双方</strong>免除、被保険者期間に算入され年金額に反映）</td></tr></tbody></table>
+<p><strong>育児休業等期間中の保険料免除</strong>：その月の末日が休業期間中である月／同一月内に<strong>14日以上</strong>取得した月／賞与保険料は<strong>1か月を超える</strong>育休の場合のみ免除。</p>
+<h3>養育期間の従前標準報酬月額のみなし措置（26条）</h3>
+<p><strong>3歳未満の子</strong>を養育する被保険者の標準報酬月額が養育前より低下した場合、<strong>本人の申出</strong>により、年金額の計算上は<strong>従前の標準報酬月額</strong>とみなす。保険料は下がったまま、年金額だけ従前扱いという有利な措置。</p>
+<hr>
+<h2>3. 老齢厚生年金</h2>
+<h3>支給要件</h3>
+<table class="big"><thead><tr><th>区分</th><th>要件</th></tr></thead><tbody><tr><td><strong>本来の老齢厚生年金</strong>（65歳〜）</td><td>老齢基礎年金の受給資格期間（10年）を満たし、被保険者期間が<strong>1か月以上</strong></td></tr><tr><td><strong>特別支給の老齢厚生年金</strong>（60歳台前半）</td><td>上記＋被保険者期間<strong>1年以上</strong>。生年月日に応じて支給開始年齢を段階的に引上げ</td></tr></tbody></table>
+<p><strong>支給開始年齢の引上げ完了</strong>：男性は<strong>昭和36年4月2日</strong>以後生まれ、女性（第1号厚年）は<strong>昭和41年4月2日</strong>以後生まれで特別支給がなくなる。</p>
+<h3>年金額（43条）</h3>
+<pre><code>報酬比例部分 ＝ 平均標準報酬月額 × 7.125/1000 × 平成15年3月以前の被保険者期間の月数
+              ＋ 平均標準報酬額 × 5.481/1000 × 平成15年4月以後の被保険者期間の月数</code></pre>
+<ul><li><strong>総報酬制</strong>の導入が<strong>平成15年4月</strong>（賞与も年金額に反映されるようになった）</li><li>給付乗率は生年月日により経過措置あり</li><li><strong>経過的加算</strong>：定額部分 － 厚年期間に係る老齢基礎年金相当額</li></ul>
+<h3>加給年金額（44条）</h3>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>要件</td><td>被保険者期間<strong>20年以上</strong>＋生計を維持する<strong>65歳未満の配偶者</strong>又は<strong>子</strong></td></tr><tr><td>子の要件</td><td>18歳到達年度末まで、又は20歳未満で1級・2級の障害</td></tr><tr><td><strong>特別加算</strong></td><td>受給権者の生年月日に応じて配偶者の加給年金額に加算（<strong>昭和18年4月2日以後</strong>生まれが最も多い）</td></tr><tr><td><strong>支給停止</strong></td><td>配偶者が老齢厚生年金（被保険者期間<strong>20年以上</strong>）や障害年金を受けられる間</td></tr><tr><td>打切り</td><td>配偶者が65歳到達 → 配偶者の老齢基礎年金に<strong>振替加算</strong></td></tr></tbody></table>
+<h3>在職老齢年金（46条）★令和8年度の最重要改正</h3>
+<pre><code>支給停止額（月額）＝（基本月額 ＋ 総報酬月額相当額 － 65万円）× 1/2</code></pre>
+<table class="big"><thead><tr><th>用語</th><th>定義</th></tr></thead><tbody><tr><td><strong>基本月額</strong></td><td>老齢厚生年金（<strong>加給年金額を除く</strong>）の額 ÷ 12</td></tr><tr><td><strong>総報酬月額相当額</strong></td><td>その月の標準報酬月額 ＋ <strong>その月以前1年間の標準賞与額の合計 ÷ 12</strong></td></tr><tr><td><strong>支給停止調整額</strong></td><td><strong>65万円</strong>（令和7年度51万円から引上げ。令和8年4月1日施行）</td></tr></tbody></table>
+<ul><li>停止されるのは<strong>報酬比例部分のみ</strong>。<strong>老齢基礎年金・経過的加算は停止されない</strong></li><li>報酬比例部分が<strong>全額停止</strong>されると<strong>加給年金額も支給されない</strong></li><li>令和7年年金制度改正法により、令和6年度価格で50万円→<strong>62万円</strong>に引上げ</li></ul>
+<h3>在職定時改定</h3>
+<p><strong>65歳以上70歳未満</strong>の在職中の受給権者について、毎年<strong>9月1日</strong>を基準日として<strong>翌月（10月）分</strong>から年金額を改定。</p>
+<h3>繰上げ・繰下げ</h3>
+<table class="big"><thead><tr><th>制度</th><th>内容</th></tr></thead><tbody><tr><td><strong>繰上げ</strong></td><td>老齢基礎年金と<strong>同時に</strong>請求。減額率 1月あたり<strong>0.4％</strong>（昭和37年4月1日以前生まれは0.5％）</td></tr><tr><td><strong>繰下げ</strong></td><td>老齢基礎年金と<strong>別々に</strong>申出可。増額率 1月あたり<strong>0.7％</strong>、上限<strong>75歳</strong>（令和4年4月〜）</td></tr></tbody></table>
+<p><strong>繰下げの注意</strong></p>
+<ul><li>繰下げ待機中は<strong>加給年金額が支給されず、増額もされない</strong></li><li><strong>在職老齢年金により支給停止される部分は増額の対象にならない</strong></li><li>70歳到達後に繰下げの申出をせず本来の年金を請求する場合、<strong>5年前時点で繰下げ申出があったものとみなす</strong>特例（令和5年4月〜）</li></ul>
+<hr>
+<h2>4. 障害厚生年金</h2>
+<table class="big"><thead><tr><th>等級</th><th>額</th><th>配偶者加給</th></tr></thead><tbody><tr><td><strong>1級</strong></td><td>報酬比例の年金額 × <strong>1.25</strong></td><td><strong>あり</strong></td></tr><tr><td><strong>2級</strong></td><td>報酬比例の年金額</td><td><strong>あり</strong></td></tr><tr><td><strong>3級</strong></td><td>報酬比例の年金額（<strong>最低保障額</strong>あり）</td><td><strong>なし</strong></td></tr><tr><td><strong>障害手当金</strong></td><td>報酬比例の年金額 × <strong>2</strong>（一時金。最低保障額あり）</td><td>—</td></tr></tbody></table>
+<ul><li><strong>国年は1〜2級のみ</strong>、厚年は<strong>1〜3級＋障害手当金</strong></li><li>被保険者期間が<strong>300月</strong>に満たないときは<strong>300月とみなす</strong></li><li><strong>子の加算は国年（障害基礎年金）側</strong>、<strong>配偶者加給は厚年側</strong></li><li>保険料納付要件は国年と同じ（初診日の前日・前々月まで・3分の2）</li></ul>
+<hr>
+<h2>5. 遺族厚生年金</h2>
+<h3>遺族の範囲（59条）★超重要</h3>
+<p><strong>配偶者・子・父母・孫・祖父母</strong>（<strong>兄弟姉妹は含まれない</strong> ＝ 労災との違い）</p>
+<p><strong>順位</strong>：配偶者・子（同順位）→ 父母 → 孫 → 祖父母</p>
+<table class="big"><thead><tr><th>遺族</th><th>年齢要件</th></tr></thead><tbody><tr><td><strong>妻</strong></td><td>要件なし</td></tr><tr><td>夫・父母・祖父母</td><td><strong>55歳以上</strong>（支給は原則<strong>60歳</strong>から＝<strong>若年停止</strong>。ただし夫が遺族基礎年金の受給権を有する場合は60歳前でも支給）</td></tr><tr><td>子・孫</td><td>18歳到達年度末まで、又は20歳未満で1級・2級の障害</td></tr></tbody></table>
+<p><strong>30歳未満で子のない妻</strong>は<strong>5年間の有期給付</strong>。</p>
+<blockquote><p>⚠️★男女差の解消・20〜30歳代で子のない配偶者への5年有期給付化は<strong>令和10年4月1日施行</strong>＝令和8年度試験では<strong>未施行</strong>。</p></blockquote>
+<h3>短期要件と長期要件 ★最頻出</h3>
+<table class="big"><thead><tr><th></th><th><strong>短期要件</strong></th><th><strong>長期要件</strong></th></tr></thead><tbody><tr><td>該当</td><td>① 被保険者中の死亡 ② 被保険者期間中の傷病が原因で初診日から<strong>5年以内</strong>に死亡 ③ 障害等級<strong>1級・2級</strong>の障害厚生年金の受給権者の死亡</td><td>④ 老齢厚生年金の受給権者又は<strong>受給資格期間（25年）</strong>を満たした者の死亡</td></tr><tr><td><strong>300月みなし</strong></td><td><strong>あり</strong></td><td><strong>なし</strong></td></tr><tr><td><strong>保険料納付要件</strong></td><td><strong>あり</strong></td><td><strong>なし</strong></td></tr><tr><td>中高齢寡婦加算</td><td>制限なし</td><td>夫の被保険者期間<strong>20年以上</strong>が必要</td></tr></tbody></table>
+<blockquote><p>両方に該当する場合は原則として<strong>短期要件</strong>として扱う（遺族が長期要件による申出をしたときを除く）。</p></blockquote>
+<h3>額</h3>
+<p>報酬比例の年金額の<strong>4分の3</strong>。</p>
+<h3>中高齢寡婦加算（62条）</h3>
+<p>夫の死亡当時<strong>40歳以上65歳未満</strong>で子のない妻等に、<strong>40歳から65歳まで</strong>、<strong>老齢基礎年金の満額の4分の3</strong>を加算。
+65歳以後は<strong>経過的寡婦加算</strong>（昭和31年4月1日以前生まれ）に切り替わる。</p>
+<h3>失権・支給停止</h3>
+<ul><li>受給権者が<strong>婚姻</strong>、直系血族・直系姻族以外の者の<strong>養子</strong>となったとき等に失権</li><li>子のある配偶者と子が同順位の場合、<strong>子の遺族厚生年金は配偶者が受給する間は支給停止</strong></li></ul>
+<hr>
+<h2>6. 離婚時の年金分割（離婚分割）★令和8年4月1日改正</h2>
+<table class="big"><thead><tr><th>制度</th><th>合意分割（78条の2）</th><th>3号分割（78条の14）</th></tr></thead><tbody><tr><td>対象期間</td><td><strong>婚姻期間中</strong>の標準報酬</td><td><strong>平成20年4月1日以後</strong>の第3号被保険者期間</td></tr><tr><td>合意</td><td><strong>必要</strong>（又は裁判手続）</td><td><strong>不要</strong></td></tr><tr><td>按分割合</td><td><strong>上限2分の1</strong>、下限は分割前の第2号改定者の持分割合</td><td><strong>一律2分の1</strong></td></tr><tr><td>請求者</td><td>当事者</td><td><strong>被扶養配偶者から</strong></td></tr><tr><td><strong>請求期限</strong></td><td><strong>5年</strong>（★令和8年4月1日から2年→5年に延長）⚠️要確認</td><td>同左</td></tr></tbody></table>
+<p><strong>情報提供の請求</strong>：当事者の一方は、実施機関に対し標準報酬改定請求のために必要な情報の提供を請求できる。</p>
+<hr>
+<h2>7. 通則</h2>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td><strong>時効</strong></td><td>保険給付を受ける権利は<strong>5年</strong>／保険料等を徴収する権利は<strong>2年</strong></td></tr><tr><td>未支給の保険給付（37条）</td><td>配偶者・子・父母・孫・祖父母・兄弟姉妹<strong>その他三親等内の親族</strong>（生計同一）が<strong>自己の名で</strong>請求</td></tr><tr><td>支給期間</td><td>支給事由が生じた月の<strong>翌月</strong>から、消滅した月まで。<strong>偶数月に前2か月分</strong></td></tr><tr><td>併給調整</td><td>一人一年金。65歳以上は <strong>老基＋老厚／老基＋遺厚／障基＋老厚／障基＋遺厚</strong> が併給可</td></tr><tr><td>不服申立て</td><td><strong>社会保険審査官 → 社会保険審査会</strong>。<strong>資格・標準報酬・保険料</strong>の処分は再審査請求を経ずに訴訟可</td></tr><tr><td>国庫負担</td><td>基礎年金拠出金の<strong>2分の1</strong>等</td></tr><tr><td>端数処理</td><td>年金額は<strong>1円未満</strong>四捨五入。各支払期月の額は1円未満切捨て</td></tr></tbody></table>
+<h3>給付制限</h3>
+<ul><li><strong>故意</strong>に障害等を生じさせた → 障害厚生年金を支給しない</li><li><strong>故意の犯罪行為・重大な過失</strong>等 → 全部又は一部を行わないことができる</li><li>被保険者等を<strong>故意に死亡させた者</strong> → 遺族厚生年金を支給しない</li></ul>
+<hr>
+<h2>8. 令和7年年金制度改正法（施行日の整理）★</h2>
+<table class="big"><thead><tr><th>施行日</th><th>内容</th><th>試験対象</th></tr></thead><tbody><tr><td><strong>令和8年4月1日</strong></td><td><strong>在職老齢年金 支給停止調整額 65万円</strong></td><td><strong>○</strong></td></tr><tr><td><strong>令和8年4月1日</strong></td><td><strong>年金分割の請求期限 2年→5年</strong></td><td><strong>○</strong></td></tr><tr><td>令和9年9月</td><td>標準報酬月額の上限 65万→<strong>75万円</strong>（段階的）</td><td>×</td></tr><tr><td>令和9年10月〜</td><td>企業規模要件の撤廃（段階的に令和17年10月まで）</td><td>×</td></tr><tr><td><strong>令和10年4月1日</strong></td><td>遺族厚生年金の男女差解消・<strong>5年有期給付化</strong></td><td>×</td></tr></tbody></table>
+<hr>
+<h2>9. 選択式で狙われる条文</h2>
+<p><strong>46条（在職老齢年金）</strong></p>
+<blockquote><p>老齢厚生年金の受給権者が被保険者である日…が属する月において、その者の<strong>総報酬月額相当額</strong>と<strong>基本月額</strong>との合計額が<strong>支給停止調整額</strong>を超えるときは、その月分の当該老齢厚生年金について、<strong>総報酬月額相当額と基本月額との合計額から支給停止調整額を控除して得た額に2分の1を乗じて得た額</strong>に12を乗じて得た額に相当する部分の支給を停止する。</p></blockquote>
+<p><strong>60条（遺族厚生年金の額）</strong></p>
+<blockquote><p>遺族厚生年金の額は、…<strong>老齢厚生年金の額の計算の例により計算した額の4分の3</strong>に相当する額とする。</p></blockquote>
+<hr>
+<h2>直前チェック（厚年）</h2>
+<ul class="chk"><li>被保険者は<strong>70歳未満</strong>。高齢任意加入は<strong>受給資格期間を満たしていない</strong>者</li><li>短時間労働者の4要件と特定適用事業所<strong>51人以上</strong>（撤廃は未施行）</li><li>標準報酬：厚年<strong>32等級88,000〜650,000円</strong>、賞与は<strong>1か月150万円</strong></li><li>保険料率<strong>183.00/1000</strong>（固定）</li><li>養育期間の<strong>従前標準報酬月額のみなし</strong>（3歳未満・本人の申出）</li><li>本来は<strong>1か月以上</strong>、特別支給は<strong>1年以上</strong></li><li>給付乗率 <strong>7.125/5.481</strong>、総報酬制は<strong>平成15年4月</strong></li><li>加給年金額は<strong>20年以上</strong>。配偶者65歳で<strong>振替加算</strong>へ</li><li><strong>在職老齢年金65万円・2分の1・報酬比例のみ停止・加給も止まる</strong></li><li>在職定時改定は<strong>9月1日基準・10月分から</strong></li><li>繰上げ<strong>同時</strong>／繰下げ<strong>別々</strong>、繰下げ待機中は加給が出ない</li><li>障害は<strong>1〜3級＋障害手当金</strong>、3級に配偶者加給<strong>なし</strong>、<strong>300月みなし</strong></li><li>遺族の範囲に<strong>兄弟姉妹は含まれない</strong></li><li><strong>300月みなしは短期要件のみ</strong>／長期要件は納付要件も不要</li><li>中高齢寡婦加算は<strong>40〜65歳・満額の4分の3</strong>、長期要件は夫20年以上</li><li>年金分割：合意分割<strong>上限2分の1</strong>／3号分割<strong>一律2分の1・合意不要</strong>、期限<strong>5年</strong></li><li>時効は<strong>給付5年・保険料2年</strong></li></ul>
+<hr>
+<h2>補遺｜過去問で問われているのに落としやすい論点</h2>
+<h3>脱退一時金（附則29条）</h3>
+<p>外国人が短期間で帰国する場合の清算給付。<strong>過去9年で11問</strong>に登場する頻出項目。</p>
+<table><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>対象</td><td><strong>日本国籍を有しない者</strong>で、被保険者期間が<strong>6か月以上</strong>、老齢厚生年金の受給資格期間を満たしていない者</td></tr><tr><td>請求期限</td><td>日本国内に住所を有しなくなった日から<strong>2年以内</strong></td></tr><tr><td>支給されない場合</td><td>国民年金の被保険者である、障害厚生年金等の受給権を有したことがある 等</td></tr><tr><td>額</td><td>平均標準報酬額 × 支給率（被保険者期間に応じ、上限<strong>60月</strong>＝5年）</td></tr></tbody></table>
+<blockquote><p>国民年金にも同様の<strong>脱退一時金</strong>（附則9条の3の2）がある。第1号被保険者としての保険料納付済期間等が<strong>6か月以上</strong>、<strong>2年以内</strong>に請求。</p></blockquote>
+<h3>実施機関と日本年金機構</h3>
+<ul><li><strong>実施機関</strong>：第1号厚年＝厚生労働大臣、第2〜4号＝各共済組合等</li><li>厚生労働大臣の権限に係る事務は、政令で定めるものを除き<strong>日本年金機構</strong>に行わせる（100条の4）</li><li>機構が行う<strong>滞納処分</strong>には厚生労働大臣の<strong>認可</strong>が必要</li></ul>
+<h3>経過的寡婦加算</h3>
+<p>中高齢寡婦加算が65歳で打ち切られた後、<strong>昭和31年4月1日以前生まれ</strong>の妻に加算される。生年月日が新しいほど額が小さくなる（老齢基礎年金で埋め合わせられるため）。</p>
+<h3>特別支給の老齢厚生年金の内訳</h3>
+<p><strong>定額部分</strong>（1,701円 × 生年月日に応じた率 × 被保険者期間の月数 ⚠️要確認）＋ <strong>報酬比例部分</strong>。
+定額部分の計算に用いる月数には生年月日に応じた<strong>上限</strong>（420月〜480月）がある。</p>
+<blockquote><p>年度依存の数値は <span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span> で照合すること。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">1</span>法改正まとめ<span class="sec">（全体版）</span></span></td><td>この科目の令和8年度改正を施行日で確認</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>時効・届出期限・遺族の範囲などを他科目と並べて比較</td></tr><tr><td><span class="ref"><span class="n">89</span>数値暗記<span class="sec">（全体版）</span></span></td><td><code>⚠️要確認</code> を付けた年度依存の数値を照合</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 81 ／ 年金</div><h1>適用事業所と被保険者</h1><div class="desc">厚年は70歳未満、船舶は当然適用。高齢任意加入は事業主の同意が要らない</div></div><h3>適用事業所（6条）</h3>
+<p>健康保険とほぼ同じ枠組みです。</p>
+<table class="big"><thead><tr><th>区分</th><th>内容</th></tr></thead><tbody><tr><td><strong>強制</strong>適用</td><td>① <strong>法人</strong>の事業所（業種・人数を問わない）&lt;br&gt;② <strong>個人</strong>経営で常時<strong>5人以上</strong>の従業員を使用する<strong>法定17業種</strong>の事業所&lt;br&gt;③ <strong>船舶</strong>（船員法の船員が乗り組むもの）</td></tr><tr><td><strong>任意</strong>適用</td><td>従業員の<strong>2分の1以上</strong>の同意を得て事業主が申請し、<strong>厚生労働大臣の認可</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>船舶は当然に適用事業所</strong>です（人数・業種を問わない）。健保にはない厚年独自の規定です。
+★任意適用の取消しは<strong>4分の3以上</strong>の同意と認可が必要です。</p></blockquote>
+<h3>被保険者（9条）</h3>
+<p>適用事業所に使用される<strong>70歳未満</strong>の者。</p>
+<blockquote><p>★健保には年齢上限がなく（75歳で後期高齢者医療へ）、<strong>厚年は70歳未満</strong>です。ここが最頻出の対比です。</p></blockquote>
+<h3>適用除外（12条）</h3>
+<table class="big"><thead><tr><th>号</th><th>除外される者</th></tr></thead><tbody><tr><td>1号</td><td><strong>臨時</strong>に使用される者で、<strong>日々雇い入れられる者</strong>（1か月を超えて引き続き使用されるに至った場合を除く）</td></tr><tr><td>2号</td><td>臨時に使用される者で、<strong>2か月以内</strong>の期間を定めて使用される者（所定の期間を超えて引き続き使用されることが<strong>見込まれる</strong>場合を除く）</td></tr><tr><td>3号</td><td><strong>所在地が一定しない</strong>事業所に使用される者</td></tr><tr><td>4号</td><td><strong>季節的業務</strong>（継続して<strong>4か月</strong>を超えて使用されるべき場合を除く）に使用される者</td></tr><tr><td>5号</td><td><strong>臨時的事業の事業所</strong>（継続して<strong>6か月</strong>を超えて使用されるべき場合を除く）に使用される者</td></tr></tbody></table>
+<p><strong>短時間労働者の適用拡大</strong>の5要件は健康保険と同じです（週20時間以上、月額8.8万円以上、2か月超の見込み、学生でない、特定適用事業所＝被保険者50人超）。</p>
+<h3>4種類の被保険者</h3>
+<table class="big"><thead><tr><th>種類</th><th>内容</th></tr></thead><tbody><tr><td><strong>当然</strong>被保険者</td><td>通常の被保険者</td></tr><tr><td><strong>任意単独</strong>被保険者（10条）</td><td><strong>適用事業所以外</strong>の事業所に使用される70歳未満の者が、<strong>事業主の同意</strong>を得て<strong>厚生労働大臣の認可</strong>を受けたとき</td></tr><tr><td><strong>高齢任意加入</strong>被保険者（附則4条の3・4条の5）</td><td><strong>70歳以上</strong>で老齢給付等の<strong>受給権を有しない</strong>者が、受給資格期間を満たすまで加入するもの</td></tr><tr><td><strong>第4種</strong>被保険者（旧法の経過措置）</td><td>昭和61年3月以前の任意継続</td></tr></tbody></table>
+<table class="big"><thead><tr><th></th><th>適用事業所に使用される場合</th><th>適用事業所以外に使用される場合</th></tr></thead><tbody><tr><td>高齢任意加入の申出先</td><td><strong>厚生労働大臣</strong>（実施機関）。<strong>事業主の同意は不要</strong></td><td>厚生労働大臣。<strong>事業主の同意が必要</strong></td></tr><tr><td>保険料</td><td>原則<strong>全額本人負担</strong>。ただし<strong>事業主が同意すれば折半</strong></td><td><strong>折半</strong>（事業主も負担）</td></tr></tbody></table>
+<blockquote><p>★適用事業所に勤める高齢任意加入被保険者は<strong>事業主の同意なしに加入でき、保険料は原則全額本人負担</strong>。ここが定番です。</p></blockquote>
+<h3>実施機関（2条の5）</h3>
+<table class="big"><thead><tr><th>種別</th><th>実施機関</th></tr></thead><tbody><tr><td><strong>第1号</strong>厚生年金被保険者（民間被用者）</td><td><strong>厚生労働大臣</strong>（日本年金機構が事務を行う）</td></tr><tr><td><strong>第2号</strong>（国家公務員共済）</td><td><strong>国家公務員共済組合</strong>および<strong>国家公務員共済組合連合会</strong></td></tr><tr><td><strong>第3号</strong>（地方公務員共済）</td><td><strong>地方公務員共済組合</strong>、<strong>全国市町村職員共済組合連合会</strong>、<strong>地方公務員共済組合連合会</strong></td></tr><tr><td><strong>第4号</strong>（私学共済）</td><td><strong>日本私立学校振興・共済事業団</strong></td></tr></tbody></table>
+<p>平成27年10月の<strong>被用者年金一元化</strong>により、公務員・私学教職員も厚生年金の被保険者となりました。</p>
+<blockquote><p>★<strong>共済年金の職域加算は廃止</strong>され、<strong>年金払い退職給付</strong>に移行しました。
+★<strong>2以上の種別の被保険者期間</strong>を有する者の年金は、<strong>各期間ごとに実施機関が計算</strong>し、<strong>合算</strong>して支給します（「ワンストップサービス」でどの窓口でも請求できます）。</p></blockquote>
+<h3>資格の得喪（13条・14条）</h3>
+<table class="big"><thead><tr><th>取得</th><th>喪失</th></tr></thead><tbody><tr><td>適用事業所に<strong>使用されるに至った日</strong></td><td><strong>死亡</strong>した日の翌日／使用されなくなった日の<strong>翌日</strong></td></tr><tr><td>事業所が適用事業所となった日</td><td><strong>適用除外</strong>に該当した<strong>その日</strong></td></tr><tr><td>適用除外に該当しなくなった日</td><td><strong>70歳</strong>に達した<strong>その日</strong>（誕生日の前日）</td></tr><tr><td>任意単独・高齢任意加入は<strong>認可・申出</strong>があった日</td><td>任意適用事業所の取消しの認可があった日の<strong>翌日</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>同月得喪</strong>（同一月に取得と喪失）の場合、厚年では<strong>その月の保険料は徴収されません</strong>（令和2年〜。ただし同月内に国民年金第1号被保険者となったときはそちらを納付）。健保は徴収するので違いに注意します。</p></blockquote>
+<h3>届出（27条）</h3>
+<p>事業主は、<strong>被保険者の資格取得・喪失、報酬月額、賞与額</strong>等を<strong>厚生労働大臣に届け出</strong>なければなりません。</p>
+<table class="big"><thead><tr><th>届出</th><th>期限</th></tr></thead><tbody><tr><td>資格取得届・喪失届</td><td><strong>5日以内</strong>（船員は10日以内）</td></tr><tr><td>算定基礎届</td><td><strong>7月10日</strong>まで</td></tr><tr><td>月額変更届</td><td><strong>速やかに</strong></td></tr><tr><td>賞与支払届</td><td><strong>5日以内</strong></td></tr><tr><td><strong>70歳以上の使用される者</strong>の届出</td><td>5日以内</td></tr></tbody></table>
+<blockquote><p>★健保・厚年の事業主の届出は<strong>5日以内</strong>、国年第1号は<strong>14日以内</strong>（市町村長へ）、雇用保険の資格取得届は<strong>翌月10日</strong>まで。それぞれ違います。</p></blockquote>
+<h3>適用事業所以外の70歳以上の者</h3>
+<p><strong>70歳以上で被保険者でない者</strong>も、適用事業所に使用され、老齢厚生年金等の受給権を有する場合は、<strong>在職老齢年金の対象</strong>になります。このため事業主は「<strong>70歳以上被用者該当届</strong>」を提出します。</p>
+<h3>記録と訂正の請求（28条・28条の2）</h3>
+<p>実施機関は<strong>被保険者に関する原簿</strong>（＝<strong>厚生年金保険原簿</strong>）を備え、氏名・資格の取得喪失の年月日・<strong>標準報酬</strong>・<strong>基礎年金番号</strong>その他を記録します。</p>
+<p><strong>第1号厚生年金被保険者</strong>であり、またはあった者は、原簿に記録された自己に係る<strong>特定厚生年金保険原簿記録</strong>が事実でない、または記録がないと思料するときは、<strong>厚生労働大臣に訂正の請求</strong>をすることができます。</p>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>請求先</td><td><strong>厚生労働大臣</strong></td></tr><tr><td>死亡した場合</td><td><strong>配偶者・子・父母・孫・祖父母・兄弟姉妹</strong>が請求できる（準用）</td></tr><tr><td>決定に対する不服</td><td><strong>社会保険審査官への審査請求の対象外</strong>（行政不服審査法による）</td></tr></tbody></table>
+<blockquote><p>★訂正請求の決定は、<strong>年金記録の訂正</strong>についての判断であり、通常の給付に関する処分とは扱いが違います。
+★<strong>年金証書</strong>は、受給権者に対し<strong>裁定</strong>をしたときに交付されます。</p></blockquote>
+<h3>事業主の義務と調査</h3>
+<table><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td><strong>27条</strong></td><td>資格の取得・喪失、報酬月額・賞与額の<strong>届出</strong></td></tr><tr><td><strong>29条</strong></td><td>被保険者に対する<strong>通知</strong>（実施機関からの通知を事業主が被保険者に伝える）</td></tr><tr><td><strong>100条</strong></td><td><strong>文書の提出・出頭</strong>の命令、<strong>当該職員による質問・立入検査</strong>（事業所調査）</td></tr><tr><td><strong>98条</strong></td><td>事業主・被保険者の<strong>届出義務</strong>、被保険者からの<strong>確認の請求</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>日本年金機構が行う滞納処分等</strong>は、<strong>滞納処分等実施規程</strong>を作成し、<strong>厚生労働大臣の認可</strong>を受けて行います（100条の6）。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">80</span>厚生年金保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">72</span>国民年金法</span></td><td>1階部分と並べて見る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険との横断</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 82 ／ 年金</div><h1>標準報酬と保険料</h1><div class="desc">18.3%で固定。3歳未満養育特例は年金額だけ従前</div></div><h3>標準報酬月額（20条）</h3>
+<p><strong>第1級88,000円 〜 第32級650,000円</strong>の<strong>32等級</strong>です。</p>
+<blockquote><p>★健保は<strong>50等級（58,000円〜1,390,000円）</strong>。等級数と上下限が違います。</p></blockquote>
+<p><strong>等級の改定</strong>：毎年3月31日における全被保険者の標準報酬月額を平均した額の<strong>2倍</strong>に相当する額が最高等級の標準報酬月額を超える場合、その年の<strong>9月1日</strong>から<strong>政令</strong>で等級を追加できます。</p>
+<h3>標準賞与額（24条の4）</h3>
+<p>賞与額から<strong>1,000円未満を切り捨て</strong>、<strong>1回につき150万円</strong>が上限です。</p>
+<blockquote><p>★健保は<strong>年度累計573万円</strong>。厚年は<strong>1回150万円</strong>。同じ月に2回以上支給されたときは合算して150万円が上限です。</p></blockquote>
+<h3>決定・改定（21条〜23条の3）</h3>
+<p>健康保険とほぼ同じですが、次の点が異なります。</p>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>定時決定</strong>（21条）</td><td>毎年<strong>7月1日</strong>現在の被保険者について、<strong>4・5・6月</strong>の報酬の平均。<strong>9月から翌年8月</strong>まで</td></tr><tr><td><strong>随時改定</strong>（23条）</td><td>固定的賃金の変動＋<strong>継続した3か月</strong>（各月17日以上）＋<strong>2等級以上</strong>の差。<strong>4か月目</strong>から</td></tr><tr><td><strong>育児休業等終了時改定</strong>（23条の2）</td><td>2等級以上の差は不要。<strong>4か月目</strong>から</td></tr><tr><td><strong>産前産後休業終了時改定</strong>（23条の3）</td><td>同上</td></tr><tr><td><strong>3歳未満の子を養育する期間の特例</strong>（26条）</td><td><strong>従前の標準報酬月額</strong>を年金額の計算に用いる</td></tr></tbody></table>
+<h3>養育期間の従前標準報酬月額のみなし措置（26条）</h3>
+<p><strong>3歳未満の子を養育</strong>する被保険者の標準報酬月額が、<strong>養育開始月の前月の標準報酬月額（従前標準報酬月額）を下回る</strong>場合、<strong>申出</strong>により、年金額の計算では<strong>従前の標準報酬月額</strong>を用います。</p>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>対象</td><td><strong>男女を問わない</strong>（父も対象）</td></tr><tr><td>申出</td><td>事業主を経由して<strong>厚生労働大臣</strong>に</td></tr><tr><td>効果</td><td><strong>年金額の計算のみ</strong>。<strong>保険料は実際の（下がった）標準報酬月額</strong>で計算される</td></tr><tr><td>さかのぼり</td><td>申出日の属する月の<strong>前月まで2年間</strong>さかのぼれる</td></tr></tbody></table>
+<blockquote><p>★<strong>保険料は安くなり、年金額は下がらない</strong>という被保険者に有利な措置です。「保険料も従前の額で計算する」は誤りです。
+★<strong>育児休業を取得していなくても</strong>、時短勤務等で報酬が下がれば対象になります。</p></blockquote>
+<h3>保険料（81条）</h3>
+<pre><code>保険料額 ＝（標準報酬月額 ＋ 標準賞与額）× 保険料率</code></pre>
+<p><strong>保険料率は1000分の183.00</strong>（平成29年9月以降<strong>固定</strong>）。<strong>労使折半</strong>です。</p>
+<blockquote><p>★平成16年改正で毎年0.354%ずつ引き上げられ、<strong>平成29年9月に18.3%で固定</strong>されました。以後は上がりません。</p></blockquote>
+<h3>産前産後休業・育児休業中の免除（81条の2・81条の2の2）</h3>
+<table class="big"><thead><tr><th>休業</th><th>免除される期間</th></tr></thead><tbody><tr><td><strong>産前産後休業</strong></td><td>開始月から終了日の翌日が属する月の<strong>前月</strong>まで</td></tr><tr><td><strong>育児休業等</strong></td><td>同上。<strong>同一月内に14日以上</strong>取得した場合はその月も免除。<strong>賞与</strong>に係る保険料は<strong>1か月を超える</strong>育児休業の場合に免除</td></tr></tbody></table>
+<blockquote><p>★免除期間は<strong>保険料を納めたものとして年金額に反映</strong>されます。
+★申出は<strong>事業主が厚生労働大臣に</strong>行います。</p></blockquote>
+<h3>保険料の納付（83条）と源泉控除（84条）</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>納付義務</td><td><strong>事業主</strong>（被保険者負担分を含む）</td></tr><tr><td>納期限</td><td><strong>翌月末日</strong></td></tr><tr><td>控除</td><td><strong>前月分</strong>を報酬から控除できる（<strong>前月分控除の原則</strong>）。賞与は<strong>その月</strong>の分</td></tr><tr><td>通知</td><td>保険料の額を<strong>事業主に通知</strong>する</td></tr></tbody></table>
+<p><strong>繰上徴収</strong>（85条）：次のときは、納期前であっても<strong>すべての保険料を徴収</strong>できます。</p>
+<ol><li><strong>納付義務者が、国税・地方税その他の公課の滞納により滞納処分</strong>を受けるとき</li><li><strong>強制執行</strong>を受けるとき</li><li><strong>破産手続開始の決定</strong>を受けたとき</li><li>企業担保権の実行手続の開始があったとき</li><li><strong>競売</strong>の開始があったとき</li><li><strong>法人が解散</strong>したとき</li><li>被保険者の<strong>使用される事業所が廃止</strong>されたとき</li></ol>
+<h3>督促・延滞金（86条・87条）</h3>
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>督促状の指定期限</td><td>発する日から<strong>10日以上</strong>経過した日</td></tr><tr><td>滞納処分</td><td><strong>国税滞納処分の例</strong>。厚生労働大臣は<strong>財務大臣に権限を委任</strong>できる</td></tr><tr><td>延滞金</td><td>年<strong>14.6%</strong>（納期限の翌日から<strong>3か月</strong>を経過する日までは年<strong>7.3%</strong>）</td></tr></tbody></table>
+<blockquote><p>★厚年・国年の延滞金は「<strong>3か月</strong>」を境にします。健保は<strong>2か月</strong>、徴収法も<strong>2か月</strong>です。ここは横断で必ず問われます。</p></blockquote>
+<h3>保険料の滞納と給付</h3>
+<p>厚生年金保険では、<strong>事業主が保険料を滞納しても被保険者の給付は減りません</strong>（事業主から徴収する）。国民年金の第1号被保険者が未納だと年金額に反映されないのとは対照的です。</p>
+<h3>拠出金（基礎年金拠出金）</h3>
+<p>厚生年金保険の実施機関は、<strong>基礎年金の給付に要する費用</strong>に充てるため、<strong>基礎年金拠出金</strong>を負担・納付します（国年法94条の2）。</p>
+<p>拠出金の額は、<strong>第2号被保険者および第3号被保険者の数</strong>に応じて按分されます。</p>
+<blockquote><p>★<strong>第3号被保険者の分も厚生年金全体で負担</strong>しています。第3号被保険者が保険料を納めなくてよい根拠です。</p></blockquote>
+<h3>基礎年金拠出金と国庫負担（84条の5・84条の6）</h3>
+<p><strong>実施機関</strong>は、毎年度、<strong>拠出金</strong>（基礎年金拠出金）を納付します。拠出金算定対象額から実施機関が納付する拠出金の合計額等を控除した額は、<strong>政府が負担</strong>します。</p>
+<p><strong>財政の現況及び見通し</strong>（財政検証）が作成されるときは、厚生労働大臣は、実施機関が納付すべき拠出金および政府の負担について、<strong>将来にわたる予想額を算定</strong>します。</p>
+<blockquote><p>★拠出金を納付するのは<strong>実施機関</strong>（厚生労働大臣・各共済組合等）です。事業主や被保険者が直接納めるものではありません。</p></blockquote>
+<h3>財務大臣・国税庁長官への権限の委任（100条の5・100条の6）</h3>
+<p>厚生労働大臣は、<strong>滞納処分等</strong>の権限の全部または一部を<strong>財務大臣に委任</strong>することができます。財務大臣は、その権限を<strong>国税庁長官</strong>に委任し、国税庁長官は<strong>国税局長</strong>に委任することができます。</p>
+<p>財務大臣は、権限を行ったときは、<strong>執行の状況および結果を厚生労働大臣に報告</strong>します。</p>
+<blockquote><p>★<strong>日本年金機構では回収困難な高額・悪質な滞納</strong>を国税当局に引き継ぐ仕組みです。</p></blockquote>
+<h3>機構への事務の委託（100条の7・100条の10）</h3>
+<p>厚生労働大臣は、<strong>日本年金機構</strong>に、被保険者の資格・標準報酬・保険給付・保険料の徴収に関する事務を<strong>行わせる</strong>（委任・委託する）ことができます。</p>
+<p>機構が行う<strong>滞納処分等</strong>は、<strong>あらかじめ厚生労働大臣の認可</strong>を受け、<strong>機構の理事長が任命した徴収職員</strong>に行わせなければなりません。</p>
+<blockquote><p>★機構は<strong>厚生労働大臣の権限を代行</strong>する立場です。処分の名義や不服申立ての相手方は<strong>厚生労働大臣</strong>です。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">80</span>厚生年金保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">72</span>国民年金法</span></td><td>1階部分と並べて見る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険との横断</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 83 ／ 年金</div><h1>老齢厚生年金</h1><div class="desc">7.125と5.481、経過的加算。加給年金は240月と65歳未満の配偶者</div></div><h3>受給要件（42条）</h3>
+<ol><li><strong>老齢基礎年金の受給資格期間</strong>（10年）を満たしていること</li><li>厚生年金保険の被保険者期間が<strong>1か月以上</strong>あること</li><li><strong>65歳</strong>に達したこと</li></ol>
+<blockquote><p>★厚年の被保険者期間は<strong>1か月</strong>でよく、受給資格期間の10年は<strong>国民年金全体</strong>で見ます。</p></blockquote>
+<h3>特別支給の老齢厚生年金（附則8条）</h3>
+<p><strong>60歳から65歳になるまで</strong>支給される経過的なものです。</p>
+<table class="big"><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>①</td><td><strong>1年以上</strong>の被保険者期間があること</td></tr><tr><td>②</td><td>老齢基礎年金の受給資格期間を満たしていること</td></tr><tr><td>③</td><td><strong>60歳以上</strong>であること</td></tr><tr><td>④</td><td>生年月日が支給開始年齢の引上げの対象であること</td></tr></tbody></table>
+<table class="big"><thead><tr><th>生年月日</th><th>男性（一般）</th></tr></thead><tbody><tr><td>昭和28年4月2日〜昭和30年4月1日</td><td>61歳から<strong>報酬比例部分</strong></td></tr><tr><td>昭和30年4月2日〜昭和32年4月1日</td><td>62歳から</td></tr><tr><td>昭和32年4月2日〜昭和34年4月1日</td><td>63歳から</td></tr><tr><td>昭和34年4月2日〜昭和36年4月1日</td><td>64歳から</td></tr><tr><td><strong>昭和36年4月2日以後</strong></td><td><strong>支給なし</strong>（65歳から本来の老齢厚生年金）</td></tr></tbody></table>
+<blockquote><p>★<strong>女性は5年遅れ</strong>（昭和41年4月2日以後生まれで支給なし）。<strong>坑内員・船員</strong>は男女とも昭和33年4月2日以後生まれで支給なしです。
+★「<strong>1年以上</strong>」が必要な点が本来支給（1か月以上）と違います。</p></blockquote>
+<p><strong>長期加入者の特例・障害者の特例</strong>：<strong>44年（528月）以上</strong>の被保険者期間がある者、または<strong>障害等級3級以上</strong>に該当する者は、報酬比例部分の支給開始年齢から<strong>定額部分もあわせて</strong>支給されます（障害者の特例は<strong>請求</strong>が必要）。</p>
+<blockquote><p>★長期加入者の特例は<strong>請求不要</strong>（職権）、障害者の特例は<strong>請求が必要</strong>。この差が問われます。
+★いずれも<strong>被保険者でないこと</strong>が要件です（在職中は適用されません）。</p></blockquote>
+<h3>年金額（43条）</h3>
+<pre><code>老齢厚生年金 ＝ 報酬比例部分 ＋ 経過的加算 ＋ 加給年金額</code></pre>
+<p><strong>報酬比例部分</strong></p>
+<pre><code>平均標準報酬月額 × 7.125/1000 × 平成15年3月までの被保険者期間の月数
+＋ 平均標準報酬額 × 5.481/1000 × 平成15年4月以後の被保険者期間の月数</code></pre>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>平均標準報酬月額</strong></td><td>平成15年3月まで（<strong>賞与を含まない</strong>）。<strong>総報酬制導入前</strong></td></tr><tr><td><strong>平均標準報酬額</strong></td><td>平成15年4月以後（<strong>賞与を含む</strong>）。<strong>総報酬制導入後</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>7.125／5.481</strong>は<strong>新乗率</strong>（平成15年改正）。生年月日に応じた<strong>旧乗率</strong>（9.5／7.308など）で計算した額のほうが高い場合はそちらが適用されます（従前額保障）。</p></blockquote>
+<p><strong>経過的加算</strong>（差額加算）</p>
+<pre><code>定額部分の額 − 老齢基礎年金相当額（厚生年金の被保険者期間のうち20歳以上60歳未満の部分）</code></pre>
+<blockquote><p>★<strong>20歳前・60歳以後の厚生年金被保険者期間</strong>は老齢基礎年金に反映されないため、その差額を厚生年金から補うものです。</p></blockquote>
+<h3>在職定時改定（43条3項）★令和4年4月〜</h3>
+<p><strong>65歳以上</strong>の在職中の被保険者について、<strong>毎年9月1日（基準日）</strong>を基準に、<strong>前月まで</strong>の被保険者期間を算入して<strong>10月分</strong>から年金額を改定します。</p>
+<blockquote><p>★従来は退職するまで年金額が増えませんでした。<strong>65歳未満には適用されません</strong>。</p></blockquote>
+<h3>退職改定（43条2項）</h3>
+<p>被保険者資格を<strong>喪失</strong>し、かつ<strong>被保険者となることなく1か月</strong>を経過したとき、資格喪失日から起算して<strong>1か月</strong>を経過した日の属する月から年金額を改定します。</p>
+<h3>繰上げ・繰下げ</h3>
+<table class="big"><thead><tr><th></th><th>繰上げ</th><th>繰下げ</th></tr></thead><tbody><tr><td>期間</td><td><strong>60歳以上65歳未満</strong></td><td><strong>66歳以後75歳まで</strong></td></tr><tr><td>率</td><td><strong>1月0.4%減</strong>（最大24%減）</td><td><strong>1月0.7%増</strong>（最大84%増）</td></tr><tr><td>老齢基礎年金と</td><td><strong>同時</strong>でなければならない</td><td><strong>別々</strong>にできる</td></tr><tr><td>加給年金額</td><td>繰上げても<strong>65歳から</strong></td><td>繰り下げても<strong>増額されない</strong>（待機中は支給されない）</td></tr></tbody></table>
+<blockquote><p>★特別支給の老齢厚生年金の<strong>受給権者</strong>は、その受給権があるうちは老齢厚生年金の<strong>繰下げはできません</strong>（65歳到達後の話）。
+★<strong>在職老齢年金により支給停止されている部分は繰下げによる増額の対象になりません</strong>。</p></blockquote>
+<h3>加給年金額（44条）</h3>
+<table class="big"><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>被保険者期間</td><td><strong>240月（20年）以上</strong>（中高齢の特例に該当する場合はその期間）</td></tr><tr><td>対象</td><td><strong>65歳未満の配偶者</strong>、<strong>18歳到達年度末までの子</strong>（または20歳未満で1級・2級の障害の子）</td></tr><tr><td>生計維持</td><td>受給権取得当時、生計を維持していること</td></tr></tbody></table>
+<table><thead><tr><th>対象</th><th>加算額</th></tr></thead><tbody><tr><td>配偶者</td><td><strong>224,700円 × 改定率</strong>（＋<strong>特別加算</strong>：受給権者の生年月日に応じ最大<strong>165,800円×改定率</strong>）</td></tr><tr><td>子（1人目・2人目）</td><td>各<strong>224,700円 × 改定率</strong></td></tr><tr><td>子（3人目以降）</td><td>各<strong>74,900円 × 改定率</strong></td></tr></tbody></table>
+<p><strong>加給年金額が支給停止される場合</strong></p>
+<ul><li>配偶者が<strong>老齢厚生年金（240月以上）・退職共済年金・障害年金</strong>を受けられるとき</li><li>配偶者が<strong>65歳</strong>に達したとき（<strong>振替加算</strong>に切り替わる）</li></ul>
+<blockquote><p>★配偶者の<strong>加給年金額の特別加算</strong>は、<strong>受給権者本人の生年月日</strong>が新しいほど<strong>高く</strong>なります（昭和18年4月2日以後生まれが最高額）。
+★「配偶者が20年以上の老齢厚生年金を受けられるとき」は、<strong>支給停止</strong>であり<strong>加算対象から外れる</strong>わけではありません（配偶者が全額支給停止なら加給年金は支給されます）。</p></blockquote>
+<h3>中高齢者の期間短縮特例</h3>
+<p><strong>昭和26年4月1日以前生まれ</strong>の者について、40歳（女性・坑内員・船員は35歳）以後の被保険者期間が<strong>15年〜19年</strong>あれば、受給資格期間を満たしたものとみなします。</p>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">80</span>厚生年金保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">72</span>国民年金法</span></td><td>1階部分と並べて見る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険との横断</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 84 ／ 年金</div><h1>在職老齢年金と支給停止</h1><div class="desc">基本手当は全額停止、高年齢求職者給付金は併給できる</div></div><h3>在職老齢年金（46条）</h3>
+<p><strong>被保険者である間</strong>（および<strong>70歳以上の使用される者</strong>である間）、<strong>総報酬月額相当額</strong>と<strong>基本月額</strong>の合計が<strong>支給停止調整額</strong>を超えると、超えた分の<strong>2分の1</strong>が支給停止されます。</p>
+<pre><code>支給停止額 ＝（総報酬月額相当額 ＋ 基本月額 − 支給停止調整額）× 1/2</code></pre>
+<table class="big"><thead><tr><th>用語</th><th>意味</th></tr></thead><tbody><tr><td><strong>総報酬月額相当額</strong></td><td>その月の<strong>標準報酬月額</strong> ＋ その月以前1年間の<strong>標準賞与額の合計 ÷ 12</strong></td></tr><tr><td><strong>基本月額</strong></td><td>老齢厚生年金（加給年金額を<strong>除く</strong>）の額 ÷ 12</td></tr><tr><td><strong>支給停止調整額</strong></td><td>令和8年度の額は <span class="ref"><span class="n">80</span>厚生年金保険法</span> の一覧を参照（毎年度、名目賃金変動率に応じて改定）</td></tr></tbody></table>
+<blockquote><p>★<strong>基本月額に加給年金額は含みません</strong>。年金が全額停止されると加給年金額も停止されます。
+★<strong>老齢基礎年金は在職老齢年金の対象外</strong>です。全額支給されます。
+★<strong>経過的加算も対象外</strong>（支給停止されません）。</p></blockquote>
+<p><strong>令和4年4月から、60歳台前半（特別支給）の基準も65歳以後と同じ額に統一</strong>されました（従来は28万円と47万円で別々でした）。</p>
+<h3>高年齢雇用継続給付との調整（附則11条の6）</h3>
+<p><strong>60歳以上65歳未満</strong>の在職老齢年金受給者が、雇用保険の<strong>高年齢雇用継続給付</strong>を受けると、<strong>在職老齢年金がさらに支給停止</strong>されます。</p>
+<table class="big"><thead><tr><th>賃金の低下率</th><th>年金の停止率</th></tr></thead><tbody><tr><td><strong>61%以下</strong>（令和7年4月からは<strong>64%以下</strong>）</td><td>標準報酬月額の<strong>最大6%</strong>（令和7年4月からは<strong>最大4%</strong>）</td></tr><tr><td>61%超75%未満</td><td>逓減</td></tr></tbody></table>
+<blockquote><p>★令和7年4月に高年齢雇用継続給付が<strong>15%→10%</strong>に下がったのに合わせ、調整の上限も<strong>6%→4%</strong>に下がりました。
+★<strong>在職老齢年金による停止が先</strong>、その後に高年齢雇用継続給付による停止を行います。</p></blockquote>
+<h3>雇用保険の基本手当との調整（附則11条の5）</h3>
+<p><strong>特別支給の老齢厚生年金</strong>の受給権者が、<strong>雇用保険の求職の申込み</strong>をすると、<strong>老齢厚生年金の全額</strong>が支給停止されます。</p>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>停止期間</td><td>求職の申込みをした月の<strong>翌月</strong>から、<strong>基本手当の受給期間が経過した月</strong>または<strong>所定給付日数を受け終わった月</strong>まで</td></tr><tr><td>事後精算</td><td>停止された月数が、<strong>基本手当の支給を受けた日数を30で除して得た数（1未満切上げ）</strong>を超えるときは、超えた月数分の年金を<strong>さかのぼって支給</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>全額停止</strong>です（一部ではありません）。
+★<strong>65歳以後の老齢厚生年金と高年齢求職者給付金は併給できます</strong>。ここが最頻出の対比です。</p></blockquote>
+<h3>その他の支給停止</h3>
+<table class="big"><thead><tr><th>事由</th><th>効果</th></tr></thead><tbody><tr><td><strong>繰下げ待機中</strong></td><td>支給されない</td></tr><tr><td><strong>障害厚生年金との併給</strong></td><td><strong>1人1年金</strong>の原則により選択（65歳以後は例外あり）</td></tr><tr><td><strong>刑事施設への拘禁</strong></td><td>老齢厚生年金は<strong>停止されない</strong>（20歳前傷病の障害基礎年金とは違う）</td></tr></tbody></table>
+<h3>併給調整の原則（38条）</h3>
+<p><strong>1人1年金</strong>が原則です。2以上の年金給付の受給権を得たときは、<strong>いずれか1つを選択</strong>し、他は<strong>支給停止</strong>されます。</p>
+<p><strong>65歳以後の例外（併給できる組合せ）</strong></p>
+<table class="big"><thead><tr><th>基礎年金</th><th>併給できる厚生年金</th></tr></thead><tbody><tr><td><strong>老齢基礎年金</strong></td><td>老齢厚生年金／<strong>遺族厚生年金</strong>／障害厚生年金（65歳以後）</td></tr><tr><td><strong>障害基礎年金</strong></td><td>障害厚生年金／<strong>老齢厚生年金</strong>／<strong>遺族厚生年金</strong></td></tr><tr><td><strong>遺族基礎年金</strong></td><td>遺族厚生年金</td></tr></tbody></table>
+<blockquote><p>★<strong>障害基礎年金＋老齢厚生年金</strong>、<strong>障害基礎年金＋遺族厚生年金</strong>は<strong>65歳以後</strong>に限り併給できます（平成18年4月〜）。
+★<strong>老齢基礎年金＋障害厚生年金</strong>も65歳以後は併給できます。
+★<strong>遺族基礎年金＋老齢厚生年金</strong>は併給できません。</p></blockquote>
+<h3>65歳以後の遺族厚生年金との調整（60条・附則17条の2）</h3>
+<p><strong>65歳以上</strong>で、<strong>老齢厚生年金</strong>と<strong>遺族厚生年金</strong>の両方の受給権があるときは、</p>
+<ol><li><strong>老齢厚生年金が全額支給</strong>される</li><li>遺族厚生年金は、次の<strong>いずれか多い額</strong>から老齢厚生年金の額を差し引いた額が支給される</li></ol>
+<ul><li>死亡した者の報酬比例部分の<strong>4分の3</strong></li><li>（死亡した者の報酬比例部分の<strong>2分の1</strong>）＋（自分の老齢厚生年金の<strong>2分の1</strong>）</li></ul>
+<blockquote><p>★<strong>自分の老齢厚生年金が優先</strong>され、遺族厚生年金は差額だけになります。「遺族厚生年金を選べば全額もらえる」は誤りです。
+★この結果、<strong>自分の老齢厚生年金が多いほど遺族厚生年金は少なくなり</strong>、老齢厚生年金だけになることもあります。</p></blockquote>
+<h3>支給停止の解除・年金の支払</h3>
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>支給停止</td><td>事由が生じた日の属する月の<strong>翌月</strong>から、消滅した日の属する月<strong>まで</strong></td></tr><tr><td>支払期月</td><td><strong>偶数月</strong>（2・4・6・8・10・12月）に前2か月分</td></tr><tr><td>端数処理</td><td>年金額に<strong>1円未満</strong>の端数が生じたときは<strong>四捨五入</strong>。各支払期の額に<strong>1円未満</strong>の端数が生じたときは<strong>切り捨て</strong>、その合計を<strong>2月</strong>の支払期に加算</td></tr></tbody></table>
+<blockquote><p>★毎回の支払で切り捨てた分を<strong>翌年2月にまとめて支払う</strong>しくみです（平成23年〜）。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">80</span>厚生年金保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">72</span>国民年金法</span></td><td>1階部分と並べて見る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険との横断</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 85 ／ 年金</div><h1>障害厚生年金と遺族厚生年金</h1><div class="desc">300月みなしと4分の3。転給がなく兄弟姉妹も入らない</div></div><h2>障害厚生年金</h2>
+<h3>受給要件（47条）</h3>
+<ol><li><strong>初診日</strong>において厚生年金保険の<strong>被保険者</strong>であること</li><li><strong>障害認定日</strong>（初診日から1年6か月）に<strong>障害等級1級・2級・3級</strong>に該当すること</li><li><strong>保険料納付要件</strong>を満たすこと（国民年金と同じ：<strong>3分の2以上</strong>、または令和8年3月31日までは<strong>直近1年間に未納なし</strong>）</li></ol>
+<blockquote><p>★障害基礎年金は1級・2級だけですが、<strong>厚生年金には3級と障害手当金</strong>があります。
+★<strong>初診日に被保険者であること</strong>が必要です。退職後に初診日があると障害厚生年金は出ません。</p></blockquote>
+<h3>事後重症（47条の2）・基準障害（47条の3）</h3>
+<table class="big"><thead><tr><th>種類</th><th>内容</th></tr></thead><tbody><tr><td><strong>事後重症</strong></td><td>障害認定日に該当しなかったが、<strong>65歳に達する日の前日</strong>までに1級〜3級に該当したとき。<strong>請求した日</strong>に受給権発生</td></tr><tr><td><strong>基準障害</strong>（初めて2級）</td><td>基準傷病以外の障害と<strong>併合して初めて2級以上</strong>になったとき。<strong>65歳に達する日の前日</strong>までに該当することが必要（請求は65歳以後でもよい）</td></tr></tbody></table>
+<blockquote><p>★事後重症は「<strong>請求も65歳前</strong>」、基準障害は「<strong>該当が65歳前なら請求は65歳以後でもよい</strong>」。この差が問われます。</p></blockquote>
+<h3>年金額（50条）</h3>
+<pre><code>障害厚生年金 ＝ 報酬比例の額（老齢厚生年金と同じ計算式）
+　1級：報酬比例の額 × 1.25 ＋ 配偶者加給年金額
+　2級：報酬比例の額 ＋ 配偶者加給年金額
+　3級：報酬比例の額（最低保障額あり）</code></pre>
+<table class="big"><thead><tr><th>ポイント</th><th></th></tr></thead><tbody><tr><td><strong>被保険者期間の月数</strong></td><td><strong>300月未満</strong>のときは<strong>300月とみなす</strong>（最低保障）</td></tr><tr><td><strong>配偶者加給年金額</strong></td><td><strong>1級・2級のみ</strong>。<strong>65歳未満の配偶者</strong>が対象</td></tr><tr><td><strong>3級の最低保障額</strong></td><td>障害基礎年金2級の額の<strong>4分の3</strong>に相当する額</td></tr><tr><td>障害認定日の属する月後の被保険者期間</td><td><strong>年金額の計算に算入しない</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>300月みなしは短期要件のみ</strong>ではなく、<strong>障害厚生年金は常に300月みなし</strong>です（遺族厚生年金は短期要件のときだけ）。
+★<strong>3級には配偶者加給年金額がありません</strong>。
+★障害認定日以後の被保険者期間は計算に入らないので、<strong>その後働いても額は増えません</strong>（65歳到達等による改定を除く）。</p></blockquote>
+<h3>障害手当金（55条・57条）</h3>
+<table class="big"><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>①</td><td>初診日に被保険者であること</td></tr><tr><td>②</td><td><strong>初診日から5年以内</strong>に傷病が<strong>治り</strong>、政令で定める程度の障害（<strong>3級より軽い</strong>）にあること</td></tr><tr><td>③</td><td>保険料納付要件を満たすこと</td></tr></tbody></table>
+<pre><code>障害手当金 ＝ 報酬比例の額 × 2（最低保障は3級の最低保障額 × 2）</code></pre>
+<blockquote><p>★<strong>傷病が治っていること</strong>が必要です。障害厚生年金3級は治っていなくても支給されます。
+★<strong>年金たる給付の受給権者</strong>には支給されません。</p></blockquote>
+<h3>併合・改定・失権</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>併合認定</strong>（48条）</td><td>障害基礎年金と同様</td></tr><tr><td><strong>額の改定</strong>（52条）</td><td>職権による改定と受給権者の改定請求（<strong>1年経過後</strong>。明らかに増進した場合は待たずに請求可）</td></tr><tr><td><strong>3級不該当</strong></td><td><strong>支給停止</strong>（<strong>65歳到達</strong>かつ<strong>3年経過</strong>で失権）</td></tr><tr><td><strong>失権</strong>（53条）</td><td>死亡、併合認定、3級不該当が3年継続かつ65歳到達</td></tr></tbody></table>
+<blockquote><p>★障害厚生年金<strong>3級</strong>の受給権者が65歳になっても、<strong>支給停止中でなければ失権しません</strong>。</p></blockquote>
+<hr>
+<h2>遺族厚生年金</h2>
+<h3>死亡者の要件（58条）</h3>
+<table class="big"><thead><tr><th>要件</th><th>内容</th><th>区分</th></tr></thead><tbody><tr><td>1号</td><td><strong>被保険者</strong>が死亡したとき</td><td><strong>短期</strong></td></tr><tr><td>2号</td><td>被保険者であった者が、<strong>被保険者期間中に初診日</strong>がある傷病により、<strong>初診日から5年以内</strong>に死亡したとき</td><td><strong>短期</strong></td></tr><tr><td>3号</td><td><strong>障害等級1級・2級</strong>の障害厚生年金の受給権者が死亡したとき</td><td><strong>短期</strong></td></tr><tr><td>4号</td><td><strong>老齢厚生年金の受給権者</strong>（受給資格期間<strong>25年以上</strong>）または受給資格期間を満たした者が死亡したとき</td><td><strong>長期</strong></td></tr></tbody></table>
+<p><strong>保険料納付要件</strong>は1号・2号について必要です（3分の2以上、または令和8年3月31日までは直近1年間に未納なし）。</p>
+<blockquote><p>★<strong>4号（長期要件）は25年</strong>が必要です。老齢基礎年金の10年短縮は遺族には及びません。</p></blockquote>
+<h3>短期要件と長期要件の違い</h3>
+<table class="big"><thead><tr><th></th><th>短期要件（1〜3号）</th><th>長期要件（4号）</th></tr></thead><tbody><tr><td>被保険者期間</td><td><strong>300月みなし</strong>あり</td><td><strong>実期間</strong>で計算</td></tr><tr><td>生年月日による<strong>給付乗率の読替え</strong></td><td><strong>しない</strong>（新乗率のまま）</td><td><strong>する</strong>（生年月日に応じた乗率）</td></tr><tr><td>中高齢寡婦加算の<strong>要件</strong></td><td>被保険者期間を問わない</td><td><strong>240月以上</strong>が必要</td></tr></tbody></table>
+<blockquote><p>★短期・長期の<strong>両方に該当</strong>するときは、<strong>遺族が有利なほうを選択</strong>できます（請求時に申し出がなければ短期要件）。</p></blockquote>
+<h3>遺族の範囲と順位（59条）</h3>
+<p><strong>死亡当時、その者によって生計を維持していた</strong>次の者。</p>
+<table class="big"><thead><tr><th>順位</th><th>遺族</th><th>要件</th></tr></thead><tbody><tr><td>①</td><td><strong>配偶者・子</strong></td><td><strong>妻</strong>は要件なし。<strong>夫</strong>は<strong>55歳以上</strong>（支給は60歳から。ただし<strong>遺族基礎年金を受けられる夫</strong>は60歳前でも支給）。<strong>子</strong>は18歳年度末まで（または20歳未満で1・2級）で未婚</td></tr><tr><td>②</td><td><strong>父母</strong></td><td><strong>55歳以上</strong>（支給は60歳から）</td></tr><tr><td>③</td><td><strong>孫</strong></td><td>子と同じ</td></tr><tr><td>④</td><td><strong>祖父母</strong></td><td><strong>55歳以上</strong>（支給は60歳から）</td></tr></tbody></table>
+<blockquote><p>★<strong>転給はありません</strong>（労災の遺族補償年金にはあります）。先順位者が失権しても次順位者に移りません。
+★<strong>兄弟姉妹は遺族厚生年金の対象外</strong>です（労災・遺族補償年金には含まれます）。
+★<strong>30歳未満で子のない妻</strong>は、受給権取得から<strong>5年</strong>で失権します（63条）。</p></blockquote>
+<h3>年金額（60条）</h3>
+<pre><code>遺族厚生年金 ＝ 死亡した者の報酬比例部分 × 4分の3</code></pre>
+<h3>中高齢寡婦加算（62条）</h3>
+<table><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>妻の年齢</td><td>夫の死亡当時<strong>40歳以上65歳未満</strong>であること（または40歳に達した当時、遺族基礎年金の対象となる子がいたこと）</td></tr><tr><td>期間</td><td><strong>40歳から65歳</strong>になるまで</td></tr><tr><td>額</td><td><strong>老齢基礎年金の満額 × 4分の3</strong></td></tr><tr><td>長期要件の場合</td><td>死亡した夫の被保険者期間が<strong>240月以上</strong>であること</td></tr></tbody></table>
+<blockquote><p>★<strong>妻だけ</strong>の制度です。夫には中高齢寡婦加算がありません。</p></blockquote>
+<h3>経過的寡婦加算（昭和60年改正法附則73条）</h3>
+<p><strong>昭和31年4月1日以前生まれ</strong>の妻について、<strong>65歳</strong>で中高齢寡婦加算が終わった後に、<strong>生年月日に応じた額</strong>が加算されます。</p>
+<blockquote><p>★昭和31年4月2日以後生まれの妻には<strong>経過的寡婦加算がありません</strong>（老齢基礎年金が満額に近づくため）。</p></blockquote>
+<h3>失権（63条）</h3>
+<p>死亡、<strong>婚姻</strong>（事実婚を含む）、<strong>直系血族・直系姻族以外の者の養子</strong>となったこと、<strong>離縁</strong>、<strong>30歳未満で子のない妻</strong>が受給権取得から5年を経過したこと、子・孫が18歳年度末に達したこと等。</p>
+<blockquote><p>★<strong>父母・孫・祖父母</strong>は、<strong>受給権者となった後に配偶者・子が受給権を取得</strong>しても失権しません（そもそも先順位者がいれば受給権を取得しません）。</p></blockquote>
+<h3>令和10年4月からの改正（未施行）</h3>
+<p><strong>20〜30歳代で子のない配偶者</strong>への遺族厚生年金が、<strong>男女差を解消</strong>したうえで<strong>5年間の有期給付</strong>に変わります。</p>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">80</span>厚生年金保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">72</span>国民年金法</span></td><td>1階部分と並べて見る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険との横断</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 86 ／ 年金</div><h1>離婚時分割と脱退一時金</h1><div class="desc">合意分割は上限2分の1、3号分割は同意不要で2分の1固定</div></div><h3>合意分割（78条の2〜78条の12）</h3>
+<p><strong>離婚等</strong>をした場合に、婚姻期間中の<strong>標準報酬</strong>を当事者間で分割する制度です（平成19年4月〜）。</p>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>対象期間</td><td><strong>婚姻期間中</strong>の厚生年金の被保険者期間</td></tr><tr><td>請求</td><td><strong>当事者双方</strong>（またはその一方）が請求</td></tr><tr><td>按分割合</td><td><strong>当事者の合意</strong>または<strong>裁判所の決定</strong>による。<strong>2分の1が上限</strong>、<strong>第2号改定者の持分割合を下回らない</strong>こと</td></tr><tr><td>請求期限</td><td><strong>離婚等をした日の翌日から2年以内</strong></td></tr><tr><td>効果</td><td>標準報酬月額・標準賞与額そのものを改定（<strong>年金額ではなく記録を分ける</strong>）</td></tr></tbody></table>
+<table class="big"><thead><tr><th>用語</th><th></th></tr></thead><tbody><tr><td><strong>第1号改定者</strong></td><td>標準報酬が<strong>減る</strong>側（多いほう）</td></tr><tr><td><strong>第2号改定者</strong></td><td>標準報酬が<strong>増える</strong>側（少ないほう）</td></tr></tbody></table>
+<blockquote><p>★<strong>上限は2分の1</strong>です。「2分の1が自動的に分割される」わけではありません。合意または裁判所の決定が必要です。
+★分割後の記録は<strong>第2号改定者自身の被保険者期間</strong>になりますが、<strong>老齢厚生年金の受給資格期間（加入期間）には算入されません</strong>。ここが最頻出です。
+★<strong>離婚時みなし被保険者期間</strong>は、<strong>加給年金額の240月</strong>の判定にも<strong>算入されません</strong>。</p></blockquote>
+<p><strong>情報提供の請求</strong>：当事者の一方は、<strong>離婚前でも</strong>、按分割合を定めるために必要な<strong>情報の提供</strong>を実施機関に請求できます。</p>
+<h3>3号分割（78条の13〜78条の21）</h3>
+<p><strong>特定期間</strong>（平成20年4月1日以後の<strong>国民年金第3号被保険者</strong>であった期間）について、<strong>相手方の同意なく</strong>、<strong>2分の1</strong>を自動的に分割する制度です。</p>
+<table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>対象期間</td><td><strong>平成20年4月1日以後</strong>の第3号被保険者期間（<strong>特定期間</strong>）</td></tr><tr><td>請求</td><td><strong>第3号被保険者であった者（特定被保険者の配偶者）が単独</strong>で請求できる</td></tr><tr><td>按分割合</td><td><strong>2分の1</strong>（固定。合意不要）</td></tr><tr><td>請求期限</td><td><strong>離婚等をした日の翌日から2年以内</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>平成20年3月以前の第3号期間は3号分割の対象外</strong>です（合意分割で対応）。
+★<strong>相手方の合意は不要</strong>です。ここが合意分割との最大の違いです。
+★合意分割の請求をしたとき、<strong>特定期間があれば3号分割の請求も同時にあったものとみなされます</strong>。
+★<strong>特定被保険者が障害厚生年金の受給権者</strong>であり、その障害厚生年金の額の計算の基礎となった期間については、<strong>3号分割は行われません</strong>。</p></blockquote>
+<h3>合意分割と3号分割の対比</h3>
+<table class="big"><thead><tr><th></th><th>合意分割</th><th>3号分割</th></tr></thead><tbody><tr><td>対象期間</td><td>婚姻期間<strong>全体</strong></td><td>平成20年4月以後の<strong>第3号期間</strong></td></tr><tr><td>相手方の同意</td><td><strong>必要</strong>（または裁判所の決定）</td><td><strong>不要</strong></td></tr><tr><td>割合</td><td><strong>2分の1が上限</strong></td><td><strong>2分の1固定</strong></td></tr><tr><td>請求できる者</td><td>当事者双方または一方</td><td><strong>第3号被保険者であった者</strong>のみ</td></tr><tr><td>期限</td><td>離婚等の翌日から<strong>2年</strong></td><td>同左</td></tr></tbody></table>
+<h3>脱退一時金（附則29条）</h3>
+<table class="big"><thead><tr><th>要件</th><th></th></tr></thead><tbody><tr><td>対象</td><td><strong>日本国籍を有しない</strong>者で、<strong>被保険者期間が6か月以上</strong>あり、<strong>老齢厚生年金の受給資格期間を満たしていない</strong>者</td></tr><tr><td>状況</td><td><strong>被保険者資格を喪失</strong>し、日本国内に住所を有しなくなった日から<strong>2年以内</strong>に請求</td></tr><tr><td>除外</td><td><strong>障害厚生年金等の受給権を有したことがある</strong>者、日本国内に住所を有する者</td></tr></tbody></table>
+<pre><code>脱退一時金 ＝ 平均標準報酬額 × 支給率
+支給率 ＝ 保険料率 × 2分の1 × 被保険者期間に応じた数</code></pre>
+<table class="big"><thead><tr><th>被保険者期間</th><th>上限</th></tr></thead><tbody><tr><td>上限</td><td><strong>60月（5年）</strong>（令和3年4月〜。それ以前は36月）</td></tr></tbody></table>
+<blockquote><p>★脱退一時金の支給を受けた期間は、<strong>厚生年金保険の被保険者でなかったものとみなされます</strong>。
+★<strong>社会保障協定</strong>を締結している国の国民は、協定により期間通算ができるため、脱退一時金を受けるかどうかは慎重な判断が必要です（受けると期間が消えます）。</p></blockquote>
+<h3>未支給の保険給付（37条）</h3>
+<p>受給権者が死亡した場合、その者に支給すべき保険給付でまだ支給されていないものがあるときは、<strong>その者の死亡当時生計を同じくしていた</strong>次の者が、<strong>自己の名</strong>で請求できます。</p>
+<table class="big"><thead><tr><th>順位</th><th>配偶者 → 子 → 父母 → 孫 → 祖父母 → 兄弟姉妹 → <strong>これらの者以外の三親等内の親族</strong></th></tr></thead><tbody></tbody></table>
+<blockquote><p>★<strong>三親等内の親族</strong>まで含まれます（国民年金法19条も同じ）。労災は兄弟姉妹までです。</p></blockquote>
+<h3>時効・不服申立て</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>時効</strong>（92条）</td><td>保険給付を受ける権利は<strong>5年</strong>、保険料その他の徴収金を徴収する権利は<strong>2年</strong></td></tr><tr><td><strong>不服申立て</strong>（90条）</td><td>被保険者資格・標準報酬・保険給付に関する処分 → <strong>社会保険審査官</strong>に審査請求 → <strong>社会保険審査会</strong>に再審査請求</td></tr><tr><td>保険料等の処分</td><td><strong>社会保険審査会</strong>に<strong>直接</strong>審査請求（1審制）</td></tr><tr><td>審査請求の期間</td><td>処分があったことを知った日の翌日から<strong>3か月以内</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>給付関係は2審制、保険料関係は1審制</strong>。ここが最頻出です。
+★<strong>時効の起算</strong>：年金給付を受ける権利は<strong>支分権</strong>（各支払期月ごと）が5年、<strong>基本権</strong>（裁定を受ける権利）は時効消滅しないものとして扱われます（年金時効特例法）。</p></blockquote>
+<h3>厚生年金基金と解散基金加入員</h3>
+<p><strong>厚生年金基金</strong>は平成26年4月以後は<strong>新設できず</strong>、既存の基金も解散・代行返上が進んでいます。</p>
+<table><thead><tr><th>用語</th><th>意味</th></tr></thead><tbody><tr><td><strong>設立事業所</strong></td><td>基金を設立した厚生年金適用事業所</td></tr><tr><td><strong>代議員会</strong></td><td>基金の議決機関。<strong>設立事業所の事業主が選定した代議員</strong>と<strong>加入員が互選した代議員</strong>が<strong>同数</strong></td></tr><tr><td><strong>解散基金加入員</strong></td><td>基金が解散した際の加入員。<strong>企業年金連合会</strong>が年金給付を引き継ぐ</td></tr><tr><td><strong>脱退一時金相当額</strong></td><td>中途脱退者について、基金から<strong>企業年金連合会</strong>に移換される額</td></tr></tbody></table>
+<blockquote><p>★代議員は<strong>労使同数</strong>です。「事業主側が過半数」は誤りです。
+★存続厚生年金基金は、<strong>代行部分</strong>（老齢厚生年金の報酬比例部分の一部）を国に代わって支給していました。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">80</span>厚生年金保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">72</span>国民年金法</span></td><td>1階部分と並べて見る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険との横断</td></tr></tbody></table></div><div class="doc"><div class="head"><div class="no">資料 87 ／ 年金</div><h1>給付の通則と受給権の保護</h1><div class="desc">裁定・支払期月・未支給・端数。老齢厚生年金だけ課税</div></div><p>保険給付に共通するルールです。老齢・障害・遺族のどれにも効くので、まとめて押さえます。</p>
+<h3>裁定（33条）</h3>
+<blockquote><p>保険給付を受ける権利は、<strong>その権利を有する者の請求に基づいて、実施機関が裁定</strong>する。</p></blockquote>
+<blockquote><p>★<strong>請求がなければ裁定されません</strong>（労災の傷病補償年金のような職権支給はありません）。
+★2以上の種別の被保険者期間を有する者は、<strong>どの実施機関の窓口でも請求できます</strong>（ワンストップサービス）。裁定は各実施機関が行い、額を<strong>合算</strong>して支給します。</p></blockquote>
+<h3>支給期間と支払期月（36条）</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>支給開始</td><td>受給権が発生した日の属する月の<strong>翌月</strong>から</td></tr><tr><td>支給終了</td><td>権利が消滅した日の属する月<strong>まで</strong></td></tr><tr><td>支給停止</td><td>停止事由が生じた月の<strong>翌月</strong>から、消滅した月<strong>まで</strong></td></tr><tr><td>支払期月</td><td><strong>毎年2月・4月・6月・8月・10月・12月</strong>の6期に、それぞれの<strong>前月分まで</strong>を支払う</td></tr></tbody></table>
+<p><strong>前支払期月に支払うべきであった年金や、権利が消滅した場合の未払分</strong>は、<strong>支払期月でない月</strong>でも支払うことができます。</p>
+<blockquote><p>★「翌月から、その月まで」。<strong>発生月は払わず、消滅月は払う</strong>という非対称です。</p></blockquote>
+<h3>端数処理（35条）</h3>
+<table class="big"><thead><tr><th>対象</th><th>処理</th></tr></thead><tbody><tr><td>年金額</td><td><strong>1円未満</strong>を四捨五入</td></tr><tr><td>各支払期月の支払額</td><td><strong>1円未満</strong>を切り捨て</td></tr><tr><td>切り捨てた額の合計</td><td><strong>翌年2月</strong>の支払期月に加算して支払う</td></tr></tbody></table>
+<h3>未支給の保険給付（37条）</h3>
+<p>受給権者が死亡し、まだ支給されていない保険給付があるときは、<strong>死亡当時その者と生計を同じくしていた</strong>次の者が、<strong>自己の名</strong>で請求できます。</p>
+<pre><code>配偶者 → 子 → 父母 → 孫 → 祖父母 → 兄弟姉妹 → これらの者以外の三親等内の親族</code></pre>
+<blockquote><p>★<strong>三親等内の親族</strong>まで含まれます（国民年金法19条も同じ）。労災は兄弟姉妹まで、範囲が違います。
+★<strong>生計維持ではなく生計同一</strong>が基準です。
+★同順位者が2人以上いるときは、<strong>そのうちの1人がした請求は全員のためにその全額につきしたもの</strong>とみなされ、<strong>1人に対してした支給は全員に対してしたもの</strong>とみなされます。</p></blockquote>
+<h3>受給権の保護と公課（41条）</h3>
+<table class="big"><thead><tr><th>項</th><th>内容</th></tr></thead><tbody><tr><td>1項</td><td>保険給付を受ける権利は、<strong>譲り渡し、担保に供し、または差し押さえることができない</strong>。ただし、<strong>年金たる保険給付を受ける権利を国税滞納処分により差し押さえる場合</strong>は、この限りでない</td></tr><tr><td>2項</td><td><strong>租税その他の公課</strong>は、保険給付として支給を受けた金銭を標準として課することができない。ただし<strong>老齢厚生年金</strong>については、この限りでない</td></tr></tbody></table>
+<blockquote><p>★<strong>老齢厚生年金は課税</strong>、<strong>障害厚生年金・遺族厚生年金は非課税</strong>。国年（老齢基礎年金・付加年金が課税）と同じ考え方です。</p></blockquote>
+<h3>不正利得の徴収（40条）</h3>
+<p><strong>偽りその他不正の手段</strong>により保険給付を受けた者があるときは、実施機関は<strong>受給額に相当する金額の全部または一部を徴収</strong>することができます。</p>
+<p><strong>事業主が虚偽の届出・報告・証明</strong>をしたためであるときは、実施機関は<strong>事業主に対し、受給者と連帯して徴収金を納付すべきことを命ずる</strong>ことができます。</p>
+<h3>第三者行為による損害賠償との調整（40条2項・3項）</h3>
+<table><thead><tr><th>順序</th><th>効果</th></tr></thead><tbody><tr><td><strong>実施機関が先に給付</strong>したとき</td><td>給付の<strong>価額の限度</strong>で、受給権者が第三者に対して有する<strong>損害賠償請求権を取得</strong>する</td></tr><tr><td><strong>受給権者が先に損害賠償</strong>を受けたとき</td><td>その<strong>価額の限度</strong>で保険給付を<strong>行わないことができる</strong></td></tr></tbody></table>
+<blockquote><p>★労災の求償・控除と同じ形ですが、労災には「<strong>災害発生後3年以内</strong>」という期間の限定があるのに対し、厚年・国年にはこの限定がありません。</p></blockquote>
+<h3>支給の停止・差止め（78条ほか）</h3>
+<table><thead><tr><th>事由</th><th>効果</th></tr></thead><tbody><tr><td><strong>正当な理由なく届出をせず、または書類等を提出しない</strong>とき</td><td>保険給付の<strong>支払を一時差し止める</strong>ことができる</td></tr><tr><td><strong>正当な理由なく診断を受けない</strong>とき（障害の程度の診査）</td><td>保険給付の<strong>額の全部または一部につき、その支給を停止する</strong>ことができる</td></tr><tr><td><strong>受給権者の所在が1年以上明らかでない</strong>とき</td><td>同順位者・次順位者の申請により<strong>支給を停止</strong>（遺族厚生年金）</td></tr></tbody></table>
+<h3>併給の調整（38条）と1人1年金</h3>
+<p><strong>同一の支給事由</strong>でない2以上の年金給付の受給権を得たときは、<strong>いずれか1つを選択</strong>し、他は支給停止されます。<strong>選択替え</strong>はいつでもできます。</p>
+<p><strong>65歳以後の例外</strong>は <span class="ref"><span class="n">84</span>在職老齢年金と支給停止</span> にまとめています。</p>
+<h3>脱退手当金（旧法の経過措置）</h3>
+<p>昭和61年3月以前に<strong>脱退手当金</strong>を受けた期間は、原則として<strong>年金額に反映されません</strong>が、一定の要件のもとで<strong>合算対象期間</strong>（カラ期間）として受給資格期間に算入されます。</p>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">80</span>厚生年金保険法</span></td><td>条文と数値の一覧に戻る</td></tr><tr><td><span class="ref"><span class="n">72</span>国民年金法</span></td><td>1階部分と並べて見る</td></tr><tr><td><span class="ref"><span class="n">88</span>横断整理<span class="sec">（全体版）</span></span></td><td>他の社会保険との横断</td></tr></tbody></table></div></div>
