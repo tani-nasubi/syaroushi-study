@@ -3,24 +3,25 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>社労士2026 学習資料｜一般常識</title>
 <style>
-@page { size: A4 portrait; margin: 16mm 14mm 18mm; }
+/* 2ページを1枚に並べて刷る想定。余白は詰める。 */
+@page { size: A4 portrait; margin: 10mm 9mm 11mm; }
 *{box-sizing:border-box}
 html{-webkit-print-color-adjust:exact; print-color-adjust:exact}
 body{margin:0; color:#111; background:#fff;
   font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
   font-size:9.6pt; line-height:1.72; text-align:justify;
   font-feature-settings:"palt" 1;}
-.wrap{max-width:182mm; margin:0 auto; padding:10mm 6mm}
+.wrap{max-width:none; margin:0; padding:0}
 /* ── 巻頭 ── */
-.cover{text-align:center; padding:40mm 0 0}
+.cover{text-align:center; padding:24mm 0 0; break-after:page; page-break-after:always}
 .cover h1{font-size:22pt; letter-spacing:.06em; margin:0 0 6mm}
 .cover .sub{font-size:10pt; color:#555; line-height:2}
-.howto{margin:16mm auto 0; max-width:130mm; text-align:left;
+.howto{margin:12mm auto 0; max-width:132mm; text-align:left;
   border:1pt solid #bbb; padding:6mm 7mm; font-size:9pt; line-height:1.8}
 .howto b{font-size:9.6pt}
 /* ── 目次 ── */
 .toc h2{font-size:13pt; margin:0 0 4mm; padding-bottom:2mm; border-bottom:1.4pt solid #111}
-.toc .grp{margin:5mm 0 2mm; font-weight:700; font-size:10.5pt;
+.toc .grp{margin:3.5mm 0 1.5mm; font-weight:700; font-size:10.5pt;
   border-left:3pt solid #111; padding-left:3mm}
 .toc ol{list-style:none; margin:0; padding:0; columns:2; column-gap:10mm}
 .toc li{break-inside:avoid; font-size:9pt; line-height:1.85;
@@ -28,17 +29,20 @@ body{margin:0; color:#111; background:#fff;
 .toc .no{display:inline-block; min-width:9mm; font-weight:700; font-variant-numeric:tabular-nums}
 .toc .dots{flex:1; border-bottom:.4pt dotted #999; transform:translateY(-2px)}
 /* ── 各資料 ── */
-.doc{break-before:page; page-break-before:always}
-.doc:first-of-type{break-before:auto; page-break-before:auto}
-.doc > .head{border-bottom:1.6pt solid #111; padding-bottom:2.5mm; margin:0 0 5mm}
+/* 資料ごとに改ページすると、2ページ組みでは半端な余白が積み上がる。
+   改ページはやめて、太い区切り線で切れ目を示す。 */
+.doc + .doc{margin-top:9mm; padding-top:6mm; border-top:2.2pt solid #111}
+.doc.toc{break-after:page; page-break-after:always}
+.doc > .head{border-bottom:1.2pt solid #111; padding-bottom:2mm; margin:0 0 3.5mm;
+  break-after:avoid; page-break-after:avoid; break-inside:avoid; page-break-inside:avoid}
 .doc > .head .no{font-size:8.5pt; letter-spacing:.14em; color:#666}
 .doc > .head h1{font-size:16pt; margin:1mm 0 0; letter-spacing:-.01em}
 .doc > .head .desc{font-size:8.5pt; color:#555; margin:1.5mm 0 0}
-h2{font-size:12pt; margin:7mm 0 2.5mm; padding:1mm 0 1mm 3mm;
+h2{font-size:12pt; margin:5mm 0 2mm; padding:1mm 0 1mm 3mm;
   border-left:3.5pt solid #111; break-after:avoid; page-break-after:avoid}
-h3{font-size:10.6pt; margin:5mm 0 2mm; padding-bottom:.8mm;
+h3{font-size:10.6pt; margin:3.6mm 0 1.5mm; padding-bottom:.8mm;
   border-bottom:.6pt solid #ccc; break-after:avoid; page-break-after:avoid}
-h4{font-size:9.8pt; margin:4mm 0 1.5mm; break-after:avoid; page-break-after:avoid}
+h4{font-size:9.8pt; margin:3mm 0 1.2mm; break-after:avoid; page-break-after:avoid}
 p{margin:0 0 2.4mm}
 ul,ol{margin:0 0 2.8mm; padding-left:6mm}
 li{margin:0 0 .8mm}
@@ -53,7 +57,7 @@ pre code{background:none; padding:0; font-size:8.6pt; line-height:1.6; white-spa
 blockquote{margin:0 0 3mm; padding:2mm 3mm; background:#f7f7f7;
   border-left:2.5pt solid #888; break-inside:avoid; page-break-inside:avoid}
 blockquote p:last-child{margin-bottom:0}
-hr{border:0; border-top:.6pt solid #ddd; margin:5mm 0}
+hr{border:0; border-top:.6pt solid #ddd; margin:3.5mm 0}
 table{border-collapse:collapse; width:100%; margin:0 0 3.5mm; font-size:8.6pt;
   break-inside:avoid; page-break-inside:avoid}
 th,td{border:.5pt solid #999; padding:1.4mm 2mm; text-align:left; vertical-align:top;
@@ -78,7 +82,8 @@ table.big tr{break-inside:avoid; page-break-inside:avoid}
 </style>
 <div class="bar">
   <button onclick="print()">印刷する</button>
-  <span>A4縦・11資料。ブラウザの印刷から「背景のグラフィック」を入にすると表の罫線がきれいに出ます。</span>
+  <span>A4縦・11資料。1枚に2ページ並べて刷る想定です。
+  ブラウザの印刷から「背景のグラフィック」を入にすると表の罫線が出ます。</span>
 </div>
 <div class="wrap"><div class="cover"><h1>社労士2026 学習資料｜一般常識</h1><div class="sub">全体版の資料 53〜63　（本文中の参照番号は全体版と共通です）</div>
 <div class="howto">
