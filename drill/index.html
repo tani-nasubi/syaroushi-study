@@ -133,6 +133,7 @@
   .pb .lb{font-size:12px;color:var(--sub);margin-bottom:3px}
   .verdict{font-weight:700;margin:14px 0 6px}
   .verdict.ok{color:var(--accent)} .verdict.no{color:var(--ng)}
+  .dim{opacity:.55}
   .exp{background:var(--panel2);border-left:3px solid var(--line);padding:11px 13px;
     border-radius:0 6px 6px 0;font-size:14px;white-space:pre-wrap;text-align:justify}
   .exp .law{display:block;margin-top:8px;font-size:12px;color:var(--sub)}
@@ -1810,10 +1811,19 @@ function renderHome(){
 let chkSeq=0;
 /** 行内の書式。エスケープしてから **強調** と `コード` を戻す。
     解説の本文でも同じ記法を使っているので、両方からこれを呼ぶ。 */
+/* 資料の本文には、出典を薄く見せる <span style="opacity:.55"> と、
+   表の中で折り返す <br> だけが書かれている。エスケープすると生タグが
+   そのまま見えてしまうので、この2つだけ元に戻す。 */
+function unesc(h){
+  return h
+    .replace(/&lt;br\s*\/?&gt;/g, "<br>")
+    .replace(/&lt;span style="opacity:\.(\d+)"&gt;/g, "<span class=\"dim\">")
+    .replace(/&lt;\/span&gt;/g, "</span>");
+}
 function mdInline(s){
-  return esc(s)
+  return unesc(esc(s)
     .replace(/`([^`]+)`/g,"<code>$1</code>")
-    .replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>");
+    .replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>"));
 }
 function md2html(src){
   const lines=src.split("\n"); let out=[],i=0,inCode=false,code=[];

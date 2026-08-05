@@ -84,6 +84,16 @@ def v4():
             if m.group(0) not in OKWORD:
                 bad(4, f"日本語に紛れた英単語 {f}: {t[max(0,m.start()-20):m.end()+10]!r}")
 
+# 本文で使ってよい生のHTML。これ以外はエスケープされて紙にタグが出る。
+OKTAG = re.compile(r'^(?:br\s*/?|/?span(?: style="opacity:\.\d+")?)$')
+def v4b():
+    for f, s in DOCS.items():
+        for m in re.finditer(r"<([^>\n]{1,60})>", s):
+            t = m.group(1)
+            if t.startswith("!--") or OKTAG.match(t):
+                continue
+            bad(4, f"扱えない生のHTML {f}: {m.group(0)[:44]}")
+
 # ── 5. 引用した条番号が実在するか ────────────────────────────
 _arts = {}
 def arts_of(law):
@@ -203,7 +213,7 @@ TITLES = ["リンク切れ・孤立", "見出しと体裁", "表の列数", "外
           "条番号の実在", "数値の表記", "科目間の食い違い", "分量", "強調の壊れ", "登録漏れ"]
 
 def main():
-    for i, fn in enumerate([v1, v2, v3, v4, v5, v6, v7, v8, v9, v10], 1):
+    for fn in (v1, v2, v3, v4, v4b, v5, v6, v7, v8, v9, v10):
         fn()
     ng = 0
     for i, t in enumerate(TITLES, 1):

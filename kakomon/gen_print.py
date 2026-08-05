@@ -54,6 +54,13 @@ def order():
 def esc(s):
     return html.escape(str(s), quote=False)
 
+# 資料の本文に書かれている生のHTMLは、出典を薄く見せる span と表の中の br だけ。
+# エスケープしたままだとタグが紙に出てしまうので、この2つに限って元に戻す。
+def unesc(h):
+    h = re.sub(r"&lt;br\s*/?&gt;", "<br>", h)
+    h = re.sub(r'&lt;span style="opacity:\.\d+"&gt;', '<span class="dim">', h)
+    return h.replace("&lt;/span&gt;", "</span>")
+
 def inline(s, link):
     s = esc(s)
     # 資料名がリンクではなくコード表記で書かれていることがある
@@ -62,7 +69,7 @@ def inline(s, link):
     s = re.sub(r"`([^`]+)`", r"<code>\1</code>", s)
     s = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", s)
     s = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", lambda m: link(m.group(1), m.group(2)), s)
-    return s
+    return unesc(s)
 
 def md2html(src, link):
     lines = src.split("\n")
@@ -191,6 +198,7 @@ li{margin:0 0 .8mm}
 ul.chk{list-style:none; padding-left:0}
 ul.chk li::before{content:"☐"; margin-right:2mm; font-size:11pt; line-height:1}
 strong{font-weight:700}
+.dim{color:#666}
 code{font-family:"SFMono-Regular",Consolas,"Noto Sans Mono",monospace;
   font-size:8.6pt; background:#f2f2f2; padding:.2mm 1mm; border-radius:1mm}
 pre{background:#f6f6f6; border:.5pt solid #ddd; padding:3mm 4mm; margin:0 0 3mm;
