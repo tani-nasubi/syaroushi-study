@@ -171,6 +171,13 @@
   .exp{background:var(--panel2);border-left:3px solid var(--line);padding:11px 13px;
     border-radius:0 6px 6px 0;font-size:14px;white-space:pre-wrap;text-align:justify}
   .exp .law{display:block;margin-top:8px;font-size:12px;color:var(--sub)}
+  .jobun{white-space:normal}
+  .jobun .hd{font-size:12px;font-weight:700;color:var(--sub);margin:0 0 8px}
+  .jobun .j{margin:0 0 10px;padding-left:10px;border-left:2px solid var(--line)}
+  .jobun .j b{font-size:13px}
+  .jobun .j .cap{font-size:12px;color:var(--sub);margin-left:8px}
+  .jobun .j p{margin:3px 0 0;font-size:13px;line-height:1.75;white-space:pre-wrap}
+  .jobun .tip{font-size:12px;color:var(--sub);border-top:1px solid var(--line);padding-top:8px}
   .bar{height:5px;background:var(--line);border-radius:999px;overflow:hidden;margin:0 0 12px}
   .bar>div{height:100%;background:var(--accent);transition:width .25s}
   .timer{margin-left:auto;font-variant-numeric:tabular-nums;font-weight:700}
@@ -889,6 +896,8 @@ window.DRILL = { banks: [], register(subject, qs){
 <script src="data/anaume2.js"></script>
 <script src="data/notes.js"></script>
 <script src="data/ref.js"></script>
+<script src="data/jobun.js"></script>
+<script src="data/qref.js"></script>
 <script src="data/stats.js"></script>
 
 <script>
@@ -1313,6 +1322,71 @@ function paint(bl,reveal){
     $("qtext").innerHTML += `<span class="ansline">正解 → ${esc(t)}</span>`;
   }
 }
+/* 本試験の過去問には解説が付いていない（3,381問）。作り話を足すより、
+   その肢が引いている条文の原文を並べたほうが確かめられる。誤り肢は
+   条文の一語を書き換えて作られるので、原文と見比べれば違いが分かる。 */
+// 科目 → その科目の主な法律。「法第◯条」「同条」のように名前が省かれた
+// 引用は、この法律のことだとみなす。
+const MAIN_LAW = {"労基":"労働基準法","安衛":"労働安全衛生法","労基安衛":"労働基準法",
+  "労災":"労働者災害補償保険法","雇用":"雇用保険法","徴収":"労働保険徴収法",
+  "健保":"健康保険法","国年":"国民年金法","厚年":"厚生年金保険法"};
+function mainLawOf(q){
+  const hay = String(q.src || "") + " " + String(q.subject || "").replace(/[・\s]/g, "");
+  if(/労災.*(択一|問)\s*問?(8|9|10)\b/.test(hay) || /徴収/.test(hay)) return "労働保険徴収法";
+  for(const k of ["労基安衛","労災","雇用","徴収","健保","国年","厚年","労基","安衛"])
+    if(hay.includes(k)) return MAIN_LAW[k];
+  return null;
+}
+function citedArts(q){
+  // 事前に割り出してある根拠があれば、それを使う（条文の引用と、
+  // 肢と条文本文の一致から kakomon/gen_qref.py が作る）
+  const pre = (window.QREF || {})[q.id];
+  if(pre && pre.length){
+    const J = window.JOBUN || {};
+    const got = pre.filter(k => J[k]).map(k => [k, J[k][0], J[k][1]]);
+    if(got.length) return got;
+  }
+  const body = [q.q, q.stem, q.head, q.tail, ...(q.choices||[]),
+                ...((q.groups||[]).flat())].join(" ");
+  const rx = /(?:([一-鿿ぁ-んァ-ヴ・]{2,20}?(?:法|規則|令))\s*)?第\s*([0-9０-９]{1,3})\s*条(?:\s*の\s*([0-9０-９]{1,2}))?/g;
+  const z = t => String(t).replace(/[０-９]/g, c => "０１２３４５６７８９".indexOf(c));
+  const ALI = {"労災保険法":"労働者災害補償保険法",
+               "労働保険の保険料の徴収等に関する法律":"労働保険徴収法"};
+  const J = window.JOBUN || {};
+  const fallback = mainLawOf(q);
+  const seen = new Set(), out = [];
+  let m, last = fallback;
+  while((m = rx.exec(body)) && out.length < 4){
+    let law;
+    if(m[1]){                       // 名前が書いてあるときは、それを覚えておく
+      law = ALI[m[1]] || m[1];
+      if(J[law + "第1条"] || Object.prototype.hasOwnProperty.call(ALI, m[1]) ||
+         /法|規則|令$/.test(law)) last = law;
+    }else{
+      law = last;                   // 「第◯条」だけのときは直前の法律
+    }
+    if(!law) continue;
+    const key = law + "第" + (+z(m[2])) + "条" + (m[3] ? "の" + (+z(m[3])) : "");
+    if(seen.has(key)) continue;
+    seen.add(key);
+    if(J[key]) out.push([key, J[key][0], J[key][1]]);
+  }
+  return out;
+}
+function jobunHtml(q){
+  const arts = citedArts(q);
+  if(!arts.length)
+    return `<span style="color:var(--sub)">この問題には解説を収録していません。`
+         + `肢に条文が挙げられていないため、原文も出せません。`
+         + `下の「読むならここ」から資料を確認してください。</span>`;
+  return `<div class="jobun"><div class="hd">肢が挙げている条文（原文）</div>`
+    + arts.map(([k, cap, body]) =>
+        `<div class="j"><b>${esc(k)}</b>${cap ? `<span class="cap">${esc(cap)}</span>` : ""}`
+        + `<p>${esc(body)}</p></div>`).join("")
+    + `<div class="tip">誤り肢は、この原文の<b>主体・数値・範囲・文末</b>のどれかを`
+    + `書き換えて作られています。見比べてください。</div></div>`;
+}
+
 /* 本試験の選択式には解説が付いていない。そこで、設問文に書かれた根拠条文と
    ref.js の対応表から、空欄ごとに「正解・根拠・読む資料」を組み立てる。
    条文が書かれていない空欄（判例問題など）は、判例集か科目の資料へ送る。 */
@@ -1453,8 +1527,7 @@ function judge(ok){
   setProg(queue.length);            // 戻したあとの残りで引く
   saveSess();
   const sec=Math.floor((Date.now()-t0)/1000);
-  let h = cur.exp ? expHtml(cur.exp)
-    : `<span style="color:var(--sub)">この過去問には解説を収録していません。お手持ちの過去問集・基本テキストで根拠を確認してください。</span>`;
+  let h = cur.exp ? expHtml(cur.exp) : jobunHtml(cur);
   if(cur.note)  h += `\n\n※ ${mdInline(cur.note)}`;
   if(cur.topic) h += `\n\n【出題テーマ】${esc(cur.topic)}`;
   h += `<span class="law">${cur.law?"根拠："+esc(cur.law)+"　｜　":""}解答時間 ${sec}秒${cur.src?"　｜　"+esc(cur.src):""}</span>`;

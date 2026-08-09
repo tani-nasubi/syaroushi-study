@@ -26,6 +26,8 @@
 | `gen_notes.py` | `drill/data/notes.js` | `notes/*.md` をアプリに埋め込む |
 | `gen_anaume2.py` | `drill/data/anaume2.js` | 条文穴埋め（速答）約3,900問 |
 | `gen_ref.py` | `drill/data/ref.js` | 条文・論点 → 読むべき資料の対応表 |
+| `gen_qref.py` | `drill/data/qref.js` | 解説のない問題 → 根拠の条（引用と本文の一致から） |
+| `gen_jobun.py` | `drill/data/jobun.js` | その条の原文（法令XMLから。gen_qref のあとに流す） |
 | `gen_print.py` | `drill/print*.html` | 紙で読むための印刷版（リンクを資料番号に置き換える） |
 | `gen_sw.py` | `drill/sw.js` | 配信ファイルの内容からキャッシュ版数を決める |
 
