@@ -164,6 +164,7 @@
   .qtext b.bl.now{background:var(--accent-w)}
   .qtext b.bl.ok{color:var(--accent);border-bottom-color:var(--accent)}
   .qtext b.bl.ng{color:var(--ng);border-bottom-color:var(--ng)}
+  .progNote{font-size:11.5px;color:var(--sub);margin:6px 0 0;font-variant-numeric:tabular-nums}
   .verdict{font-weight:700;margin:14px 0 6px}
   .verdict.ok{color:var(--accent)} .verdict.no{color:var(--ng)}
   .dim{opacity:.55}
@@ -566,6 +567,7 @@
 
   <div class="card" id="quiz" hidden>
     <div class="bar"><div id="prog"></div></div>
+    <div class="progNote" id="progNote"></div>
     <div class="qmeta" id="qmeta"></div>
     <p class="qtext" id="qtext"></p>
     <div id="answerArea"></div>
@@ -1226,11 +1228,25 @@ function startT(el){
     if(el) el.textContent=`${String(e/60|0).padStart(2,"0")}:${String(e%60).padStart(2,"0")}`; },500);
 }
 const TYPE_LABEL={abc:"択一式（5肢択一）",sel20:"選択式（語群20）",selpb:"選択式（空欄別選択肢）",ox:"肢別○×"};
+/** 進み具合。間違えた問題は列の最後に戻すので、残りは減らずに増える。
+    最初の問題数で割ると、終盤で100%に張り付いたまま出題が続いてしまう。
+    「済んだ数 ÷（済んだ数＋残り）」で出す。 */
+function setProg(pending){
+  const t = done + pending;
+  $("prog").style.width = (t ? done / t * 100 : 0) + "%";
+  const el = $("progNote");
+  if(el) el.textContent = pending
+    ? `残り ${pending} 問（解答 ${done} 回${done>total?"／出題 "+total+"問":""}）`
+    : `終わりました（解答 ${done} 回）`;
+}
 function nextQ(){
   $("result").hidden=true; stopT();
   if(!queue.length){
     cur=null; drop(K_SESS); go("drill");
-    alert(`このセット ${total} 問を終了しました。`); return;
+    alert(done > total
+      ? `このセット ${total} 問を終了しました。（間違えた分の解き直しを含めて ${done} 回）`
+      : `このセット ${total} 問を終了しました。`);
+    return;
   }
   cur=queue.shift();
   saveSess();
@@ -1239,7 +1255,7 @@ function nextQ(){
 /** いま出題中の1問を描く。新しく出すときと、リロードから復元したときの両方で使う。 */
 function renderCur(){
   $("result").hidden=true; stopT();
-  $("prog").style.width=(done/total*100)+"%";
+  setProg(queue.length + 1);
   const r=srs[cur.id];
   $("qmeta").innerHTML =
     `<span class="badge">${esc(cur.subject)}</span><span class="badge">${TYPE_LABEL[cur.type]||cur.type}</span>`+
@@ -1431,11 +1447,11 @@ function rPB(){
 }
 function judge(ok){
   stopT(); grade(cur.id,ok); done++;
-  $("prog").style.width=(done/total*100)+"%";
-  saveSess();
   $("verdict").className="verdict "+(ok?"ok":"no");
   $("verdict").textContent=ok?"正解":"不正解";
-  if(!ok) queue.push(cur);
+  if(!ok) queue.push(cur);          // 間違えた問題は列の最後に戻す
+  setProg(queue.length);            // 戻したあとの残りで引く
+  saveSess();
   const sec=Math.floor((Date.now()-t0)/1000);
   let h = cur.exp ? expHtml(cur.exp)
     : `<span style="color:var(--sub)">この過去問には解説を収録していません。お手持ちの過去問集・基本テキストで根拠を確認してください。</span>`;
