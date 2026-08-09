@@ -941,6 +941,9 @@ function grade(id, ok){
   e.n++; if(ok) e.ok++;
   save(K_HIST,h);
   const r = srs[id] || (srs[id]={n:0,ok:0,ivl:0,due:0,last:null});
+  // 2回目以降は「覚えている」分が混ざる。本番は全部が初見なので、
+  // 1回目に解けたかどうかだけを別に持っておく。
+  if(r.n === 0) r.f = ok ? 1 : 0;
   r.n++; r.last=ok;
   if(ok){ r.ok++; r.ivl = r.ivl===0?1:Math.min(7,Math.round(r.ivl*2.2)); } else r.ivl=0;
   r.due = today()+r.ivl; save(K_SRS,srs);
@@ -1878,7 +1881,16 @@ function renderHero(){
 /** いま手をつけるべきものを、自分の解答記録から決める。
     決めうちの予定表は当てにならないので、記録のほうを見る。 */
 function todaySuggest(){
+  // 本番は全部が初見。まだ一度も解いていない年度が残っていれば、
+  // それを丸ごと模試に取っておくのがいちばん本番に近い。
+  const fresh = YEARS.filter(y => !ALL.some(q => q.year===y && isKako(q.subject) && srs[q.id]));
   const due = ALL.filter(q=>{ const r=srs[q.id]; return r && r.due<=Date.now(); });
+  const seen = Object.keys(srs).length;
+  if(fresh.length && seen >= 300)
+    return {t:`まだ一度も解いていない年度が ${fresh.length} 年ぶん残っています`,
+            acts:[["この年度で模試を受ける", ()=>{
+                     $("mYear").value = String(Math.max(...fresh)); go("moshi"); }],
+                  ["未出題だけ解く", ()=>{ $("filter").value="new"; savePref(); startDrill(); }]]};
   if(due.length >= 20)
     return {t:`復習待ちが ${due.length} 問たまっています`,
             acts:[["復習待ちから解く", ()=>{ $("filter").value="due"; savePref(); startDrill(); }]]};
@@ -1925,10 +1937,16 @@ function renderHome(){
   const dueN=ALL.filter(q=>{const r=srs[q.id]; return !r||r.due<=today();}).length;
   const weakN=ALL.filter(q=>{const r=srs[q.id]; return r&&r.last===false;}).length;
   const d=Math.ceil((EXAM-new Date())/86400000);
+  // 初見（1回目）だけを数える。ここが本番に近い数字になる。
+  let fn=0, fok=0;
+  for(const k in srs){ const r=srs[k]; if(r && r.f!=null){ fn++; fok+=r.f; } }
+  const rate=(a,b2)=> b2 ? Math.round(a/b2*100)+"%" : "—";
+  const cls =(a,b2)=> b2 ? (a/b2<.6?"bad":a/b2<.8?"mid":"ok") : "";
   $("homeStats").innerHTML=
     `<div class="stat"><div class="v">${d>0?d:0}</div><div class="l">本試験まで（日）</div></div>`+
     `<div class="stat"><div class="v">${Math.round(seen/ALL.length*100)}%</div><div class="l">着手率（${seen}/${ALL.length}）</div></div>`+
-    `<div class="stat"><div class="v ${n?(ok/n<.6?"bad":ok/n<.8?"mid":"ok"):""}">${n?Math.round(ok/n*100)+"%":"—"}</div><div class="l">通算正答率</div></div>`+
+    `<div class="stat"><div class="v ${cls(fok,fn)}">${rate(fok,fn)}</div><div class="l">初見の正答率（${fn.toLocaleString()}問）</div></div>`+
+    `<div class="stat"><div class="v ${cls(ok,n)}">${rate(ok,n)}</div><div class="l">通算正答率</div></div>`+
     `<div class="stat"><div class="v">${dueN.toLocaleString()}</div><div class="l">今日出題できる</div></div>`+
     `<div class="stat"><div class="v ${weakN?"bad":""}">${weakN.toLocaleString()}</div><div class="l">要復習（直近×）</div></div>`;
 
