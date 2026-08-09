@@ -7,7 +7,7 @@
  *    表示は即座に、次に開いたときには最新になる
  *  - バージョンが変わったら古いキャッシュを消す
  */
-const VERSION = "5acf6bcb2ed1";
+const VERSION = "3212b4504037";
 const CACHE   = "sharoushi-" + VERSION;
 
 self.addEventListener("install", () => self.skipWaiting());
