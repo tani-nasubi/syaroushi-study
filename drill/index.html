@@ -129,8 +129,30 @@
   .wgrp{display:flex;gap:6px;flex-wrap:wrap}
   .wgrp button{font-size:13px;padding:6px 10px;width:auto}
   .wgrp button.used{opacity:.3;text-decoration:line-through}
+  /* 選んだ直後にその場で正誤を返す */
+  .wgrp button.pick-ok{background:var(--accent-w);border-color:var(--accent);
+    color:var(--accent);font-weight:700;opacity:1}
+  .wgrp button.pick-ng{background:var(--ng-w);border-color:var(--ng);
+    color:var(--ng);font-weight:700;opacity:1;text-decoration:line-through}
+  /* 空欄A〜Eの進み具合 */
+  .steps{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:0 0 10px}
+  .steps .s{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;
+    border:1px solid var(--line);color:var(--sub);font-variant-numeric:tabular-nums}
+  .steps .s.cur{border-color:var(--accent);color:var(--accent);background:var(--accent-w)}
+  .steps .s.ok{border-color:var(--accent);color:var(--accent)}
+  .steps .s.ng{border-color:var(--ng);color:var(--ng)}
+  .steps .s.note{border:0;font-weight:400;padding-left:2px}
   .pb{margin-bottom:10px}
   .pb .lb{font-size:12px;color:var(--sub);margin-bottom:3px}
+  .pb.done{opacity:.55}
+  .pb.now .lb{color:var(--accent);font-weight:700}
+  /* 設問が「1　…」「2　…」と並ぶときに、番号ごとに離して見せる */
+  .qtext .qb{display:block}
+  .qtext .qb + .qb{margin-top:.85em}
+  .qtext .ansline{display:block;margin-top:1em;font-size:14px;color:var(--accent);font-weight:700}
+  .qtext b.bl.now{background:var(--accent-w)}
+  .qtext b.bl.ok{color:var(--accent);border-bottom-color:var(--accent)}
+  .qtext b.bl.ng{color:var(--ng);border-bottom-color:var(--ng)}
   .verdict{font-weight:700;margin:14px 0 6px}
   .verdict.ok{color:var(--accent)} .verdict.no{color:var(--ng)}
   .dim{opacity:.55}
@@ -1239,61 +1261,101 @@ function rABC(){
   });
 }
 let picked=[];
+let judged=[], step=0;   // 選択式の空欄ごとの正誤と、いま答えている空欄
 const blanksOf = q => [...new Set((q.q.match(/【([A-E])】/g)||[]).map(s=>s[1]))].sort();
+/* 本試験の選択式は「1　…」「2　…」と複数の設問が並ぶ。1本のかたまりに
+   見えると読み違えるので、番号ごとに段落として離す。 */
+function qBlocks(t){
+  const parts = String(t).split(/\n(?=\s*[0-9１-９]+[　 ])/);
+  if(parts.length < 2) return esc(t);
+  return parts.map(x=>`<span class="qb">${esc(x.trim())}</span>`).join("");
+}
 function paint(bl,reveal){
   const lab=i=> picked[i]===null?"　？　":(cur.type==="selpb"?cur.groups[i][picked[i]]:cur.choices[picked[i]]);
-  $("qtext").innerHTML = esc(cur.q).replace(/【([A-E])】/g,(m,L)=>{
+  $("qtext").innerHTML = qBlocks(cur.q).replace(/【([A-E])】/g,(m,L)=>{
     const i=bl.indexOf(L);
-    return `<b class="bl${picked[i]===null?" empty":""}">${L}: ${esc(lab(i))}</b>`;
+    const st = picked[i]===null ? (i===step ? " now" : " empty")
+             : (judged[i]==null ? "" : (judged[i] ? " ok" : " ng"));
+    return `<b class="bl${st}">${L}: ${esc(lab(i))}</b>`;
   });
   if(reveal){
     const t=cur.a.map((v,i)=>`${"ABCDE"[i]}: ${cur.type==="selpb"?cur.groups[i][v]:cur.choices[v]}`).join("　／　");
-    $("qtext").innerHTML += `\n\n<span style="font-size:14px;color:var(--accent)">正解 → ${esc(t)}</span>`;
+    $("qtext").innerHTML += `<span class="ansline">正解 → ${esc(t)}</span>`;
   }
 }
+/* 選択式は空欄が5つある。まとめて解答すると、どこで間違えたのかが
+   分かるのが最後になる。1空欄ずつ答えて、その場で正誤を返す。 */
+function stepBar(box, n, note){
+  box.innerHTML = Array.from({length:n},(_,i)=>{
+    const cls = judged[i]==null ? (i===step?"cur":"") : (judged[i]?"ok":"ng");
+    const mk  = judged[i]==null ? "" : (judged[i]?"○":"×");
+    return `<span class="s ${cls}">${"ABCDE"[i]}${mk}</span>`;
+  }).join("") + `<span class="s note">${esc(note)}</span>`;
+}
 function rPool(){
-  const bl=blanksOf(cur); picked=new Array(cur.a.length).fill(null); paint(bl);
-  $("answerArea").innerHTML=`<div class="wgrp" id="wg"></div>
-    <div class="row" style="margin-top:12px"><button id="undo">1つ戻す</button>
-    <button class="primary" id="sub">解答</button></div>`;
-  const wg=$("wg");
+  const bl=blanksOf(cur), N=cur.a.length;
+  picked=new Array(N).fill(null); judged=new Array(N).fill(null); step=0;
+  $("answerArea").innerHTML=`<div class="steps" id="st"></div><div class="wgrp" id="wg"></div>`;
+  const wg=$("wg"), st=$("st");
   wg.innerHTML=cur.choices.map((c,i)=>`<button data-i="${i}">${String(i+1).padStart(2,"0")}　${esc(c)}</button>`).join("");
+  const finish=()=>{
+    const n=judged.filter(Boolean).length;
+    stepBar(st, N, `${n} / ${N} 正解`);
+    paint(bl,true); judge(n===N);
+  };
   wg.querySelectorAll("button").forEach(b=> b.onclick=()=>{
-    const k=picked.indexOf(null); if(k<0) return;
-    picked[k]=+b.dataset.i; b.classList.add("used"); b.disabled=true; paint(bl);
+    if(step>=N) return;
+    const i=+b.dataset.i, k=step;
+    picked[k]=i; judged[k]=(i===cur.a[k]);
+    b.disabled=true; b.classList.add(judged[k]?"pick-ok":"pick-ng");
+    if(!judged[k]){                       // 間違えたら、その空欄の正解も見せる
+      const t=wg.querySelector(`button[data-i="${cur.a[k]}"]`);
+      if(t){ t.classList.add("pick-ok"); t.disabled=true; }
+    }
+    step++; paint(bl);
+    stepBar(st, N, step>=N ? "採点中…" : `空欄 ${"ABCDE"[step]} を選んでください`);
+    if(step>=N) setTimeout(finish, 400);
   });
-  $("undo").onclick=()=>{
-    let k=picked.findIndex(v=>v===null); k=(k<0?picked.length:k)-1; if(k<0) return;
-    const i=picked[k]; picked[k]=null;
-    const b=wg.querySelector(`button[data-i="${i}"]`); b.classList.remove("used"); b.disabled=false; paint(bl);
-  };
-  $("sub").onclick=()=>{
-    if(picked.includes(null)&&!confirm("未選択の空欄があります。このまま解答しますか？")) return;
-    paint(bl,true); judge(picked.every((v,i)=>v===cur.a[i]));
-  };
-  $("kbd").innerHTML=`語群を空欄A→Eの順にクリック。<code>Enter</code> 次へ`;
+  stepBar(st, N, `空欄 A を選んでください`); paint(bl);
+  $("kbd").innerHTML=`空欄A→Eの順に、語群から1つずつ選びます。選ぶたびに正誤が出ます。<code>Enter</code> 次へ`;
 }
 function rPB(){
-  const bl=blanksOf(cur); picked=new Array(cur.a.length).fill(null); paint(bl);
-  $("answerArea").innerHTML=cur.groups.map((g,gi)=>
-    `<div class="pb"><div class="lb">空欄 ${"ABCDE"[gi]}</div><div class="wgrp" data-g="${gi}">`+
+  const bl=blanksOf(cur), N=cur.a.length;
+  picked=new Array(N).fill(null); judged=new Array(N).fill(null); step=0;
+  $("answerArea").innerHTML=`<div class="steps" id="st"></div>`+cur.groups.map((g,gi)=>
+    `<div class="pb" data-p="${gi}"><div class="lb">空欄 ${"ABCDE"[gi]}</div><div class="wgrp" data-g="${gi}">`+
     g.map((c,i)=>`<button data-g="${gi}" data-i="${i}">${i+1}　${esc(c)}</button>`).join("")+
-    `</div></div>`).join("")+
-    `<div class="row" style="margin-top:8px"><button class="primary" id="sub">解答</button></div>`;
-  $("answerArea").querySelectorAll(".wgrp button").forEach(b=> b.onclick=()=>{
-    const g=+b.dataset.g; picked[g]=+b.dataset.i;
-    $("answerArea").querySelectorAll(`.wgrp[data-g="${g}"] button`).forEach(x=>x.classList.toggle("used",x!==b));
-    paint(bl);
-  });
-  $("sub").onclick=()=>{
-    if(picked.includes(null)&&!confirm("未選択の空欄があります。このまま解答しますか？")) return;
-    cur.groups.forEach((g,gi)=> $("answerArea").querySelectorAll(`.wgrp[data-g="${gi}"] button`).forEach((x,i)=>{
-      x.disabled=true;
-      if(i===cur.a[gi]) x.classList.add("correct"); else if(i===picked[gi]) x.classList.add("wrong");
-    }));
-    paint(bl,true); judge(picked.every((v,i)=>v===cur.a[i]));
+    `</div></div>`).join("");
+  const st=$("st");
+  const focus=()=>{
+    // いま答える空欄だけを開き、済んだものは結果を残したまま薄くする
+    $("answerArea").querySelectorAll(".pb").forEach(el=>{
+      const g=+el.dataset.p;
+      el.classList.toggle("now", g===step);
+      el.classList.toggle("done", judged[g]!=null);
+      el.querySelectorAll("button").forEach(x=> x.disabled = (g!==step));
+    });
   };
-  $("kbd").innerHTML=`各空欄の選択肢を選んで「解答」。<code>Enter</code> 次へ`;
+  const finish=()=>{
+    const n=judged.filter(Boolean).length;
+    stepBar(st, N, `${n} / ${N} 正解`);
+    $("answerArea").querySelectorAll(".pb").forEach(el=>el.classList.remove("now"));
+    paint(bl,true); judge(n===N);
+  };
+  $("answerArea").querySelectorAll(".wgrp button").forEach(b=> b.onclick=()=>{
+    const g=+b.dataset.g; if(g!==step) return;
+    const i=+b.dataset.i;
+    picked[g]=i; judged[g]=(i===cur.a[g]);
+    const box=$("answerArea").querySelectorAll(`.wgrp[data-g="${g}"] button`);
+    box.forEach((x,k)=>{ x.disabled=true;
+      if(k===cur.a[g]) x.classList.add("pick-ok");
+      else if(k===i)   x.classList.add("pick-ng"); });
+    step++; paint(bl); focus();
+    stepBar(st, N, step>=N ? "採点中…" : `空欄 ${"ABCDE"[step]} を選んでください`);
+    if(step>=N) setTimeout(finish, 400);
+  });
+  stepBar(st, N, `空欄 A を選んでください`); focus(); paint(bl);
+  $("kbd").innerHTML=`空欄A→Eの順に1つずつ選びます。選ぶたびに正誤が出ます。<code>Enter</code> 次へ`;
 }
 function judge(ok){
   stopT(); grade(cur.id,ok); done++;
