@@ -72,7 +72,7 @@ def v3():
 # 生成時の取り違えを疑う（「labor関係」「treatment用装具」のような事故）。
 OKWORD = {"MBA","IT","ITSS","SDS","ICD","BMI","LDL","HDL","iDeCo","ADR","DC","DB",
           "GDP","km","ILO","OECD","NPO","PDF","URL","AI","DX",
-          "CBC","INAX","JIS","NHK","JR"}      # 判例の当事者名にも出る
+          "CBC","INAX","JIS","NHK","JR","HIV"}      # 判例の当事者名にも出る
 def v4():
     for f, s in DOCS.items():
         for m in re.finditer(r"[Ѐ-ӿ가-힣؀-ۿ฀-๿]+", s):
