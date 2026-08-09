@@ -132,8 +132,6 @@
   /* 選んだ直後にその場で正誤を返す */
   .wgrp button.pick-ok{background:var(--accent-w);border-color:var(--accent);
     color:var(--accent);font-weight:700;opacity:1}
-  .wgrp button.pick-ng{background:var(--ng-w);border-color:var(--ng);
-    color:var(--ng);font-weight:700;opacity:1;text-decoration:line-through}
   /* 空欄A〜Eの進み具合 */
   .steps{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:0 0 10px}
   .steps .s{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;
@@ -1373,11 +1371,10 @@ function rPool(){
     if(step>=N) return;
     const i=+b.dataset.i, k=step;
     picked[k]=i; judged[k]=(i===cur.a[k]);
-    b.disabled=true; b.classList.add(judged[k]?"pick-ok":"pick-ng");
-    if(!judged[k]){                       // 間違えたら、その空欄の正解も見せる
-      const t=wg.querySelector(`button[data-i="${cur.a[k]}"]`);
-      if(t){ t.classList.add("pick-ok"); t.disabled=true; }
-    }
+    // 語群から取り除くのは、その空欄の正解だけ。選び間違えた語は
+    // あとの空欄の正解かもしれないので、そのまま残す。
+    const t=wg.querySelector(`button[data-i="${cur.a[k]}"]`);
+    if(t){ t.classList.add("pick-ok"); t.disabled=true; }
     step++; paint(bl);
     $("se").insertAdjacentHTML("beforeend", blankLine(k, info));
     $("se").hidden = false; bindRef($("se"));
@@ -1415,10 +1412,11 @@ function rPB(){
     const g=+b.dataset.g; if(g!==step) return;
     const i=+b.dataset.i;
     picked[g]=i; judged[g]=(i===cur.a[g]);
-    const box=$("answerArea").querySelectorAll(`.wgrp[data-g="${g}"] button`);
-    box.forEach((x,k)=>{ x.disabled=true;
+    // 印を付けるのは正解だけ。自分が選んだものは解説の行に出る。
+    $("answerArea").querySelectorAll(`.wgrp[data-g="${g}"] button`).forEach((x,k)=>{
+      x.disabled=true;
       if(k===cur.a[g]) x.classList.add("pick-ok");
-      else if(k===i)   x.classList.add("pick-ng"); });
+    });
     step++; paint(bl); focus();
     $("se").insertAdjacentHTML("beforeend", blankLine(g, info));
     $("se").hidden = false; bindRef($("se"));
