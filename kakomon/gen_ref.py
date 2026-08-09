@@ -129,10 +129,36 @@ def main():
      "厚生年金保険法": "10-厚生年金保険法.md", "国民年金法": "09-国民年金法.md",
     }
     law = {}
+    # ① ページの表題に法令名があるもの（「介護保険法」など）
     for b, t in title.items():
-        m = re.search(r"[一-鿿・]{2,20}?(?:法|規則|令)", t)
-        if m:
-            law.setdefault(m.group(0), [b, t])
+        # 「国民健康保険法と高齢者医療確保法」のように2つ並ぶ表題があるので全部拾う
+        for nm in re.findall(r"[一-鿿・]{2,20}?(?:法|規則|令)", t):
+            law.setdefault(nm, [b, t])
+    # ② 表題に無くても、見出しが法令名そのものなら、そのページを充てる
+    #    （「企業年金と社会保険審査」の中の「## 船員保険法」など）
+    for path in sorted(glob.glob(f"{NOTES}/*.md")):
+        b = os.path.basename(path)
+        if not re.match(r"^[B-L]\d-", b):
+            continue
+        for h in re.findall(r"^#{2,3} (.+)$", open(path, encoding="utf-8").read(), re.M):
+            h = re.sub(r"（[^）]*）\s*$", "", h).strip()
+            if re.fullmatch(r"[一-鿿・]{3,24}(?:法|規則|令)", h):
+                law.setdefault(h, [b, title[b]])
+    # ③ 見出しにも無い法令は、その名をいちばん多く扱っている深掘りページへ
+    import collections as _c
+    cnt = _c.defaultdict(_c.Counter)
+    for path in sorted(glob.glob(f"{NOTES}/*.md")):
+        b = os.path.basename(path)
+        if not re.match(r"^[B-L]\d-", b):
+            continue
+        body = re.sub(r"[\s*`>|]", "", open(path, encoding="utf-8").read())
+        for nm in set(re.findall(r"[一-鿿・]{3,24}?(?:法|規則|令)(?=[第。、（にはがをのでとやも])", body)):
+            cnt[nm][b] = body.count(nm)
+    for nm, c in cnt.items():
+        b, n = c.most_common(1)[0]
+        if n >= 4:                      # ついでに出てくる程度の言及では充てない
+            law.setdefault(nm, [b, title[b]])
+
     for nm, note in LAW2NOTE.items():
         law.setdefault(nm, [note, note[3:-3]])
     # 一般常識の周辺法令は、その法令を扱う深掘りページか本体ノートへ

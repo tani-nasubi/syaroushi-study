@@ -142,6 +142,19 @@
   .steps .s.ok{border-color:var(--accent);color:var(--accent)}
   .steps .s.ng{border-color:var(--ng);color:var(--ng)}
   .steps .s.note{border:0;font-weight:400;padding-left:2px}
+  /* 空欄ごとの解説 */
+  .selexp{margin:0 0 12px;display:flex;flex-direction:column;gap:5px}
+  .selexp .se{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;font-size:13px;
+    padding:6px 10px;border-radius:7px;border:1px solid var(--line);background:var(--panel2)}
+  .selexp .se.ok{border-color:var(--accent)}
+  .selexp .se.ng{border-color:var(--ng)}
+  .selexp .l{min-width:1.2em;font-weight:700}
+  .selexp .se.ok .l,.selexp .se.ok .mk{color:var(--accent)}
+  .selexp .se.ng .l,.selexp .se.ng .mk{color:var(--ng)}
+  .selexp .mk{font-weight:700}
+  .selexp .mine{color:var(--ng)}
+  .selexp .src{color:var(--sub);font-size:12px}
+  .selexp a.lnk{font-size:12px;margin-left:auto}
   .pb{margin-bottom:10px}
   .pb .lb{font-size:12px;color:var(--sub);margin-bottom:3px}
   .pb.done{opacity:.55}
@@ -1283,6 +1296,58 @@ function paint(bl,reveal){
     $("qtext").innerHTML += `<span class="ansline">正解 → ${esc(t)}</span>`;
   }
 }
+/* 本試験の選択式には解説が付いていない。そこで、設問文に書かれた根拠条文と
+   ref.js の対応表から、空欄ごとに「正解・根拠・読む資料」を組み立てる。
+   条文が書かれていない空欄（判例問題など）は、判例集か科目の資料へ送る。 */
+const LAWCITE = /([一-鿿ぁ-んァ-ヴ・]{2,20}?(?:法|規則|令))\s*第\s*([0-9０-９]{1,3})\s*条(?:\s*の\s*([0-9０-９]{1,2}))?/;
+function blankInfo(q){
+  const paras = String(q.q).split(/\n(?=\s*[0-9１-９]+[　 ])/);
+  const R = window.REF || {};
+  const z = t => String(t).replace(/[０-９]/g, c => "０１２３４５６７８９".indexOf(c));
+  // 設問に【A】〜【E】が揃っていない問題もあるので、空欄の数に合わせて作る
+  const letters = blanksOf(q);
+  return q.a.map((_, i) => {
+    const L = letters[i] || "ABCDE"[i];
+    const p = paras.find(x => x.includes(`【${L}】`)) || q.q;
+    const m = LAWCITE.exec(p);
+    let base = "", ref = null;
+    if(m){
+      base = m[1] + "第" + (+z(m[2])) + "条" + (m[3] ? "の" + (+z(m[3])) : "");
+      ref = (R.art && R.art[base]) || (R.law && R.law[m[1]]) || null;
+    }else if(/最高裁判所|判例/.test(p)){
+      base = "最高裁判所の判例";
+      ref = ["93-判例.md", "判例"];
+    }
+    // 自作問題は「法改正雇用/給付制限」のようなタグを持つ
+    if(!ref && q.tag && R.tag) ref = R.tag[q.tag] || null;
+    if(!ref && q.tag && R.subj){
+      const t = String(q.tag).split("/")[0];
+      for(const k of ["法改正","労基","安衛","労災","雇用","徴収","労一","社一","健保","国年","厚年"])
+        if(t.includes(k)){ ref = (k==="法改正") ? ["00-法改正-令和8年度.md","法改正まとめ"] : R.subj[k]; break; }
+    }
+    if(!ref && R.subj){
+      // 出題元の表記でも、収録バンク名（「過去問 労基・安衛」）でも引く
+      const hay = String(q.src || "") + " " + String(q.subject || "").replace(/[・\s]/g, "");
+      for(const k of ["労基安衛","一般常識","労災","雇用","徴収","労一","社一","健保","国年","厚年"])
+        if(hay.includes(k)){ ref = R.subj[k]; break; }
+    }
+    return {base, ref};
+  });
+}
+/** 空欄1つ分の解説。正解でも間違いでも同じものを出す。 */
+function blankLine(k, info){
+  const word = i => cur.type === "selpb" ? cur.groups[k][i] : cur.choices[i];
+  const it = info[k] || {};
+  return `<div class="se ${judged[k] ? "ok" : "ng"}">`
+    + `<b class="l">${"ABCDE"[k]}</b>`
+    + `<span class="w">正解 <b>${esc(word(cur.a[k]))}</b></span>`
+    + (judged[k] ? `<span class="mk">○</span>`
+                 : `<span class="mk">×</span><span class="mine">選んだのは ${esc(word(picked[k]))}</span>`)
+    + (it.base ? `<span class="src">${esc(it.base)}</span>` : "")
+    + (it.ref ? `<a class="lnk" data-note="${esc(it.ref[0])}">${esc(it.ref[1])}</a>` : "")
+    + `</div>`;
+}
+
 /* 選択式は空欄が5つある。まとめて解答すると、どこで間違えたのかが
    分かるのが最後になる。1空欄ずつ答えて、その場で正誤を返す。 */
 function stepBar(box, n, note){
@@ -1295,8 +1360,9 @@ function stepBar(box, n, note){
 function rPool(){
   const bl=blanksOf(cur), N=cur.a.length;
   picked=new Array(N).fill(null); judged=new Array(N).fill(null); step=0;
-  $("answerArea").innerHTML=`<div class="steps" id="st"></div><div class="wgrp" id="wg"></div>`;
-  const wg=$("wg"), st=$("st");
+  $("answerArea").innerHTML=`<div class="steps" id="st"></div>
+    <div class="selexp" id="se" hidden></div><div class="wgrp" id="wg"></div>`;
+  const wg=$("wg"), st=$("st"), info=blankInfo(cur);
   wg.innerHTML=cur.choices.map((c,i)=>`<button data-i="${i}">${String(i+1).padStart(2,"0")}　${esc(c)}</button>`).join("");
   const finish=()=>{
     const n=judged.filter(Boolean).length;
@@ -1313,6 +1379,8 @@ function rPool(){
       if(t){ t.classList.add("pick-ok"); t.disabled=true; }
     }
     step++; paint(bl);
+    $("se").insertAdjacentHTML("beforeend", blankLine(k, info));
+    $("se").hidden = false; bindRef($("se"));
     stepBar(st, N, step>=N ? "採点中…" : `空欄 ${"ABCDE"[step]} を選んでください`);
     if(step>=N) setTimeout(finish, 400);
   });
@@ -1322,11 +1390,12 @@ function rPool(){
 function rPB(){
   const bl=blanksOf(cur), N=cur.a.length;
   picked=new Array(N).fill(null); judged=new Array(N).fill(null); step=0;
-  $("answerArea").innerHTML=`<div class="steps" id="st"></div>`+cur.groups.map((g,gi)=>
+  $("answerArea").innerHTML=`<div class="steps" id="st"></div>
+    <div class="selexp" id="se" hidden></div>`+cur.groups.map((g,gi)=>
     `<div class="pb" data-p="${gi}"><div class="lb">空欄 ${"ABCDE"[gi]}</div><div class="wgrp" data-g="${gi}">`+
     g.map((c,i)=>`<button data-g="${gi}" data-i="${i}">${i+1}　${esc(c)}</button>`).join("")+
     `</div></div>`).join("");
-  const st=$("st");
+  const st=$("st"), info=blankInfo(cur);
   const focus=()=>{
     // いま答える空欄だけを開き、済んだものは結果を残したまま薄くする
     $("answerArea").querySelectorAll(".pb").forEach(el=>{
@@ -1351,6 +1420,8 @@ function rPB(){
       if(k===cur.a[g]) x.classList.add("pick-ok");
       else if(k===i)   x.classList.add("pick-ng"); });
     step++; paint(bl); focus();
+    $("se").insertAdjacentHTML("beforeend", blankLine(g, info));
+    $("se").hidden = false; bindRef($("se"));
     stepBar(st, N, step>=N ? "採点中…" : `空欄 ${"ABCDE"[step]} を選んでください`);
     if(step>=N) setTimeout(finish, 400);
   });
