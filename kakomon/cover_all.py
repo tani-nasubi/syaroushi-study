@@ -166,7 +166,11 @@ def notes_text(subj, cross=True):
     for n in fs:
         p = os.path.join(NOTES, n)
         if os.path.exists(p):
-            buf.append(open(p, encoding="utf-8").read())
+            t = open(p, encoding="utf-8").read()
+            # 自動生成の「出題傾向」節は、出題された条をそのまま並べている。
+            # これを数に入れると、解説が無くても「載っている」ことになってしまう。
+            t = re.sub(r"<!-- TREND:BEGIN -->.*?<!-- TREND:END -->", "", t, flags=re.S)
+            buf.append(t)
     return "\n".join(buf)
 
 def arts_in(text):
@@ -183,6 +187,69 @@ def arts_in(text):
                 for j in range(1, 30):        # 枝番も範囲に含まれるとみなす
                     got.add(f"第{i}条の{j}")
     return got
+
+
+# ── 「触れているだけ」を見分ける ────────────────────────────
+# 条番号がどこかに1回出てくるだけでも「資料にある」と数えてしまうと、
+# 解説が無い論点を見逃す。実際、寄宿舎（96条）は自動生成の傾向表に
+# 条番号が載っていたせいで、解説が無いまま素通りしていた。
+_CAPS = {}
+def captions(law):
+    if law in _CAPS:
+        return _CAPS[law]
+    lid = next((k for k, v in LAWS.items() if v == law), None)
+    p = os.path.join(HOUREI, f"{lid}.xml") if lid else None
+    out = {}
+    if p and os.path.exists(p):
+        root = ET.parse(p).getroot()
+        main = root.find(".//MainProvision") or root
+        for a in main.iter("Article"):
+            q = a.get("Num", "").split(":")[0].split("_")
+            if not q[0].isdigit():
+                continue
+            lab = f"第{int(q[0])}条" + (f"の{int(q[1])}" if len(q) > 1 and q[1].isdigit() else "")
+            cap = a.find("ArticleCaption")
+            if lab not in out and cap is not None:
+                out[lab] = re.sub(r"[（）]", "", "".join(cap.itertext()).strip())
+    _CAPS[law] = out
+    return out
+
+def art_re(lab):
+    """「第32条の2」と「32条の2」の両方に当たり、「32条」だけには当たらない。"""
+    m = re.match(r"第(\d+)条(?:の(\d+))?$", lab)
+    a, b = m.group(1), m.group(2)
+    return re.compile(r"第?\s*" + a + r"\s*条" +
+                      (r"\s*の\s*" + b if b else r"(?!\s*の\s*\d)"))
+
+def thin_ones(subj, per):
+    """出題2回以上なのに、資料での扱いが1回の言及だけのものを挙げる。"""
+    law = SUBJ[subj]["law"]
+    if not law:
+        return []
+    txt = notes_text(subj)
+    heads = "\n".join(re.findall(r"^#{2,4} .+$", txt, re.M))
+    caps = captions(law)
+    out = []
+    for (lw, lab), n in per.items():
+        if lw != law or n < 2:
+            continue
+        rx = art_re(lab)
+        hits = len(rx.findall(txt))
+        cap = caps.get(lab, "")
+        if hits == 0:
+            out.append((lab, cap, n)); continue
+        if hits >= 2 or rx.search(heads) or (len(cap) >= 3 and cap in txt):
+            continue
+        # 1回しか出てこなくても、比較表や一覧の中で扱っていることがある。
+        # その行に十分な説明があれば、触れているだけとは言えない。
+        m = rx.search(txt)
+        i = txt.rfind("\n", 0, m.start()) + 1
+        j = txt.find("\n", m.end())
+        line = txt[i: j if j > 0 else len(txt)]
+        if len(re.sub(r"[\s*`>|#-]", "", line)) >= 40:
+            continue
+        out.append((lab, cap, n))
+    return sorted(out, key=lambda x: -x[2])
 
 def main():
     only = sys.argv[1] if len(sys.argv) > 1 else None
@@ -217,6 +284,19 @@ def main():
             print("   出題の多い法令: " + "、".join(f"{k}{v}" for k, v in c.most_common(10)))
         total += len(gap)
     print(f"\n合計 資料に無い条 {total}件")
+
+    # 条番号は出てくるが、解説が見当たらないもの
+    thin = 0
+    for s2 in SUBJ:
+        if only and s2 != only:
+            continue
+        rows = thin_ones(s2, per[s2])
+        if rows:
+            thin += len(rows)
+            print(f"\n── {s2}　解説が見当たらない条 {len(rows)}件")
+            for lab, cap, n in rows[:8]:
+                print(f"   {lab} {cap or '（見出しなし）'}（出題{n}回）")
+    print(f"\n合計 解説が見当たらない条 {thin}件")
 
 if __name__ == "__main__":
     main()
