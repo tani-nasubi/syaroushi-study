@@ -31,6 +31,8 @@ GROUPS = [
                  "96-得点源リスト.md", "97-引っかけの型.md",
                  "A0-正文集（択一の正しい肢）.md", "A1-個数・組合せ問題の解き方.md",
                  "99-白書・統計.md", "98-最終確認シート.md"]),
+ # 刷ったあとに足したものは巻末にまとめる。ここだけ刷り足せば追いつく。
+ ("追補",       ["Z0-追補.md"]),
 ]
 
 def order():
@@ -272,11 +274,14 @@ def build(pages, title, subtitle, path, allpages=None):
         return esc(text)
 
     body = []
-    # 表紙
-    body.append(f'<div class="cover"><h1>{esc(title)}</h1>'
-                f'<div class="sub">{subtitle}</div>{HOWTO}</div>')
+    # 資料が少ない冊子で表紙と目次に2ページ使うのは無駄なので、
+    # 中身が1〜2件のときは表紙も目次も省いて本文から始める。
+    slim = len(pages) <= 2
+    if not slim:
+        body.append(f'<div class="cover"><h1>{esc(title)}</h1>'
+                    f'<div class="sub">{subtitle}</div>{HOWTO}</div>')
     # 目次
-    toc = ['<div class="doc toc"><h2>目次</h2>']
+    toc = [] if slim else ['<div class="doc toc"><h2>目次</h2>']
     last = None
     for n, g, f, t, d, _ in pages:
         if g != last:
@@ -286,8 +291,9 @@ def build(pages, title, subtitle, path, allpages=None):
             last = g
         toc.append(f'<li><span class="no">{n}</span><span>{esc(t)}</span>'
                    f'<span class="dots"></span></li>')
-    toc.append("</ol></div>")
-    body.append("".join(toc))
+    if not slim:
+        toc.append("</ol></div>")
+        body.append("".join(toc))
     # 本文
     for n, g, f, t, d, src in pages:
         # 先頭のH1は見出しとして別に出すので本文からは落とす

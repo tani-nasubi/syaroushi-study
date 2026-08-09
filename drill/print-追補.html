@@ -1,0 +1,176 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>社労士2026 学習資料｜追補</title>
+<style>
+/* 2ページを1枚に並べて刷る想定。余白は詰める。 */
+@page { size: A4 portrait; margin: 10mm 9mm 11mm; }
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+body{margin:0; color:#111; background:#fff;
+  font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
+  font-size:9.6pt; line-height:1.72; text-align:justify;
+  font-feature-settings:"palt" 1;}
+.wrap{max-width:none; margin:0; padding:0}
+/* ── 巻頭 ── */
+.cover{text-align:center; padding:24mm 0 0; break-after:page; page-break-after:always}
+.cover h1{font-size:22pt; letter-spacing:.06em; margin:0 0 6mm}
+.cover .sub{font-size:10pt; color:#555; line-height:2}
+.howto{margin:12mm auto 0; max-width:132mm; text-align:left;
+  border:1pt solid #bbb; padding:6mm 7mm; font-size:9pt; line-height:1.8}
+.howto b{font-size:9.6pt}
+/* ── 目次 ── */
+.toc h2{font-size:13pt; margin:0 0 4mm; padding-bottom:2mm; border-bottom:1.4pt solid #111}
+.toc .grp{margin:3.5mm 0 1.5mm; font-weight:700; font-size:10.5pt;
+  border-left:3pt solid #111; padding-left:3mm}
+.toc ol{list-style:none; margin:0; padding:0; columns:2; column-gap:10mm}
+.toc li{break-inside:avoid; font-size:9pt; line-height:1.85;
+  display:flex; gap:2mm; align-items:baseline}
+.toc .no{display:inline-block; min-width:9mm; font-weight:700; font-variant-numeric:tabular-nums}
+.toc .dots{flex:1; border-bottom:.4pt dotted #999; transform:translateY(-2px)}
+/* ── 各資料 ── */
+/* 資料ごとに改ページすると、2ページ組みでは半端な余白が積み上がる。
+   改ページはやめて、太い区切り線で切れ目を示す。 */
+.doc + .doc{margin-top:9mm; padding-top:6mm; border-top:2.2pt solid #111}
+.doc.toc{break-after:page; page-break-after:always}
+.doc > .head{border-bottom:1.2pt solid #111; padding-bottom:2mm; margin:0 0 3.5mm;
+  break-after:avoid; page-break-after:avoid; break-inside:avoid; page-break-inside:avoid}
+.doc > .head .no{font-size:8.5pt; letter-spacing:.14em; color:#666}
+.doc > .head h1{font-size:16pt; margin:1mm 0 0; letter-spacing:-.01em}
+.doc > .head .desc{font-size:8.5pt; color:#555; margin:1.5mm 0 0}
+h2{font-size:12pt; margin:5mm 0 2mm; padding:1mm 0 1mm 3mm;
+  border-left:3.5pt solid #111; break-after:avoid; page-break-after:avoid}
+h3{font-size:10.6pt; margin:3.6mm 0 1.5mm; padding-bottom:.8mm;
+  border-bottom:.6pt solid #ccc; break-after:avoid; page-break-after:avoid}
+h4{font-size:9.8pt; margin:3mm 0 1.2mm; break-after:avoid; page-break-after:avoid}
+p{margin:0 0 2.4mm}
+ul,ol{margin:0 0 2.8mm; padding-left:6mm}
+li{margin:0 0 .8mm}
+ul.chk{list-style:none; padding-left:0}
+ul.chk li::before{content:"☐"; margin-right:2mm; font-size:11pt; line-height:1}
+strong{font-weight:700}
+.dim{color:#666}
+code{font-family:"SFMono-Regular",Consolas,"Noto Sans Mono",monospace;
+  font-size:8.6pt; background:#f2f2f2; padding:.2mm 1mm; border-radius:1mm}
+pre{background:#f6f6f6; border:.5pt solid #ddd; padding:3mm 4mm; margin:0 0 3mm;
+  break-inside:avoid; page-break-inside:avoid; overflow:visible}
+pre code{background:none; padding:0; font-size:8.6pt; line-height:1.6; white-space:pre-wrap}
+blockquote{margin:0 0 3mm; padding:2mm 3mm; background:#f7f7f7;
+  border-left:2.5pt solid #888; break-inside:avoid; page-break-inside:avoid}
+blockquote p:last-child{margin-bottom:0}
+hr{border:0; border-top:.6pt solid #ddd; margin:3.5mm 0}
+table{border-collapse:collapse; width:100%; margin:0 0 3.5mm; font-size:8.6pt;
+  break-inside:avoid; page-break-inside:avoid}
+th,td{border:.5pt solid #999; padding:1.4mm 2mm; text-align:left; vertical-align:top;
+  line-height:1.55}
+th{background:#ececec; font-weight:700; white-space:nowrap}
+thead{display:table-header-group}
+/* 大きい表は途中で切れてよい。切れないと1ページに収まらず消える */
+table.big{break-inside:auto; page-break-inside:auto}
+table.big tr{break-inside:avoid; page-break-inside:avoid}
+/* ── 参照（紙ではリンクを押せないので番号で引く）── */
+.ref{white-space:nowrap; font-weight:600}
+.ref .n{font-size:8pt; border:.6pt solid #666; border-radius:1mm;
+  padding:0 1mm; margin-right:.8mm; font-variant-numeric:tabular-nums}
+.ref .sec{font-weight:400; color:#444}
+/* ── 画面で見るときだけの操作 ── */
+.bar{position:sticky; top:0; background:#fff; border-bottom:1pt solid #ddd;
+  padding:8px 12px; display:flex; gap:10px; align-items:center; font-size:13px; z-index:9}
+.bar a{color:#1a4fd6}
+.bar button{font:inherit; padding:5px 12px; border:1px solid #999; background:#fff;
+  border-radius:5px; cursor:pointer}
+@media print{ .bar{display:none} .wrap{padding:0} }
+</style>
+<div class="bar">
+  <button onclick="print()">印刷する</button>
+  <span>A4縦・1資料。1枚に2ページ並べて刷る想定です。
+  ブラウザの印刷から「背景のグラフィック」を入にすると表の罫線が出ます。</span>
+</div>
+<div class="wrap"><div class="doc"><div class="head"><div class="no">資料 100 ／ 追補</div><h1>追補（印刷後の追加）</h1><div class="desc">刷ったあとに足した内容を科目ごとにまとめたもの。ここだけ刷り足せば追いつく</div></div><table class="big"><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>何のページか</td><td>各科目の資料に<strong>後から足した内容</strong>を、科目ごとにまとめたもの</td></tr><tr><td>なぜ別ページか</td><td>すでに紙に刷ったあとでも、<strong>このページだけを刷り足せば追いつける</strong>ようにするため</td></tr><tr><td>元のページ</td><td>各項目の見出しに、本体のどこに入れたかを書いてあります</td></tr></tbody></table>
+<blockquote><p>内容は本体のページにも同じものが入っています。<strong>二重に読む必要はありません。</strong>
+刷り直したくないときだけ、このページを使ってください。</p></blockquote>
+<hr>
+<h2>労基</h2>
+<h3>総則の罰則 — 拘禁刑だけでなく罰金もある（→ 労働基準法「総則の7原則」）</h3>
+<p>「6か月以下の拘禁刑等」と「等」で伏せていました。労基法の罰則は<strong>すべて「拘禁刑または罰金」の選択刑</strong>です。</p>
+<table class="big"><thead><tr><th>条</th><th>内容</th><th>罰則</th></tr></thead><tbody><tr><td><strong>1条</strong></td><td>労働条件の原則</td><td><strong>なし</strong>（訓示規定）</td></tr><tr><td><strong>2条</strong></td><td>労使対等の原則</td><td><strong>なし</strong>（訓示規定）</td></tr><tr><td>3条</td><td>均等待遇</td><td>6か月以下の拘禁刑／<strong>30万円以下の罰金</strong>（119条）</td></tr><tr><td>4条</td><td>男女同一賃金</td><td>同上</td></tr><tr><td><strong>5条</strong></td><td>強制労働の禁止</td><td><strong>1年以上10年以下</strong>の拘禁刑／<strong>20万円以上300万円以下</strong>の罰金（117条）＝最重</td></tr><tr><td>6条</td><td>中間搾取の排除</td><td>1年以下の拘禁刑／<strong>50万円以下の罰金</strong>（118条）</td></tr><tr><td>7条</td><td>公民権行使の保障</td><td>6か月以下の拘禁刑／30万円以下の罰金（119条）</td></tr></tbody></table>
+<blockquote><p>★<strong>5条だけが下限つき</strong>（「1年以上」「20万円以上」）。労基法でここだけの形です。
+★<strong>1条・2条には罰則がありません</strong>。7原則のうち罰則があるのは<strong>3条〜7条の5つ</strong>。</p></blockquote>
+<p><strong>罰則の段</strong></p>
+<table class="big"><thead><tr><th>条</th><th>刑</th><th>主な対象</th></tr></thead><tbody><tr><td>117条</td><td>1年以上10年以下の拘禁刑／20万円以上300万円以下の罰金</td><td>5条</td></tr><tr><td>118条</td><td>1年以下の拘禁刑／50万円以下の罰金</td><td>6条、56条、63条、64条の2</td></tr><tr><td>119条</td><td>6か月以下の拘禁刑／30万円以下の罰金</td><td>3条・4条・7条、16条〜20条、32条〜39条 ほか</td></tr><tr><td><strong>120条</strong></td><td><strong>30万円以下の罰金のみ</strong>（拘禁刑なし）</td><td>14条、15条、23条〜27条、<strong>89条</strong>、<strong>106条</strong> ほか</td></tr></tbody></table>
+<blockquote><p>★<strong>120条だけ拘禁刑がありません</strong>。就業規則の作成届出（89条）、法令等の周知（106条）はここ。</p></blockquote>
+<h3>寄宿舎（94条〜96条の3）（→ 労働基準法に新しい節）</h3>
+<p><strong>9年で2回出ています</strong>（令和2年度の選択式で空欄A、令和6年度の択一）。条文は5つだけです。</p>
+<table class="big"><thead><tr><th>条</th><th>内容</th></tr></thead><tbody><tr><td><strong>94条</strong></td><td><strong>私生活の自由を侵してはならない</strong>／<strong>寮長・室長等の役員の選任に干渉してはならない</strong></td></tr><tr><td><strong>95条</strong></td><td><strong>寄宿舎規則</strong>の作成・届出（下記）</td></tr><tr><td><strong>96条</strong></td><td>換気、採光、照明、保温、防湿、清潔、避難、定員の収容、就寝に必要な措置その他<strong>健康・風紀・生命の保持</strong>に必要な措置</td></tr><tr><td><strong>96条の2</strong></td><td>設置・移転・変更の<strong>届出</strong>（下記）</td></tr><tr><td><strong>96条の3</strong></td><td>基準違反のとき、行政官庁は<strong>使用の停止・変更等を命ずる</strong>ことができる。<strong>労働者に対しても命令できる</strong></td></tr></tbody></table>
+<p><strong>95条 寄宿舎規則の5事項</strong></p>
+<table class="big"><thead><tr><th>号</th><th>事項</th><th>過半数代表者の同意</th></tr></thead><tbody><tr><td>1号</td><td>起床、就寝、外出及び外泊</td><td><strong>必要</strong></td></tr><tr><td>2号</td><td>行事</td><td><strong>必要</strong></td></tr><tr><td>3号</td><td>食事</td><td><strong>必要</strong></td></tr><tr><td>4号</td><td>安全及び衛生</td><td><strong>必要</strong></td></tr><tr><td><strong>5号</strong></td><td><strong>建設物及び設備の管理</strong></td><td><strong>不要</strong></td></tr></tbody></table>
+<blockquote><p>★同意が要るのは<strong>1号〜4号</strong>だけ。<strong>5号には要りません</strong>。ここが最頻出。
+★届出には<strong>同意を証明する書面を添付</strong>します（95条3項）。
+★<strong>使用者だけでなく、寄宿する労働者にも遵守義務</strong>があります（95条4項）。</p></blockquote>
+<p><strong>96条の2 届出（令和2年度の選択式で出題）</strong></p>
+<blockquote><p>常時<strong>10人以上</strong>の労働者を就業させる事業、危険な事業又は衛生上有害な事業の附属寄宿舎を設置・移転・変更しようとする場合、計画を<strong>工事着手14日前まで</strong>に行政官庁に届け出る。</p></blockquote>
+<blockquote><p>★正答が「<strong>工事着手14日前まで</strong>」でした。安衛法88条の計画届（<strong>30日前</strong>／14日前）と混同しないこと。</p></blockquote>
+<h3>36協定の上限は2段（→ 36協定と上限規制）</h3>
+<pre><code>① 原則の枠（限度時間・36条4項）  1か月45時間 ／ 1年360時間
+        │ 臨時的な特別の事情があるときだけ超えられる
+        ↓
+② 特別条項の絶対的上限（36条6項） 年720時間／月100時間未満／2〜6か月平均80時間以内
+                                  45時間を超えてよいのは年6回まで</code></pre>
+<p><strong>数えるのは「法定労働時間（1日8時間・1週40時間）を超えた時間」</strong>です。所定を超えた時間ではありません。</p>
+<table class="big"><thead><tr><th>所定</th><th>実労働</th><th>扱い</th></tr></thead><tbody><tr><td>7時間</td><td>8時間</td><td><strong>法定内残業</strong>。36協定も上限規制も割増賃金も不要</td></tr><tr><td>7時間</td><td>9時間</td><td>8時間を超えた<strong>1時間</strong>だけが時間外労働</td></tr></tbody></table>
+<p><strong>休日労働を含むか</strong></p>
+<table class="big"><thead><tr><th>上限</th><th>休日労働</th></tr></thead><tbody><tr><td>月45時間・年360時間</td><td>含まない</td></tr><tr><td><strong>年720時間</strong></td><td><strong>含まない</strong></td></tr><tr><td>月100時間未満</td><td><strong>含む</strong></td></tr><tr><td>2〜6か月平均80時間以内</td><td><strong>含む</strong></td></tr></tbody></table>
+<p><strong>45時間を超えたらどうなるか</strong></p>
+<table class="big"><thead><tr><th>状況</th><th>どうなるか</th></tr></thead><tbody><tr><td>特別条項がないのに超えた</td><td>免罰効果が及ばず <strong>32条違反</strong></td></tr><tr><td>特別条項があり枠内</td><td><strong>適法</strong>。月60時間超の分は<strong>5割以上</strong>の割増賃金</td></tr><tr><td>特別条項があっても枠外</td><td><strong>36条6項違反</strong></td></tr></tbody></table>
+<blockquote><p>★限度時間そのものには直接の罰則がありません。36条3項が「協定で定める延長時間は<strong>限度時間を超えない時間に限る</strong>」としているので協定が無効になり、結果として32条違反になります。
+★36条6項は<strong>使用者を直接縛る</strong>規定なので、協定が適法でも実際の労働時間が超えれば違法です。
+★<strong>1日の上限はありません</strong>。ただし<strong>坑内労働その他健康上特に有害な業務</strong>は<strong>1日2時間</strong>まで（36条6項1号）。</p></blockquote>
+<h3>賃金の相殺 — 3つの判例と調整的相殺（→ 賃金の相殺）</h3>
+<table class="big"><thead><tr><th>事件</th><th>場面</th><th>結論</th></tr></thead><tbody><tr><td><strong>シンガー・ソーイング・メシーン</strong>（昭48.1.19）</td><td>退職金債権の<strong>放棄</strong></td><td>有効</td></tr><tr><td><strong>日新製鋼</strong>（平2.11.26）</td><td>退職金からの<strong>相殺の合意</strong></td><td>有効</td></tr><tr><td><strong>山梨県民信用組合</strong>（平28.2.19）</td><td><strong>就業規則の不利益変更</strong>への同意</td><td><strong>認められず</strong></td></tr></tbody></table>
+<p>いずれも「<strong>自由な意思に基づくと認めるに足りる合理的な理由が客観的に存在するか</strong>」で判断します。<strong>山梨県民信用組合事件だけが同意を認めませんでした</strong>（不利益の内容を具体的に説明していなかったため）。</p>
+<p><strong>調整的相殺に同意が要らない理由</strong>（福島県教組事件・昭44.12.18）</p>
+<p>24条1項が禁じるのは、賃金と<strong>別口の債権</strong>をぶつけることです。過払いの清算は<strong>賃金額を正しく計算し直しているだけ</strong>なので、同意を要する相殺に当たりません。</p>
+<table class="big"><thead><tr><th></th><th>同意</th><th>判断基準</th></tr></thead><tbody><tr><td><strong>調整的相殺</strong>（過払いの清算）</td><td><strong>不要</strong></td><td><strong>時期・方法・金額</strong> → 経済生活の安定を脅かさないか</td></tr><tr><td><strong>別口の債権との相殺</strong></td><td><strong>必要</strong></td><td>自由な意思に基づく合理的な理由が客観的に存在するか</td></tr></tbody></table>
+<h3>定額残業代（→ 労働時間該当性）</h3>
+<p><strong>37条が定めているのは割増賃金の「額」だけで、支払い方は決めていない</strong>ので許されます。</p>
+<table class="big"><thead><tr><th></th><th>要件</th></tr></thead><tbody><tr><td>①</td><td><strong>判別できること</strong>（通常の労働時間の賃金と割増賃金の部分）</td></tr><tr><td>②</td><td><strong>対価性</strong>（時間外労働の対価であること）</td></tr><tr><td>③</td><td><strong>差額の支払</strong>（定額を超えたら必ず払う）</td></tr></tbody></table>
+<p>②の判断要素は<strong>契約書等の記載・労働者への説明・実際の勤務状況</strong>（<strong>日本ケミカル事件</strong> 平30.7.19）。</p>
+<blockquote><p>★同事件は<strong>「何時間分か」の明示までは求めていません</strong>（原審の判断を否定）。
+★<strong>国際自動車事件</strong>（令2.3.30）は、<strong>歩合給から割増賃金相当額を差し引く</strong>しくみを割増賃金の支払と認めませんでした。
+★<strong>求人では時間数の明示が必要</strong>です（職業安定法5条の3と省令・指針）。労基法上は不要なのと対照的。</p></blockquote>
+<h3>労働者の定義 — 労組法はなぜ広いか（→ 労働者性）</h3>
+<table class="big"><thead><tr><th>法律</th><th>条文</th></tr></thead><tbody><tr><td><strong>労基法9条</strong></td><td>職業の種類を問わず、<strong>事業に使用される者で、賃金を支払われる者</strong></td></tr><tr><td><strong>労働契約法2条</strong></td><td><strong>使用者に使用されて労働し、賃金を支払われる者</strong></td></tr><tr><td><strong>労組法3条</strong></td><td>職業の種類を問わず、<strong>賃金、給料その他これに準ずる収入によつて生活する者</strong></td></tr></tbody></table>
+<p>労組法3条には「<strong>使用される</strong>」が入っていません。だから<strong>失業者も労組法上は労働者</strong>です。</p>
+<p><strong>労組法上の労働者性の判断要素</strong>（平成23年 労使関係法研究会報告）</p>
+<table class="big"><thead><tr><th></th><th>要素</th></tr></thead><tbody><tr><td><strong>基本</strong></td><td>① 事業組織への<strong>組入れ</strong> ② 契約内容の<strong>一方的・定型的決定</strong> ③ 報酬の労務対価性</td></tr><tr><td><strong>補充</strong></td><td>④ 業務の依頼に応ずべき関係 ⑤ <strong>広い意味での</strong>指揮監督・時間的場所的拘束</td></tr><tr><td><strong>否定</strong></td><td>⑥ <strong>顕著な事業者性</strong></td></tr></tbody></table>
+<p><strong>最高裁</strong>：CBC管弦楽団（昭51.5.6）、<strong>新国立劇場運営財団</strong>・<strong>INAXメンテナンス</strong>（どちらも平23.4.12）、ビクターサービスエンジニアリング（平24.2.21）。いずれも労組法上の労働者性を認めています。</p>
+<hr>
+<h2>健保</h2>
+<h3>協会の役員と解任（→ 保険者と費用負担）</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>役員</td><td><strong>理事長1人、理事6人以内、監事2人</strong></td></tr><tr><td>理事長・監事</td><td><strong>厚生労働大臣</strong>が任命</td></tr><tr><td>理事</td><td><strong>理事長</strong>が任命</td></tr></tbody></table>
+<p><strong>解任</strong>（7条の14）</p>
+<table class="big"><thead><tr><th>場面</th><th>どうなる</th></tr></thead><tbody><tr><td><strong>欠格条項に該当</strong>するに至ったとき</td><td><strong>解任しなければならない</strong>（義務）</td></tr><tr><td>心身の故障で職務に堪えない、職務上の義務違反その他<strong>役員たるに適しない</strong>と認めるとき</td><td><strong>解任することができる</strong>（裁量）</td></tr></tbody></table>
+<blockquote><p>★「<strong>しなければならない</strong>」と「<strong>することができる</strong>」の書き分けが問われます。</p></blockquote>
+<hr>
+<h2>国年・厚年</h2>
+<h3>積立金の運用の目的（国年75条・厚年79条の2）（→ 年金額の改定とマクロ経済スライド）</h3>
+<blockquote><p>積立金の運用は、積立金が<strong>被保険者から徴収された保険料の一部</strong>であり、かつ、<strong>将来の給付の貴重な財源</strong>となるものであることに特に留意し、<strong>専ら被保険者の利益のために、長期的な観点から、安全かつ効率的に</strong>行うことにより、将来にわたつて、<strong>事業の運営の安定</strong>に資することを目的として行うものとする。</p></blockquote>
+<blockquote><p>★<strong>令和3年度の選択式で出ています。</strong>「将来の給付の貴重な財源」「専ら…被保険者の利益のために」「長期的な観点から、安全かつ効率的に」「事業の運営の安定」が空欄になりました。
+★「<strong>専ら被保険者の利益のために</strong>」であって、国の財政のためではありません。</p></blockquote>
+<h3>全額免除申請の事務手続の特例（国年109条の2）（→ 保険料と免除）</h3>
+<table class="big"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>誰が指定するか</td><td><strong>厚生労働大臣</strong>（本人からの申請に基づく）</td></tr><tr><td>何ができるか</td><td>委託を受けて<strong>全額免除申請を行う</strong>（<strong>指定全額免除申請事務取扱者</strong>）</td></tr><tr><td>効果</td><td><strong>委託をした日に申請があったものとみなす</strong></td></tr></tbody></table>
+<blockquote><p>★学生納付特例にも同じ形があります（<strong>指定学生納付特例事務取扱者</strong>・109条の2の2）。学校等が指定を受けます。
+★<strong>委託した日</strong>にみなされます。取扱者が実際に手続をした日ではありません。</p></blockquote>
+<h3>生計維持の年収要件 — 850万円</h3>
+<p>遺族給付・加給年金額などの「<strong>生計を維持していた</strong>」の認定は、<strong>生計同一</strong>であることに加えて、<strong>収入が将来にわたって年収850万円未満（所得655万5千円未満）</strong>であることが基準です。</p>
+<table class="big"><thead><tr><th>場面</th><th>扱い</th></tr></thead><tbody><tr><td>死亡当時は850万円以上だったが、<strong>おおむね5年以内に850万円未満になると認められる</strong>とき</td><td><strong>生計維持あり</strong>とされる</td></tr><tr><td>死亡当時850万円以上で受給権を得られず、<strong>その後に収入が下がった</strong></td><td><strong>さかのぼって受給権は生じない</strong></td></tr></tbody></table>
+<blockquote><p>★<strong>過去9年で6回</strong>、健保・厚年・国年をまたいで出ています。
+★「あとから収入が下がれば受給権が発生する」は<strong>誤り</strong>です。判定は<strong>死亡当時</strong>を基準にします。</p></blockquote>
+<hr>
+<h2>この追補の作り方</h2>
+<p>各科目の資料と本試験データ（過去9年）を次の観点で突き合わせて、抜けを見つけたものです。</p>
+<table class="big"><thead><tr><th>観点</th><th>道具</th><th>結果</th></tr></thead><tbody><tr><td>出題された条が資料にあるか</td><td><code>cover_all.py</code></td><td>0件</td></tr><tr><td>条番号は出るが<strong>解説が無い</strong>もの</td><td>同上（後から追加した観点）</td><td>0件</td></tr><tr><td>選択式の正答語（302語）</td><td><code>cover2.py</code></td><td>0件</td></tr><tr><td>択一に4回以上出た<strong>数値</strong></td><td>数値の突き合わせ</td><td><strong>850万円</strong>を発見</td></tr><tr><td>書いた数値が条文どおりか</td><td><code>factcheck.py</code></td><td>169件すべて一致</td></tr></tbody></table>
+<blockquote><p>寄宿舎が抜けていたのに検査が0件と言っていたのは、<strong>自動生成の傾向表に条番号が載っていた</strong>ためです。生成部分を除いて数えるよう直しました。</p></blockquote>
+<hr>
+<h2>次に読むもの</h2>
+<table><thead><tr><th>資料</th><th>用途</th></tr></thead><tbody><tr><td><span class="ref"><span class="n">2</span>労働基準法<span class="sec">（全体版）</span></span></td><td>労基の本体</td></tr><tr><td><span class="ref"><span class="n">64</span>健康保険法<span class="sec">（全体版）</span></span></td><td>健保の本体</td></tr><tr><td><span class="ref"><span class="n">72</span>国民年金法<span class="sec">（全体版）</span></span></td><td>国年の本体</td></tr><tr><td><span class="ref"><span class="n">80</span>厚生年金保険法<span class="sec">（全体版）</span></span></td><td>厚年の本体</td></tr><tr><td><span class="ref"><span class="n">99</span>最終確認シート<span class="sec">（全体版）</span></span></td><td>当日の朝に読むもの</td></tr></tbody></table></div></div>
