@@ -171,6 +171,12 @@
   .exp{background:var(--panel2);border-left:3px solid var(--line);padding:11px 13px;
     border-radius:0 6px 6px 0;font-size:14px;white-space:pre-wrap;text-align:justify}
   .exp .law{display:block;margin-top:8px;font-size:12px;color:var(--sub)}
+  .stale{white-space:normal;margin:0 0 10px;padding:9px 11px;border-radius:8px;
+    background:#fff4e5;border:1px solid #f0c98a;color:#7a4a00;font-size:13px;line-height:1.6}
+  .stale b{font-weight:700}
+  @media (prefers-color-scheme:dark){
+    .stale{background:#3a2b12;border-color:#7a5a20;color:#f0d5a8}
+  }
   .jobun{white-space:normal}
   .jobun .hd{font-size:12px;font-weight:700;color:var(--sub);margin:0 0 8px}
   .jobun .j{margin:0 0 10px;padding-left:10px;border-left:2px solid var(--line)}
@@ -898,6 +904,7 @@ window.DRILL = { banks: [], register(subject, qs){
 <script src="data/ref.js"></script>
 <script src="data/jobun.js"></script>
 <script src="data/qref.js"></script>
+<script src="data/stale.js"></script>
 <script src="data/stats.js"></script>
 
 <script>
@@ -1373,6 +1380,15 @@ function citedArts(q){
   }
   return out;
 }
+/* 出題時は正しかったが、その後の改正で答えが変わった肢がある。
+   そのまま覚え直すと逆効果なので、解答のたびに断り書きを出す。
+   対応は kakomon/stale.py が作る（施行日より前の回の問題を拾う）。 */
+function staleHtml(q){
+  const s = (window.STALE || {})[q.id];
+  if(!s) return "";
+  return `<div class="stale"><b>⚠️ 出題後に改正があります。</b>${esc(s)}。`
+       + `この問題の正解は<b>出題当時のもの</b>です。</div>`;
+}
 function jobunHtml(q){
   const arts = citedArts(q);
   if(!arts.length)
@@ -1527,7 +1543,7 @@ function judge(ok){
   setProg(queue.length);            // 戻したあとの残りで引く
   saveSess();
   const sec=Math.floor((Date.now()-t0)/1000);
-  let h = cur.exp ? expHtml(cur.exp) : jobunHtml(cur);
+  let h = staleHtml(cur) + (cur.exp ? expHtml(cur.exp) : jobunHtml(cur));
   if(cur.note)  h += `\n\n※ ${mdInline(cur.note)}`;
   if(cur.topic) h += `\n\n【出題テーマ】${esc(cur.topic)}`;
   h += `<span class="law">${cur.law?"根拠："+esc(cur.law)+"　｜　":""}解答時間 ${sec}秒${cur.src?"　｜　"+esc(cur.src):""}</span>`;
