@@ -28,6 +28,73 @@ def qtype(s):
     if re.search(r"正しいもの|適切なもの", s): return "正しい選び"
     return "その他"
 
+# 正文には根拠が付いていなかった。文言が原文どおりでも、それだけでは
+# 「なぜ正しいのか」を資料側から確かめられない。そこで gen_qref と同じ
+# やり方（条文の引用と、肢と条文本文の16字一致）で根拠の条を割り出し、
+# 資料への行き先とあわせて添える。
+import importlib, sys
+sys.path.insert(0, ".")
+QR = importlib.import_module("gen_qref")
+_SUBJ2FRAME = {"労基安衛": "労基安衛", "労災": "労災", "雇用": "雇用",
+               "一般常識": "一般常識", "健保": "健保", "国年": "国年", "厚年": "厚年"}
+
+def kyoten(subj, num, text):
+    """その肢の根拠になっている条を1つ返す。取れなければ None。"""
+    frame = _SUBJ2FRAME.get(subj)
+    if frame == "労災" and num >= 8:
+        frame = "徴収"          # 労災・雇用の問8以降は徴収法
+    if frame == "雇用" and num >= 8:
+        frame = "徴収"
+    if not frame:
+        return None
+    keys = QR.by_citation(text, frame) or QR.by_text(text, frame)
+    return keys[0] if keys else None
+
+_REF = None
+def shiryou(art):
+    """条 → 読むべき資料（ref.js の対応表）。"""
+    global _REF
+    if _REF is None:
+        import json as _j
+        try:
+            raw = open("../drill/data/ref.js", encoding="utf-8").read()
+            _REF = _j.loads(raw.split("=", 1)[1].rsplit(";", 1)[0])
+        except Exception:
+            _REF = {}
+    if art:
+        r = (_REF.get("art") or {}).get(art)
+        if r:
+            return r
+        law = re.sub(r"第\d+条(?:の\d+)?$", "", art)
+        r = (_REF.get("law") or {}).get(law)
+        if r:
+            return r
+    return None
+
+_S2K = {"労基安衛": "労基", "労災": "労災", "雇用": "雇用",
+        "一般常識": "労一", "健保": "健保", "国年": "国年", "厚年": "厚年"}
+def shiryou2(subj, num, art):
+    """条 → 法令 → 科目の順に、読むべき資料をたどる。"""
+    r = shiryou(art)
+    if r:
+        return r
+    k = _S2K.get(subj)
+    if subj in ("労災", "雇用") and num >= 8:
+        k = "徴収"
+    return (_REF.get("subj") or {}).get(k)
+
+_STALE = None
+def kaisei(subj, kai, text):
+    """改正で答えが変わっていないか。変わっていれば断り書きを返す。"""
+    global _STALE
+    if _STALE is None:
+        _STALE = importlib.import_module("stale").CHANGES
+    body = NOSP(text)
+    for since, sub, pat, note in _STALE:
+        if kai < since and (not sub or re.search(sub, subj)) and re.search(pat, body):
+            return note
+    return None
+
 def clean(t):
     t = re.sub(r"\s+", " ", t)
     t = re.sub(r"(?<=[぀-ヿ一-鿿、。」）])\s+(?=[぀-ヿ一-鿿「（])", "", t)
@@ -100,6 +167,8 @@ with open(OUT, "w") as f:
 | 収録 | 過去9年の択一から、**正誤が確定した正しい肢 {total}本**を論点別に整理 |
 | 意味 | 科目別ノートは私の要約。**この資料は本試験の原文そのまま** |
 | 使い方 | 論点ごとに読み、**「そう書いてあったか」を確認する**。誤りを探す読み方はしない |
+| 根拠 | 各肢の末尾に**根拠の条**と**読むべき資料**を付けた。原文だけでは正しさを確かめられないため |
+| 注意 | 出題後の改正で答えが変わったものには**⚠️の断り**を付けた |
 
 > `95-条文素読` が選択式の原文なら、こちらは**択一の原文**です。
 > 過去問データから機械的に生成しているので（`kakomon/gen_seibun.py`）、文言は正確です。
@@ -133,7 +202,18 @@ with open(OUT, "w") as f:
         for tp, arr in tps:
             w(f"### {tp}\n\n")
             for k, n, c in sorted(arr, reverse=True):
-                w(f"- {clean(c)}　<span style=\"opacity:.55\">（{KAI2Y[k]}年度 問{n}）</span>\n")
+                art = kyoten(subj, n, c)
+                sh  = shiryou2(subj, n, art)
+                ks  = kaisei(subj, k, c)
+                tail = f"　<span style=\"opacity:.55\">（{KAI2Y[k]}年度 問{n}"
+                if art:
+                    tail += f"／{art}"
+                tail += "）</span>"
+                if sh:
+                    tail += f" [→ {sh[1]}]({sh[0]})"
+                w(f"- {clean(c)}{tail}\n")
+                if ks:
+                    w(f"    - ⚠️ **出題後に改正あり。**{ks}。上の肢は**出題当時の正解**です。\n")
             w("\n")
         w("---\n\n")
     w("""## 次に読むもの
